@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://zhouey314-cloud.github.io/sitemap.xml
