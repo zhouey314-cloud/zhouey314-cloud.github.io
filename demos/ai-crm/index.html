@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#111512">
+  <meta name="description" content="Ethan 自建的 AI CRM 产品 Demo，所有账号与业务信息均为示例数据。">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" href="/public/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/demos/ai-crm/style.css">
+  <link rel="stylesheet" href="/demos/ai-crm/system-font.css">
+  <title>AI CRM Demo — Ethan</title>
+</head>
+<body>
+  <a class="skip-link" href="#workspace">跳到工作区</a>
+  <div class="demo-shell">
+    <aside class="sidebar" data-sidebar>
+      <div class="product-mark"><span class="mark">EC</span><div><strong>AI CRM</strong><small>PRODUCT DEMO</small></div></div>
+      <div class="sample-badge">SAMPLE WORKSPACE</div>
+      <nav class="side-nav" aria-label="Demo modules">
+        <button class="nav-item active" type="button" data-view="dashboard"><span>⌂</span>Dashboard</button>
+        <button class="nav-item" type="button" data-view="pipeline"><span>≋</span>Pipeline</button>
+        <button class="nav-item" type="button" data-view="opportunity"><span>◫</span>Opportunity</button>
+        <button class="nav-item" type="button" data-view="quotation"><span>⌗</span>Quotation</button>
+        <button class="nav-item" type="button" data-view="contract"><span>□</span>Contract</button>
+        <button class="nav-item" type="button" data-view="delivery"><span>⇥</span>Delivery</button>
+        <button class="nav-item" type="button" data-view="analytics"><span>⌁</span>Analytics</button>
+        <button class="nav-item assistant-item" type="button" data-view="assistant"><span>✦</span>AI Assistant</button>
+      </nav>
+      <div class="side-footer"><span class="status-dot"></span><div><strong>Local demo</strong><small>No customer data</small></div></div>
+    </aside>
+
+    <main id="workspace" class="workspace">
+      <header class="topbar">
+        <button class="mobile-menu" type="button" aria-label="打开 Demo 导航" aria-expanded="false" data-menu>☰</button>
+        <div><p class="crumb">SALES OPERATIONS / <span data-crumb>OVERVIEW</span></p><h1 data-title>Dashboard</h1></div>
+        <div class="topbar-actions"><span class="truth-chip">SELF-BUILT DEMO · SAMPLE DATA</span><button class="quiet-button" type="button" data-command>⌘ K</button><a class="exit-link" href="/">Back to portfolio ↗</a></div>
+      </header>
+
+      <section class="view active" data-panel="dashboard" aria-labelledby="dashboard-title">
+        <div class="view-heading"><div><p class="overline">TODAY / SAMPLE WORKSPACE</p><h2 id="dashboard-title">A clear view of the next action.</h2><p>从客户、商机到交付，一条可以继续追踪的销售路径。</p></div><button class="primary-action" type="button" data-open-first>Open priority opportunity</button></div>
+        <div class="metric-grid">
+          <article><span>ACTIVE OPPORTUNITIES</span><strong>06</strong><small>SAMPLE DATA</small></article>
+          <article><span>QUOTES IN REVIEW</span><strong>03</strong><small>SAMPLE DATA</small></article>
+          <article><span>CONTRACTS TO SIGN</span><strong>02</strong><small>SAMPLE DATA</small></article>
+          <article><span>DELIVERIES AT RISK</span><strong>01</strong><small>SAMPLE DATA</small></article>
+        </div>
+        <div class="dashboard-grid">
+          <article class="panel pipeline-summary"><div class="panel-head"><div><span>PIPELINE HEALTH</span><h3>Work in progress</h3></div><button type="button" data-view-link="pipeline">View pipeline ↗</button></div><div class="stage-bars">
+            <div><span>QUALIFIED</span><i style="--w:82%"></i><b>05</b></div><div><span>SOLUTION FIT</span><i style="--w:64%"></i><b>04</b></div><div><span>PROPOSAL</span><i style="--w:48%"></i><b>03</b></div><div><span>NEGOTIATION</span><i style="--w:30%"></i><b>02</b></div>
+          </div></article>
+          <article class="panel activity-panel"><div class="panel-head"><div><span>NEXT ACTIONS</span><h3>Review queue</h3></div><span class="mono">4 OPEN</span></div><ul class="action-list"><li><span class="priority high">P1</span><div><strong>Confirm solution scope</strong><small>Demo Opportunity 01 · Today</small></div><button type="button" data-open-opportunity="0">Review</button></li><li><span class="priority">P2</span><div><strong>Revise quotation terms</strong><small>Demo Opportunity 03 · Tomorrow</small></div><button type="button">Open</button></li><li><span class="priority">P2</span><div><strong>Validate delivery owner</strong><small>Sample Account 04 · Sep 18</small></div><button type="button">Open</button></li><li><span class="priority low">P3</span><div><strong>Prepare discovery notes</strong><small>Sample Account 06 · Sep 20</small></div><button type="button">Open</button></li></ul></article>
+          <article class="panel assistant-preview"><div class="panel-head"><div><span>AI ASSISTANT</span><h3>Context, not autopilot.</h3></div><button type="button" data-view-link="assistant">Open assistant ↗</button></div><p>基于当前 Demo Opportunity 的结构化信息，给出下一步建议；所有动作仍需人工确认。</p><div class="assistant-line"><span>✦</span><div><strong>Suggested next step</strong><p>先确认使用范围和交付责任，再进入报价审批。</p></div></div><div class="human-gate"><span></span>HUMAN REVIEW REQUIRED</div></article>
+        </div>
+      </section>
+
+      <section class="view" data-panel="pipeline" aria-labelledby="pipeline-title">
+        <div class="view-heading"><div><p class="overline">PIPELINE / SAMPLE DATA</p><h2 id="pipeline-title">From signal to delivery.</h2><p>阶段、负责人和下一步动作保持在同一视图。</p></div><button class="primary-action" type="button">+ Demo opportunity</button></div>
+        <div class="board" aria-label="演示销售管线">
+          <section class="board-column"><header><span>QUALIFIED</span><b>2</b></header><button class="deal-card priority-card" type="button" data-open-opportunity="0"><span>Sample Account 01</span><h3>Demo Opportunity 01</h3><p>Next: confirm solution scope</p><div><small>Sep 16</small><em>EY</em></div></button><button class="deal-card" type="button" data-open-opportunity="1"><span>Sample Account 02</span><h3>Demo Opportunity 02</h3><p>Next: discovery follow-up</p><div><small>Sep 18</small><em>EY</em></div></button></section>
+          <section class="board-column"><header><span>SOLUTION FIT</span><b>2</b></header><button class="deal-card" type="button" data-open-opportunity="2"><span>Sample Account 03</span><h3>Demo Opportunity 03</h3><p>Next: confirm user roles</p><div><small>Sep 17</small><em>EY</em></div></button><button class="deal-card" type="button" data-open-opportunity="3"><span>Sample Account 04</span><h3>Demo Opportunity 04</h3><p>Next: verify integration scope</p><div><small>Sep 21</small><em>EY</em></div></button></section>
+          <section class="board-column"><header><span>PROPOSAL</span><b>1</b></header><button class="deal-card" type="button" data-open-opportunity="4"><span>Sample Account 05</span><h3>Demo Opportunity 05</h3><p>Next: quotation review</p><div><small>Sep 19</small><em>EY</em></div></button></section>
+          <section class="board-column"><header><span>NEGOTIATION</span><b>1</b></header><button class="deal-card" type="button" data-open-opportunity="5"><span>Sample Account 06</span><h3>Demo Opportunity 06</h3><p>Next: contract redline</p><div><small>Sep 22</small><em>EY</em></div></button></section>
+        </div>
+      </section>
+
+      <section class="view" data-panel="opportunity" aria-labelledby="opportunity-title">
+        <div class="view-heading"><div><p class="overline">OPPORTUNITIES / SAMPLE DATA</p><h2 id="opportunity-title">Every open loop, visible.</h2><p>用清晰字段替代散落在聊天里的状态。</p></div><button class="primary-action" type="button">+ Add record</button></div>
+        <div class="table-tools"><label><span class="sr-only">搜索</span><input type="search" placeholder="Search sample records"></label><div><button type="button">Filter</button><button type="button">Columns</button><button type="button">Export demo</button></div></div>
+        <div class="data-table-wrap"><table class="data-table"><thead><tr><th>Opportunity</th><th>Account</th><th>Stage</th><th>Owner</th><th>Next action</th><th>Updated</th></tr></thead><tbody data-opportunity-rows></tbody></table></div>
+      </section>
+
+      <section class="view" data-panel="quotation"><div class="view-heading"><div><p class="overline">QUOTATION / SAMPLE DATA</p><h2>Commercial terms with a review trail.</h2><p>报价不是孤立文件，而是连接需求范围、审批和合同的节点。</p></div><button class="primary-action" type="button">+ Draft quotation</button></div><div class="data-table-wrap"><table class="data-table"><thead><tr><th>Quotation</th><th>Related opportunity</th><th>Status</th><th>Scope version</th><th>Review owner</th><th>Updated</th></tr></thead><tbody><tr><td><b>Demo Quote 001</b></td><td>Demo Opportunity 01</td><td><span class="status amber">IN REVIEW</span></td><td>Scope v2</td><td>Ethan</td><td>Today</td></tr><tr><td><b>Demo Quote 002</b></td><td>Demo Opportunity 03</td><td><span class="status green">READY</span></td><td>Scope v1</td><td>Ethan</td><td>Yesterday</td></tr><tr><td><b>Demo Quote 003</b></td><td>Demo Opportunity 05</td><td><span class="status gray">DRAFT</span></td><td>Scope v3</td><td>Ethan</td><td>Sep 12</td></tr></tbody></table></div></section>
+
+      <section class="view" data-panel="contract"><div class="view-heading"><div><p class="overline">CONTRACT / SAMPLE DATA</p><h2>Acceptance starts before signature.</h2><p>把范围、验收、变更和交接责任写进同一条可追踪路径。</p></div><button class="primary-action" type="button">+ Demo contract</button></div><div class="record-grid"><article class="record-card"><span>CONTRACT 001</span><h3>Demo implementation agreement</h3><p>Sample Account 01</p><div><b>Scope attached</b><i>READY</i></div><div><b>Acceptance criteria</b><i>IN REVIEW</i></div><div><b>Data boundary</b><i>READY</i></div></article><article class="record-card"><span>CONTRACT 002</span><h3>Demo pilot agreement</h3><p>Sample Account 06</p><div><b>Scope attached</b><i>READY</i></div><div><b>Acceptance criteria</b><i>DRAFT</i></div><div><b>Data boundary</b><i>DRAFT</i></div></article></div></section>
+
+      <section class="view" data-panel="delivery"><div class="view-heading"><div><p class="overline">DELIVERY / SAMPLE DATA</p><h2>Make handoff inspectable.</h2><p>交付状态不仅是“完成”，还包括证据、责任人与未决项。</p></div><button class="primary-action" type="button">+ Delivery item</button></div><div class="delivery-board"><article><span>01</span><h3>Scope confirmed</h3><p>Inputs and boundaries reviewed.</p><b>COMPLETE</b></article><article><span>02</span><h3>Baseline captured</h3><p>Expected behavior recorded.</p><b>COMPLETE</b></article><article class="current"><span>03</span><h3>Acceptance review</h3><p>Evidence awaiting human review.</p><b>IN REVIEW</b></article><article><span>04</span><h3>Handoff package</h3><p>Runbook and known limits.</p><b>QUEUED</b></article></div></section>
+
+      <section class="view" data-panel="analytics"><div class="view-heading"><div><p class="overline">ANALYTICS / SAMPLE DATA</p><h2>Operational evidence, without fake growth.</h2><p>这里展示流程状态，不把示例数字包装成商业成绩。</p></div><span class="truth-chip">NO REVENUE CLAIMS</span></div><div class="analytics-grid"><article class="panel"><span>STAGE DISTRIBUTION</span><div class="horizontal-chart"><div><b>Qualified</b><i style="--w:84%"></i><em>5</em></div><div><b>Solution fit</b><i style="--w:66%"></i><em>4</em></div><div><b>Proposal</b><i style="--w:50%"></i><em>3</em></div><div><b>Negotiation</b><i style="--w:33%"></i><em>2</em></div></div></article><article class="panel"><span>REVIEW BOTTLENECKS</span><ul class="bottleneck-list"><li><b>Scope confirmation</b><span>3 SAMPLE RECORDS</span></li><li><b>Quotation approval</b><span>2 SAMPLE RECORDS</span></li><li><b>Acceptance evidence</b><span>1 SAMPLE RECORD</span></li></ul></article></div></section>
+
+      <section class="view assistant-view" data-panel="assistant" aria-labelledby="assistant-title">
+        <div class="view-heading"><div><p class="overline">AI ASSISTANT / DEMO MODE</p><h2 id="assistant-title">Use context. Keep human judgment.</h2><p>演示如何围绕 CRM 记录组织建议；不会自动发送消息或修改真实数据。</p></div><span class="truth-chip">HUMAN REVIEW REQUIRED</span></div>
+        <div class="assistant-workspace"><aside><span>CONTEXT</span><h3>Demo Opportunity 01</h3><dl><div><dt>Account</dt><dd>Sample Account 01</dd></div><div><dt>Stage</dt><dd>Qualified</dd></div><div><dt>Next action</dt><dd>Confirm solution scope</dd></div><div><dt>Source</dt><dd>Sample workspace</dd></div></dl><p>No private customer information is used in this demo.</p></aside><div class="conversation"><div class="message user-message"><span>YOU</span><p>这条商机下一步最需要确认什么？</p></div><div class="message ai-message"><span>AI · DEMO RESPONSE</span><p>优先确认三个边界：谁会使用、哪些流程必须进入第一版、如何判断这次试点通过。范围未确认前，不建议先承诺时间或进入正式报价。</p><ul><li>确认核心用户与审批人</li><li>把必须完成的流程与后续需求分开</li><li>约定可检查的验收证据</li></ul><div class="review-note">建议仅供演示 · 提交前需人工检查</div></div><div class="prompt-row"><button type="button" data-prompt="scope">Draft scope questions</button><button type="button" data-prompt="risk">List delivery risks</button><button type="button" data-prompt="followup">Prepare follow-up</button></div><form class="assistant-input" data-assistant-form><label class="sr-only" for="assistant-input">输入演示问题</label><input id="assistant-input" value="Summarize the next decision" autocomplete="off"><button type="submit">Run demo ↗</button></form></div></div>
+      </section>
+    </main>
+  </div>
+
+  <dialog class="drawer" data-drawer aria-labelledby="drawer-title"><div class="drawer-head"><div><span>SAMPLE OPPORTUNITY</span><h2 id="drawer-title" data-drawer-title>Demo Opportunity 01</h2></div><button type="button" aria-label="关闭详情" data-drawer-close>×</button></div><div class="drawer-body"><div class="drawer-truth">SAMPLE DATA · NOT A CUSTOMER RECORD</div><dl><div><dt>Account</dt><dd data-drawer-account>Sample Account 01</dd></div><div><dt>Stage</dt><dd data-drawer-stage>Qualified</dd></div><div><dt>Owner</dt><dd>Ethan</dd></div><div><dt>Next action</dt><dd data-drawer-action>Confirm solution scope</dd></div></dl><section><span>DISCOVERY NOTE</span><p>This sample record demonstrates how scope, owner and next action stay attached to one opportunity.</p></section><section><span>DELIVERY BOUNDARY</span><p>No customer, financial or contact data appears in this self-built demo.</p></section></div><div class="drawer-actions"><button type="button">Add demo note</button><button class="primary-action" type="button" data-drawer-close>Done</button></div></dialog>
+  <script src="/demos/ai-crm/app.js" defer></script>
+</body>
+</html>
