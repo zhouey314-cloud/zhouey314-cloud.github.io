@@ -1,12 +1,12 @@
 const projects = {
   geo: {
-    kicker: "PROJECT 01 · PARTICIPATED PROJECT",
+    kicker: "PROJECT 01 · PARTICIPATED PROJECT · GEO PRACTICE",
     title: "GEO 多渠道信源分发 / SaaS 项目",
     summary: "企业做 GEO 时，AI 可见度诊断、意图词、知识、内容生产、渠道分发、门店协同和数据查看，容易散落在多个流程中。",
     truth: ["PARTICIPATED PROJECT", "REDACTED", "NO CLIENT DATA"],
     details: [
       ["PROBLEM", "多个模块彼此割裂，会让内容生产、分发、协同和结果查看难以形成可追踪的工作流。"],
-      ["MY ROLE", "参与产品技术实现、AI Coding、部分 Skill / Workflow、页面功能、验证、测试和交付整理；不是独立完成整个项目。"],
+      ["MY ROLE", "作为 GEO 实践者参与产品技术实现、AI Coding、部分 Skill / Workflow、页面功能、验证、测试和交付整理；不是独立完成整个项目。"],
       ["WHAT I BUILT", "参与部分页面与流程实现，协助把模块连接成可演示、可验证的产品路径，并整理测试与交付材料。"],
       ["WHAT I LEARNED", "在多人项目里，最难的不是多做几个页面，而是把自己的责任边界、前后端状态和验收证据对齐。一次流程只有在错误状态、人工回执和交接材料都能被检查时，才接近可交付。"],
       ["CURRENT STATUS", "参与项目。公开内容来自本地验收记录，并经过裁切和遮罩；具体功能仍以项目现状与后续人工确认为准。"],
@@ -171,8 +171,12 @@ function moveLightbox(step) {
 }
 
 document.querySelectorAll("[data-project]").forEach((card) => {
-  card.addEventListener("click", () => openProject(card.dataset.project));
+  card.addEventListener("click", (event) => {
+    if (event.target.closest("a")) return;
+    openProject(card.dataset.project);
+  });
 });
+document.querySelectorAll(".project-demo-link").forEach((link) => link.addEventListener("click", (event) => event.stopPropagation()));
 document.querySelector("[data-dialog-close]").addEventListener("click", closeProject);
 document.querySelector("[data-lightbox-close]").addEventListener("click", () => lightbox.close());
 document.querySelector("[data-lightbox-prev]").addEventListener("click", () => moveLightbox(-1));
