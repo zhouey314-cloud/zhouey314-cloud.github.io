@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#090b0d">
+  <meta name="description" content="Ethan Zhou 的六个公开技术项目：问题、个人角色、技术栈、可核查证据与演示链接。">
+  <link rel="canonical" href="https://zhouey314-cloud.github.io/projects.html">
+  <link rel="icon" href="/public/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/projects.css">
+  <title>Projects / Lab — Ethan Zhou</title>
+</head>
+<body>
+  <a class="skip" href="#projects">跳到项目</a>
+  <header class="topbar">
+    <a class="wordmark" href="/">ETHAN<span> / LAB</span></a>
+    <nav aria-label="页面导航"><a href="/">Home</a><a href="#projects">Projects</a><a href="https://github.com/zhouey314-cloud">GitHub ↗</a></nav>
+  </header>
+  <main>
+    <section class="intro" aria-labelledby="title">
+      <p class="eyebrow"><span class="light"></span> PUBLIC WORK / VERIFIED SCOPE</p>
+      <div class="intro-grid"><div><h1 id="title">从问题，<br>到<span>可检查的作品</span>。</h1><p class="lede">六个精选自建项目。每张卡都把问题、个人角色、可运行入口和证据放在一起。Demo、合成数据、Mock 与生产系统不混淆。</p></div><div class="intro-aside"><span>PORTFOLIO / 2026</span><p>Build<br>Test<br>Explain<br>Ship</p><small>页面只展示公开且可核查的实现；不代表客户验收或商业成果。</small></div></div>
+      <a class="jump" href="#projects">EXPLORE THE WORK <span>↓</span></a>
+    </section>
+    <section class="portfolio" id="projects" aria-labelledby="projects-title">
+      <div class="section-head"><p>01 / SELECTED PROJECTS</p><h2 id="projects-title">六种问题，六条交付路径。</h2></div>
+      <div class="cards">
+        <article class="card"><div class="visual"><img src="/public/projects/novamach/novamach-home.webp" alt="NovaMach 虚构工业网站首页截图" loading="lazy"><span>01 / LIVE_DEMO</span></div><div class="content"><p class="kind">B2B / MULTILINGUAL</p><h3>NovaMach Industrial</h3><p class="problem">问题：如何展示从产品详情到 RFQ 的完整外贸站路径，同时不冒充真实企业？</p><dl><div><dt>我的角色</dt><dd>自建前端、三语内容、RFQ 演示后台和部署验证</dd></div><div><dt>技术</dt><dd>React · TypeScript · Vite · Vercel</dd></div><div><dt>证据</dt><dd>lint/typecheck/build/smoke；线上路由与样本 RFQ 流程</dd></div></dl><p class="boundary">虚构品牌与样本数据；RFQ 仅存本地浏览器。</p><div class="links"><a href="https://0-1-b2b-demo-demo-novamach.vercel.app/">Live Demo ↗</a><a href="https://github.com/zhouey314-cloud/novamach-b2b-multilingual-demo">Code / Case Study ↗</a></div></div></article>
+        <article class="card"><div class="visual"><img src="/public/projects/workflow/hero.png" alt="多租户工作流演示界面" loading="lazy"><span>02 / LIVE_DEMO</span></div><div class="content"><p class="kind">TENANT ISOLATION / REVIEW</p><h3>Multi-Tenant Workflow</h3><p class="problem">问题：知识共享与审批如何不越过租户、角色和发布边界？</p><dl><div><dt>我的角色</dt><dd>自建共享策略核心、浏览器流程、测试与审计说明</dd></div><div><dt>技术</dt><dd>Node.js · JavaScript · GitHub Pages</dd></div><div><dt>证据</dt><dd>10 项测试；权限/状态流程本地及线上交互检查</dd></div></dl><p class="boundary">演示口令是角色选择器，不是生产身份认证。</p><div class="links"><a href="https://zhouey314-cloud.github.io/multi-tenant-ai-workflow-saas/">Live Demo ↗</a><a href="https://github.com/zhouey314-cloud/multi-tenant-ai-workflow-saas">Code / Case Study ↗</a></div></div></article>
+        <article class="card"><div class="visual"><img src="/public/projects/rag/architecture.svg" alt="RAG 检索、权限与引用架构图" loading="lazy"><span>03 / LIVE_DEMO + LOCAL_MODEL</span></div><div class="content"><p class="kind">RETRIEVAL / CITATIONS</p><h3>Enterprise RAG Starter</h3><p class="problem">问题：怎样让合成知识问答有权限过滤、来源引用和证据不足时的拒答？</p><dl><div><dt>我的角色</dt><dd>自建检索链路、浏览器演示、模型模式与合成评估</dd></div><div><dt>技术</dt><dd>Python · sentence-transformers · JavaScript</dd></div><div><dt>证据</dt><dd>19 项单元测试；本地合成检索模式评估</dd></div></dl><p class="boundary">线上仅词面检索；真实 embedding 模式在本地运行，不代表生产质量。</p><div class="links"><a href="https://zhouey314-cloud.github.io/enterprise-rag-starter/">Live Demo ↗</a><a href="https://github.com/zhouey314-cloud/enterprise-rag-starter">Code / Case Study ↗</a></div></div></article>
+        <article class="card"><div class="visual"><img src="/public/projects/recruitment/review-screen.png" alt="虚构候选人审核界面截图" loading="lazy"><span>04 / LIVE_DEMO</span></div><div class="content"><p class="kind">HUMAN-GATED DECISION</p><h3>Recruitment Review</h3><p class="problem">问题：招聘辅助审核如何保留证据和人工决定，避免自动录拒？</p><dl><div><dt>我的角色</dt><dd>自建合成评分、风险说明、人工闸门和跨端对照测试</dd></div><div><dt>技术</dt><dd>Python · Browser JavaScript · GitHub Pages</dd></div><div><dt>证据</dt><dd>13 单测、5 合成夹具、36 Python/浏览器对照</dd></div></dl><p class="boundary">虚构候选人；规则分数不代表真实招聘效度。</p><div class="links"><a href="https://zhouey314-cloud.github.io/ai-recruitment-workflow-demo/">Live Demo ↗</a><a href="https://github.com/zhouey314-cloud/ai-recruitment-workflow-demo">Code / Case Study ↗</a></div></div></article>
+        <article class="card"><div class="visual"><img src="/public/projects/crm/crm-dashboard.webp" alt="合成 CRM 仪表盘截图" loading="lazy"><span>05 / LIVE_DEMO</span></div><div class="content"><p class="kind">SALES WORKFLOW / FORECAST</p><h3>AI CRM Sales Copilot</h3><p class="problem">问题：如何让商机状态、活动、经理视图与助手提示来自同一份记录？</p><dl><div><dt>我的角色</dt><dd>自建六阶段管线、持久化、审计、规则建议和经理视图</dd></div><div><dt>技术</dt><dd>JavaScript · localStorage · GitHub Pages</dd></div><div><dt>证据</dt><dd>自动化测试与浏览器点击/刷新验证</dd></div></dl><p class="boundary">8 条虚构商机；助手为规则 Mock，金额不是营收。</p><div class="links"><a href="https://zhouey314-cloud.github.io/ai-crm-sales-copilot/">Live Demo ↗</a><a href="https://github.com/zhouey314-cloud/ai-crm-sales-copilot">Code / Case Study ↗</a></div></div></article>
+        <article class="card"><div class="visual"><img src="/public/projects/video/demo-frame.png" alt="FFmpeg 合成演示视频中的一帧" loading="lazy"><span>06 / OFFLINE_ENGINEERING_DEMO</span></div><div class="content"><p class="kind">VIDEO / QA / HUMAN REVIEW</p><h3>AI Video Workflow Engine</h3><p class="problem">问题：素材缺口、渲染失败、质检和人工复核如何串成可恢复工作流？</p><dl><div><dt>我的角色</dt><dd>自建 Python 状态机、FFmpeg 渲染适配与 QA 闸门</dd></div><div><dt>技术</dt><dd>Python · FFmpeg</dd></div><div><dt>证据</dt><dd>25 项测试；可播放 6 秒合成 MP4；QA 待人审</dd></div></dl><p class="boundary">合成卡片/音调，不是客户成片或生成式视频模型效果。</p><div class="links"><a href="https://github.com/zhouey314-cloud/ai-video-workflow-engine/blob/main/examples/demo-output.mp4">View Sample ↗</a><a href="https://github.com/zhouey314-cloud/ai-video-workflow-engine">Code / Case Study ↗</a></div></div></article>
+      </div>
+      <div class="more"><span>MORE / METHODS</span><p><a href="https://github.com/zhouey314-cloud/ai-eval-engineering">AI Eval Engineering ↗</a><a href="https://github.com/zhouey314-cloud/thought-to-x">Thought to X ↗</a></p></div>
+    </section>
+  </main>
+  <footer><span>ETHAN ZHOU · AI-NATIVE BUILDER</span><span>Public demos ≠ customer production.</span><a href="/">Back to home ↑</a></footer>
+</body>
+</html>
