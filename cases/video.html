@@ -21,12 +21,16 @@
       <section aria-labelledby="s1"><h2 id="s1"><span class="number">02 / </span>Context</h2><p>以最小可运行引擎演示素材核对、工作流状态、FFmpeg 输出和复核闸门。</p></section>
       <section aria-labelledby="s2"><h2 id="s2"><span class="number">03 / </span>Constraints</h2><p>公开视频是 6 秒合成卡片和音调，不是真实客户成片，也不是生成式视频模型能力。</p></section>
       <section aria-labelledby="s3"><h2 id="s3"><span class="number">04 / </span>Architecture</h2><p>Python 状态机控制输入、渲染和 QA 状态；FFmpeg 适配器输出可播放 MP4。</p></section>
-      <section aria-labelledby="s4"><h2 id="s4"><span class="number">05 / </span>Implementation</h2><p>覆盖缺失素材、失败恢复和实际媒体渲染，并保留人审状态。</p></section>
-      <section aria-labelledby="s5"><h2 id="s5"><span class="number">06 / </span>Demo</h2><p>可运行入口：https://github.com/zhouey314-cloud/ai-video-workflow-engine/blob/main/examples/demo-output.mp4。这是公开演示/样本，不等于生产部署或用户验收。</p></section>
-      <section aria-labelledby="s6"><h2 id="s6"><span class="number">07 / </span>What Worked</h2><p>可从输入走到可播放产物，并留下 QA 状态。</p></section>
-      <section aria-labelledby="s7"><h2 id="s7"><span class="number">08 / </span>What Failed</h2><p>画面质量、商用素材授权和真人审核都不由合成 Demo 证明。</p></section>
-      <section aria-labelledby="s8"><h2 id="s8"><span class="number">09 / </span>Lessons</h2><p>把媒体生成和验收分开，避免“文件存在”被误读为可交付成片。</p></section>
-      <section aria-labelledby="s9"><h2 id="s9"><span class="number">10 / </span>Next Steps</h2><p>接入获授权素材、人工视觉 QA 和真实交付模板库。</p></section>
+      <section aria-labelledby="s4"><h2 id="s4"><span class="number">05 / </span>Engineering Decisions</h2><p>外部 provider 未配置时明确失败；只选择 SELF/CC0 合成素材。机械 QA 检查媒体流、时长与字幕，人审另设闸门。</p></section>
+      <section aria-labelledby="s5"><h2 id="s5"><span class="number">06 / </span>Implementation</h2><p>覆盖缺失素材、失败恢复和实际媒体渲染，并保留人审状态。</p></section>
+      <section aria-labelledby="s6"><h2 id="s6"><span class="number">07 / </span>Tests</h2><p>25 项确定性测试通过，包括真实 FFmpeg 渲染；合成样片为 6 秒、640×360、H.264/AAC。</p></section>
+      <section aria-labelledby="s7"><h2 id="s7"><span class="number">08 / </span>Evaluation</h2><p>机械 QA 结果为 HUMAN_REVIEW，尚无审美验收或概率模型质量评估。</p></section>
+      <section aria-labelledby="s8"><h2 id="s8"><span class="number">09 / </span>Demo</h2><p>可运行入口：https://github.com/zhouey314-cloud/ai-video-workflow-engine/blob/main/examples/demo-output.mp4。这是公开演示/样本，不等于生产部署或用户验收。</p></section>
+      <section aria-labelledby="s9"><h2 id="s9"><span class="number">10 / </span>Limitations</h2><p>样片是合成卡片与音调，不是客户商业片；没有真人语音、客户素材或外部批准。</p></section>
+      <section aria-labelledby="s10"><h2 id="s10"><span class="number">11 / </span>What Worked</h2><p>可从输入走到可播放产物，并留下 QA 状态。</p></section>
+      <section aria-labelledby="s11"><h2 id="s11"><span class="number">12 / </span>What Failed</h2><p>画面质量、商用素材授权和真人审核都不由合成 Demo 证明。</p></section>
+      <section aria-labelledby="s12"><h2 id="s12"><span class="number">13 / </span>Lessons</h2><p>把媒体生成和验收分开，避免“文件存在”被误读为可交付成片。</p></section>
+      <section aria-labelledby="s13"><h2 id="s13"><span class="number">14 / </span>Next Steps</h2><p>接入获授权素材、人工视觉 QA 和真实交付模板库。</p></section>
     </div>
   </main>
   <footer class="footer"><div class="wrap"><a href="/">← Home</a><a href="/projects.html">All projects</a><span>Demo / sample scope is not a customer-production claim.</span></div></footer>

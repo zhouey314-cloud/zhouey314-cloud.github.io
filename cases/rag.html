@@ -21,12 +21,16 @@
       <section aria-labelledby="s1"><h2 id="s1"><span class="number">02 / </span>Context</h2><p>以合成文档和明确的权限规则构建 RAG 工程样例，区分线上词面 Demo 与本地语义模式。</p></section>
       <section aria-labelledby="s2"><h2 id="s2"><span class="number">03 / </span>Constraints</h2><p>公开数据为合成材料；在线页面不是生产 RAG 服务。本地 embedding 模式需要额外环境。</p></section>
       <section aria-labelledby="s3"><h2 id="s3"><span class="number">04 / </span>Architecture</h2><p>检索前的访问过滤、引用生成和拒答逻辑独立测试；Python 端提供可运行的本地路径。</p></section>
-      <section aria-labelledby="s4"><h2 id="s4"><span class="number">05 / </span>Implementation</h2><p>建立文档索引、权限过滤、证据引用与低证据拒答，附本地合成检索评估。</p></section>
-      <section aria-labelledby="s5"><h2 id="s5"><span class="number">06 / </span>Demo</h2><p>可运行入口：https://zhouey314-cloud.github.io/enterprise-rag-starter/。这是公开演示/样本，不等于生产部署或用户验收。</p></section>
-      <section aria-labelledby="s6"><h2 id="s6"><span class="number">07 / </span>What Worked</h2><p>权限、来源与拒答成为明确的工程关口。</p></section>
-      <section aria-labelledby="s7"><h2 id="s7"><span class="number">08 / </span>What Failed</h2><p>合成评估不能证明真实企业知识库上的检索或回答质量；线上与本地能力不等同。</p></section>
-      <section aria-labelledby="s8"><h2 id="s8"><span class="number">09 / </span>Lessons</h2><p>先分开检索正确性与生成回答质量，避免用 API 成功替代效果评估。</p></section>
-      <section aria-labelledby="s9"><h2 id="s9"><span class="number">10 / </span>Next Steps</h2><p>引入获授权的真实失败样本、人工标注与端到端回归。</p></section>
+      <section aria-labelledby="s4"><h2 id="s4"><span class="number">05 / </span>Engineering Decisions</h2><p>每种检索模式都先过滤访问范围，再打分；在线词面模式是透明基线，本地 embedding 模式不会失败后悄悄退回词面。</p></section>
+      <section aria-labelledby="s5"><h2 id="s5"><span class="number">06 / </span>Implementation</h2><p>建立文档索引、权限过滤、证据引用与低证据拒答，附本地合成检索评估。</p></section>
+      <section aria-labelledby="s6"><h2 id="s6"><span class="number">07 / </span>Tests</h2><p>19 项 Python 单测和 4 个合成词面案例通过；线上浏览器检查了抽取式答案、来源引用与无答案路径。</p></section>
+      <section aria-labelledby="s7"><h2 id="s7"><span class="number">08 / </span>Evaluation</h2><p>检索命中、引用、权限与拒答分开检查。现有案例为 synthetic_unverified；没有生成式 LLM 答案质量分数。</p></section>
+      <section aria-labelledby="s8"><h2 id="s8"><span class="number">09 / </span>Demo</h2><p>可运行入口：https://zhouey314-cloud.github.io/enterprise-rag-starter/。这是公开演示/样本，不等于生产部署或用户验收。</p></section>
+      <section aria-labelledby="s9"><h2 id="s9"><span class="number">10 / </span>Limitations</h2><p>无真实企业文档、真实认证、PDF 摄取或专家确认的 Golden Set；在线 Demo 只运行词面检索。</p></section>
+      <section aria-labelledby="s10"><h2 id="s10"><span class="number">11 / </span>What Worked</h2><p>权限、来源与拒答成为明确的工程关口。</p></section>
+      <section aria-labelledby="s11"><h2 id="s11"><span class="number">12 / </span>What Failed</h2><p>合成评估不能证明真实企业知识库上的检索或回答质量；线上与本地能力不等同。</p></section>
+      <section aria-labelledby="s12"><h2 id="s12"><span class="number">13 / </span>Lessons</h2><p>先分开检索正确性与生成回答质量，避免用 API 成功替代效果评估。</p></section>
+      <section aria-labelledby="s13"><h2 id="s13"><span class="number">14 / </span>Next Steps</h2><p>引入获授权的真实失败样本、人工标注与端到端回归。</p></section>
     </div>
   </main>
   <footer class="footer"><div class="wrap"><a href="/">← Home</a><a href="/projects.html">All projects</a><span>Demo / sample scope is not a customer-production claim.</span></div></footer>

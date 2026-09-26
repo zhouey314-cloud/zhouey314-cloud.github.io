@@ -5,6 +5,7 @@ const root = new URL('../', import.meta.url).pathname;
 const caseIds = ['multi-tenant', 'rag', 'eval', 'video', 'crm', 'skills'];
 const supportingCases = ['recruitment'];
 const sections = ['Problem', 'Context', 'Constraints', 'Architecture', 'Implementation', 'Demo', 'What Worked', 'What Failed', 'Lessons', 'Next Steps'];
+const flagshipSections = ['Engineering Decisions', 'Tests', 'Evaluation', 'Limitations'];
 const pages = ['index.html', 'projects.html', ...[...caseIds, ...supportingCases].map(id => `cases/${id}.html`)];
 const failures = [];
 
@@ -33,8 +34,11 @@ if ((hub.match(/class="card"/g) ?? []).length !== 6) failures.push('hub: flagshi
 
 for (const id of [...caseIds, ...supportingCases]) {
   const html = readFileSync(join(root, `cases/${id}.html`), 'utf8');
-  for (const section of sections) {
+  for (const section of id === 'recruitment' ? sections : [...sections, ...flagshipSections]) {
     if (!html.includes(`>${section}</h2>`)) failures.push(`cases/${id}: missing ${section}`);
+  }
+  if (id !== 'recruitment' && (html.match(/<section aria-labelledby="s\d+">/g) ?? []).length !== 14) {
+    failures.push(`cases/${id}: expected 14 engineering sections`);
   }
 }
 
@@ -48,5 +52,5 @@ if (failures.length) {
   console.error('SITE_CHECK_FAIL\n' + failures.join('\n'));
   process.exitCode = 1;
 } else {
-  console.log(`SITE_CHECK_PASS pages=${pages.length} flagships=6 case_sections=10`);
+  console.log(`SITE_CHECK_PASS pages=${pages.length} flagships=6 flagship_case_sections=14`);
 }

@@ -21,12 +21,16 @@
       <section aria-labelledby="s1"><h2 id="s1"><span class="number">02 / </span>Context</h2><p>构建一个可操作的多租户工作流演示，把共享策略、审批状态和可见范围放在同一条路径里。</p></section>
       <section aria-labelledby="s2"><h2 id="s2"><span class="number">03 / </span>Constraints</h2><p>浏览器 Demo 的口令只是角色选择器，不是身份认证；样本租户和内容均为虚构。</p></section>
       <section aria-labelledby="s3"><h2 id="s3"><span class="number">04 / </span>Architecture</h2><p>Node.js 的策略核心与浏览器状态界面分离；权限和状态转换由测试覆盖。</p></section>
-      <section aria-labelledby="s4"><h2 id="s4"><span class="number">05 / </span>Implementation</h2><p>实现租户隔离、角色操作、审批/发布状态与可见性说明；公开演示允许按角色走通路径。</p></section>
-      <section aria-labelledby="s5"><h2 id="s5"><span class="number">06 / </span>Demo</h2><p>可运行入口：https://zhouey314-cloud.github.io/multi-tenant-ai-workflow-saas/。这是公开演示/样本，不等于生产部署或用户验收。</p></section>
-      <section aria-labelledby="s6"><h2 id="s6"><span class="number">07 / </span>What Worked</h2><p>离线规则可验证；页面能展示边界而非只给截图。</p></section>
-      <section aria-labelledby="s7"><h2 id="s7"><span class="number">08 / </span>What Failed</h2><p>没有真实 SSO、持久化服务或生产权限审计；演示口令不能抵御恶意用户。</p></section>
-      <section aria-labelledby="s8"><h2 id="s8"><span class="number">09 / </span>Lessons</h2><p>把权限断言和状态机测试提前，降低 UI 看起来正确但跨租户泄漏的风险。</p></section>
-      <section aria-labelledby="s9"><h2 id="s9"><span class="number">10 / </span>Next Steps</h2><p>如进入真实环境，需加入后端鉴权、真实租户数据隔离和安全审计。</p></section>
+      <section aria-labelledby="s4"><h2 id="s4"><span class="number">05 / </span>Engineering Decisions</h2><p>先判定租户与知识可见性，再允许引用和状态迁移；审核者批准后才显示 HQ 发布动作。浏览器角色选择器只用于演示。</p></section>
+      <section aria-labelledby="s5"><h2 id="s5"><span class="number">06 / </span>Implementation</h2><p>实现租户隔离、角色操作、审批/发布状态与可见性说明；公开演示允许按角色走通路径。</p></section>
+      <section aria-labelledby="s6"><h2 id="s6"><span class="number">07 / </span>Tests</h2><p>10 项策略测试覆盖 HQ/Store 可见性、驳回后修订和审计隔离；线上浏览器走通提交、驳回、修订、批准、发布与重置。</p></section>
+      <section aria-labelledby="s7"><h2 id="s7"><span class="number">08 / </span>Evaluation</h2><p>当前验证对象是确定性的策略和工作流状态机，没有接入生成模型；模型质量为 NOT_RUN。</p></section>
+      <section aria-labelledby="s8"><h2 id="s8"><span class="number">09 / </span>Demo</h2><p>可运行入口：https://zhouey314-cloud.github.io/multi-tenant-ai-workflow-saas/。这是公开演示/样本，不等于生产部署或用户验收。</p></section>
+      <section aria-labelledby="s9"><h2 id="s9"><span class="number">10 / </span>Limitations</h2><p>没有生产身份认证、服务端租户隔离、事务数据库或不可篡改审计；演示数据只留在访客浏览器。</p></section>
+      <section aria-labelledby="s10"><h2 id="s10"><span class="number">11 / </span>What Worked</h2><p>离线规则可验证；页面能展示边界而非只给截图。</p></section>
+      <section aria-labelledby="s11"><h2 id="s11"><span class="number">12 / </span>What Failed</h2><p>没有真实 SSO、持久化服务或生产权限审计；演示口令不能抵御恶意用户。</p></section>
+      <section aria-labelledby="s12"><h2 id="s12"><span class="number">13 / </span>Lessons</h2><p>把权限断言和状态机测试提前，降低 UI 看起来正确但跨租户泄漏的风险。</p></section>
+      <section aria-labelledby="s13"><h2 id="s13"><span class="number">14 / </span>Next Steps</h2><p>如进入真实环境，需加入后端鉴权、真实租户数据隔离和安全审计。</p></section>
     </div>
   </main>
   <footer class="footer"><div class="wrap"><a href="/">← Home</a><a href="/projects.html">All projects</a><span>Demo / sample scope is not a customer-production claim.</span></div></footer>
