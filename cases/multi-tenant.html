@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#090b0d">
+  <meta name="description" content="Multi-Tenant Workflow 独立案例：问题、约束、实现、验证和边界。">
+  <link rel="canonical" href="https://zhouey314-cloud.github.io/cases/multi-tenant.html">
+  <link rel="icon" href="/public/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/case-study.css">
+  <title>Multi-Tenant Workflow — Ethan Zhou</title>
+</head>
+<body>
+  <header class="top"><div class="wrap"><a class="brand" href="/">ETHAN / WORK</a><nav aria-label="导航"><a href="/">Home</a><a href="/projects.html">Projects</a><a href="https://github.com/zhouey314-cloud/multi-tenant-ai-workflow-saas">Source ↗</a></nav></div></header>
+  <main class="wrap">
+    <section class="hero"><p class="eyebrow">LIVE DEMO · ROLE-BASED SIMULATION</p><h1>Multi-Tenant Workflow</h1><p class="lede">共享知识流程容易在租户、角色和审核状态之间串线。</p><div class="actions"><a href="https://zhouey314-cloud.github.io/multi-tenant-ai-workflow-saas/">Open Demo / Evidence ↗</a><a href="https://github.com/zhouey314-cloud/multi-tenant-ai-workflow-saas">Repository ↗</a></div></section>
+    <figure class="visual"><img src="/public/projects/workflow/hero.png" alt="Multi-Tenant Workflow 公开项目证据图" loading="eager"><figcaption>项目原有公开素材；图像本身不是功能或生产效果的证明。</figcaption></figure>
+    <div class="facts"><div><strong>ROLE</strong><span>个人自建 / 工程实现与验证</span></div><div><strong>EVIDENCE</strong><span>10 项测试通过；线上 Demo 可操作。</span></div><div><strong>BOUNDARY</strong><span>浏览器 Demo 的口令只是角色选择器，不是身份认证；样本租户和内容均为虚构。</span></div></div>
+    <div class="case-grid">
+      <section aria-labelledby="s0"><h2 id="s0"><span class="number">01 / </span>Problem</h2><p>共享知识流程容易在租户、角色和审核状态之间串线。</p></section>
+      <section aria-labelledby="s1"><h2 id="s1"><span class="number">02 / </span>Context</h2><p>构建一个可操作的多租户工作流演示，把共享策略、审批状态和可见范围放在同一条路径里。</p></section>
+      <section aria-labelledby="s2"><h2 id="s2"><span class="number">03 / </span>Constraints</h2><p>浏览器 Demo 的口令只是角色选择器，不是身份认证；样本租户和内容均为虚构。</p></section>
+      <section aria-labelledby="s3"><h2 id="s3"><span class="number">04 / </span>Architecture</h2><p>Node.js 的策略核心与浏览器状态界面分离；权限和状态转换由测试覆盖。</p></section>
+      <section aria-labelledby="s4"><h2 id="s4"><span class="number">05 / </span>Implementation</h2><p>实现租户隔离、角色操作、审批/发布状态与可见性说明；公开演示允许按角色走通路径。</p></section>
+      <section aria-labelledby="s5"><h2 id="s5"><span class="number">06 / </span>Demo</h2><p>可运行入口：https://zhouey314-cloud.github.io/multi-tenant-ai-workflow-saas/。这是公开演示/样本，不等于生产部署或用户验收。</p></section>
+      <section aria-labelledby="s6"><h2 id="s6"><span class="number">07 / </span>What Worked</h2><p>离线规则可验证；页面能展示边界而非只给截图。</p></section>
+      <section aria-labelledby="s7"><h2 id="s7"><span class="number">08 / </span>What Failed</h2><p>没有真实 SSO、持久化服务或生产权限审计；演示口令不能抵御恶意用户。</p></section>
+      <section aria-labelledby="s8"><h2 id="s8"><span class="number">09 / </span>Lessons</h2><p>把权限断言和状态机测试提前，降低 UI 看起来正确但跨租户泄漏的风险。</p></section>
+      <section aria-labelledby="s9"><h2 id="s9"><span class="number">10 / </span>Next Steps</h2><p>如进入真实环境，需加入后端鉴权、真实租户数据隔离和安全审计。</p></section>
+    </div>
+  </main>
+  <footer class="footer"><div class="wrap"><a href="/">← Home</a><a href="/projects.html">All projects</a><span>Demo / sample scope is not a customer-production claim.</span></div></footer>
+</body>
+</html>

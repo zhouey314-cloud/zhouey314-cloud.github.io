@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#090b0d">
+  <meta name="description" content="Recruitment Review 独立案例：问题、约束、实现、验证和边界。">
+  <link rel="canonical" href="https://zhouey314-cloud.github.io/cases/recruitment.html">
+  <link rel="icon" href="/public/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/case-study.css">
+  <title>Recruitment Review — Ethan Zhou</title>
+</head>
+<body>
+  <header class="top"><div class="wrap"><a class="brand" href="/">ETHAN / WORK</a><nav aria-label="导航"><a href="/">Home</a><a href="/projects.html">Projects</a><a href="https://github.com/zhouey314-cloud/ai-recruitment-workflow-demo">Source ↗</a></nav></div></header>
+  <main class="wrap">
+    <section class="hero"><p class="eyebrow">LIVE DEMO · SYNTHETIC · HUMAN GATE</p><h1>Recruitment Review</h1><p class="lede">招聘辅助工具容易把不透明分数当作自动决定，导致无法解释和复核。</p><div class="actions"><a href="https://zhouey314-cloud.github.io/ai-recruitment-workflow-demo/">Open Demo / Evidence ↗</a><a href="https://github.com/zhouey314-cloud/ai-recruitment-workflow-demo">Repository ↗</a></div></section>
+    <figure class="visual"><img src="/public/projects/recruitment/review-screen.png" alt="Recruitment Review 公开项目证据图" loading="eager"><figcaption>项目原有公开素材；图像本身不是功能或生产效果的证明。</figcaption></figure>
+    <div class="facts"><div><strong>ROLE</strong><span>个人自建 / 工程实现与验证</span></div><div><strong>EVIDENCE</strong><span>13 单测、5 合成夹具、36 组跨端对照。</span></div><div><strong>BOUNDARY</strong><span>没有真实简历、真实候选人或招聘效度证明；不自动录用或拒绝。</span></div></div>
+    <div class="case-grid">
+      <section aria-labelledby="s0"><h2 id="s0"><span class="number">01 / </span>Problem</h2><p>招聘辅助工具容易把不透明分数当作自动决定，导致无法解释和复核。</p></section>
+      <section aria-labelledby="s1"><h2 id="s1"><span class="number">02 / </span>Context</h2><p>构建虚构候选人的审核演示，把证据、规则分数和人工决定分开。</p></section>
+      <section aria-labelledby="s2"><h2 id="s2"><span class="number">03 / </span>Constraints</h2><p>没有真实简历、真实候选人或招聘效度证明；不自动录用或拒绝。</p></section>
+      <section aria-labelledby="s3"><h2 id="s3"><span class="number">04 / </span>Architecture</h2><p>Python 规则与浏览器演示保持一致，人工闸门对最终决定负责。</p></section>
+      <section aria-labelledby="s4"><h2 id="s4"><span class="number">05 / </span>Implementation</h2><p>合成夹具、风险说明、审阅界面与 Python/浏览器对照验证。</p></section>
+      <section aria-labelledby="s5"><h2 id="s5"><span class="number">06 / </span>Demo</h2><p>可运行入口：https://zhouey314-cloud.github.io/ai-recruitment-workflow-demo/。这是公开演示/样本，不等于生产部署或用户验收。</p></section>
+      <section aria-labelledby="s6"><h2 id="s6"><span class="number">07 / </span>What Worked</h2><p>可追踪规则输入并保留人审边界。</p></section>
+      <section aria-labelledby="s7"><h2 id="s7"><span class="number">08 / </span>What Failed</h2><p>规则分数不能说明对真实人群的公平性或预测有效性。</p></section>
+      <section aria-labelledby="s8"><h2 id="s8"><span class="number">09 / </span>Lessons</h2><p>高风险决策应先建人审和证据链，不应把 Demo 分数包装成招聘判断。</p></section>
+      <section aria-labelledby="s9"><h2 id="s9"><span class="number">10 / </span>Next Steps</h2><p>需要合规审查、获授权数据、偏差评估和人工验收后才谈真实试点。</p></section>
+    </div>
+  </main>
+  <footer class="footer"><div class="wrap"><a href="/">← Home</a><a href="/projects.html">All projects</a><span>Demo / sample scope is not a customer-production claim.</span></div></footer>
+</body>
+</html>

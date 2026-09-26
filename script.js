@@ -66,19 +66,19 @@ const writingItems = [
     title: "刚刚，我彻底卸载了剪映，这辈子不会再给它充一分钱了",
     excerpt: "一次 ChatCut 与 Codex Skill 的公开实测：从操作软件转向把意图交给 Agent。",
     href: "https://x.com/UPing123zzz/status/2076191291822805260",
-    publishedAt: "2026-07-12", views: 431464, likes: 4722, reposts: 974, capturedAt: "2026-09-15", category: "AI / AGENT",
+    category: "AI / AGENT",
   },
   {
     title: "什么是 Eval？为什么它决定了 AI 项目能不能真正落地",
     excerpt: "从“能生成”走向“可验收”：为什么 AI 项目需要基线、评估标准和回归检查。",
     href: "https://x.com/UPing123zzz/status/2093183040952623415",
-    publishedAt: "2026-08-28", views: 30547, likes: 293, reposts: 76, capturedAt: "2026-09-15", category: "EVAL / DELIVERY",
+    category: "EVAL / DELIVERY",
   },
   {
     title: "我把 Eval 装进 Codex 后，AI Coding 的工作方式变了",
     excerpt: "把评估放进工作流之后，AI Coding 不再只看代码是否跑通，而是持续检查行为有没有退化。",
     href: "https://x.com/UPing123zzz/status/2093371727611105362",
-    publishedAt: "2026-08-29", views: 18534, likes: 143, reposts: 28, capturedAt: "2026-09-15", category: "AI CODING / EVAL",
+    category: "AI CODING / EVAL",
   },
 ];
 
@@ -92,12 +92,10 @@ let activeImages = [];
 let activeIndex = 0;
 let lastProjectTrigger = null;
 
-const compactNumber = (value) => value >= 1000 ? `${(value / 1000).toFixed(value >= 100000 ? 0 : 1).replace(".0", "")}K` : String(value);
 document.querySelector("#writing-list").innerHTML = writingItems.map((item) => `
   <a class="writing-card reveal" href="${item.href}" target="_blank" rel="noopener noreferrer">
     <span>${item.category}</span><h3>${item.title}</h3><p>${item.excerpt}</p>
-    <div class="writing-proof"><b>${compactNumber(item.views)} Views</b><b>${compactNumber(item.likes)} Likes</b><b>${compactNumber(item.reposts)} Reposts</b></div>
-    <time datetime="${item.publishedAt}">X snapshot · ${item.capturedAt}</time>
+    <span class="writing-link">Read on X ↗</span>
   </a>`).join("");
 
 const closeMenu = () => {

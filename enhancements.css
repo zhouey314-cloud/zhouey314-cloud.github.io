@@ -206,6 +206,14 @@
   letter-spacing: .06em;
 }
 
+.writing-link {
+  display: inline-block;
+  margin-top: 24px;
+  color: var(--lime);
+  font: 600 11px var(--mono);
+  letter-spacing: .06em;
+}
+
 .writing-fallback { color: var(--muted); }
 .writing-fallback a { color: var(--lime); }
 .demo-link { width: max-content; margin: 0 0 20px; }
