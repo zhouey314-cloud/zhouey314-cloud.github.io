@@ -235,15 +235,22 @@
 
 .contact-channels {
   display: grid;
-  grid-template-columns: minmax(280px, .78fr) minmax(360px, 1.22fr);
+  grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr);
   gap: 14px;
   max-width: 900px;
   margin: 48px auto 0;
   text-align: left;
 }
 
+.contact-links {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+}
+
 .wechat-card,
 .email-card {
+  min-width: 0;
   margin: 0;
   border: 1px solid var(--line);
   background: var(--panel);
@@ -262,9 +269,15 @@
 .contact-label b { color: var(--lime); font-weight: 500; }
 
 .qr-frame {
+  display: block;
   margin: 18px;
   padding: 8px;
   background: #fff;
+}
+
+.qr-frame:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 4px;
 }
 
 .qr-frame img {
@@ -284,7 +297,6 @@
 .wechat-card figcaption span { color: var(--muted); }
 
 .email-card {
-  min-height: 100%;
   display: grid;
   grid-template-rows: auto 1fr auto;
   transition: border-color .2s, transform .2s;
@@ -299,7 +311,7 @@
 
 .email-card > div:nth-child(2) {
   align-self: center;
-  padding: 42px;
+  padding: 24px;
 }
 
 .email-card small {
@@ -313,7 +325,7 @@
 .email-card > div > strong {
   display: block;
   overflow-wrap: anywhere;
-  font-size: clamp(25px, 3.2vw, 42px);
+  font-size: clamp(25px, 2.6vw, 34px);
   line-height: 1.15;
   letter-spacing: -.035em;
 }
@@ -360,7 +372,7 @@
 @media (min-width: 521px) and (max-width: 900px) {
   .identity-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .project-evidence { grid-template-columns: 1fr; }
-  .contact-channels { grid-template-columns: minmax(240px, .8fr) minmax(300px, 1.2fr); }
+  .contact-channels { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); }
   .email-card > div:nth-child(2) { padding: 30px; }
 }
 
