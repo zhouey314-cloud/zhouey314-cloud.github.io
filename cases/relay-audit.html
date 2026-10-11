@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#111214" />
+    <meta
+      name="description"
+      content="观察 Agent 经中转 API 时的可见协议和服务变化，并报告证据与局限。"
+    />
+    <meta name="author" content="Ethan 恩宇" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="RelayAudit / AgentGuard — Ethan 恩宇" />
+    <meta
+      property="og:description"
+      content="观察 Agent 经中转 API 时的可见协议和服务变化，并报告证据与局限。"
+    />
+    <meta
+      property="og:url"
+      content="https://zhouey314-cloud.github.io/cases/relay-audit.html"
+    />
+    <meta
+      property="og:image"
+      content="https://zhouey314-cloud.github.io/public/social-preview.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@UPing123zzz" />
+    <link
+      rel="canonical"
+      href="https://zhouey314-cloud.github.io/cases/relay-audit.html"
+    />
+    <link rel="icon" href="/public/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <script src="/navigation.js"></script>
+    <link rel="stylesheet" href="/tokens.css" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/case-study.css" />
+    <script src="/script.js" defer></script>
+    <title>RelayAudit / AgentGuard — Ethan 恩宇</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+    <header class="site-header wrap">
+      <a class="brand" href="/" aria-label="Ethan 恩宇，首页"
+        ><span class="brand-latin">Ethan<span class="brand-stop">.</span></span
+        ><span class="brand-cn">恩宇</span></a
+      >
+      <div class="header-controls">
+        <button
+          class="motion-toggle enhanced-only"
+          type="button"
+          data-motion-toggle
+          aria-pressed="false"
+          aria-label="关闭装饰动效"
+        >
+          动效 <span data-motion-label>开</span></button
+        ><button
+          class="menu-toggle enhanced-only"
+          type="button"
+          aria-controls="site-nav"
+          aria-expanded="false"
+        >
+          菜单 <span aria-hidden="true">＋</span>
+        </button>
+      </div>
+      <nav id="site-nav" class="site-nav" aria-label="主要导航">
+        <a href="/#work">作品</a><a href="/#writing">记录</a
+        ><a href="/#about">关于</a><a href="/#contact">联系 ↗</a>
+      </nav>
+    </header>
+    <main id="main" class="wrap">
+      <header class="case-hero">
+        <a class="text-link" href="/projects.html">← 项目档案</a>
+        <p class="eyebrow">新公开作品 / RelayAudit / AgentGuard</p>
+        <h1>让 Agent 中转链路里的异常，有迹可循。</h1>
+        <p class="case-status">开源 0.2.0 / 本地模拟链路与协议检查</p>
+        <p class="case-boundary">
+          目前不具备经过校准的真实模型身份识别能力；所有模型身份状态保持未验证。
+        </p>
+      </header>
+      <nav class="case-toc" aria-label="案例章节">
+        <a href="#what">这是什么</a><a href="#result">看结果</a
+        ><a href="#build">我做了什么</a><a href="#decision">关键选择</a
+        ><a href="#limits">成果与限制</a><a href="#deep">深入查看</a>
+      </nav>
+      <div class="case-body">
+        <section class="case-section" id="what">
+          <h2><span>01</span>这是什么</h2>
+          <div class="case-prose">
+            <p class="large-copy">Agent 仍然正常使用，网关只观察可见信息。</p>
+            <p>
+              项目让 Agent 请求经本地网关转发到用户配置的 API，默认 passive
+              模式不会额外发送模型请求。它观察声明标签、协议错误和服务变化，独立输出告警和报告。
+            </p>
+          </div>
+        </section>
+        <section class="case-section" id="result">
+          <h2><span>02</span>看结果</h2>
+          <div class="case-prose">
+            <p class="large-copy">已经有可复现的合成链路演示。</p>
+            <p>
+              公开 README 提供模拟 Agent
+              与模拟中转的调用：正常请求、标签改变、触发告警，以及后续请求继续完成。这个演示证明告警路径，不证明真实中转商更换了模型。
+            </p>
+            <figure class="case-visual">
+              <img
+                src="/public/projects/recent/relay-flow.svg"
+                alt="Agent 经本地网关到用户指定 API，另一路向本地告警报告；仅结构示意。"
+                width="800"
+                height="640"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>
+                <span>原创结构示意 · 非实机截图</span
+                ><button
+                  class="preview-button enhanced-only"
+                  type="button"
+                  data-preview="/public/projects/recent/relay-flow.svg"
+                  data-title="RelayAudit / AgentGuard · 流程示意"
+                  data-case="/cases/relay-audit.html"
+                  data-caption="原创结构示意；不是实机截图、实时模型运行或效果验收。"
+                >
+                  <span aria-hidden="true">⤢</span> 放大示意</button
+                ><a
+                  class="text-link no-js"
+                  href="/public/projects/recent/relay-flow.svg"
+                  >查看原图 ↗</a
+                >
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+        <section class="case-section" id="build">
+          <h2><span>03</span>我做了什么</h2>
+          <div class="case-prose">
+            <p class="large-copy">拆出协议观察、证据、告警与恢复流程。</p>
+            <p>
+              公开仓库提供协议检查、流式数据保真、本机通知、状态管理、报告和受限配置方式。演示环境及测试记录可从仓库复核；本站不重跑模型服务。
+            </p>
+          </div>
+        </section>
+        <section class="case-section" id="decision">
+          <h2><span>04</span>一项关键选择</h2>
+          <div class="case-prose">
+            <p class="large-copy">不把“异常”误写成“识别到假模型”。</p>
+            <p>
+              模型声明变化只是标签不符合预期；协议错误可能来自网关、模型或参数；性能变化是描述性现象。即使可见标签不变，也不能据此证明真实模型身份。
+            </p>
+          </div>
+        </section>
+        <section class="case-section" id="limits">
+          <h2><span>05</span>成果与限制</h2>
+          <div class="case-prose">
+            <p class="large-copy">已经跑通模拟检测，真实模型身份仍未校准。</p>
+            <p>
+              真实客户端连到模拟端点有接入验收；尚无真实中转站模型身份指纹与校准准确率。数据不足应当显示数据不足。被动模式不等于零延迟，开启复核请求也不等于金额硬预算。
+            </p>
+          </div>
+        </section>
+        <section class="case-section" id="deep">
+          <h2><span>06</span>深入查看</h2>
+          <div class="case-prose">
+            <p class="large-copy">代码、证据与限制都公开可查。</p>
+            <p>
+              从 README、验证记录和隐私说明了解当前公开状态。请只在有权使用的
+              API 与本机环境中测试。
+            </p>
+            <div class="actions">
+              <a
+                class="button primary"
+                href="https://github.com/zhouey314-cloud/relay-audit"
+                target="_blank"
+                rel="noopener noreferrer"
+                >项目源码 ↗</a
+              ><a
+                class="text-link"
+                href="https://github.com/zhouey314-cloud/relay-audit/blob/main/docs/VALIDATION.md"
+                target="_blank"
+                rel="noopener noreferrer"
+                >验证记录 ↗</a
+              ><a
+                class="text-link"
+                href="https://github.com/zhouey314-cloud/relay-audit/blob/main/docs/PRIVACY_AND_LIMITS.md"
+                target="_blank"
+                rel="noopener noreferrer"
+                >隐私与边界 ↗</a
+              >
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer class="site-footer wrap">
+      <a class="brand" href="/"
+        ><span class="brand-latin">Ethan<span class="brand-stop">.</span></span
+        ><span class="brand-cn">恩宇</span></a
+      >
+      <p>真实作品，真实边界。</p>
+      <a href="/projects.html">全部作品 ↗</a><small>© 2026 Ethan 恩宇</small>
+    </footer>
+    <dialog class="image-viewer" aria-labelledby="viewer-title" data-viewer>
+      <div class="viewer-head">
+        <div>
+          <p class="eyebrow">作品预览</p>
+          <h2 id="viewer-title"></h2>
+        </div>
+        <button
+          class="icon-button"
+          type="button"
+          data-viewer-close
+          aria-label="关闭预览"
+          autofocus
+        >
+          ×
+        </button>
+      </div>
+      <div class="viewer-media"><img data-viewer-image alt="" /></div>
+      <div class="viewer-foot">
+        <p data-viewer-caption></p>
+        <div class="actions">
+          <a
+            class="text-link"
+            data-viewer-original
+            href="/"
+            target="_blank"
+            rel="noopener"
+            >打开原图 ↗</a
+          ><a class="button primary" data-viewer-case href="/projects.html"
+            >阅读案例 ↗</a
+          >
+        </div>
+      </div>
+    </dialog>
+  </body>
+</html>

@@ -16,3 +16,10 @@
 参考站只用于观察设计原则。没有复制它们的布局源码、插画、字体文件或互动资产。第三方网站的研究截图位于仓库外，未加入站点资源。
 
 本站未为全部历史文本／媒体指定统一的转授权许可证；上述使用权限不等于允许第三方任意复制。各公开项目的代码许可应到对应仓库核验。
+
+
+## 2026-10-11 新增图形
+
+- `public/projects/recent/relay-flow.svg`：本次独立制作的流程结构示意，依据 [RelayAudit README](https://github.com/zhouey314-cloud/relay-audit)，不包含产品真实运行截图。
+- `public/projects/recent/voice-flow.svg`：本次独立制作的流程结构示意，依据 [Voice Clone Video README](https://github.com/zhouey314-cloud/voice-clone-video)，不包含克隆声音、真人肖像或真实客户素材。
+- 两张图不代表性能、识别率或真实用户验收。

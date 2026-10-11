@@ -15,6 +15,8 @@ const caseIds = [
   "skills",
   "recruitment",
   "thought-to-x",
+  "relay-audit",
+  "voice-clone-video",
 ];
 const pages = [
   "index.html",
@@ -39,6 +41,8 @@ const baselineProjects = [
   "Agentic Coding Starter",
   "AI Delivery Starter Kit",
   "AI Content Workflow",
+  "RelayAudit / AgentGuard",
+  "Voice Clone Video",
 ];
 const sections = ["what", "result", "build", "decision", "limits", "deep"];
 function targetFor(href, page) {
@@ -102,6 +106,10 @@ for (const page of pages) {
     `${page}: nested interactive control`,
   );
 }
+assert(
+  home.includes('id="building-now"') || hub.includes('id="building-now"'),
+  "missing work-in-progress section",
+);
 for (const name of baselineProjects)
   assert(
     hub.includes(`data-project-name="${name}"`),
@@ -112,12 +120,28 @@ assert(
   "archive: preserve six flagship entries",
 );
 assert(
-  (hub.match(/data-category=/g) || []).length === 14,
-  "archive: preserve fourteen public entries",
+  (hub.match(/data-category=/g) || []).length === 16,
+  "archive: preserve sixteen public entries",
 );
+assert(
+  home.includes(`浏览全部 ${baselineProjects.length} 个公开项目`),
+  "home: public project total must match the full archive",
+);
+assert(
+  (hub.match(/class="active-build"/g) || []).length === 3,
+  "archive: preserve three separately listed work-in-progress projects",
+);
+for (const name of ["黑客松项目", "Ethan Creator Studio / EthanCut", "录音转写与摘要工作台"])
+  assert(hub.includes(`<h3>${name}</h3>`), `missing in-progress project ${name}`);
 for (const id of caseIds)
   assert(hub.includes(`/cases/${id}.html`), `archive: missing case ${id}`);
-for (const id of ["thought-to-x", "rag", "multi-tenant"])
+for (const id of [
+  "thought-to-x",
+  "rag",
+  "multi-tenant",
+  "relay-audit",
+  "voice-clone-video",
+])
   assert(home.includes(`/cases/${id}.html`), `home: missing selected ${id}`);
 for (const contact of [
   "mailto:zhouey314@gmail.com",
@@ -143,7 +167,7 @@ for (const id of caseIds) {
       html.includes(`class="case-section" id="${section}"`),
       `case ${id}: missing narrative section ${section}`,
     );
-  if (id !== "thought-to-x")
+  if (!["thought-to-x", "relay-audit", "voice-clone-video"].includes(id))
     for (let n = 0; n < (id === "recruitment" ? 10 : 14); n++)
       assert(
         html.includes(`id="s${n}"`),
@@ -172,5 +196,5 @@ if (failures.length) {
   process.exitCode = 1;
 } else
   console.log(
-    `SITE_CHECK_PASS pages=${pages.length} cases=${caseIds.length} archived_projects=14 flagships=6 legacy_fragments=94 contacts=6`,
+    `SITE_CHECK_PASS pages=${pages.length} cases=${caseIds.length} archived_projects=16 flagships=6 legacy_fragments=94 contacts=6`,
   );
