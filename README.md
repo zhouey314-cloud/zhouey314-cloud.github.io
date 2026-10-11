@@ -39,4 +39,4 @@ node --check script.js
 
 浏览器截图、录屏、性能原始 JSON、参考研究和测试报告保存在仓库外的本地交付目录，避免随 Pages 发布。浏览器回归使用项目外的 Playwright 与 axe-core；Chromium 与 WebKit 结果不等于真机 Safari/Android。
 
-本轮没有 push、合并、修改 Pages 设置或正式部署。保留现有 `main` 工作流及域名；没有新增 CNAME。发布应另行确认。
+V3 首次交付停在本地分支，未发布。2026-10-11，用户随后明确授权将已验收版本发布到原域名 `https://zhouey314-cloud.github.io/`。沿用现有 `main` 根目录 GitHub Pages 发布方式，不新增 CNAME 或改变域名设置；具体构建结果以对应提交的 GitHub Actions / Pages 记录为准。
