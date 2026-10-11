@@ -1,58 +1,665 @@
 <!doctype html>
 <html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#090b0d">
-  <meta name="description" content="Ethan Zhou 的技术项目索引：六个旗舰项目，以及经过筛选的 Supporting、Open Source 与 Lab 作品。">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Projects / Lab — Ethan Zhou">
-  <meta property="og:description" content="六个旗舰项目与精选公开作品，逐一标注状态、证据与限制。">
-  <meta property="og:image" content="https://zhouey314-cloud.github.io/public/social-preview.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://zhouey314-cloud.github.io/public/social-preview.png">
-  <link rel="canonical" href="https://zhouey314-cloud.github.io/projects.html">
-  <link rel="icon" href="/public/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/projects.css">
-  <title>Projects / Lab — Ethan Zhou</title>
-</head>
-<body>
-  <a class="skip" href="#projects">跳到项目</a>
-  <header class="topbar"><a class="wordmark" href="/">ETHAN<span> / LAB</span></a><nav aria-label="页面导航"><a href="/">Home</a><a href="#projects">Projects</a><a href="https://github.com/zhouey314-cloud">GitHub ↗</a></nav></header>
-  <main>
-    <section class="intro" aria-labelledby="title"><p class="eyebrow"><span class="light"></span> PUBLIC WORK / VERIFIED SCOPE</p><div class="intro-grid"><div><h1 id="title">从问题，<br>到<span>可检查的作品</span>。</h1><p class="lede">六个旗舰项目，加上按用途筛选的 Supporting、Open Source 与 Lab。每项都标出证据和边界；Demo、合成数据、Mock 与生产系统不混淆。</p></div><div class="intro-aside"><span>PORTFOLIO / 2026</span><p>Build<br>Test<br>Explain<br>Ship</p><small>公开项目不代表客户验收或商业成果。</small></div></div><a class="jump" href="#projects">EXPLORE THE WORK <span>↓</span></a></section>
-    <section class="portfolio" id="projects" aria-labelledby="projects-title"><div class="section-head"><p>01 / SELECTED PROJECTS</p><h2 id="projects-title">六种问题，六条验证路径。</h2></div><div class="cards">
-      <article class="card"><div class="visual"><a href="/cases/multi-tenant.html"><img src="/public/projects/workflow/hero.png" alt="Multi-Tenant Workflow 的公开项目证据图" loading="lazy"></a><span>01 / LIVE_DEMO</span></div><div class="content"><p class="kind">TENANT ISOLATION / REVIEW</p><h3>Multi-Tenant Workflow</h3><p class="problem">问题：知识共享与审批如何不越过租户、角色和发布边界？</p><dl><div><dt>技术</dt><dd>Node.js · JavaScript</dd></div><div><dt>证据</dt><dd>10 项测试；线上角色/审批演示</dd></div></dl><p class="boundary">演示角色口令不等于生产认证</p><div class="links"><a href="/cases/multi-tenant.html">Case Study ↗</a><a href="https://zhouey314-cloud.github.io/multi-tenant-ai-workflow-saas/">Live Demo ↗</a></div></div></article>
-      <article class="card"><div class="visual"><a href="/cases/rag.html"><img src="/public/projects/rag/demo-query.png" alt="Enterprise RAG Starter 词面检索答案及引用的真实演示截图" loading="lazy"></a><span>02 / LIVE_DEMO</span></div><div class="content"><p class="kind">RETRIEVAL / CITATIONS</p><h3>Enterprise RAG Starter</h3><p class="problem">问题：如何让知识问答有权限过滤、引用与证据不足时的拒答？</p><dl><div><dt>技术</dt><dd>Python · JavaScript</dd></div><div><dt>证据</dt><dd>19 单测、4 合成检索案例</dd></div></dl><p class="boundary">线上词面模式；本地 embedding 模式另行运行</p><div class="links"><a href="/cases/rag.html">Case Study ↗</a><a href="https://zhouey314-cloud.github.io/enterprise-rag-starter/">Live Demo ↗</a></div></div></article>
-      <article class="card"><div class="visual"><a href="/cases/eval.html"><img src="/public/projects/eval/release-gate.png" alt="AI Eval Engineering 的公开项目证据图" loading="lazy"></a><span>03 / LOCAL_RUNNABLE</span></div><div class="content"><p class="kind">EVAL / RELEASE GATES</p><h3>AI Eval Engineering</h3><p class="problem">问题：怎样不把夹具通过误报为模型质量通过？</p><dl><div><dt>技术</dt><dd>Python · JSONL</dd></div><div><dt>证据</dt><dd>5 合成夹具校验；MODEL_QUALITY=NOT_RUN</dd></div></dl><p class="boundary">无独立人工真值，不声称模型效果</p><div class="links"><a href="/cases/eval.html">Case Study ↗</a><a href="https://github.com/zhouey314-cloud/ai-eval-engineering">Repository ↗</a></div></div></article>
-      <article class="card"><div class="visual"><a href="/cases/video.html"><img src="/public/projects/video/demo-frame.png" alt="AI Video Workflow Engine 的公开项目证据图" loading="lazy"></a><span>04 / OFFLINE_TOOL</span></div><div class="content"><p class="kind">VIDEO / HUMAN QA</p><h3>AI Video Workflow Engine</h3><p class="problem">问题：素材缺口、渲染失败和人工 QA 如何串成可恢复流程？</p><dl><div><dt>技术</dt><dd>Python · FFmpeg</dd></div><div><dt>证据</dt><dd>25 项测试；6 秒合成 MP4</dd></div></dl><p class="boundary">不是客户成片或生成式视频效果</p><div class="links"><a href="/cases/video.html">Case Study ↗</a><a href="https://github.com/zhouey314-cloud/ai-video-workflow-engine">Repository ↗</a></div></div></article>
-      <article class="card"><div class="visual"><a href="/cases/crm.html"><img src="/public/projects/crm/crm-dashboard.webp" alt="AI CRM Sales Copilot 的公开项目证据图" loading="lazy"></a><span>05 / LIVE_DEMO</span></div><div class="content"><p class="kind">SALES WORKFLOW / RULE MOCK</p><h3>AI CRM Sales Copilot</h3><p class="problem">问题：怎样让商机、管线、预测和建议来自同一份记录？</p><dl><div><dt>技术</dt><dd>JavaScript · localStorage</dd></div><div><dt>证据</dt><dd>自动化测试与浏览器刷新检查</dd></div></dl><p class="boundary">8 条虚构商机；金额不是营收</p><div class="links"><a href="/cases/crm.html">Case Study ↗</a><a href="https://zhouey314-cloud.github.io/ai-crm-sales-copilot/">Live Demo ↗</a></div></div></article>
-      <article class="card"><div class="visual"><a href="/cases/skills.html"><img src="/public/projects/skills/architecture.svg" alt="Portable Agent Skills 的公开架构图" loading="lazy"></a><span>06 / OPEN_SOURCE</span></div><div class="content"><p class="kind">AGENT WORKFLOWS / REUSE</p><h3>Portable Agent Skills</h3><p class="problem">问题：如何把模糊任务拆成可复制、可检查、可交接的单用途工作流？</p><dl><div><dt>技术</dt><dd>Markdown · Python · GitHub Actions</dd></div><div><dt>证据</dt><dd>10 个 Skill 结构检查与 3 个合成夹具校验</dd></div></dl><p class="boundary">离线合同测试通过；provider-backed 模型质量与真实使用效果未测。</p><div class="links"><a href="/cases/skills.html">Case Study ↗</a><a href="https://github.com/zhouey314-cloud/ai-agent-skills/tree/main/skills">Repository ↗</a></div></div></article>
-    </div></section>
-    <section class="portfolio index-section" id="supporting" aria-labelledby="supporting-title">
-      <div class="section-head"><p>02 / SUPPORTING WORK</p><h2 id="supporting-title">五个不同的构建场景。</h2></div>
-      <div class="index-list">
-        <article class="index-item"><div class="index-title"><h3>Recruitment Review</h3><span>LIVE_DEMO</span></div><p>问题：如何把候选材料中的证据与风险呈现给人工审核者？</p><p class="evidence">证据：13 项单测、5 个合成夹具、36 个规则与浏览器一致性案例。</p><p class="boundary">边界：仅合成候选资料；不用于真实招聘决策。</p><div class="links"><a href="https://github.com/zhouey314-cloud/ai-recruitment-workflow-demo">Repository ↗</a><a href="https://zhouey314-cloud.github.io/ai-recruitment-workflow-demo/">Live Demo ↗</a><a href="/cases/recruitment.html">Case Study ↗</a></div></article>
-        <article class="index-item"><div class="index-title"><h3>Thought to X</h3><span>LOCAL_RUNNABLE</span></div><p>问题：如何把原始想法整理成结构、草稿和人工复核流程？</p><p class="evidence">证据：本地 Python CLI、10 项单测和公开示例输出。</p><p class="boundary">边界：无平台自动发布；事实与语气由作者最终确认。</p><div class="links"><a href="https://github.com/zhouey314-cloud/thought-to-x">Repository ↗</a><a href="https://github.com/zhouey314-cloud/thought-to-x/blob/main/examples/destiny-example.md">Example ↗</a></div></article>
-        <article class="index-item"><div class="index-title"><h3>Obsidian AI Inbox</h3><span>LOCAL_RUNNABLE</span></div><p>问题：如何只在选定的 Obsidian vault 中收集与搜索笔记？</p><p class="evidence">证据：64 项本地测试、演示 vault 与真实界面截图。</p><p class="boundary">边界：仅访问用户选定目录；不上传私人笔记，也不声称读取整个 Obsidian。</p><div class="links"><a href="https://github.com/zhouey314-cloud/obsidian-ai-inbox">Repository ↗</a><a href="https://github.com/zhouey314-cloud/obsidian-ai-inbox/blob/main/docs/inbox-demo.png">Screenshot ↗</a></div></article>
-        <article class="index-item"><div class="index-title"><h3>NovaMach</h3><span>LIVE_DEMO</span></div><p>问题：如何连接工业产品的多语言展示与样本 RFQ 流程？</p><p class="evidence">证据：三语言页面、浏览器 RFQ 流程、公开截图与构建检查。</p><p class="boundary">边界：虚构品牌与样本询盘；不是客户网站或真实销售数据。</p><div class="links"><a href="https://github.com/zhouey314-cloud/novamach-b2b-multilingual-demo">Repository ↗</a><a href="https://0-1-b2b-demo-demo-novamach.vercel.app/">Live Demo ↗</a></div></article>
-        <article class="index-item"><div class="index-title"><h3>AI Director</h3><span>PROTOTYPE</span></div><p>问题：如何从静音检测生成可检查的保留片段与剪辑交换文件？</p><p class="evidence">证据：合成样片、keep-list、EDL/FCPXML 输出与时间线回归测试。</p><p class="boundary">边界：离线时间线原型；剪辑质量与可选模型服务尚未验证。</p><div class="links"><a href="https://github.com/zhouey314-cloud/ai_director">Repository ↗</a><a href="https://github.com/zhouey314-cloud/ai_director/blob/main/examples/sample-davinci.edl">Synthetic EDL ↗</a></div></article>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#111214" />
+    <meta
+      name="description"
+      content="Ethan 恩宇的 14 个公开项目：工具与工作流、创作实验、评估与方法。每项都保留真实状态、案例和证据入口。"
+    />
+    <meta name="author" content="Ethan 恩宇" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="项目档案 — Ethan 恩宇" />
+    <meta
+      property="og:description"
+      content="Ethan 恩宇的 14 个公开项目：工具与工作流、创作实验、评估与方法。每项都保留真实状态、案例和证据入口。"
+    />
+    <meta
+      property="og:url"
+      content="https://zhouey314-cloud.github.io/projects.html"
+    />
+    <meta
+      property="og:image"
+      content="https://zhouey314-cloud.github.io/public/social-preview.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@UPing123zzz" />
+    <meta name="twitter:title" content="项目档案 — Ethan 恩宇" />
+    <meta
+      name="twitter:description"
+      content="Ethan 恩宇的 14 个公开项目：工具与工作流、创作实验、评估与方法。每项都保留真实状态、案例和证据入口。"
+    />
+    <meta
+      name="twitter:image"
+      content="https://zhouey314-cloud.github.io/public/social-preview.png"
+    />
+    <link
+      rel="canonical"
+      href="https://zhouey314-cloud.github.io/projects.html"
+    />
+    <link rel="icon" href="/public/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <script src="/navigation.js"></script>
+    <link rel="stylesheet" href="/tokens.css" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/projects.css" />
+    <script src="/script.js" defer></script>
+    <title>项目档案 — Ethan 恩宇</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+    <header class="site-header wrap">
+      <a class="brand" href="/" aria-label="Ethan 恩宇，首页"
+        ><span class="brand-latin">Ethan<span class="brand-stop">.</span></span
+        ><span class="brand-cn">恩宇</span></a
+      >
+      <div class="header-controls">
+        <button
+          class="motion-toggle enhanced-only"
+          type="button"
+          data-motion-toggle
+          aria-pressed="false"
+          aria-label="关闭装饰动效"
+        >
+          动效 <span data-motion-label>开</span></button
+        ><button
+          class="menu-toggle enhanced-only"
+          type="button"
+          aria-controls="site-nav"
+          aria-expanded="false"
+        >
+          菜单 <span aria-hidden="true">＋</span>
+        </button>
       </div>
-    </section>
-    <section class="portfolio index-section" id="open-source" aria-labelledby="open-source-title">
-      <div class="section-head"><p>03 / OPEN SOURCE</p><h2 id="open-source-title">可复制的方法模板。</h2></div>
-      <div class="index-list">
-        <article class="index-item"><div class="index-title"><h3>Agentic Coding Starter</h3><span>OPEN_SOURCE</span></div><p>问题：如何从模糊任务写出 agent 规则、实施计划和验证循环？</p><p class="evidence">证据：AGENTS.md 模板、交接示例与基础结构校验。</p><p class="boundary">边界：可复制的模板，不是自动完成开发任务的 agent；校验不证明实施质量。</p><div class="links"><a href="https://github.com/zhouey314-cloud/agentic-coding-starter">Repository ↗</a><a href="https://github.com/zhouey314-cloud/agentic-coding-starter/blob/main/examples/sample-handoff.md">Example ↗</a></div></article>
-        <article class="index-item"><div class="index-title"><h3>AI Delivery Starter Kit</h3><span>OPEN_SOURCE</span></div><p>问题：如何把范围、验收条件、测试、Eval 和交接写成同一份交付约定？</p><p class="evidence">证据：CRM/RAG 示例模板和来源校验。</p><p class="boundary">边界：方法模板；示例不代表客户验收或模型质量通过。</p><div class="links"><a href="https://github.com/zhouey314-cloud/ai-delivery-starter-kit">Repository ↗</a><a href="https://github.com/zhouey314-cloud/ai-delivery-starter-kit/tree/main/examples">Examples ↗</a></div></article>
+      <nav id="site-nav" class="site-nav" aria-label="主要导航">
+        <a href="/#work">作品</a><a href="/#writing">记录</a
+        ><a href="/#about">关于</a
+        ><a href="/#contact">联系 <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+    <main id="main" class="wrap">
+      <section class="archive-hero">
+        <a class="text-link" href="/#work">← 返回精选作品</a>
+        <p class="eyebrow">作品档案 / 14 个公开项目</p>
+        <h1>想法的不同去向<span class="accent">。</span></h1>
+        <p>
+          从一段文字、一条流程，到可以重复使用的方法。<br />这里保留完整项目，也保留每件作品的实际边界。
+        </p>
+      </section>
+      <section id="projects" aria-label="全部项目">
+        <div class="filter-bar enhanced-only">
+          <div class="filter-buttons" aria-label="筛选项目类别">
+            <button type="button" data-filter="all" aria-pressed="true">
+              全部 <span>14</span></button
+            ><button type="button" data-filter="tools" aria-pressed="false">
+              工具与工作流</button
+            ><button type="button" data-filter="creative" aria-pressed="false">
+              创作实验</button
+            ><button type="button" data-filter="methods" aria-pressed="false">
+              评估与方法
+            </button>
+          </div>
+          <p data-filter-result aria-live="polite">显示 14 个项目</p>
+        </div>
+        <div class="archive-list">
+          <article
+            class="archive-item"
+            data-category="tools"
+            data-project-name="Multi-Tenant Workflow"
+            data-flagship
+          >
+            <div class="archive-index">01</div>
+            <div class="archive-main">
+              <div class="archive-title">
+                <h2>Multi-Tenant Workflow</h2>
+                <span class="archive-status">角色模拟</span>
+              </div>
+              <p class="archive-question">
+                知识共享与审批如何不越过租户、角色和发布边界？
+              </p>
+              <p class="archive-evidence">策略检查与浏览器角色／审批演示</p>
+              <p class="boundary">演示角色口令不等于生产认证</p>
+              <div class="actions">
+                <a class="text-link" href="/cases/multi-tenant.html"
+                  >阅读案例 ↗</a
+                ><a
+                  class="text-link"
+                  href="https://zhouey314-cloud.github.io/multi-tenant-ai-workflow-saas/"
+                  >打开演示 ↗</a
+                >
+              </div>
+            </div>
+          </article>
+          <article
+            class="archive-item"
+            data-category="tools"
+            data-project-name="Enterprise RAG Starter"
+            data-flagship
+          >
+            <div class="archive-index">02</div>
+            <div class="archive-main">
+              <div class="archive-title">
+                <h2>Enterprise RAG Starter</h2>
+                <span class="archive-status">词面演示 / 本地语义</span>
+              </div>
+              <p class="archive-question">
+                如何让知识问答有权限过滤、引用与证据不足时的拒答？
+              </p>
+              <p class="archive-evidence">词面检索演示、引用与本地检索评估</p>
+              <p class="boundary">线上词面模式；本地 embedding 模式另行运行</p>
+              <div class="actions">
+                <a class="text-link" href="/cases/rag.html">阅读案例 ↗</a
+                ><a
+                  class="text-link"
+                  href="https://zhouey314-cloud.github.io/enterprise-rag-starter/"
+                  >打开演示 ↗</a
+                >
+              </div>
+            </div>
+          </article>
+          <article
+            class="archive-item"
+            data-category="methods"
+            data-project-name="AI Eval Engineering"
+            data-flagship
+          >
+            <div class="archive-index">03</div>
+            <div class="archive-main">
+              <div class="archive-title">
+                <h2>AI Eval Engineering</h2>
+                <span class="archive-status">评估工程骨架</span>
+              </div>
+              <p class="archive-question">
+                怎样不把夹具通过误报为模型质量通过？
+              </p>
+              <p class="archive-evidence">案例结构、来源标签与发布闸门</p>
+              <p class="boundary">无独立人工真值，不声称模型效果</p>
+              <div class="actions">
+                <a class="text-link" href="/cases/eval.html">阅读案例 ↗</a
+                ><a
+                  class="text-link"
+                  href="https://github.com/zhouey314-cloud/ai-eval-engineering"
+                  >查看源码 ↗</a
+                >
+              </div>
+            </div>
+          </article>
+          <article
+            class="archive-item"
+            data-category="creative"
+            data-project-name="AI Video Workflow Engine"
+            data-flagship
+          >
+            <div class="archive-index">04</div>
+            <div class="archive-main">
+              <div class="archive-title">
+                <h2>AI Video Workflow Engine</h2>
+                <span class="archive-status">离线合成样片</span>
+              </div>
+              <p class="archive-question">
+                素材缺口、渲染失败和人工 QA 如何串成可恢复流程？
+              </p>
+              <p class="archive-evidence">
+                素材核对、FFmpeg 渲染与人工 QA 状态
+              </p>
+              <p class="boundary">不是客户成片或生成式视频效果</p>
+              <div class="actions">
+                <a class="text-link" href="/cases/video.html">阅读案例 ↗</a
+                ><a
+                  class="text-link"
+                  href="https://github.com/zhouey314-cloud/ai-video-workflow-engine"
+                  >查看源码 ↗</a
+                >
+              </div>
+            </div>
+          </article>
+          <article
+            class="archive-item"
+            data-category="tools"
+            data-project-name="AI CRM Sales Copilot"
+            data-flagship
+          >
+            <div class="archive-index">05</div>
+            <div class="archive-main">
+              <div class="archive-title">
+                <h2>AI CRM Sales Copilot</h2>
+                <span class="archive-status">规则演示</span>
+              </div>
+              <p class="archive-question">
+                怎样让商机、管线、预测和建议来自同一份记录？
+              </p>
+              <p class="archive-evidence">
+                虚构商机、规则建议与浏览器状态持久化
+              </p>
+              <p class="boundary">8 条虚构商机；金额不是营收</p>
+              <div class="actions">
+                <a class="text-link" href="/cases/crm.html">阅读案例 ↗</a
+                ><a
+                  class="text-link"
+                  href="https://zhouey314-cloud.github.io/ai-crm-sales-copilot/"
+                  >打开演示 ↗</a
+                >
+              </div>
+            </div>
+          </article>
+          <article
+            class="archive-item"
+            data-category="methods"
+            data-project-name="Portable Agent Skills"
+            data-flagship
+          >
+            <div class="archive-index">06</div>
+            <div class="archive-main">
+              <div class="archive-title">
+                <h2>Portable Agent Skills</h2>
+                <span class="archive-status">公开工作流</span>
+              </div>
+              <p class="archive-question">
+                如何把模糊任务拆成可复制、可检查、可交接的单用途工作流？
+              </p>
+              <p class="archive-evidence">工作流合同与合成夹具校验</p>
+              <p class="boundary">
+                离线检查仅验证合同结构；模型质量与真实使用效果未测。
+              </p>
+              <div class="actions">
+                <a class="text-link" href="/cases/skills.html">阅读案例 ↗</a
+                ><a
+                  class="text-link"
+                  href="https://github.com/zhouey314-cloud/ai-agent-skills/tree/main/skills"
+                  >查看源码 ↗</a
+                >
+              </div>
+            </div>
+          </article>
+          <article
+            class="archive-item"
+            data-category="tools"
+            data-project-name="Recruitment Review"
+          >
+            <div class="archive-index">07</div>
+            <div class="archive-main">
+              <div class="archive-title">
+                <h2>Recruitment Review</h2>
+                <span class="archive-status">合成规则演示</span>
+              </div>
+              <p class="archive-question">
+                如何把候选材料中的证据与风险呈现给人工审核者？
+              </p>
+              <p class="archive-evidence">合成候选资料与规则／浏览器对照</p>
+              <p class="boundary">仅合成候选资料；不用于真实招聘决策。</p>
+              <div class="actions">
+                <a
+                  class="text-link"
+                  href="https://github.com/zhouey314-cloud/ai-recruitment-workflow-demo"
+                  >查看源码 ↗</a
+                ><a
+                  class="text-link"
+                  href="https://zhouey314-cloud.github.io/ai-recruitment-workflow-demo/"
+                  >打开演示 ↗</a
+                ><a class="text-link" href="/cases/recruitment.html"
+                  >阅读案例 ↗</a
+                >
+              </div>
+            </div>
+          </article>
+          <article
+            class="archive-item"
+            data-category="creative"
+            data-project-name="Thought to X"
+          >
+            <div class="archive-index">08</div>
+            <div class="archive-main">
+              <div class="archive-title">
+                <h2>Thought to X</h2>
+                <span class="archive-status">本地写作工作流</span>
+              </div>
+              <p class="archive-question">
+                如何把原始想法整理成结构、草稿和人工复核流程？
+              </p>
+              <p class="archive-evidence">
+                Python CLI、模块化工作流与公开文稿示例
+              </p>
+              <p class="boundary">无平台自动发布；事实与语气由作者最终确认。</p>
+              <div class="actions">
+                <a class="text-link" href="/cases/thought-to-x.html"
+                  >阅读案例 ↗</a
+                ><a
+                  class="text-link"
+                  href="https://github.com/zhouey314-cloud/thought-to-x"
+                  >查看源码 ↗</a
+                ><a
+                  class="text-link"
+                  href="https://github.com/zhouey314-cloud/thought-to-x/blob/main/examples/destiny-example.md"
+                  >公开示例 ↗</a
+                >
+              </div>
+            </div>
+          </article>
+          <article
+            class="archive-item"
+            data-category="tools"
+            data-project-name="Obsidian AI Inbox"
+          >
+            <div class="archive-index">09</div>
+            <div class="archive-main">
+              <div class="archive-title">
+                <h2>Obsidian AI Inbox</h2>
+                <span class="archive-status">本地工具</span>
+              </div>
+              <p class="archive-question">
+                如何只在选定的 Obsidian vault 中收集与搜索笔记？
+              </p>
+              <p class="archive-evidence">演示 vault、本地测试与公开界面截图</p>
+              <p class="boundary">
+                仅访问用户选定目录；不上传私人笔记，也不声称读取整个 Obsidian。
+              </p>
+              <div class="actions">
+                <a
+                  class="text-link"
+                  href="https://github.com/zhouey314-cloud/obsidian-ai-inbox"
+                  >查看源码 ↗</a
+                ><a
+                  class="text-link"
+                  href="https://github.com/zhouey314-cloud/obsidian-ai-inbox/blob/main/docs/inbox-demo.png"
+                  >界面截图 ↗</a
+                >
+              </div>
+            </div>
+          </article>
+          <article
+            class="archive-item"
+            data-category="tools"
+            data-project-name="NovaMach"
+          >
+            <div class="archive-index">10</div>
+            <div class="archive-main">
+              <div class="archive-title">
+                <h2>NovaMach</h2>
+                <span class="archive-status">虚构品牌演示</span>
+              </div>
+              <p class="archive-question">
+                如何连接工业产品的多语言展示与样本 RFQ 流程？
+              </p>
+              <p class="archive-evidence">三语言展示与样本 RFQ 流程</p>
+              <p class="boundary">
+                虚构品牌与样本询盘；不是客户网站或真实销售数据。
+              </p>
+              <div class="actions">
+                <a
+                  class="text-link"
+                  href="https://github.com/zhouey314-cloud/novamach-b2b-multilingual-demo"
+                  >查看源码 ↗</a
+                ><a
+                  class="text-link"
+                  href="https://0-1-b2b-demo-demo-novamach.vercel.app/"
+                  >打开演示 ↗</a
+                >
+              </div>
+            </div>
+          </article>
+          <article
+            class="archive-item"
+            data-category="creative"
+            data-project-name="AI Director"
+          >
+            <div class="archive-index">11</div>
+            <div class="archive-main">
+              <div class="archive-title">
+                <h2>AI Director</h2>
+                <span class="archive-status">离线原型</span>
+              </div>
+              <p class="archive-question">
+                如何从静音检测生成可检查的保留片段与剪辑交换文件？
+              </p>
+              <p class="archive-evidence">合成样片、keep-list 与 EDL/FCPXML</p>
+              <p class="boundary">
+                离线时间线原型；剪辑质量与可选模型服务尚未验证。
+              </p>
+              <div class="actions">
+                <a
+                  class="text-link"
+                  href="https://github.com/zhouey314-cloud/ai_director"
+                  >查看源码 ↗</a
+                ><a
+                  class="text-link"
+                  href="https://github.com/zhouey314-cloud/ai_director/blob/main/examples/sample-davinci.edl"
+                  >合成 EDL ↗</a
+                >
+              </div>
+            </div>
+          </article>
+          <article
+            class="archive-item"
+            data-category="methods"
+            data-project-name="Agentic Coding Starter"
+          >
+            <div class="archive-index">12</div>
+            <div class="archive-main">
+              <div class="archive-title">
+                <h2>Agentic Coding Starter</h2>
+                <span class="archive-status">方法模板</span>
+              </div>
+              <p class="archive-question">
+                如何从模糊任务写出 agent 规则、实施计划和验证循环？
+              </p>
+              <p class="archive-evidence">Agent 规则模板、交接示例与结构校验</p>
+              <p class="boundary">
+                可复制的模板，不是自动完成开发任务的 agent；校验不证明实施质量。
+              </p>
+              <div class="actions">
+                <a
+                  class="text-link"
+                  href="https://github.com/zhouey314-cloud/agentic-coding-starter"
+                  >查看源码 ↗</a
+                ><a
+                  class="text-link"
+                  href="https://github.com/zhouey314-cloud/agentic-coding-starter/blob/main/examples/sample-handoff.md"
+                  >公开示例 ↗</a
+                >
+              </div>
+            </div>
+          </article>
+          <article
+            class="archive-item"
+            data-category="methods"
+            data-project-name="AI Delivery Starter Kit"
+          >
+            <div class="archive-index">13</div>
+            <div class="archive-main">
+              <div class="archive-title">
+                <h2>AI Delivery Starter Kit</h2>
+                <span class="archive-status">方法模板</span>
+              </div>
+              <p class="archive-question">
+                如何把范围、验收条件、测试、Eval 和交接写成同一份交付约定？
+              </p>
+              <p class="archive-evidence">范围、测试、Eval 与交接模板</p>
+              <p class="boundary">
+                方法模板；示例不代表客户验收或模型质量通过。
+              </p>
+              <div class="actions">
+                <a
+                  class="text-link"
+                  href="https://github.com/zhouey314-cloud/ai-delivery-starter-kit"
+                  >查看源码 ↗</a
+                ><a
+                  class="text-link"
+                  href="https://github.com/zhouey314-cloud/ai-delivery-starter-kit/tree/main/examples"
+                  >公开示例 ↗</a
+                >
+              </div>
+            </div>
+          </article>
+          <article
+            class="archive-item"
+            data-category="creative"
+            data-project-name="AI Content Workflow"
+          >
+            <div class="archive-index">14</div>
+            <div class="archive-main">
+              <div class="archive-title">
+                <h2>AI Content Workflow</h2>
+                <span class="archive-status">实验</span>
+              </div>
+              <p class="archive-question">
+                如何从有来源的素材生成草稿，并在发布前保留 QA 与人工复核？
+              </p>
+              <p class="archive-evidence">合成来源、确定性草稿与来源 ID 检查</p>
+              <p class="boundary">
+                通用 clean-room 实验；无公司
+                Prompt、真实客户内容、模型服务或平台发布集成。
+              </p>
+              <div class="actions">
+                <a
+                  class="text-link"
+                  href="https://github.com/zhouey314-cloud/ai-content-workflow"
+                  >查看源码 ↗</a
+                ><a
+                  class="text-link"
+                  href="https://github.com/zhouey314-cloud/ai-content-workflow/blob/main/examples/draft.json"
+                  >合成草稿 ↗</a
+                >
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+      <aside class="participated-record" aria-labelledby="geo-title">
+        <p class="eyebrow">另 / 参与项目记录</p>
+        <h2 id="geo-title">GEO 内容与知识工作流</h2>
+        <p>
+          参与部分页面、Skill /
+          Workflow、验证和交付整理，并非独立完成整个系统。以下沿用已公开的脱敏材料，不包含客户名称、门店信息或内部地址。
+        </p>
+        <div class="geo-previews">
+          <figure>
+            <img
+              src="/public/projects/geo/geo-generation-flow.webp"
+              alt="GEO 内容生成流程"
+              loading="lazy"
+              decoding="async"
+              class=""
+              width="1600"
+              height="900"
+            />
+            <figcaption>
+              <button
+                class="preview-button enhanced-only"
+                type="button"
+                data-preview="/public/projects/geo/geo-generation-flow.webp"
+                data-title="GEO 内容生成流程"
+                data-case="/projects.html#geo-title"
+                data-caption="参与项目的已有公开脱敏截图；不代表生产验收。"
+              >
+                <span aria-hidden="true">⤢</span> 预览大图</button
+              ><a
+                class="text-link no-js"
+                href="/public/projects/geo/geo-generation-flow.webp"
+                >查看原图 ↗</a
+              >
+            </figcaption>
+          </figure>
+          <figure>
+            <img
+              src="/public/projects/geo/geo-knowledge-scope.webp"
+              alt="GEO 知识与作用域"
+              loading="lazy"
+              decoding="async"
+              class=""
+              width="1600"
+              height="900"
+            />
+            <figcaption>
+              <button
+                class="preview-button enhanced-only"
+                type="button"
+                data-preview="/public/projects/geo/geo-knowledge-scope.webp"
+                data-title="GEO 知识与作用域"
+                data-case="/projects.html#geo-title"
+                data-caption="参与项目的已有公开脱敏截图；不代表生产验收。"
+              >
+                <span aria-hidden="true">⤢</span> 预览大图</button
+              ><a
+                class="text-link no-js"
+                href="/public/projects/geo/geo-knowledge-scope.webp"
+                >查看原图 ↗</a
+              >
+            </figcaption>
+          </figure>
+          <figure>
+            <img
+              src="/public/projects/geo/geo-publish-handoff.webp"
+              alt="GEO 人工发布交接"
+              loading="lazy"
+              decoding="async"
+              class=""
+              width="1600"
+              height="900"
+            />
+            <figcaption>
+              <button
+                class="preview-button enhanced-only"
+                type="button"
+                data-preview="/public/projects/geo/geo-publish-handoff.webp"
+                data-title="GEO 人工发布交接"
+                data-case="/projects.html#geo-title"
+                data-caption="参与项目的已有公开脱敏截图；不代表生产验收。"
+              >
+                <span aria-hidden="true">⤢</span> 预览大图</button
+              ><a
+                class="text-link no-js"
+                href="/public/projects/geo/geo-publish-handoff.webp"
+                >查看原图 ↗</a
+              >
+            </figcaption>
+          </figure>
+        </div>
+      </aside>
+    </main>
+    <footer class="site-footer wrap">
+      <a class="brand" href="/"
+        ><span class="brand-latin">Ethan<span class="brand-stop">.</span></span
+        ><span class="brand-cn">恩宇</span></a
+      >
+      <p>想法，慢慢成为作品。</p>
+      <a href="/projects.html">完整项目档案 <span aria-hidden="true">↗</span></a
+      ><small>© 2026 Ethan 恩宇</small>
+    </footer>
+    <dialog class="image-viewer" aria-labelledby="viewer-title" data-viewer>
+      <div class="viewer-head">
+        <div>
+          <p class="eyebrow">作品预览</p>
+          <h2 id="viewer-title"></h2>
+        </div>
+        <button
+          class="icon-button"
+          type="button"
+          data-viewer-close
+          aria-label="关闭预览"
+          autofocus
+        >
+          ×
+        </button>
       </div>
-    </section>
-    <section class="portfolio index-section" id="lab" aria-labelledby="lab-title">
-      <div class="section-head"><p>04 / LAB</p><h2 id="lab-title">保留为实验。</h2></div>
-      <div class="index-list">
-        <article class="index-item"><div class="index-title"><h3>AI Content Workflow</h3><span>EXPERIMENT</span></div><p>问题：如何从有来源的素材生成草稿，并在发布前保留 QA 与人工复核？</p><p class="evidence">证据：合成来源、草稿示例和 8 项本地测试。</p><p class="boundary">边界：通用 clean-room 实验；无公司 Prompt、真实客户内容、模型服务或平台发布集成。</p><div class="links"><a href="https://github.com/zhouey314-cloud/ai-content-workflow">Repository ↗</a><a href="https://github.com/zhouey314-cloud/ai-content-workflow/blob/main/examples/draft.json">Synthetic draft ↗</a></div></article>
+      <div class="viewer-media"><img data-viewer-image alt="" /></div>
+      <div class="viewer-foot">
+        <p data-viewer-caption></p>
+        <div class="actions">
+          <a
+            class="text-link"
+            data-viewer-original
+            href="/"
+            target="_blank"
+            rel="noopener"
+            >打开原图 ↗</a
+          ><a class="button primary" data-viewer-case href="/projects.html"
+            >阅读案例 ↗</a
+          >
+        </div>
       </div>
-    </section>
-  </main>
-  <footer><span>ETHAN ZHOU · AI-NATIVE BUILDER</span><span>Public demos ≠ customer production.</span><a href="/">Back to home ↑</a></footer>
-</body>
+    </dialog>
+  </body>
 </html>

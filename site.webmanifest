@@ -1,1 +1,11 @@
-{"name":"Ethan — AI Product Builder & FDE Engineer","short_name":"Ethan","start_url":"/","display":"standalone","background_color":"#090b0d","theme_color":"#090b0d","icons":[{"src":"/public/favicon.svg","sizes":"any","type":"image/svg+xml"}]}
+{
+  "name": "Ethan 恩宇 · 个人作品与实践",
+  "short_name": "Ethan 恩宇",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#111214",
+  "theme_color": "#111214",
+  "icons": [
+    { "src": "/public/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

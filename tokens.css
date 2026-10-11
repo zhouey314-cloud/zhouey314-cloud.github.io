@@ -1,0 +1,23 @@
+:root {
+  color-scheme: dark;
+  --bg: #111214;
+  --surface: #1a1d20;
+  --surface-hover: #23272a;
+  --text: #f4f1e8;
+  --muted: #afb4af;
+  --subtle: #868d87;
+  --accent: #c9ef73;
+  --paper: #eee8dc;
+  --ink: #1b1c1b;
+  --line: #363b3a;
+  --font:
+    -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei",
+    sans-serif;
+  --display: Georgia, "Times New Roman", serif;
+  --max: 1200px;
+  --radius: 12px;
+  --fast: 160ms;
+  --switch: 300ms;
+  --enter: 560ms;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}

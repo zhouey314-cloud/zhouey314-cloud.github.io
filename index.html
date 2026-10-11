@@ -1,166 +1,752 @@
 <!doctype html>
 <html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#090b0d">
-  <meta name="google" content="notranslate">
-  <meta name="description" content="Ethan Zhou — AI-Native Builder。六个可运行、可测试、有工程证据的 AI 产品与工作流项目。">
-  <meta name="author" content="Ethan Zhou">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://zhouey314-cloud.github.io/">
-  <meta property="og:title" content="Ethan Zhou — AI-Native Builder">
-  <meta property="og:description" content="把业务里说不清的问题，做成能运行、能验证、能交付的 AI 产品。">
-  <meta property="og:image" content="https://zhouey314-cloud.github.io/public/social-preview.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:creator" content="@UPing123zzz">
-  <meta name="twitter:title" content="Ethan Zhou — AI-Native Builder">
-  <meta name="twitter:description" content="六个可运行、可检查的 AI 产品与工作流项目。">
-  <meta name="twitter:image" content="https://zhouey314-cloud.github.io/public/social-preview.png">
-  <link rel="canonical" href="https://zhouey314-cloud.github.io/">
-  <link rel="icon" href="/public/favicon.svg" type="image/svg+xml">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="stylesheet" href="/style.css">
-  <link rel="stylesheet" href="/enhancements.css">
-  <link rel="stylesheet" href="/portfolio-v2.css">
-  <title>Ethan Zhou — AI-Native Builder</title>
-</head>
-<body>
-  <a class="skip-link" href="#main">跳到主要内容</a>
-  <header class="site-header" data-header>
-    <a class="brand notranslate" href="#top" translate="no"><span class="brand-mark">E</span><span>ETHAN</span></a>
-    <button class="menu-button" type="button" aria-label="打开导航" aria-expanded="false" aria-controls="site-nav" data-menu-button><span></span><span></span></button>
-    <nav id="site-nav" class="site-nav" aria-label="主要导航" data-nav>
-      <a href="#work">Work</a><a href="/projects.html">Projects / Lab</a><a href="#about">About</a><a href="#capabilities">Capabilities</a><a href="#process">Process</a><a href="#writing">Writing</a><a href="#contact">Contact</a>
-      <a class="nav-cta" href="#contact">Connect ↗</a>
-    </nav>
-  </header>
-
-  <main id="main">
-    <section class="hero" id="top" aria-labelledby="hero-title">
-      <div class="hero-grid" aria-hidden="true"></div>
-      <div class="hero-copy reveal">
-        <p class="eyebrow notranslate" translate="no"><span class="status-dot"></span>ETHAN ZHOU · AI-NATIVE BUILDER</p>
-        <h1 id="hero-title">把真实问题，<br>做成<span>可运行、可验证</span>的 AI 产品。</h1>
-        <p class="hero-lead">本科在读。主要做 AI Coding、AI CRM 与 GEO 相关产品实践。我的工作更接近 FDE：进入实际场景，厘清需求，快速做出版本，再通过测试与交付把它落地。</p>
-        <div class="identity-strip" aria-label="核心方向"><span>AI CODING</span><span>AI CRM</span><span>GEO PRACTICE</span><span>PRODUCT DELIVERY</span></div>
-        <div class="hero-actions"><a class="button primary" href="/projects.html">查看六个精选项目 <span>↗</span></a><a class="button secondary" href="#about">关于我</a></div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#111214" />
+    <meta
+      name="description"
+      content="我是恩宇，在郑州读编导，也在真实项目里学习把想法做出来。这里是我的 AI 工具、创作实验和项目记录。"
+    />
+    <meta name="author" content="Ethan 恩宇" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Ethan 恩宇 — 读编导，也用 AI 做工具" />
+    <meta
+      property="og:description"
+      content="我是恩宇，在郑州读编导，也在真实项目里学习把想法做出来。这里是我的 AI 工具、创作实验和项目记录。"
+    />
+    <meta property="og:url" content="https://zhouey314-cloud.github.io/" />
+    <meta
+      property="og:image"
+      content="https://zhouey314-cloud.github.io/public/social-preview.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@UPing123zzz" />
+    <meta name="twitter:title" content="Ethan 恩宇 — 读编导，也用 AI 做工具" />
+    <meta
+      name="twitter:description"
+      content="我是恩宇，在郑州读编导，也在真实项目里学习把想法做出来。这里是我的 AI 工具、创作实验和项目记录。"
+    />
+    <meta
+      name="twitter:image"
+      content="https://zhouey314-cloud.github.io/public/social-preview.png"
+    />
+    <link rel="canonical" href="https://zhouey314-cloud.github.io/" />
+    <link rel="icon" href="/public/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <script src="/navigation.js"></script>
+    <link rel="stylesheet" href="/tokens.css" />
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/script.js" defer></script>
+    <title>Ethan 恩宇 — 读编导，也用 AI 做工具</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+    <header class="site-header wrap">
+      <a class="brand" href="/" aria-label="Ethan 恩宇，首页"
+        ><span class="brand-latin">Ethan<span class="brand-stop">.</span></span
+        ><span class="brand-cn">恩宇</span></a
+      >
+      <div class="header-controls">
+        <button
+          class="motion-toggle enhanced-only"
+          type="button"
+          data-motion-toggle
+          aria-pressed="false"
+          aria-label="关闭装饰动效"
+        >
+          动效 <span data-motion-label>开</span></button
+        ><button
+          class="menu-toggle enhanced-only"
+          type="button"
+          aria-controls="site-nav"
+          aria-expanded="false"
+        >
+          菜单 <span aria-hidden="true">＋</span>
+        </button>
       </div>
-      <div class="hero-note reveal" aria-label="当前关注方向">
-        <span>FDE / FIELD NOTES</span><p>Understand the context<br>Build the working path<br>Verify before handoff</p>
-      </div>
-      <div class="scroll-cue" aria-hidden="true"><span>SCROLL</span><i></i></div>
-    </section>
-
-    <section class="section work" id="work" aria-labelledby="work-title">
-      <div class="section-index">01 / FLAGSHIP WORK</div>
-      <div class="section-heading"><div><p class="eyebrow">RUNNABLE. INSPECTABLE. HONEST.</p><h2 id="work-title">Selected work.</h2></div><p>六个主线项目；从可操作 Demo 到离线工程证据。每张卡都标清测试范围和真实边界，点开看独立案例页。</p></div>
-      <div class="flagship-grid">
-        <article class="flagship-card">
-          <a class="flagship-image" href="/cases/multi-tenant.html" aria-label="查看 Multi-Tenant Workflow 案例"><img src="/public/projects/workflow/hero.png" alt="Multi-Tenant Workflow 的项目界面或架构证据" loading="lazy"><span>01 / LIVE_DEMO</span></a>
-          <div class="flagship-content"><h3>Multi-Tenant Workflow</h3><p class="flagship-problem">知识共享如何不越过租户与审核边界？</p><p class="flagship-stack">Node.js · JavaScript</p><p class="flagship-proof">10 项测试；线上角色/审批演示</p><div class="flagship-links"><a href="/cases/multi-tenant.html">Case Study ↗</a><a href="https://zhouey314-cloud.github.io/multi-tenant-ai-workflow-saas/" target="_blank" rel="noopener noreferrer">Try Demo ↗</a></div></div>
-        </article>
-        <article class="flagship-card">
-          <a class="flagship-image" href="/cases/rag.html" aria-label="查看 Enterprise RAG Starter 案例"><img src="/public/projects/rag/demo-query.png" alt="Enterprise RAG Starter 词面检索、答案和引用的真实合成演示截图" loading="lazy"><span>02 / LIVE_DEMO / LOCAL_MODEL</span></a>
-          <div class="flagship-content"><h3>Enterprise RAG Starter</h3><p class="flagship-problem">让检索回答具备权限过滤、引用与拒答。</p><p class="flagship-stack">Python · Embeddings · JS</p><p class="flagship-proof">19 单测；线上词面与本地语义模式</p><div class="flagship-links"><a href="/cases/rag.html">Case Study ↗</a><a href="https://zhouey314-cloud.github.io/enterprise-rag-starter/" target="_blank" rel="noopener noreferrer">Try Demo ↗</a></div></div>
-        </article>
-        <article class="flagship-card">
-          <a class="flagship-image" href="/cases/eval.html" aria-label="查看 AI Eval Engineering 案例"><img src="/public/projects/eval/release-gate.png" alt="AI Eval Engineering 的项目界面或架构证据" loading="lazy"><span>03 / LOCAL_RUNNABLE</span></a>
-          <div class="flagship-content"><h3>AI Eval Engineering</h3><p class="flagship-problem">让夹具通过与模型质量不再混为一谈。</p><p class="flagship-stack">Python · JSONL</p><p class="flagship-proof">5 个合成夹具；MODEL_QUALITY=NOT_RUN</p><div class="flagship-links"><a href="/cases/eval.html">Case Study ↗</a><a href="https://github.com/zhouey314-cloud/ai-eval-engineering" target="_blank" rel="noopener noreferrer">View Evidence ↗</a></div></div>
-        </article>
-        <article class="flagship-card">
-          <a class="flagship-image" href="/cases/video.html" aria-label="查看 Video Workflow Engine 案例"><img src="/public/projects/video/demo-frame.png" alt="Video Workflow Engine 的项目界面或架构证据" loading="lazy"><span>04 / OFFLINE_TOOL</span></a>
-          <div class="flagship-content"><h3>Video Workflow Engine</h3><p class="flagship-problem">把素材缺口、真实渲染与人工 QA 串起来。</p><p class="flagship-stack">Python · FFmpeg</p><p class="flagship-proof">25 项测试；6 秒合成 MP4</p><div class="flagship-links"><a href="/cases/video.html">Case Study ↗</a><a href="https://github.com/zhouey314-cloud/ai-video-workflow-engine/blob/main/examples/demo-output.mp4" target="_blank" rel="noopener noreferrer">View Evidence ↗</a></div></div>
-        </article>
-        <article class="flagship-card">
-          <a class="flagship-image" href="/cases/crm.html" aria-label="查看 AI CRM Sales Copilot 案例"><img src="/public/projects/crm/crm-dashboard.webp" alt="AI CRM Sales Copilot 的项目界面或架构证据" loading="lazy"><span>05 / LIVE_DEMO / RULE_BASED</span></a>
-          <div class="flagship-content"><h3>AI CRM Sales Copilot</h3><p class="flagship-problem">同一商机状态驱动管线、预测与规则建议。</p><p class="flagship-stack">JavaScript · localStorage</p><p class="flagship-proof">浏览器阶段迁移与刷新检查；样本数据</p><div class="flagship-links"><a href="/cases/crm.html">Case Study ↗</a><a href="https://zhouey314-cloud.github.io/ai-crm-sales-copilot/" target="_blank" rel="noopener noreferrer">Try Demo ↗</a></div></div>
-        </article>
-        <article class="flagship-card">
-          <a class="flagship-image" href="/cases/skills.html" aria-label="查看 Portable Agent Skills 案例"><img src="/public/projects/skills/architecture.svg" alt="Portable Agent Skills 的公开架构图" loading="lazy"><span>06 / OPEN_SOURCE / LOCAL_RUNNABLE</span></a>
-          <div class="flagship-content"><h3>Portable Agent Skills</h3><p class="flagship-problem">把含糊任务拆成可复制、可检查、可交接的单用途工作流。</p><p class="flagship-stack">Markdown · Python · GitHub Actions</p><p class="flagship-proof">10 个 Skill；结构与合成夹具校验通过；模型质量未测</p><div class="flagship-links"><a href="/cases/skills.html">Case Study ↗</a><a href="https://github.com/zhouey314-cloud/ai-agent-skills/tree/main/skills" target="_blank" rel="noopener noreferrer">Explore Skills ↗</a></div></div>
-        </article>
-      </div>
-      <p class="supporting-line">其他公开作品：<a href="/cases/recruitment.html">Recruitment Review ↗</a> · <a href="https://github.com/zhouey314-cloud/thought-to-x">Thought to X ↗</a> · <a href="https://github.com/zhouey314-cloud/obsidian-ai-inbox">Obsidian AI Inbox ↗</a> · <a href="https://0-1-b2b-demo-demo-novamach.vercel.app/">NovaMach 虚构工业站 ↗</a> · <a href="/projects.html">完整项目导航 ↗</a></p>
-    </section>
-
-    <section class="section about" id="about" aria-labelledby="about-title">
-      <div class="section-index">02 / ABOUT</div>
-      <div class="about-layout">
-        <div><p class="eyebrow">WHO I AM</p><h2 id="about-title">About <span class="notranslate" translate="no">Ethan</span>.</h2></div>
-        <div class="about-copy reveal">
-          <p class="lead">我不是从传统软件工程路径开始的，而是从真实问题里一步步进入 AI Coding 和产品交付。</p>
-          <p>现在，我把自己定位为 AI Product Builder，工作方式更接近 FDE：先进入业务现场理解约束，再把需求、系统和验收串成一条能真正跑通的路径。我仍在快速成长，也会持续公开项目、踩坑和方法。</p>
-        </div>
-        <div class="focus-card reveal"><span class="eyebrow">WHAT I'M BUILDING</span><ul><li><b>AI PRODUCTS</b><small>产品与内部工具</small></li><li><b>AI CRM</b><small>销售工作流</small></li><li><b>GEO SYSTEMS</b><small>内容与交付系统</small></li><li><b>EVAL &amp; QA</b><small>测试与项目验收</small></li></ul></div>
-      </div>
-    </section>
-
-    <section class="section capabilities" id="capabilities" aria-labelledby="cap-title">
-      <div class="section-index">03 / CAPABILITIES</div>
-      <div class="section-heading"><div><p class="eyebrow">WHAT I ACTUALLY DO</p><h2 id="cap-title">能力要落到项目里。</h2></div><p>不列一排空泛服务。每一项能力都对应一个做过的项目、一种责任边界和一组可以检查的证据。</p></div>
-      <div class="cap-grid">
-        <article class="cap-card reveal"><span>01 / BUILD</span><h3>Build AI products.</h3><p>把想法拆成数据、界面和工作流，先做出一条可以操作、可以测试的核心路径。</p><strong>PROOF · AI CRM DEMO</strong><code>SCOPE → DATA → UI → WORKFLOW</code></article>
-        <article class="cap-card reveal"><span>02 / OPERATE</span><h3>Operate GEO workflows.</h3><p>参与 GEO 内容、知识与渠道流程，把页面实现和真实运营环节连接起来。</p><strong>PROOF · GEO PARTICIPATED PROJECT</strong><code>KNOWLEDGE → CONTENT → REVIEW → PUBLISH</code></article>
-        <article class="cap-card reveal"><span>03 / SHIP</span><h3>Ship to acceptance.</h3><p>把范围、Baseline、Eval、测试、回归与交接材料一起推进，不把“能跑”当作“已交付”。</p><strong>PROOF · TEST &amp; HANDOFF</strong><code>SCOPE → VERIFY → REGRESSION → HANDOFF</code></article>
-      </div>
-    </section>
-
-    <section class="section process" id="process" aria-labelledby="process-title">
-      <div class="section-index">04 / PROCESS</div>
-      <div class="section-heading"><div><p class="eyebrow">FDE DELIVERY LOOP</p><h2 id="process-title">From field context to handoff.</h2></div><p>FDE 对我更像一种工作方式，而不是需要提前占用的头衔：贴近真实场景，把问题、构建和验收连起来。</p></div>
-      <ol class="process-list">
-        <li class="reveal"><span>01</span><div><b>FIELD CONTEXT</b><p>先进入真实场景，理解谁在用、哪里卡住、什么不能假设。</p></div></li>
-        <li class="reveal"><span>02</span><div><b>SCOPE</b><p>把模糊要求变成可检查的范围、边界和验收条件。</p></div></li>
-        <li class="reveal"><span>03</span><div><b>BUILD</b><p>用 AI Coding 快速做出可运行路径，而不是只交静态页面。</p></div></li>
-        <li class="reveal"><span>04</span><div><b>VERIFY</b><p>通过 Eval、测试、回归和边界检查确认行为没有退化。</p></div></li>
-        <li class="reveal"><span>05</span><div><b>HANDOFF</b><p>整理说明、证据和剩余边界，让下一个人能够继续使用和维护。</p></div></li>
-      </ol>
-    </section>
-
-    <section class="section writing" id="writing" aria-labelledby="writing-title">
-      <div class="section-index">05 / WRITING</div>
-      <div class="section-heading"><div><p class="eyebrow">BUILDING IN PUBLIC</p><h2 id="writing-title">Selected writing.</h2></div><a class="text-link" href="https://x.com/UPing123zzz" target="_blank" rel="noopener noreferrer">View all on X ↗</a></div>
-      <div class="writing-list" id="writing-list" aria-live="polite"></div>
-      <noscript><p class="writing-fallback">请前往 <a href="https://x.com/UPing123zzz">@UPing123zzz</a> 查看公开内容。</p></noscript>
-    </section>
-
-    <section class="section contact" id="contact" aria-labelledby="contact-title">
-      <div class="contact-inner reveal">
-        <p class="eyebrow">CONTACT</p>
-        <h2 id="contact-title">Let's talk.</h2>
-        <p>如果你正在推进 AI 产品、AI CRM、GEO 工作流或企业应用，或者只是想交流项目、技术和成长，欢迎通过微信、邮件或 Telegram 联系我。</p>
-        <div class="contact-channels">
-          <figure class="wechat-card">
-            <div class="contact-label"><span>01</span><b>WECHAT</b></div>
-            <a class="qr-frame" href="https://u.wechat.com/MJNJhDRZFiAFKD09uKIRGvM?s=3" aria-label="打开 Ethan 恩宇的微信联系链接"><img src="/public/contact/wechat-qr.svg" alt="Ethan 恩宇微信二维码" width="392" height="392" loading="lazy"></a>
-            <figcaption><strong>微信扫码添加</strong><span>昵称：Ethan 恩宇</span></figcaption>
-          </figure>
-          <div class="contact-links">
-            <a class="email-card" href="mailto:zhouey314@gmail.com">
-              <div class="contact-label"><span>02</span><b>EMAIL</b></div>
-              <div><small>PUBLIC EMAIL</small><strong>zhouey314@gmail.com</strong><p>适合项目、产品、技术或合作交流。</p></div>
-              <span class="email-action">发送邮件 ↗</span>
-            </a>
-            <a class="email-card telegram-card" href="https://t.me/ethanyu520" target="_blank" rel="noopener noreferrer">
-              <div class="contact-label"><span>03</span><b>TELEGRAM</b></div>
-              <div><small>TELEGRAM HANDLE</small><strong>@ethanyu520</strong><p>欢迎交流项目、技术和成长。</p></div>
-              <span class="email-action">打开 Telegram ↗</span>
-            </a>
+      <nav id="site-nav" class="site-nav" aria-label="主要导航">
+        <a href="#work">作品</a><a href="#writing">记录</a
+        ><a href="#about">关于</a
+        ><a href="#contact">联系 <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="hero wrap" id="top" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow intro-label">
+            <span class="tiny-line"></span> 编导 × AI · 个人作品与实践
+          </p>
+          <h1 id="hero-title">
+            <span class="hello">你好，我是<span class="name">恩宇</span>。</span
+            ><span>读编导，</span><span>也用 AI 做工具。</span>
+          </h1>
+          <p class="hero-intro">
+            我在郑州读大学，也在真实项目里学习怎么把想法做出来。这里放我的 AI
+            工具、创作实验，以及做这些东西时留下的记录。
+          </p>
+          <div class="actions hero-actions">
+            <a class="button primary" href="#work"
+              >看我的作品 <span aria-hidden="true">↘</span></a
+            ><a class="button secondary" href="#contact"
+              >联系我 <span aria-hidden="true">↗</span></a
+            >
+          </div>
+          <div class="social-links">
+            <a
+              href="https://github.com/zhouey314-cloud"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GitHub ↗</a
+            ><a
+              href="https://x.com/UPing123zzz"
+              target="_blank"
+              rel="noopener noreferrer"
+              >X / @UPing123zzz ↗</a
+            >
           </div>
         </div>
+        <div class="creator-desk" aria-label="我的作品创作台">
+          <div class="desk-decoration" data-desk-decoration aria-hidden="true">
+            <div class="back-paper"><span>想法 / 片段 / 下一步</span></div>
+            <div class="desk-note">
+              <span>一点想法，</span><span>一点动手。</span
+              ><svg viewBox="0 0 90 42">
+                <path d="M5 6Q42 36 79 16M67 11l15 3-9 12" />
+              </svg>
+            </div>
+          </div>
+          <div class="desk-stage">
+            <div
+              class="desk-panel"
+              id="desk-thought"
+              role="tabpanel"
+              aria-labelledby="tab-thought"
+            >
+              <div class="desk-frame">
+                <div class="frame-meta">
+                  <span>01 / 作品切片</span><span aria-hidden="true">↗</span>
+                </div>
+                <div class="desk-excerpt">
+                  <p>命运与选择 <span>公开文稿 · 节选</span></p>
+                  <blockquote>
+                    命运是否写好，我不知道。<br />但至少在走过它的时候，<br /><mark
+                      >我想尽量真实一点。</mark
+                    >
+                  </blockquote>
+                  <small>从零碎想法，到自己的表达。</small>
+                </div>
+                <div class="frame-footer">
+                  <strong>Thought-to-X</strong
+                  ><span>本地写作工作流 · 公开示例</span>
+                </div>
+              </div>
+              <div class="desk-links">
+                <button
+                  class="preview-button enhanced-only"
+                  type="button"
+                  data-preview="/public/projects/thought/example.svg"
+                  data-title="Thought-to-X"
+                  data-case="/cases/thought-to-x.html"
+                  data-caption="本地写作工作流 · 公开示例"
+                >
+                  <span aria-hidden="true">⤢</span> 放大预览</button
+                ><a
+                  class="text-link no-js"
+                  href="/public/projects/thought/example.svg"
+                  >查看原图 ↗</a
+                ><a class="text-link" href="/cases/thought-to-x.html"
+                  >看这个作品 <span aria-hidden="true">↗</span></a
+                >
+              </div>
+            </div>
+            <div
+              class="desk-panel"
+              id="desk-rag"
+              role="tabpanel"
+              aria-labelledby="tab-rag"
+              hidden
+            >
+              <div class="desk-frame">
+                <div class="frame-meta">
+                  <span>02 / 作品切片</span><span aria-hidden="true">↗</span>
+                </div>
+                <img
+                  src="/public/projects/rag/demo-query.png"
+                  alt="Enterprise RAG Starter：线上词面检索 · 合成资料"
+                  loading="eager"
+                  decoding="async"
+                  class=""
+                  width="985"
+                  height="887"
+                />
+                <div class="frame-footer">
+                  <strong>Enterprise RAG Starter</strong
+                  ><span>线上词面检索 · 合成资料</span>
+                </div>
+              </div>
+              <div class="desk-links">
+                <button
+                  class="preview-button enhanced-only"
+                  type="button"
+                  data-preview="/public/projects/rag/demo-query.png"
+                  data-title="Enterprise RAG Starter"
+                  data-case="/cases/rag.html"
+                  data-caption="线上词面检索 · 合成资料"
+                >
+                  <span aria-hidden="true">⤢</span> 放大预览</button
+                ><a
+                  class="text-link no-js"
+                  href="/public/projects/rag/demo-query.png"
+                  >查看原图 ↗</a
+                ><a class="text-link" href="/cases/rag.html"
+                  >看这个作品 <span aria-hidden="true">↗</span></a
+                >
+              </div>
+            </div>
+            <div
+              class="desk-panel"
+              id="desk-workflow"
+              role="tabpanel"
+              aria-labelledby="tab-workflow"
+              hidden
+            >
+              <div class="desk-frame">
+                <div class="frame-meta">
+                  <span>03 / 作品切片</span><span aria-hidden="true">↗</span>
+                </div>
+                <img
+                  src="/public/projects/workflow/hero.png"
+                  alt="Multi-Tenant Workflow：浏览器演示 · 角色模拟"
+                  loading="eager"
+                  decoding="async"
+                  class=""
+                  width="1440"
+                  height="900"
+                />
+                <div class="frame-footer">
+                  <strong>Multi-Tenant Workflow</strong
+                  ><span>浏览器演示 · 角色模拟</span>
+                </div>
+              </div>
+              <div class="desk-links">
+                <button
+                  class="preview-button enhanced-only"
+                  type="button"
+                  data-preview="/public/projects/workflow/hero.png"
+                  data-title="Multi-Tenant Workflow"
+                  data-case="/cases/multi-tenant.html"
+                  data-caption="浏览器演示 · 角色模拟"
+                >
+                  <span aria-hidden="true">⤢</span> 放大预览</button
+                ><a
+                  class="text-link no-js"
+                  href="/public/projects/workflow/hero.png"
+                  >查看原图 ↗</a
+                ><a class="text-link" href="/cases/multi-tenant.html"
+                  >看这个作品 <span aria-hidden="true">↗</span></a
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="desk-tabs enhanced-only"
+            role="tablist"
+            aria-label="切换作品预览"
+          >
+            <button
+              id="tab-thought"
+              role="tab"
+              aria-selected="true"
+              aria-controls="desk-thought"
+              data-desk="thought"
+            >
+              <span>01</span> 表达</button
+            ><button
+              id="tab-rag"
+              role="tab"
+              aria-selected="false"
+              aria-controls="desk-rag"
+              tabindex="-1"
+              data-desk="rag"
+            >
+              <span>02</span> 知识</button
+            ><button
+              id="tab-workflow"
+              role="tab"
+              aria-selected="false"
+              aria-controls="desk-workflow"
+              tabindex="-1"
+              data-desk="workflow"
+            >
+              <span>03</span> 流程
+            </button>
+          </div>
+        </div>
+        <div class="hero-bottom">
+          <span>从一个想法，开始认识我。</span
+          ><a href="#work" aria-label="往下看：浏览精选作品"
+            >往下看 <span aria-hidden="true">↓</span></a
+          >
+        </div>
+      </section>
+      <section
+        class="section wrap selected-work"
+        id="work"
+        aria-labelledby="work-title"
+      >
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">01 / 精选作品</p>
+            <h2 id="work-title">
+              把想法，<br class="mobile-break" />做成看得见的东西<span
+                class="accent"
+                >。</span
+              >
+            </h2>
+          </div>
+          <a class="text-link" href="/projects.html"
+            >完整项目档案 <span aria-hidden="true">↗</span></a
+          >
+        </div>
+        <article class="work-feature" data-reveal>
+          <div class="work-copy">
+            <div class="project-order">
+              <span>01</span><span>想法与表达</span>
+            </div>
+            <h3>整理表达，<br />不改掉自己。</h3>
+            <p class="project-name">Thought-to-X</p>
+            <p>
+              把随手记下的想法，整理成更清楚的文字。先找到想说的意思，再处理结构、语气和节奏。
+            </p>
+            <p class="project-status">
+              <span></span> 本地工作流 · 人工确认后发布
+            </p>
+            <p class="boundary">
+              辅助整理表达，不自动发帖。示例不代表经过独立评审的模型效果。
+            </p>
+            <div class="actions">
+              <a class="text-link strong-link" href="/cases/thought-to-x.html"
+                >阅读案例 <span aria-hidden="true">↗</span></a
+              ><a
+                class="text-link"
+                href="https://github.com/zhouey314-cloud/thought-to-x"
+                >查看源码 ↗</a
+              >
+            </div>
+          </div>
+          <figure class="project-visual thought-visual">
+            <img
+              src="/public/projects/thought/example.svg"
+              alt="Thought-to-X 公开命运示例：原始想法与整理后的表达"
+              loading="lazy"
+              decoding="async"
+              class=""
+              width="1400"
+              height="900"
+            />
+            <figcaption>
+              <span>公开示例 · 原文重新排版</span
+              ><button
+                class="preview-button enhanced-only"
+                type="button"
+                data-preview="/public/projects/thought/example.svg"
+                data-title="Thought-to-X · 命运与选择"
+                data-case="/cases/thought-to-x.html"
+                data-caption="公开示例原文重新排版；流程示意，非实时模型运行。"
+              >
+                <span aria-hidden="true">⤢</span> 预览大图</button
+              ><a
+                class="text-link no-js"
+                href="/public/projects/thought/example.svg"
+                >查看原图 ↗</a
+              >
+            </figcaption>
+          </figure>
+        </article>
+        <div class="work-pair">
+          <article data-reveal>
+            <figure class="project-visual rag-visual">
+              <img
+                src="/public/projects/rag/demo-query.png"
+                alt="公开词面 Demo：合成问题、抽取式答案与引用"
+                loading="lazy"
+                decoding="async"
+                class=""
+                width="985"
+                height="887"
+              />
+              <figcaption>
+                <span>真实界面 · 合成资料</span
+                ><button
+                  class="preview-button enhanced-only"
+                  type="button"
+                  data-preview="/public/projects/rag/demo-query.png"
+                  data-title="Enterprise RAG Starter"
+                  data-case="/cases/rag.html"
+                  data-caption="线上词面检索演示；查询与文档均为合成数据，本地语义模式另行运行。"
+                >
+                  <span aria-hidden="true">⤢</span> 预览大图</button
+                ><a
+                  class="text-link no-js"
+                  href="/public/projects/rag/demo-query.png"
+                  >查看原图 ↗</a
+                >
+              </figcaption>
+            </figure>
+            <div class="work-copy">
+              <div class="project-order">
+                <span>02</span><span>知识与来源</span>
+              </div>
+              <h3>回答之外，<br />还要看得到出处。</h3>
+              <p class="project-name">Enterprise RAG Starter</p>
+              <p>
+                找到资料、过滤访问范围，再把来源交给读者。资料不足时，给出明确的无答案状态。
+              </p>
+              <p class="project-status">
+                <span></span> 线上词面演示 · 本地语义模式
+              </p>
+              <p class="boundary">
+                公开资料为合成数据，不代表真实企业回答准确率。
+              </p>
+              <div class="actions">
+                <a class="text-link strong-link" href="/cases/rag.html"
+                  >阅读案例 ↗</a
+                ><a
+                  class="text-link"
+                  href="https://zhouey314-cloud.github.io/enterprise-rag-starter/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >打开演示 ↗</a
+                >
+              </div>
+            </div>
+          </article>
+          <article data-reveal>
+            <figure class="project-visual workflow-visual">
+              <img
+                src="/public/projects/workflow/hero.png"
+                alt="TenantFlow 公开角色与内容流程模拟界面"
+                loading="lazy"
+                decoding="async"
+                class=""
+                width="1440"
+                height="900"
+              />
+              <figcaption>
+                <span>真实界面 · 虚构租户</span
+                ><button
+                  class="preview-button enhanced-only"
+                  type="button"
+                  data-preview="/public/projects/workflow/hero.png"
+                  data-title="Multi-Tenant Workflow"
+                  data-case="/cases/multi-tenant.html"
+                  data-caption="角色与审批的浏览器模拟；不提供生产身份认证或服务端安全隔离。"
+                >
+                  <span aria-hidden="true">⤢</span> 预览大图</button
+                ><a
+                  class="text-link no-js"
+                  href="/public/projects/workflow/hero.png"
+                  >查看原图 ↗</a
+                >
+              </figcaption>
+            </figure>
+            <div class="work-copy">
+              <div class="project-order">
+                <span>03</span><span>角色与协作</span>
+              </div>
+              <h3>让一份内容，<br />走过清楚的流程。</h3>
+              <p class="project-name">Multi-Tenant Workflow</p>
+              <p>
+                从共享知识到审核、发布，把谁能看、谁能操作、下一步是什么放在同一条路径里。
+              </p>
+              <p class="project-status"><span></span> 浏览器演示 · 角色模拟</p>
+              <p class="boundary">
+                演示口令是角色选择器，不是生产认证或服务端安全隔离。
+              </p>
+              <div class="actions">
+                <a class="text-link strong-link" href="/cases/multi-tenant.html"
+                  >阅读案例 ↗</a
+                ><a
+                  class="text-link"
+                  href="https://github.com/zhouey314-cloud/multi-tenant-ai-workflow-saas"
+                  >查看源码 ↗</a
+                >
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="archive-invitation">
+          <span>还有评估工具、视频实验、CRM 和可复用的方法。</span
+          ><a class="text-link" href="/projects.html"
+            >浏览全部 14 个公开项目 <span aria-hidden="true">↗</span></a
+          >
+        </div>
+      </section>
+
+      <section
+        class="section section-rule wrap"
+        id="process"
+        aria-labelledby="story-title"
+        data-story
+      >
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">02 / 作品如何形成</p>
+            <h2 id="story-title">一个想法的三个分镜。</h2>
+          </div>
+          <p class="story-intro">
+            以 Thought-to-X 的“命运与选择”为例。<br />从原始材料，到想保留的意思，再到一段表达。
+          </p>
+        </div>
+        <div class="story-context">
+          <span class="story-label">公开示例 · 流程讲解</span>
+          <p>以下是已有文稿，非实时模型运行。</p>
+        </div>
+        <div class="story-mobile-controls enhanced-only" aria-label="跳转分镜">
+          <button type="button" data-story-select="0" aria-pressed="true">
+            01 想法</button
+          ><button type="button" data-story-select="1" aria-pressed="false">
+            02 原意</button
+          ><button type="button" data-story-select="2" aria-pressed="false">
+            03 表达
+          </button>
+        </div>
+        <div class="story-layout">
+          <div class="story-steps">
+            <article class="story-step" id="story-1" data-story-step>
+              <span class="step-number">01</span>
+              <h3>先留下，还没说完的想法。</h3>
+              <p>
+                这里的起点是一段零碎的想法。电影比喻、疑问和不确定，都先保留下来。
+              </p>
+              <div class="story-document">
+                <div class="document-top">
+                  <span>命运与选择 / RAW</span><span>01</span>
+                </div>
+                <blockquote>
+                  每个人自己的命运从出生那一刻可能就已经定好<br />就像电影每个时间点时间线都存在<br />但是安于现状还是应该问自己想要什么
+                </blockquote>
+                <p class="source-caption">
+                  公开示例原始输入 · 节选，保留原换行
+                </p>
+              </div>
+            </article>
+            <article class="story-step" id="story-2" data-story-step>
+              <span class="step-number">02</span>
+              <h3>找到真正想保留的意思。</h3>
+              <p>
+                “可能早已存在”和“仍然主动选择”同时成立。整理结构，不替作者升级立场。
+              </p>
+              <div class="story-document">
+                <div class="document-top">
+                  <span>命运与选择 / INTENT</span><span>02</span>
+                </div>
+                <p class="core-claim">
+                  即使命运可能早已存在，人仍应诚实面对自己真正想要的生活
+                </p>
+                <ul>
+                  <li>命运可能已经定好</li>
+                  <li>这不等于安于现状</li>
+                  <li>喜欢现在的生活也没问题</li>
+                </ul>
+                <p class="source-caption">
+                  公开示例 core_claim 与 must_preserve 原文
+                </p>
+              </div>
+            </article>
+            <article class="story-step" id="story-3" data-story-step>
+              <span class="step-number">03</span>
+              <h3>把话说清楚，决定留给自己。</h3>
+              <p>
+                公开示例保留了“也许”“不知道”。文稿依然需要作者复核，工作流不会代替作者发布。
+              </p>
+              <div class="story-document">
+                <div class="document-top">
+                  <span>命运与选择 / FINAL</span><span>03</span>
+                </div>
+                <blockquote>
+                  <p>
+                    我有时会觉得，人的命运也许从出生那一刻就已经存在了。像一部已经拍完的电影，我们只是依次走到每个时间点。
+                  </p>
+                  <p>
+                    命运是否写好，我不知道。但至少在走过它的时候，我想尽量真实一点。
+                  </p>
+                </blockquote>
+                <p class="source-caption">
+                  公开 FINAL 文稿 · 第一、三段；完整示例见来源
+                </p>
+              </div>
+            </article>
+          </div>
+          <div class="story-preview">
+            <div data-story-preview aria-hidden="true"></div>
+            <div class="story-controls enhanced-only" aria-label="切换当前分镜">
+              <button type="button" data-story-select="0" aria-pressed="true">
+                01 原始想法</button
+              ><button type="button" data-story-select="1" aria-pressed="false">
+                02 提取原意</button
+              ><button type="button" data-story-select="2" aria-pressed="false">
+                03 整理表达
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="story-source">
+          <p>
+            原文来自 Thought-to-X 公开示例，展示工作流思路，不作为写作质量评分。
+          </p>
+          <a
+            class="text-link"
+            href="https://github.com/zhouey314-cloud/thought-to-x/blob/main/examples/destiny-example.md"
+            >阅读完整示例 ↗</a
+          >
+        </div>
+      </section>
+      <section
+        class="section section-rule wrap"
+        id="writing"
+        aria-labelledby="writing-title"
+      >
+        <div class="writing-layout">
+          <div>
+            <p class="eyebrow">03 / 创作记录</p>
+            <h2 id="writing-title">做的过程，<br />也值得留下。</h2>
+          </div>
+          <div class="writing-entry">
+            <h3>项目之外，在 X 继续聊。</h3>
+            <p>
+              关于 AI 工具、创作实践，以及把想法做出来时遇到的问题和新的理解。
+            </p>
+            <a
+              class="text-link strong-link"
+              href="https://x.com/UPing123zzz"
+              target="_blank"
+              rel="noopener noreferrer"
+              >@UPing123zzz <span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </div>
+      </section>
+      <section
+        class="section section-rule wrap"
+        id="about"
+        aria-labelledby="about-title"
+      >
+        <div class="about-layout">
+          <div>
+            <p class="eyebrow">04 / 关于我</p>
+            <h2 id="about-title">在叙事与构建之间。</h2>
+            <div class="about-signature" aria-hidden="true">Ethan.</div>
+          </div>
+          <div class="about-copy">
+            <p class="lead">
+              我是恩宇，也叫周恩宇。<br />编导专业在读，在郑州生活和学习。
+            </p>
+            <p>
+              我关心一个想法怎样被讲清楚，也关心它怎样被做出来。现在，我把这两件事放进
+              AI 工具、GEO 和工作流相关的项目实践里。
+            </p>
+            <p>
+              这里记录我做过的尝试、实现中的选择，以及作品目前还做不到的部分。它们会继续生长。
+            </p>
+          </div>
+        </div>
+      </section>
+      <section
+        class="section section-rule wrap"
+        id="contact"
+        aria-labelledby="contact-title"
+      >
+        <div class="contact-layout">
+          <div class="contact-copy">
+            <p class="eyebrow">05 / 联系</p>
+            <h2 id="contact-title">
+              有个想法？<br />聊聊看<span class="accent">。</span>
+            </h2>
+            <p>关于项目、工具、创作，或最近学到的东西，都欢迎交流。</p>
+            <div class="contact-links">
+              <a class="contact-link" href="mailto:zhouey314@gmail.com"
+                ><span
+                  ><small>EMAIL</small
+                  ><strong>zhouey314@gmail.com</strong></span
+                ><span aria-hidden="true">↗</span></a
+              ><a
+                class="contact-link"
+                href="https://t.me/ethanyu520"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><span><small>TELEGRAM</small><strong>@ethanyu520</strong></span
+                ><span aria-hidden="true">↗</span></a
+              >
+            </div>
+          </div>
+          <figure class="wechat">
+            <a
+              href="https://u.wechat.com/MJNJhDRZFiAFKD09uKIRGvM?s=3"
+              aria-label="打开 Ethan 恩宇的微信联系链接"
+              ><img
+                src="/public/contact/wechat-qr.svg"
+                alt="Ethan 恩宇微信二维码"
+                loading="lazy"
+                decoding="async"
+                class=""
+                width="49"
+                height="49"
+            /></a>
+            <figcaption>
+              <span class="eyebrow">微信</span><strong>Ethan 恩宇</strong>
+              <p>
+                扫码添加。<br />也可以直接发邮件<br />或通过 Telegram 联系。
+              </p>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer wrap">
+      <a class="brand" href="/"
+        ><span class="brand-latin">Ethan<span class="brand-stop">.</span></span
+        ><span class="brand-cn">恩宇</span></a
+      >
+      <p>想法，慢慢成为作品。</p>
+      <a href="/projects.html">完整项目档案 <span aria-hidden="true">↗</span></a
+      ><small>© 2026 Ethan 恩宇</small>
+    </footer>
+    <dialog class="image-viewer" aria-labelledby="viewer-title" data-viewer>
+      <div class="viewer-head">
+        <div>
+          <p class="eyebrow">作品预览</p>
+          <h2 id="viewer-title"></h2>
+        </div>
+        <button
+          class="icon-button"
+          type="button"
+          data-viewer-close
+          aria-label="关闭预览"
+          autofocus
+        >
+          ×
+        </button>
       </div>
-    </section>
-  </main>
-
-  <footer><a class="brand notranslate" href="#top" translate="no"><span class="brand-mark">E</span><span>ETHAN</span></a><p>AI Product Builder · FDE-style implementation · Building with proof.</p><span class="notranslate" translate="no">© 2026 ETHAN</span></footer>
-
-  <dialog class="project-dialog" data-project-dialog aria-labelledby="dialog-title">
-    <div class="dialog-shell"><button class="icon-button dialog-close" type="button" aria-label="关闭项目详情" data-dialog-close>×</button><div data-dialog-content></div></div>
-  </dialog>
-  <dialog class="lightbox" data-lightbox aria-label="截图大图预览"><button class="icon-button lightbox-close" type="button" aria-label="关闭大图" data-lightbox-close>×</button><button class="lightbox-nav prev" type="button" aria-label="上一张" data-lightbox-prev>←</button><figure><img data-lightbox-image alt=""><figcaption><span data-lightbox-truth></span><p data-lightbox-caption></p><small data-lightbox-count></small></figcaption></figure><button class="lightbox-nav next" type="button" aria-label="下一张" data-lightbox-next>→</button></dialog>
-  <script src="/script.js" defer></script>
-</body>
+      <div class="viewer-media"><img data-viewer-image alt="" /></div>
+      <div class="viewer-foot">
+        <p data-viewer-caption></p>
+        <div class="actions">
+          <a
+            class="text-link"
+            data-viewer-original
+            href="/"
+            target="_blank"
+            rel="noopener"
+            >打开原图 ↗</a
+          ><a class="button primary" data-viewer-case href="/projects.html"
+            >阅读案例 ↗</a
+          >
+        </div>
+      </div>
+    </dialog>
+  </body>
 </html>

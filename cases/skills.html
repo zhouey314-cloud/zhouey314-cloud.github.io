@@ -1,38 +1,287 @@
 <!doctype html>
 <html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#090b0d">
-  <meta name="description" content="Portable Agent Skills 案例：十个可复用工作流、合同校验与尚未验证的模型质量边界。">
-  <link rel="canonical" href="https://zhouey314-cloud.github.io/cases/skills.html">
-  <link rel="icon" href="/public/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/case-study.css">
-  <title>Portable Agent Skills — Ethan Zhou</title>
-</head>
-<body>
-  <header class="top"><div class="wrap"><a class="brand" href="/">ETHAN / WORK</a><nav aria-label="导航"><a href="/">Home</a><a href="/projects.html">Projects</a><a href="https://github.com/zhouey314-cloud/ai-agent-skills">Source ↗</a></nav></div></header>
-  <main class="wrap">
-    <section class="hero"><p class="eyebrow">OPEN SOURCE · LOCAL RUNNABLE · MODEL QUALITY NOT RUN</p><h1>Portable Agent Skills</h1><p class="lede">可复制、可检查、可交接的单用途 Agent 工作流。</p><div class="actions"><a href="https://github.com/zhouey314-cloud/ai-agent-skills/tree/main/skills">Explore Skills ↗</a><a href="https://github.com/zhouey314-cloud/ai-agent-skills/blob/main/README.md#quick-start">Quick Start ↗</a></div></section>
-    <figure class="visual"><img src="/public/projects/skills/architecture.svg" alt="十个 Skill 合同、校验与人审的公开架构图"><figcaption>真实仓库中的架构图；不是交互产品截图或模型效果图。</figcaption></figure>
-    <div class="facts"><div><strong>ROLE</strong><span>个人自建 / 工作流设计与合同测试</span></div><div><strong>EVIDENCE</strong><span>10 个 Skill 合同检查、3 个合成夹具 schema、CI 通过</span></div><div><strong>BOUNDARY</strong><span>MODEL_QUALITY=NOT_RUN；没有真实客户采用证据</span></div></div>
-    <div class="case-grid">
-      <section aria-labelledby="s0"><h2 id="s0"><span class="number">01 / </span>Problem</h2><p>智能体任务说明经常是宽泛提示，缺少输入、输出、失败路径和人审边界，难以复用或评估。</p></section>
-      <section aria-labelledby="s1"><h2 id="s1"><span class="number">02 / </span>Context</h2><p>这是一组公开、独立、单用途的 Agent Skill 文档；目标是让陌生开发者能 clone、阅读、复制并修改。</p></section>
-      <section aria-labelledby="s2"><h2 id="s2"><span class="number">03 / </span>Constraints</h2><p>纯 Markdown 工作流不自动获得工具权限；公开示例是虚构的 synthetic_unverified，不能当作模型质量证明。</p></section>
-      <section aria-labelledby="s3"><h2 id="s3"><span class="number">04 / </span>Architecture</h2><p>十个 SKILL.md 共享 Purpose、When to Use、Inputs、Outputs、Workflow、Failure Handling、Example、Tests、Limitations 合同；Python 校验器独立于模型运行。</p></section>
-      <section aria-labelledby="s4"><h2 id="s4"><span class="number">05 / </span>Engineering Decisions</h2><p>每个 Skill 保持单用途；缺少来源、所有者或发布授权时明确失败。虚构示例统一标为 synthetic_unverified。</p></section>
-      <section aria-labelledby="s5"><h2 id="s5"><span class="number">06 / </span>Implementation</h2><p>添加统一前言与失败路径、三份合成 walkthrough、贡献说明、变更日志、Issue 模板、CI 和评估规范。</p></section>
-      <section aria-labelledby="s6"><h2 id="s6"><span class="number">07 / </span>Tests</h2><p>旧版 10 个四标题结构基线通过；新版 10 个完整合同检查和 3 个合成夹具 schema 检查通过，CI 同步通过。</p></section>
-      <section aria-labelledby="s7"><h2 id="s7"><span class="number">08 / </span>Evaluation</h2><p>离线检查不调用模型；没有人工确认的真实案例、provider 输出或可报告的任务成功率。</p></section>
-      <section aria-labelledby="s8"><h2 id="s8"><span class="number">09 / </span>Demo</h2><p>克隆主分支，运行 python3 tests/validate.py 与 python3 evals/run.py；结果只验证合同结构和合成案例 schema。</p></section>
-      <section aria-labelledby="s9"><h2 id="s9"><span class="number">10 / </span>Limitations</h2><p>不同 Agent Host 的触发方式不保证一致；Skill 文档不会授予工具权限，也不能证明客户采用。</p></section>
-      <section aria-labelledby="s10"><h2 id="s10"><span class="number">11 / </span>What Worked</h2><p>十个 Skill 的结构检查和三个合成评估夹具校验通过；CI 检查通过。</p></section>
-      <section aria-labelledby="s11"><h2 id="s11"><span class="number">12 / </span>What Failed</h2><p>尚未用独立人工真值运行 provider-backed 模型行为评估；无法声称真实任务成功率或用户采用。</p></section>
-      <section aria-labelledby="s12"><h2 id="s12"><span class="number">13 / </span>Lessons</h2><p>可复制的提示词合同与可验证的模型表现是两件事；发布说明必须区分它们。</p></section>
-      <section aria-labelledby="s13"><h2 id="s13"><span class="number">14 / </span>Next Steps</h2><p>用获授权的小样本任务进行人工审核，记录失败案例并建立回归集，然后再决定哪些 Skill 值得扩展。</p></section>
-    </div>
-  </main>
-  <footer class="footer"><div class="wrap"><a href="/">← Home</a><a href="/projects.html">All projects</a><span>Contract checks do not establish model quality.</span></div></footer>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#111214" />
+    <meta
+      name="description"
+      content="Portable Agent Skills 项目案例：公开示例为 synthetic_unverified。合同校验不代表模型质量或真实使用效果；文档不会授予工具权限。"
+    />
+    <meta name="author" content="Ethan 恩宇" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Portable Agent Skills — Ethan 恩宇" />
+    <meta
+      property="og:description"
+      content="Portable Agent Skills 项目案例：公开示例为 synthetic_unverified。合同校验不代表模型质量或真实使用效果；文档不会授予工具权限。"
+    />
+    <meta
+      property="og:url"
+      content="https://zhouey314-cloud.github.io/cases/skills.html"
+    />
+    <meta
+      property="og:image"
+      content="https://zhouey314-cloud.github.io/public/social-preview.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@UPing123zzz" />
+    <meta name="twitter:title" content="Portable Agent Skills — Ethan 恩宇" />
+    <meta
+      name="twitter:description"
+      content="Portable Agent Skills 项目案例：公开示例为 synthetic_unverified。合同校验不代表模型质量或真实使用效果；文档不会授予工具权限。"
+    />
+    <meta
+      name="twitter:image"
+      content="https://zhouey314-cloud.github.io/public/social-preview.png"
+    />
+    <link
+      rel="canonical"
+      href="https://zhouey314-cloud.github.io/cases/skills.html"
+    />
+    <link rel="icon" href="/public/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <script src="/navigation.js"></script>
+    <link rel="stylesheet" href="/tokens.css" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/case-study.css" />
+    <script src="/script.js" defer></script>
+    <title>Portable Agent Skills — Ethan 恩宇</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+    <header class="site-header wrap">
+      <a class="brand" href="/" aria-label="Ethan 恩宇，首页"
+        ><span class="brand-latin">Ethan<span class="brand-stop">.</span></span
+        ><span class="brand-cn">恩宇</span></a
+      >
+      <div class="header-controls">
+        <button
+          class="motion-toggle enhanced-only"
+          type="button"
+          data-motion-toggle
+          aria-pressed="false"
+          aria-label="关闭装饰动效"
+        >
+          动效 <span data-motion-label>开</span></button
+        ><button
+          class="menu-toggle enhanced-only"
+          type="button"
+          aria-controls="site-nav"
+          aria-expanded="false"
+        >
+          菜单 <span aria-hidden="true">＋</span>
+        </button>
+      </div>
+      <nav id="site-nav" class="site-nav" aria-label="主要导航">
+        <a href="/#work">作品</a><a href="/#writing">记录</a
+        ><a href="/#about">关于</a
+        ><a href="/#contact">联系 <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+    <main id="main" class="wrap">
+      <header class="case-hero">
+        <a class="text-link" href="/projects.html">← 项目档案</a>
+        <p class="eyebrow">作品 / Portable Agent Skills</p>
+        <h1>把一次方法，<br />写成可复用的工作流。</h1>
+        <p class="case-status">公开方法 / 本地结构检查</p>
+        <p class="case-boundary">
+          公开示例为
+          synthetic_unverified。合同校验不代表模型质量或真实使用效果；文档不会授予工具权限。
+        </p>
+      </header>
+      <nav class="case-toc" aria-label="案例章节">
+        <a href="#what">这是什么</a><a href="#result">看结果</a
+        ><a href="#build">我做了什么</a><a href="#decision">关键选择</a
+        ><a href="#limits">成果与限制</a><a href="#deep">深入查看</a>
+      </nav>
+      <div class="case-body">
+        <section class="case-section" id="what">
+          <span class="legacy-anchor" id="s0"></span
+          ><span class="legacy-anchor" id="s1"></span>
+          <h2><span>01</span>这是什么</h2>
+          <div class="case-prose">
+            <p class="large-copy">
+              智能体任务说明经常是宽泛提示，缺少输入、输出、失败路径和人审边界，难以复用或评估。
+            </p>
+            <p>
+              这是一组公开、独立、单用途的 Agent Skill
+              文档；目标是让陌生开发者能 clone、阅读、复制并修改。
+            </p>
+          </div>
+        </section>
+        <section class="case-section" id="result">
+          <span class="legacy-anchor" id="s8"></span
+          ><span class="legacy-anchor" id="s10"></span>
+          <h2><span>02</span>看结果</h2>
+          <div class="case-prose">
+            <p>十个单用途 Skill 用统一结构描述输入、输出、步骤与失败路径。</p>
+            <figure class="case-visual">
+              <img
+                src="/public/projects/skills/architecture.svg"
+                alt="Portable Agent Skills 公开项目证据"
+                loading="lazy"
+                decoding="async"
+                class=""
+                width="800"
+                height="150"
+              />
+              <figcaption>
+                <span>公开架构图，不是产品运行截图。</span
+                ><button
+                  class="preview-button enhanced-only"
+                  type="button"
+                  data-preview="/public/projects/skills/architecture.svg"
+                  data-title="Portable Agent Skills"
+                  data-case="/cases/skills.html"
+                  data-caption="公开示例为 synthetic_unverified。合同校验不代表模型质量或真实使用效果；文档不会授予工具权限。"
+                >
+                  <span aria-hidden="true">⤢</span> 预览大图</button
+                ><a
+                  class="text-link no-js"
+                  href="/public/projects/skills/architecture.svg"
+                  >查看原图 ↗</a
+                >
+              </figcaption>
+            </figure>
+            <a
+              class="text-link strong-link"
+              href="https://github.com/zhouey314-cloud/ai-agent-skills/tree/main/skills"
+              >查看公开材料 ↗</a
+            >
+          </div>
+        </section>
+        <section class="case-section" id="build">
+          <span class="legacy-anchor" id="s3"></span
+          ><span class="legacy-anchor" id="s5"></span>
+          <h2><span>03</span>我做了什么</h2>
+          <div class="case-prose">
+            <p>
+              添加统一前言与失败路径、三份合成
+              walkthrough、贡献说明、变更日志、Issue 模板、CI 和评估规范。
+            </p>
+            <details>
+              <summary>展开技术结构</summary>
+              <p>
+                十个 SKILL.md 共享 Purpose、When to
+                Use、Inputs、Outputs、Workflow、Failure
+                Handling、Example、Tests、Limitations 合同；Python
+                校验器独立于模型运行。
+              </p>
+            </details>
+          </div>
+        </section>
+        <section class="case-section" id="decision">
+          <span class="legacy-anchor" id="s4"></span
+          ><span class="legacy-anchor" id="s12"></span>
+          <h2><span>04</span>一项关键选择</h2>
+          <div class="case-prose">
+            <blockquote>
+              每个 Skill
+              保持单用途；缺少来源、所有者或发布授权时明确失败。虚构示例统一标为
+              synthetic_unverified。
+            </blockquote>
+          </div>
+        </section>
+        <section class="case-section" id="limits">
+          <span class="legacy-anchor" id="s2"></span
+          ><span class="legacy-anchor" id="s9"></span
+          ><span class="legacy-anchor" id="s11"></span>
+          <h2><span>05</span>成果与限制</h2>
+          <div class="case-prose">
+            <p>十个单用途 Skill 用统一结构描述输入、输出、步骤与失败路径。</p>
+            <p class="case-limit">
+              公开示例为
+              synthetic_unverified。合同校验不代表模型质量或真实使用效果；文档不会授予工具权限。
+            </p>
+            <p>
+              不同 Agent Host 的触发方式不保证一致；Skill
+              文档不会授予工具权限，也不能证明客户采用。
+            </p>
+          </div>
+        </section>
+        <section class="case-section" id="deep">
+          <span class="legacy-anchor" id="s6"></span
+          ><span class="legacy-anchor" id="s7"></span
+          ><span class="legacy-anchor" id="s13"></span>
+          <h2><span>06</span>深入查看</h2>
+          <div class="case-prose">
+            <p>
+              离线校验检查 Skill 合同和合成案例
+              schema；未运行有独立人工真值的模型行为评估。
+            </p>
+            <details>
+              <summary>检查范围与下一步</summary>
+              <p>
+                离线检查不调用模型；没有人工确认的真实案例、provider
+                输出或可报告的任务成功率。
+              </p>
+              <p>
+                用获授权的小样本任务进行人工审核，记录失败案例并建立回归集，然后再决定哪些
+                Skill 值得扩展。
+              </p>
+            </details>
+            <div class="actions">
+              <a
+                class="button primary"
+                href="https://github.com/zhouey314-cloud/ai-agent-skills"
+                >阅读项目仓库 ↗</a
+              ><a
+                class="text-link"
+                href="https://github.com/zhouey314-cloud/ai-agent-skills/tree/main/skills"
+                >查看公开材料 ↗</a
+              >
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="case-end">
+        <a class="text-link" href="/projects.html">← 回到项目档案</a
+        ><a class="text-link" href="/#contact">与我交流 ↗</a>
+      </div>
+    </main>
+    <footer class="site-footer wrap">
+      <a class="brand" href="/"
+        ><span class="brand-latin">Ethan<span class="brand-stop">.</span></span
+        ><span class="brand-cn">恩宇</span></a
+      >
+      <p>想法，慢慢成为作品。</p>
+      <a href="/projects.html">完整项目档案 <span aria-hidden="true">↗</span></a
+      ><small>© 2026 Ethan 恩宇</small>
+    </footer>
+    <dialog class="image-viewer" aria-labelledby="viewer-title" data-viewer>
+      <div class="viewer-head">
+        <div>
+          <p class="eyebrow">作品预览</p>
+          <h2 id="viewer-title"></h2>
+        </div>
+        <button
+          class="icon-button"
+          type="button"
+          data-viewer-close
+          aria-label="关闭预览"
+          autofocus
+        >
+          ×
+        </button>
+      </div>
+      <div class="viewer-media"><img data-viewer-image alt="" /></div>
+      <div class="viewer-foot">
+        <p data-viewer-caption></p>
+        <div class="actions">
+          <a
+            class="text-link"
+            data-viewer-original
+            href="/"
+            target="_blank"
+            rel="noopener"
+            >打开原图 ↗</a
+          ><a class="button primary" data-viewer-case href="/projects.html"
+            >阅读案例 ↗</a
+          >
+        </div>
+      </div>
+    </dialog>
+  </body>
 </html>

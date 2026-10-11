@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#111214" />
+    <meta
+      name="description"
+      content="把零碎想法整理成自己的表达。Thought-to-X 的工作流、公开示例、关键选择与人工复核边界。"
+    />
+    <meta name="author" content="Ethan 恩宇" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Thought-to-X — Ethan 恩宇" />
+    <meta
+      property="og:description"
+      content="把零碎想法整理成自己的表达。Thought-to-X 的工作流、公开示例、关键选择与人工复核边界。"
+    />
+    <meta
+      property="og:url"
+      content="https://zhouey314-cloud.github.io/cases/thought-to-x.html"
+    />
+    <meta
+      property="og:image"
+      content="https://zhouey314-cloud.github.io/public/social-preview.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@UPing123zzz" />
+    <meta name="twitter:title" content="Thought-to-X — Ethan 恩宇" />
+    <meta
+      name="twitter:description"
+      content="把零碎想法整理成自己的表达。Thought-to-X 的工作流、公开示例、关键选择与人工复核边界。"
+    />
+    <meta
+      name="twitter:image"
+      content="https://zhouey314-cloud.github.io/public/social-preview.png"
+    />
+    <link
+      rel="canonical"
+      href="https://zhouey314-cloud.github.io/cases/thought-to-x.html"
+    />
+    <link rel="icon" href="/public/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <script src="/navigation.js"></script>
+    <link rel="stylesheet" href="/tokens.css" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/case-study.css" />
+    <script src="/script.js" defer></script>
+    <title>Thought-to-X — Ethan 恩宇</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+    <header class="site-header wrap">
+      <a class="brand" href="/" aria-label="Ethan 恩宇，首页"
+        ><span class="brand-latin">Ethan<span class="brand-stop">.</span></span
+        ><span class="brand-cn">恩宇</span></a
+      >
+      <div class="header-controls">
+        <button
+          class="motion-toggle enhanced-only"
+          type="button"
+          data-motion-toggle
+          aria-pressed="false"
+          aria-label="关闭装饰动效"
+        >
+          动效 <span data-motion-label>开</span></button
+        ><button
+          class="menu-toggle enhanced-only"
+          type="button"
+          aria-controls="site-nav"
+          aria-expanded="false"
+        >
+          菜单 <span aria-hidden="true">＋</span>
+        </button>
+      </div>
+      <nav id="site-nav" class="site-nav" aria-label="主要导航">
+        <a href="/#work">作品</a><a href="/#writing">记录</a
+        ><a href="/#about">关于</a
+        ><a href="/#contact">联系 <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+    <main id="main" class="wrap">
+      <header class="case-hero">
+        <a class="text-link" href="/projects.html">← 项目档案</a>
+        <p class="eyebrow">作品 / Thought-to-X</p>
+        <h1>整理表达，<br />不改掉自己。</h1>
+        <p class="case-status">本地写作工作流 / 公开示例</p>
+        <p class="case-boundary">
+          辅助整理表达，需人工确认；不自动发帖。示例不代表经过独立评审的模型效果。
+        </p>
+      </header>
+      <nav class="case-toc" aria-label="案例章节">
+        <a href="#what">这是什么</a><a href="#result">看结果</a
+        ><a href="#build">我做了什么</a><a href="#decision">关键选择</a
+        ><a href="#limits">成果与限制</a><a href="#deep">深入查看</a>
+      </nav>
+      <div class="case-body">
+        <section class="case-section" id="what">
+          <h2><span>01</span>这是什么</h2>
+          <div class="case-prose">
+            <p class="large-copy">想法是自己的，表达却还很乱。</p>
+            <p>
+              Thought-to-X 是一个可复用的写作工作流和 Python
+              CLI：先提取真实意图，再组织结构、调整语气，最后交给作者复核。
+            </p>
+          </div>
+        </section>
+        <section class="case-section" id="result">
+          <h2><span>02</span>看结果</h2>
+          <div class="case-prose">
+            <p>
+              “命运与选择”是项目已有的公开示例。它保留了电影比喻、命运与行动之间的张力，也保留了作者的不确定。
+            </p>
+            <figure class="case-visual">
+              <img
+                src="/public/projects/thought/example.svg"
+                alt="Thought-to-X 公开命运示例对照图"
+                loading="lazy"
+                decoding="async"
+                class=""
+                width="1400"
+                height="900"
+              />
+              <figcaption>
+                <span>公开示例重新排版 · 非实时模型运行</span
+                ><button
+                  class="preview-button enhanced-only"
+                  type="button"
+                  data-preview="/public/projects/thought/example.svg"
+                  data-title="Thought-to-X · 命运与选择"
+                  data-case="/cases/thought-to-x.html"
+                  data-caption="MIT 许可公开示例的原文摘录与原创排版；非实时模型运行。"
+                >
+                  <span aria-hidden="true">⤢</span> 预览大图</button
+                ><a
+                  class="text-link no-js"
+                  href="/public/projects/thought/example.svg"
+                  >查看原图 ↗</a
+                >
+              </figcaption>
+            </figure>
+            <a class="text-link strong-link" href="/#process">看三个分镜 ↗</a>
+          </div>
+        </section>
+        <section class="case-section" id="build">
+          <h2><span>03</span>我做了什么</h2>
+          <div class="case-prose">
+            <p>
+              把想法提取、结构整理、语气保留和人工检查组装成可复用的流程，并整理模块化提示词、CLI、Provider
+              边界、公开示例和离线测试。
+            </p>
+            <details>
+              <summary>展开运行方式</summary>
+              <p>
+                <code>--prompt-only</code> 只组装工作流，不调用 API。可选的
+                OpenAI-compatible Provider 需要另外配置；网站本身不运行模型。
+              </p>
+              <p>工作流的原文件和使用说明都在项目仓库中。</p>
+            </details>
+          </div>
+        </section>
+        <section class="case-section" id="decision">
+          <h2><span>04</span>一项关键选择</h2>
+          <div class="case-prose">
+            <blockquote>先保留“我想说什么”，再优化“怎么说”。</blockquote>
+            <p>
+              流畅不一定忠于原意。公开示例保留“可能”“不知道”，不把个人猜想包装成确定事实。
+            </p>
+          </div>
+        </section>
+        <section class="case-section" id="limits">
+          <h2><span>05</span>成果与限制</h2>
+          <div class="case-prose">
+            <p>
+              仓库提供工作流、CLI
+              和可阅读的完整示例，便于查看每一步如何从原始材料走到文稿。
+            </p>
+            <p class="case-limit">
+              需要作者最终复核，不自动发布到
+              X。公开示例不能证明对所有人的声音保留程度，也不保证传播效果。
+            </p>
+            <p>
+              离线测试检查 Prompt 组装和 CLI
+              行为；尚无独立人工评分的模型质量基准。
+            </p>
+          </div>
+        </section>
+        <section class="case-section" id="deep">
+          <h2><span>06</span>深入查看</h2>
+          <div class="case-prose">
+            <p>从完整示例、使用说明和工作流源码继续了解。</p>
+            <div class="actions">
+              <a
+                class="button primary"
+                href="https://github.com/zhouey314-cloud/thought-to-x"
+                >阅读项目仓库 ↗</a
+              ><a
+                class="text-link"
+                href="https://github.com/zhouey314-cloud/thought-to-x/blob/main/examples/destiny-example.md"
+                >公开完整示例 ↗</a
+              >
+            </div>
+            <p class="license-note">
+              示例文本来自 Thought-to-X contributors，按
+              <a href="/public/licenses/thought-to-x-MIT.txt">MIT 许可</a>
+              使用；本站对原文进行展示排版。
+            </p>
+          </div>
+        </section>
+      </div>
+      <div class="case-end">
+        <a class="text-link" href="/projects.html">← 回到项目档案</a
+        ><a class="text-link" href="/#contact">与我交流 ↗</a>
+      </div>
+    </main>
+    <footer class="site-footer wrap">
+      <a class="brand" href="/"
+        ><span class="brand-latin">Ethan<span class="brand-stop">.</span></span
+        ><span class="brand-cn">恩宇</span></a
+      >
+      <p>想法，慢慢成为作品。</p>
+      <a href="/projects.html">完整项目档案 <span aria-hidden="true">↗</span></a
+      ><small>© 2026 Ethan 恩宇</small>
+    </footer>
+    <dialog class="image-viewer" aria-labelledby="viewer-title" data-viewer>
+      <div class="viewer-head">
+        <div>
+          <p class="eyebrow">作品预览</p>
+          <h2 id="viewer-title"></h2>
+        </div>
+        <button
+          class="icon-button"
+          type="button"
+          data-viewer-close
+          aria-label="关闭预览"
+          autofocus
+        >
+          ×
+        </button>
+      </div>
+      <div class="viewer-media"><img data-viewer-image alt="" /></div>
+      <div class="viewer-foot">
+        <p data-viewer-caption></p>
+        <div class="actions">
+          <a
+            class="text-link"
+            data-viewer-original
+            href="/"
+            target="_blank"
+            rel="noopener"
+            >打开原图 ↗</a
+          ><a class="button primary" data-viewer-case href="/projects.html"
+            >阅读案例 ↗</a
+          >
+        </div>
+      </div>
+    </dialog>
+  </body>
+</html>
