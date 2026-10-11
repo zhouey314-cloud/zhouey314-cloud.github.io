@@ -181,3 +181,58 @@
     gap: 4px 20px;
   }
 }
+
+/* In-progress work is explicitly separate from numbered public archive. */
+.active-builds {
+  padding: 78px 0;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 110px;
+}
+.active-builds h2 {
+  margin: 14px 0 15px;
+  font-size: clamp(28px, 3vw, 38px);
+  letter-spacing: -0.025em;
+  font-weight: 550;
+}
+.active-builds-intro {
+  max-width: 850px;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+.active-builds-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.active-build {
+  min-width: 0;
+  padding: 25px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+}
+.active-build .archive-status {
+  display: inline-block;
+  white-space: normal;
+  margin-bottom: 24px;
+}
+.active-build h3 {
+  font-size: 22px;
+  line-height: 1.36;
+  font-weight: 550;
+  overflow-wrap: anywhere;
+}
+.active-build p {
+  color: var(--muted);
+  margin-top: 18px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+@media (max-width: 860px) {
+  .active-builds-grid {
+    grid-template-columns: 1fr;
+  }
+  .active-builds {
+    padding-block: 54px;
+  }
+}
