@@ -103,6 +103,9 @@ try {
             axeIncompleteRules: axe.incomplete.map(x => x.id) };
           report.pages.push(entry);
           if (path === '/cases/video.html') {
+            // Exercise the player where a viewer actually uses it. WebKit may
+            // suspend offscreen muted video to conserve rendering resources.
+            await page.locator('video.approved-sample').scrollIntoViewIfNeeded();
             entry.videoPlayback = await bounded(page.locator('video.approved-sample').evaluate(async video => {
               const event = type => new Promise((resolve, reject) => {
                 const timer = setTimeout(() => reject(new Error(`video ${type} timeout`)), 10_000);
@@ -119,7 +122,7 @@ try {
                 const cleanup = () => { clearTimeout(timer); video.removeEventListener('timeupdate', check); video.removeEventListener('error', error); };
                 const check = () => { if (video.currentTime > beforePlay + .05) { cleanup(); resolve(); } };
                 const error = () => { cleanup(); reject(new Error('native media playback error')); };
-                const timer = setTimeout(() => { cleanup(); reject(new Error('native media clock did not advance within 10s')); }, 10_000);
+                const timer = setTimeout(() => { cleanup(); reject(new Error('native media clock did not advance within 10s: ' + JSON.stringify({ paused: video.paused, ended: video.ended, readyState: video.readyState, networkState: video.networkState, mediaError: video.error?.code || null, visibility: document.visibilityState, viewport: { top: video.getBoundingClientRect().top, bottom: video.getBoundingClientRect().bottom, height: innerHeight } }))); }, 10_000);
                 video.addEventListener('timeupdate', check); video.addEventListener('error', error); check();
               });
               const firstProgressSeconds = video.currentTime;
