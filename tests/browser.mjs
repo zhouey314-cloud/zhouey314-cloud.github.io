@@ -110,13 +110,25 @@ try {
               });
               if (video.readyState < 1) { const metadata = event('loadedmetadata'); video.load(); await metadata; }
               video.muted = true; // Mechanical browser playback; user audio review is separate.
+              const beforePlay = video.currentTime;
+              const start = performance.now();
               await video.play();
-              await new Promise(resolve => setTimeout(resolve, 300));
-              const advanced = video.currentTime > 0;
+              // Linux WebKit can start decoding later than 300ms. Require real
+              // media-clock progress, bounded by a failure timeout, not a sleep.
+              await new Promise((resolve, reject) => {
+                const cleanup = () => { clearTimeout(timer); video.removeEventListener('timeupdate', check); video.removeEventListener('error', error); };
+                const check = () => { if (video.currentTime > beforePlay + .05) { cleanup(); resolve(); } };
+                const error = () => { cleanup(); reject(new Error('native media playback error')); };
+                const timer = setTimeout(() => { cleanup(); reject(new Error('native media clock did not advance within 10s')); }, 10_000);
+                video.addEventListener('timeupdate', check); video.addEventListener('error', error); check();
+              });
+              const firstProgressSeconds = video.currentTime;
+              const playbackWaitMs = performance.now() - start;
+              const advanced = firstProgressSeconds > beforePlay + .05;
               video.pause();
               const seek = event('seeked'); video.currentTime = 51; await seek;
               return { duration: video.duration, width: video.videoWidth, height: video.videoHeight,
-                advanced, seekSeconds: video.currentTime, readyState: video.readyState,
+                advanced, firstProgressSeconds, playbackWaitMs, seekSeconds: video.currentTime, readyState: video.readyState,
                 captions: video.querySelectorAll('track[kind="captions"]').length };
             }), 'native video playback');
             const media = entry.videoPlayback;
