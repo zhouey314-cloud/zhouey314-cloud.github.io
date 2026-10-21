@@ -1,6 +1,6 @@
 # Ethan 恩宇 · Portfolio V3
 
-静态个人作品集。首页介绍编导与 AI 项目实践，项目档案保留 16 个公开项目及既有 GEO 参与材料；10 个案例使用统一的六章结构。GitHub Pages 仍从 `main` 根目录发布，本轮开发保持在独立待审核分支。
+静态个人作品集。首页介绍编导与 AI 项目实践，项目档案保留 16 个公开项目及既有 GEO 参与材料；10 个案例使用统一的六章结构。GitHub Pages 从 `main` 根目录发布，维护改动通过独立 PR 审核。
 
 ## 本地预览
 
@@ -41,9 +41,16 @@ node --check script.js
 
 V3 首次交付停在本地分支，未发布。2026-10-11，用户随后明确授权将已验收版本发布到原域名 `https://zhouey314-cloud.github.io/`。沿用现有 `main` 根目录 GitHub Pages 发布方式，不新增 CNAME 或改变域名设置；具体构建结果以对应提交的 GitHub Actions / Pages 记录为准。
 
-## 2026-10-11 最近项目补充（待审核分支）
+## 2026-10-11 最近项目补充（历史记录）
 
 - 新增 RelayAudit / AgentGuard、Voice Clone Video 两项可查公开仓库，公开作品总数从 14 调整到 16；新增两个案例页与原创结构示意图，不冒充截图。
 - 正在进行的黑客松实践、Ethan Creator Studio / EthanCut 和本地录音转写工具独立列于“开发中”，不计入 16 项，不发布未经核实的技术成果、商业数据或内部材料。
 - 公开仓库来源：[`relay-audit`](https://github.com/zhouey314-cloud/relay-audit)、[`voice-clone-video`](https://github.com/zhouey314-cloud/voice-clone-video)。当前 README 所载测试是原项目记录，不是本次作品集亲自复测的模型质量。
-- 本补丁用于本地预览和 PR 审核。86 项桌面 Chromium / WebKit 浏览器回归及全部静态检查通过；浏览器测试包含手机尺寸模拟，不代表实体手机验收。本轮不合并、不发布。
+- 当时本地预览记录了 86 项桌面 Chromium / WebKit 浏览器回归及静态检查；手机尺寸模拟不代表实体手机验收。后续已通过 [PR #2](https://github.com/zhouey314-cloud/zhouey314-cloud.github.io/pull/2) 合并，这些历史结果不作为今天的浏览器复测证据。
+
+
+## 2026-10-21 工程证据更新
+
+保留现有视觉、导航和 16 项公开档案，更新已核实项目的修复与 CI 永久链接。RAG 的检索和可答性案例分开计数；视频只声称合成渲染与机械 QA；Thought-to-X 只验证离线交付和 Prompt 字节一致。私有个人项目仍保留在开发中，不宣称公开上线、自然语音或真人验收。
+
+本轮具体测试与限制见对应案例的“深入查看”。静态检查与脚本语法检查可在本地重复运行；实际浏览器、键盘与手机尺寸验收另行记录，不由静态检查代替。
