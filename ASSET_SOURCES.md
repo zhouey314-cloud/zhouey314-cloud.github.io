@@ -23,3 +23,18 @@
 - `public/projects/recent/relay-flow.svg`：本次独立制作的流程结构示意，依据 [RelayAudit README](https://github.com/zhouey314-cloud/relay-audit)，不包含产品真实运行截图。
 - `public/projects/recent/voice-flow.svg`：本次独立制作的流程结构示意，依据 [Voice Clone Video README](https://github.com/zhouey314-cloud/voice-clone-video)，不包含克隆声音、真人肖像或真实客户素材。
 - 两张图不代表性能、识别率或真实用户验收。
+
+
+## 2026-10-21 第二轮原创动画
+
+- `public/projects/video/original-54s.mp4`：来自个人 `ai-video-workflow-engine` 的
+  `examples/original_54s/sample.mp4`，9个程序动画镜头、原创数学合成BGM、无真人声音或外部素材。
+  代码和新原创媒体沿用该仓MIT，字体未打包，许可说明在上游样片目录。
+- 原视频SHA256：`0a7f73e9a5a014a352aa5f27a2852b39e558546ccc38f93016785cf2fba0e1a9`。
+  用户于2026-10-21观看并批准此精确文件用于作品集；不是客户或真人口播验收。
+- `original-54s-poster.jpg`：同一成片第3镜头的实际抽帧，不是AI虚构截图。
+- `original-54s.vtt`：从同一成片SRT转换时间戳格式的可选字幕；原MP4已烧录中文字幕。
+- 可复现生成器、源资产清单、机器QA与独立批准记录：
+  [原动画源码与许可](https://github.com/zhouey314-cloud/ai-video-workflow-engine/tree/main/examples/original_54s)。
+
+未新增或改写既有GEO参与材料；不把参与工作归为个人独立完成的系统。

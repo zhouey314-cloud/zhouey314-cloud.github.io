@@ -116,8 +116,8 @@ for (const name of baselineProjects)
     `archive: missing original project ${name}`,
   );
 assert(
-  (hub.match(/data-flagship/g) || []).length === 6,
-  "archive: preserve six flagship entries",
+  (hub.match(/data-flagship/g) || []).length === 3,
+  "archive: three primary evidence projects",
 );
 assert(
   (hub.match(/data-category=/g) || []).length === 16,
@@ -196,5 +196,5 @@ if (failures.length) {
   process.exitCode = 1;
 } else
   console.log(
-    `SITE_CHECK_PASS pages=${pages.length} cases=${caseIds.length} archived_projects=16 flagships=6 legacy_fragments=94 contacts=6`,
+    `SITE_CHECK_PASS pages=${pages.length} cases=${caseIds.length} archived_projects=16 primary_flagships=3 legacy_fragments=94 contacts=6`,
   );
