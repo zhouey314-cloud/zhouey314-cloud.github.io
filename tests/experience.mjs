@@ -50,6 +50,10 @@ const geometry = page => page.evaluate(() => {
     widthRatio: storySteps.getBoundingClientRect().width / story.getBoundingClientRect().width,
     imageWidths: [...story.querySelectorAll('[data-story-panel] img')].map(el => el.getBoundingClientRect().width),
     stepLabels: [...story.querySelectorAll('.step-number')].map(el => ({ fontSize: getComputedStyle(el).fontSize, fontStyle: getComputedStyle(el).fontStyle })),
+    verticallyStacked: [...story.querySelectorAll('[data-story-step]')].every(step => {
+      const copy = step.querySelector('.step-copy'), figure = step.querySelector('[data-story-panel]');
+      return copy && figure && figure.getBoundingClientRect().top >= copy.getBoundingClientRect().bottom - 1;
+    }),
   } : null;
   return { width: innerWidth, height: innerHeight, pageHeight: document.documentElement.scrollHeight, overflow: document.documentElement.scrollWidth > innerWidth + 1,
     workTop: top('#work'), firstProjectTop: top('#flagship-evidence > li'), contactTop: top('#contact'),
@@ -117,6 +121,10 @@ try {
             check(first.storyGeometry.imageWidths.every(width => width >= 250), `${name}: desktop fallback images remain readable`);
             check(first.storyGeometry.stepLabels.every(style => parseFloat(style.fontSize) >= 10 && parseFloat(style.fontSize) <= 14 && style.fontStyle === 'normal'), `${name}: compact upright story step labels`);
             await page.locator('#story').screenshot({ path: resolve(output, `${name}-desktop-story-reduced.png`) });
+          }
+          if (label === 'mobile' || label === 'narrow') {
+            check(first.storyGeometry.verticallyStacked && first.storyGeometry.imageWidths.every(width => width >= first.storyGeometry.sectionWidth * .9), `${name}/${label}: story text and readable full-width images stack vertically`);
+            if (label === 'mobile') await page.locator('#story').screenshot({ path: resolve(output, `${name}-mobile-story.png`) });
           }
           // Native dialog: separate original/case targets, keyboard containment and Esc return.
           const preview = page.locator('[data-preview]').first();

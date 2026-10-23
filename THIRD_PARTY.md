@@ -64,4 +64,3 @@ Keep native HTML/CSS/JS, CSS Grid/Flex/sticky, native scrolling, dialog, video a
 - Respect system reduced motion and manual switch across old and new effects; interrupted motion should be recoverable. No autoplay loops without an accessible stop mechanism.
 - Test 390x844, 768x1024, 1440x900 plus 320px and 200% zoom; fast scroll, deep hash/back, dialog Escape/focus, no JS, no GSAP fetch, reduced motion, toggle/reinitialize, resize back/forth, touch and keyboard.
 - Report lab metrics as lab observations; no real-user INP/CrUX claim from a local browser check. Preserve project factual limits and do not imply backend model/production capabilities from frontend motion.
-
