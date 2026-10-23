@@ -4,9 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node tests/check-site.mjs",
+    "test": "node scripts/build-home.mjs --check && node tests/check-site.mjs",
     "test:browser": "node tests/browser.mjs",
-    "install:browsers": "playwright install chromium webkit"
+    "install:browsers": "playwright install chromium webkit",
+    "build": "node scripts/build-home.mjs",
+    "test:experience": "node tests/experience.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",

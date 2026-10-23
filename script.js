@@ -184,11 +184,13 @@
     closing = false,
     previousOverflow = "";
   document.querySelectorAll("[data-preview]").forEach((button) =>
-    button.addEventListener("click", () => {
+    button.addEventListener("click", (event) => {
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       if (!viewer?.showModal) {
         location.href = button.dataset.preview;
         return;
       }
+      event.preventDefault();
       opener = button;
       closing = false;
       const image = viewer.querySelector("[data-viewer-image]");
@@ -381,8 +383,10 @@
       );
       sections.forEach((section) => navObserver.observe(section));
     };
-    observeNavigation();
-    window.addEventListener("resize", observeNavigation, { passive: true });
+    if (!document.body.classList.contains("portfolio-home")) {
+      observeNavigation();
+      window.addEventListener("resize", observeNavigation, { passive: true });
+    }
     const reveal = new IntersectionObserver(
       (entries) =>
         entries.forEach((entry) => {
@@ -394,7 +398,7 @@
               { opacity: 0.8, transform: "translateY(12px)" },
               { opacity: 1, transform: "translateY(0)" },
             ],
-            520,
+            360,
           );
           reveal.unobserve(entry.target);
         }),
@@ -420,6 +424,7 @@
     ".brand",
     ".intro-label",
     ".hero h1",
+    ".field-intro",
     ".hero-intro",
     ".hero-actions",
     ".desk-stage",

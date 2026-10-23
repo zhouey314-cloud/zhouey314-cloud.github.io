@@ -71,7 +71,7 @@
     <main id="main" class="wrap">
       <header class="case-hero">
         <a class="text-link" href="/projects.html">← 项目档案</a>
-        <p class="eyebrow">新公开作品 / RelayAudit / AgentGuard</p>
+        <p class="eyebrow">作品 / RelayAudit / AgentGuard</p>
         <h1>让 Agent 中转链路里的异常，有迹可循。</h1>
         <p class="case-status">开源 0.2.0 / 本地模拟链路与协议检查</p>
         <p class="case-boundary">
@@ -99,36 +99,15 @@
           <div class="case-prose">
             <p class="large-copy">已经有可复现的合成链路演示。</p>
             <p>
-              公开 README 提供模拟 Agent
-              与模拟中转的调用：正常请求、标签改变、触发告警，以及后续请求继续完成。这个演示证明告警路径，不证明真实中转商更换了模型。
+              2026-10-23 按公开命令实际运行了本机模拟 Agent 与模拟中转：3 次请求、3 次上游转发、0 次额外模型请求，标签变化后产生一条告警，后续请求继续完成。下面是这次生成的原始报告排版截图。它证明本次合成告警路径，不证明真实中转商更换了模型。
             </p>
             <figure class="case-visual">
-              <img
-                src="/public/projects/recent/relay-flow.svg"
-                alt="Agent 经本地网关到用户指定 API，另一路向本地告警报告；仅结构示意。"
-                width="800"
-                height="640"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>
-                <span>原创结构示意 · 非实机截图</span
-                ><button
-                  class="preview-button enhanced-only"
-                  type="button"
-                  data-preview="/public/projects/recent/relay-flow.svg"
-                  data-title="RelayAudit / AgentGuard · 流程示意"
-                  data-case="/cases/relay-audit.html"
-                  data-caption="原创结构示意；不是实机截图、实时模型运行或效果验收。"
-                >
-                  <span aria-hidden="true">⤢</span> 放大示意</button
-                ><a
-                  class="text-link no-js"
-                  href="/public/projects/recent/relay-flow.svg"
-                  >查看原图 ↗</a
-                >
-              </figcaption>
+              <a href="/public/projects/relay/fixture-report.webp" data-preview="/public/projects/relay/fixture-report.webp" data-title="RelayAudit · 实际合成报告" data-case="/cases/relay-audit.html" data-caption="2026-10-23 本机 synthetic_unverified 演示生成的 report.md 排版截图；真实模型身份未验证，不是产品仪表盘。" aria-label="放大：RelayAudit 实际合成报告">
+                <img src="/public/projects/relay/fixture-report.webp" alt="实际合成报告：mock-model 标签变成 mock-other，声明模型不一致，真实身份仍未验证" width="1200" height="1394" loading="lazy" decoding="async" />
+              </a>
+              <figcaption><span>实际命令输出的排版截图 · synthetic_unverified</span><a class="text-link" href="/public/projects/relay/fixture-report.webp" target="_blank" rel="noopener">打开原图 ↗</a></figcaption>
             </figure>
+            <div class="actions"><a class="text-link" href="/public/projects/relay/synthetic-report-20261023.md">阅读原始报告 ↗</a><a class="text-link" href="/public/projects/relay/capture-20261023.json">运行与来源记录 ↗</a></div>
           </div>
         </section>
         <section class="case-section" id="build">
@@ -166,7 +145,7 @@
               <a class="text-link" href="https://github.com/zhouey314-cloud/relay-audit/pull/1">查看修复与 CI 记录 ↗</a>
             </p>
             <p>
-              本轮125项测试保留上述修复，并覆盖取消、超时、背压、非法 Content-Length 与并发。观察队列丢失时仍保留已知的真实传输终止原因，不把超时或取消改写成“不可观察”。
+              2026-10-21 记录的125项测试保留上述修复，并覆盖取消、超时、背压、非法 Content-Length 与并发。观察队列丢失时仍保留已知的真实传输终止原因，不把超时或取消改写成“不可观察”。
             </p>
             <p>
               同批合成 JSON/SSE 请求比较直连、关闭观察与完整 passive。C1每模式100次、C8每模式200次：实体哈希一致，额外请求、HTTP/实体错误与队列丢失均为0。开销没有被隐藏：本机 C8 SSE 的 p95 从直连9.126ms变为完整观察21.178ms；这是固定顺序的 loopback 小样本，不是生产容量或低开销保证。
@@ -177,6 +156,7 @@ python evals/run_acceptance.py --out acceptance-c8 --requests 200 --concurrency 
               <a class="text-link" href="https://github.com/zhouey314-cloud/relay-audit/pull/2">流式修复、原始指标与 CI ↗</a> ·
               <a class="text-link" href="https://github.com/zhouey314-cloud/relay-audit/blob/main/examples/guard-synthetic/README.md">五分钟合成演示与下载步骤 ↗</a>
             </p>
+            <p>上述负载指标属于 2026-10-21 的历史记录，本次网站改造没有重跑完整压力比较。2026-10-23 只复跑了三请求的合成告警演示，不能据此新增性能或模型识别准确率声明。</p>
             <p class="large-copy">代码、证据与限制都公开可查。</p>
             <p>
               从 README、验证记录和隐私说明了解当前公开状态。请只在有权使用的

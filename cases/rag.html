@@ -6,14 +6,14 @@
     <meta name="theme-color" content="#f3f3ec" />
     <meta
       name="description"
-      content="Enterprise RAG Starter 项目案例：合成资料；线上为词面演示，本地支持文件版本与可信身份。62条候选用户已审阅，2条语义改写仍失败；没有真实企业回答准确率。"
+      content="Enterprise RAG Starter 项目案例：公开演示使用合成资料做词法检索与原文摘录；本地文件、身份和可选语义模式另行运行。生成模型未配置，尚无真实企业回答准确率。"
     />
     <meta name="author" content="Ethan 恩宇" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Enterprise RAG Starter — Ethan 恩宇" />
     <meta
       property="og:description"
-      content="Enterprise RAG Starter 项目案例：合成资料；线上为词面演示，本地支持文件版本与可信身份。62条候选用户已审阅，2条语义改写仍失败；没有真实企业回答准确率。"
+      content="Enterprise RAG Starter 项目案例：公开演示使用合成资料做词法检索与原文摘录；本地文件、身份和可选语义模式另行运行。生成模型未配置，尚无真实企业回答准确率。"
     />
     <meta
       property="og:url"
@@ -30,7 +30,7 @@
     <meta name="twitter:title" content="Enterprise RAG Starter — Ethan 恩宇" />
     <meta
       name="twitter:description"
-      content="Enterprise RAG Starter 项目案例：合成资料；线上为词面演示，本地支持文件版本与可信身份。62条候选用户已审阅，2条语义改写仍失败；没有真实企业回答准确率。"
+      content="Enterprise RAG Starter 项目案例：公开演示使用合成资料做词法检索与原文摘录；本地文件、身份和可选语义模式另行运行。生成模型未配置，尚无真实企业回答准确率。"
     />
     <meta
       name="twitter:image"
@@ -87,7 +87,7 @@
         <h1>回答要有来源，<br />也要知道何时停下。</h1>
         <p class="case-status">线上词面演示 / 本地文件与身份服务</p>
         <p class="case-boundary">
-          合成资料；线上为词面演示，本地支持文件版本与可信身份。62条候选用户已审阅，2条语义改写仍失败；没有真实企业回答准确率。
+          公开演示使用合成资料做词法检索与原文摘录；本地文件、身份和可选语义模式另行运行。生成模型未配置，尚无真实企业回答准确率。
         </p>
       </header>
       <nav class="case-toc" aria-label="案例章节">
@@ -106,7 +106,7 @@
             </p>
             <p>
               以合成文档和明确的权限规则构建 RAG 工程样例，区分线上词面 Demo
-              与本轮本地文件服务。旧的可选 embedding 模式需另行配置，不是本轮评测路径。
+              与独立的本地文件服务。可选 embedding 模式需另行配置，未包含在这组线上截图中。
             </p>
           </div>
         </section>
@@ -115,34 +115,30 @@
           ><span class="legacy-anchor" id="s10"></span>
           <h2><span>02</span>看结果</h2>
           <div class="case-prose">
-            <p>权限过滤、来源引用与无答案路径都有独立的检查方式。</p>
+            <p>以下为同一公开演示的三个实际浏览器状态。核心问题是：检索到相关文字，是否真的足够回答？</p>
+            <h3>01 / 先把资料范围摆清楚</h3>
+            <p>合成资料的片段带有来源名称、版本和访问范围。这里的 Public / Team 下拉框仅用于演示过滤，不是生产登录。</p>
             <figure class="case-visual">
-              <img
-                src="/public/projects/rag/demo-query.png"
-                alt="Enterprise RAG Starter 公开项目证据"
-                loading="lazy"
-                decoding="async"
-                class=""
-                width="985"
-                height="887"
-              />
-              <figcaption>
-                <span>沿用项目公开材料；展示样例范围。</span
-                ><button
-                  class="preview-button enhanced-only"
-                  type="button"
-                  data-preview="/public/projects/rag/demo-query.png"
-                  data-title="Enterprise RAG Starter"
-                  data-case="/cases/rag.html"
-                  data-caption="合成资料；线上为词面演示，本地支持文件版本与可信身份。62条候选用户已审阅，2条语义改写仍失败；没有真实企业回答准确率。"
-                >
-                  <span aria-hidden="true">⤢</span> 预览大图</button
-                ><a
-                  class="text-link no-js"
-                  href="/public/projects/rag/demo-query.png"
-                  >查看原图 ↗</a
-                >
-              </figcaption>
+              <a href="/public/projects/rag/story-material.webp" data-preview="/public/projects/rag/story-material.webp" data-title="Enterprise RAG · 先把资料范围摆清楚" data-case="/cases/rag.html" data-caption="2026-10-23 线上实测截图 · 合成资料 / 词法检索 / 原文摘录。合成资料的片段带有来源名称、版本和访问范围。这里的 Public / Team 下拉框仅用于演示过滤，不是生产登录。" aria-label="放大：先把资料范围摆清楚">
+                <img src="/public/projects/rag/story-material.webp" alt="真实浏览器截图：合成支持时间资料、公开范围与 v1 来源片段" loading="lazy" decoding="async" width="1200" height="1093" />
+              </a>
+              <figcaption><span>真实公开演示截图 · 点击图片放大</span><a class="text-link" href="/public/projects/rag/story-material.webp" target="_blank" rel="noopener">打开原图 ↗</a></figcaption>
+            </figure>
+            <h3>02 / 让回答回到原始资料</h3>
+            <p>询问退款政策，页面摘录 14 天窗口，并同时显示 returns:0、v1 和来源名称；没有调用生成模型。</p>
+            <figure class="case-visual">
+              <a href="/public/projects/rag/story-citation.webp" data-preview="/public/projects/rag/story-citation.webp" data-title="Enterprise RAG · 让回答回到原始资料" data-case="/cases/rag.html" data-caption="2026-10-23 线上实测截图 · 合成资料 / 词法检索 / 原文摘录。询问退款政策，页面摘录 14 天窗口，并同时显示 returns:0、v1 和来源名称；没有调用生成模型。" aria-label="放大：让回答回到原始资料">
+                <img src="/public/projects/rag/story-citation.webp" alt="真实浏览器截图：退款问题、14 天原文摘录与 returns:0 来源引用" loading="lazy" decoding="async" width="1200" height="1093" />
+              </a>
+              <figcaption><span>真实公开演示截图 · 点击图片放大</span><a class="text-link" href="/public/projects/rag/story-citation.webp" target="_blank" rel="noopener">打开原图 ↗</a></figcaption>
+            </figure>
+            <h3>03 / 相关，不等于足够回答</h3>
+            <p>询问客服电话会命中支持时间片段，但原文没有电话号码。页面明确返回证据不足，保留命中片段供复核。</p>
+            <figure class="case-visual">
+              <a href="/public/projects/rag/story-refusal.webp" data-preview="/public/projects/rag/story-refusal.webp" data-title="Enterprise RAG · 相关，不等于足够回答" data-case="/cases/rag.html" data-caption="2026-10-23 线上实测截图 · 合成资料 / 词法检索 / 原文摘录。询问客服电话会命中支持时间片段，但原文没有电话号码。页面明确返回证据不足，保留命中片段供复核。" aria-label="放大：相关，不等于足够回答">
+                <img src="/public/projects/rag/story-refusal.webp" alt="真实浏览器截图：客服电话问题命中支持时间资料，但证据不足而拒答" loading="lazy" decoding="async" width="1200" height="1093" />
+              </a>
+              <figcaption><span>真实公开演示截图 · 点击图片放大</span><a class="text-link" href="/public/projects/rag/story-refusal.webp" target="_blank" rel="noopener">打开原图 ↗</a></figcaption>
             </figure>
             <a
               class="text-link strong-link"
@@ -187,11 +183,11 @@
           <div class="case-prose">
             <p>权限过滤、来源引用与无答案路径都有独立的检查方式。</p>
             <p class="case-limit">
-              合成资料；线上为词面演示，本地支持文件版本与可信身份。62条候选用户已审阅，2条语义改写仍失败；没有真实企业回答准确率。
+              公开演示使用合成资料做词法检索与原文摘录；本地文件、身份和可选语义模式另行运行。生成模型未配置，尚无真实企业回答准确率。
             </p>
             <p>
               没有真实企业文档或专家确认的 Golden Set；在线 Demo 只运行词面检索。
-              本轮本地服务支持 MD/PDF/DOCX 摄取与本机令牌身份，未接入企业 SSO 或托管生产认证。
+              独立的本地服务支持 MD/PDF/DOCX 摄取与本机令牌身份，未接入企业 SSO 或托管生产认证。
             </p>
           </div>
         </section>
@@ -202,7 +198,7 @@
           <h2><span>06</span>深入查看</h2>
           <div class="case-prose">
             <p>
-              本轮本地版加入 MD/PDF/DOCX 入库、文件哈希和版本、生效/过期日期与更新删除。可信身份由本机管理员签发，服务端保存租户与角色；客户端不能靠选择 scope 或传入 role 冒充身份。
+              2026-10-21 本地版加入 MD/PDF/DOCX 入库、文件哈希和版本、生效/过期日期与更新删除。可信身份由本机管理员签发，服务端保存租户与角色；客户端不能靠选择 scope 或传入 role 冒充身份。
             </p>
             <p>
               结构：可信身份 → 可访问的当前文档 → SQLite FTS5 与词项排名融合 → 正文可答性检查 → 带版本/页段/哈希的原文摘录。PDF 使用实际页码；DOCX 只标段落，不编造 Word 分页。
@@ -212,7 +208,7 @@
               <a class="text-link" href="https://github.com/zhouey314-cloud/enterprise-rag-starter/pull/1">查看修复与 CI 记录 ↗</a>
             </p>
             <p>
-              新本地路径共48项 Python 测试，原10项 Node 与4/9用例保留。62个合成候选、56种问法：全部候选满足预期60/62，Recall@1/@3为38/40，原文摘录一致38/40，引用源完整性38/38，拒答 precision 22/24、recall 22/22。用户已确认审阅62条；2个语义改写漏检继续计入结果，没有把候选集当作真实企业准确率。
+              2026-10-21 本地路径记录共48项 Python 测试，原10项 Node 与4/9用例保留。62个合成候选、56种问法：全部候选满足预期60/62，Recall@1/@3为38/40，原文摘录一致38/40，引用源完整性38/38，拒答 precision 22/24、recall 22/22。用户已确认审阅62条；2个语义改写漏检继续计入结果，没有把候选集当作真实企业准确率。
             </p>
             <p>
               <a class="text-link" href="https://github.com/zhouey314-cloud/enterprise-rag-starter/pull/4">本地入库、评测与 CI ↗</a> ·
@@ -222,8 +218,7 @@
 python evals/local.py --output .rag-data/eval/local-latest.json</code></pre>
             <p class="case-limit">仍是本机、有限规模的词面摘录参考实现，未调用生成式模型或嵌入；语义理解、自然企业样本、SSO 与托管生产验收尚未通过。线上 Demo 保留原静态词面界面，与可信身份的本地服务分开。</p>
             <p>
-              单元测试与合成检索夹具检查权限、引用和拒答；生成式 LLM
-              回答质量未配置。
+              上述历史数字来自对应项目的公开记录，不是本次网站改造重跑的评测。2026-10-23 实际复核了上方三个线上查询状态；LLMProvider 仍为 NOT_CONFIGURED，生成式回答质量未运行。
             </p>
             <details>
               <summary>检查范围与下一步</summary>

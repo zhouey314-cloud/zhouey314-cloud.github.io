@@ -55,3 +55,59 @@
 - PDF 的中文字体为 **Droid Sans Fallback Regular**，由本地已安装的正式 Python 包 **PyMuPDF 1.26.6** 提供，通过 `fitz.Font("cjk").buffer` 读取其底层 MuPDF 内置的 TTF。本次使用的字体为 3,556,308 字节，Git blob SHA-1 为 `cc7d41d3483cafbbbda246ee4a2bb93f88a51835`，与 [MuPDF 1.26.6 官方字体文件](https://github.com/ArtifexSoftware/mupdf/blob/1.26.6/resources/fonts/droid/DroidSansFallback.ttf) 完全一致。
 - 字体版权归 **Copyright (c) 2005-2008, The Android Open Source Project**，许可为 **Apache License, Version 2.0**。依据同版本 [官方 `resources/fonts/droid/NOTICE`](https://github.com/ArtifexSoftware/mupdf/blob/1.26.6/resources/fonts/droid/NOTICE) 核对，并将该文件的版权声明和完整许可条款保留在 [`public/licenses/DroidSansFallback-NOTICE.txt`](public/licenses/DroidSansFallback-NOTICE.txt)。这项说明针对 PDF 内嵌字体，不为本站其他资产指定许可证。
 - ReportLab 将使用到的字形转换为 PDF 字体子集并嵌入文件，字体子集名称带有 ReportLab 生成的前缀；没有另行绘制或替换字形。网站不单独分发完整 TTF。拉丁文标题使用 PDF 标准字体 Helvetica-Bold。
+
+
+## 2026-10-23 真实项目证据更新
+
+本轮仅改网站展示，未改 RAG、RelayAudit 或视频引擎的 AI 行为。README 通过 GitHub connector 核对；现场演示与历史测试结果分别标注。
+
+### RAG 的三步截图
+
+- 原站：[Enterprise RAG browser demo](https://zhouey314-cloud.github.io/enterprise-rag-starter/)。对应源仓 main 为 [`45e2daa8fa7cbd4092c08219a68b16ca02148d50`](https://github.com/zhouey314-cloud/enterprise-rag-starter/tree/45e2daa8fa7cbd4092c08219a68b16ca02148d50)；截图时观察到的页面为词法检索与原文摘录，LLMProvider 仍 `NOT_CONFIGURED`。不是生成模型回答、企业真实数据或生产认证。
+- Playwright 1.64.1 的 Chromium，viewport 1200×980、deviceScaleFactor 1、fullPage 截图；最终每张 1200×1093。未修改演示页面 DOM、CSS、查询结果或可见文案。以 Pillow WebP quality 90 压缩，完整内容保留；原始 PNG 留在忽略的 `test-results/project-evidence-originals/`。
+- `story-material.webp`：默认问题 `What are the support hours?`，public、Top-K=3，显示真实支持时间摘录、`support:0`、v1 与访问范围。
+- `story-citation.webp`：点击 Refund policy，实际问题 `What is the refund policy?`，显示 14 calendar days 摘录与 `returns:0` 引用。
+- `story-refusal.webp`：输入 `What is the support phone number?` 并点击 Retrieve and answer，实际返回 `NO_ANSWER / QUESTION_NOT_ANSWERABLE_BY_TOP_HIT`，仍显示相关支持时间片段。
+- 可复现操作：打开上述 URL → 保持 Public / Top-K=3 → 依次执行上述三个问题 → 截取整页。来源和各图 SHA256 另存 `public/projects/rag/capture-20261023.json`。页面的范围选择只演示过滤，不是登录或身份鉴权。
+- 用于首页项目预览、三步故事和 RAG 案例。源项目 MIT / Copyright (c) 2026 Ethan Zhou；许可全文 `public/licenses/ethan-project-evidence-MIT.txt`。
+
+### RelayAudit 的实际合成报告
+
+- 源仓 [`relay-audit@4d6c15874ecaa9d404a17ebe4112b48bb2599902`](https://github.com/zhouey314-cloud/relay-audit/tree/4d6c15874ecaa9d404a17ebe4112b48bb2599902)，2026-10-23 独立复制到临时目录。使用已有 Python 与 aiohttp 3.13.5 运行 `python3 -m relay_audit guard demo --out <new-temporary-directory>`。所有请求仅在 loopback 与假凭证下运行，不更改 Codex 配置，不调用收费模型。
+- 实际输出：Agent 3 请求、上游 3 请求、额外模型 0 请求、一条标签不一致告警；告警后请求继续完成。`identity_status=unverified`、`evidence_status=synthetic_unverified`、`real_api_verified=false`。本次未运行完整负载比较或真实身份评测。
+- `public/projects/relay/synthetic-report-20261023.md` 原样保留实际 `report.md`；`fixture-report.webp` 是该原始报告加来源说明的浏览器排版截图，1200×1394，WebP quality 90。它不是产品仪表盘，不伪造 UI 或测量数字。原始 Markdown 的内容未改写，临时运行状态、凭证和 association key 没有纳入网站。
+- `public/projects/relay/capture-20261023.json` 保留来源提交、命令、选取的实际 summary 字段与哈希；用于首页卡片和案例。MIT / Copyright (c) 2026 Ethan Zhou，许可全文同上。
+
+### 媒体与缺少素材
+
+- 2026-10-23 重新计算 `public/projects/video/original-54s.mp4` SHA256，与已有批准的 `0a7f73e9a5a014a352aa5f27a2852b39e558546ccc38f93016785cf2fba0e1a9` 完全相同。未重渲染、生成音色或调用模型。案例保持程序动画与原批准范围。
+- 当前仓库与上述公开项目材料未找到可确认为本人且获准复用的真人照片，也没有足以核实题目、日期、原文的本人已发布文章。使用文字版 About 与已公开的 X 主页入口；未把草稿当发布记录，没有生成冒充本人的头像。
+
+| 本轮资产 | Bytes | SHA256 |
+| --- | ---: | --- |
+| `public/projects/rag/story-material.webp` | 84,518 | `a07e9cddac5ea664b72a3637e857e2e3c997aa0ff0a36cddbc4dc746ad03e23a` |
+| `public/projects/rag/story-citation.webp` | 86,612 | `eaced6830b66ae370453a6fe750668fa157f82c1958d1b889052372a332bf09b` |
+| `public/projects/rag/story-refusal.webp` | 84,952 | `7d299d2310cca423e4711dbfd187cc90b3fbc24ea4bba85968c49932adb59b8d` |
+| `public/projects/relay/fixture-report.webp` | 107,174 | `e3eba779d7b343ee6fbbe3b3572ca637446947c7344e7b5fef0dc499741512d0` |
+| `public/projects/relay/synthetic-report-20261023.md` | 1,365 | `b70d6626ecf3e818ea25dcbf870f89e1519eccd2a3ac5e1a186b804d1b28c704` |
+
+
+## 2026-10-23 简历与分享图同步
+
+- 简历 RAG 段已明确：公开页为合成资料上的词法检索与原文摘录，LLM 未配置，范围选择不是生产鉴权，本地文件/身份库独立运行。保留本人企业参与范围与 FDE 职业方向。
+- 用原有 `scripts/export-resume.py` 重新导出 PDF，未改变排版器。Bundled Python 提供 ReportLab、lxml、pypdf；缺少的 PyMuPDF 1.26.6 仅安装于临时目录后通过 `PYTHONPATH` 使用，未改全局环境。字体仍使用该固定版本自带 Droid Sans Fallback，许可沿用上方 Apache 2.0 声明。
+- 已验证 2 页 A4、20 个可点击链接、嵌入中文字体及新增边界文字；用 Poppler `pdftoppm -r 108 -png` 与 PyMuPDF 逐页渲染检查，无缺字、裁切或重叠。忽略目录 `test-results/resume-20261023/` 保存页面图与验证 JSON。此导出不是浏览器打印，未把字体渲染检查说成真实招聘者验收。
+- 分享图 `public/social-preview.png` 与 `public/og-image.svg` 使用新标题“把实际需求，做成能运行的 AI 应用”，标注“编导生转 AI / 企业场景参与”，保留米白、炭黑、酸绿和本项目已有 `public/field-form.svg` 几何。移除巨型职位缩写，侧栏为“作品 / 过程 / 证据”。是文字设计图，不是截图、认证或真人照片。
+- 重建命令：`node scripts/export-social.mjs`。脚本从 `content/portfolio.json` 读取姓名，直接生成 SVG，再用锁定的 Playwright Chromium 输出 1200×630 PNG；无需联网、模型或额外库。字体栈 Arial / PingFang SC / Microsoft YaHei / sans-serif，实际为本机系统字体；不复制或分发字体文件。不同操作系统的字形可能略有差异。2026-10-22 的 Noto 渲染记录属于前一版，本版以此说明为准。
+
+### 响应式缩略图
+
+以下为已有真实截图/海报的全画幅等比例缩小，无裁剪、无内容重绘：Pillow `resize((640, round(height*640/width)), Image.Resampling.LANCZOS)`，WebP `quality=85, method=6`。原图与批准的视频文件均未修改；仅用于首页响应式预览，放大仍打开完整资源。
+
+| 输出 | 来源 | 尺寸 | Bytes | SHA256 |
+| --- | --- | --- | ---: | --- |
+| `public/projects/rag/story-citation-preview.webp` | `public/projects/rag/story-citation.webp` | 640×583 | 29,108 | `117c1a86c506a8574df4e4a271da7b720bee53cc9394017c06e9922061c95378` |
+| `public/projects/relay/fixture-report-preview.webp` | `public/projects/relay/fixture-report.webp` | 640×743 | 40,904 | `1344de230ea3aa66c52f871bd872df57349b5d6d7eb98292a330e9b8f5e8a40f` |
+| `public/projects/video/original-54s-poster-preview.webp` | `public/projects/video/original-54s-poster.jpg` | 640×360 | 14,670 | `3b1819845cbaa7c07105610d2e43908ae6610161009ab5e38cdeca998947fa99` |
+
+本次简历 PDF SHA256：`243b3100c5009d9378f8be2de6ae03a0511069e1d2a970de0b750e0c57f24703`。

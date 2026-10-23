@@ -1,0 +1,32 @@
+{
+  "captured_date": "2026-10-23",
+  "timezone": "Asia/Shanghai",
+  "source_repository": "https://github.com/zhouey314-cloud/relay-audit",
+  "source_commit": "4d6c15874ecaa9d404a17ebe4112b48bb2599902",
+  "command": "python3 -m relay_audit guard demo --out <new-temporary-directory>",
+  "report": "synthetic-report-20261023.md",
+  "report_sha256": "b70d6626ecf3e818ea25dcbf870f89e1519eccd2a3ac5e1a186b804d1b28c704",
+  "screenshot": "fixture-report.webp",
+  "rendering": "Actual report.md text rendered to HTML and captured by Chromium; report contents unchanged. Not a product dashboard.",
+  "evidence_status": "synthetic_unverified",
+  "identity_status": "unverified",
+  "agent_requests": 3,
+  "upstream_requests": 3,
+  "extra_model_requests": 0,
+  "continued_after_alert": true,
+  "incident_types": [
+    "declared_model_mismatch"
+  ],
+  "notification": {
+    "delivered": 1,
+    "failures": 0,
+    "dropped": 0,
+    "queue_size": 0
+  },
+  "real_api_verified": false,
+  "license": "MIT; ../../licenses/ethan-project-evidence-MIT.txt",
+  "image_encoding": "WebP quality 90; full captured content preserved; no UI data edited.",
+  "width": 1200,
+  "height": 1394,
+  "screenshot_sha256": "e3eba779d7b343ee6fbbe3b3572ca637446947c7344e7b5fef0dc499741512d0"
+}

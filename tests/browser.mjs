@@ -46,8 +46,8 @@ const server = http.createServer(async (req, res) => {
   }
 });
 await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
-const base = `http://127.0.0.1:${server.address().port}`;
-const report = { at: new Date().toISOString(), scope: 'Actual Chromium/WebKit, desktop and mobile viewport; selected WCAG A/AA automated rules, not certification or physical-device/human acceptance.', pages: [], interactions: [], failures: [] };
+const base = process.env.BASE_URL?.replace(/\/$/, '') || `http://127.0.0.1:${server.address().port}`;
+const report = { at: new Date().toISOString(), base_url: base, scope: 'Actual Chromium/WebKit, desktop and mobile viewport; selected WCAG A/AA automated rules, not certification or physical-device/human acceptance.', pages: [], interactions: [], failures: [] };
 try {
   report.source_revision = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
   report.worktree_dirty = Boolean(execFileSync('git', ['status', '--porcelain'], { cwd: root, encoding: 'utf8' }).trim());
@@ -76,9 +76,13 @@ try {
         page.setDefaultNavigationTimeout(20_000);
         for (const path of pages) {
           await progress(`${name}/${viewportName}${path}: navigate`);
-          const errors = [];
+          const errors = [], consoleErrors = [], resourceErrors = [];
           const capture = error => errors.push(error.message);
+          const captureConsole = message => { if (message.type() === 'error') consoleErrors.push(message.text()); };
+          const captureResponse = response => { if (response.status() >= 400) resourceErrors.push({ url: response.url(), status: response.status() }); };
           page.on('pageerror', capture);
+          page.on('console', captureConsole);
+          page.on('response', captureResponse);
           const response = await page.goto(base + path, { waitUntil: 'load' });
           await bounded(page.evaluate(() => document.fonts.ready), 'font readiness', 10_000);
           // Trigger the production lazy-loading behavior before calling an image
@@ -99,7 +103,7 @@ try {
           const violations = axe.violations.map(v => ({ id: v.id, impact: v.impact, help: v.help,
             nodes: v.nodes.map(n => ({ target: n.target, failureSummary: n.failureSummary })) }));
           const entry = { browser: name, version: browser.version(), viewport: viewportName, path,
-            status: response.status(), ...dom, pageErrors: errors, axeViolations: violations,
+            status: response.status(), ...dom, pageErrors: errors, consoleErrors, resourceErrors, axeViolations: violations,
             axeIncompleteRules: axe.incomplete.map(x => x.id) };
           report.pages.push(entry);
           if (path === '/cases/video.html') {
@@ -150,13 +154,15 @@ try {
             }
           }
           await writeFile(resolve(output, 'browser-report.json'), JSON.stringify(report, null, 2) + '\n');
-          if (entry.status !== 200 || dom.overflow || dom.badImages.length || dom.headings !== 1 || errors.length || violations.length) {
-            fail(`${name}/${viewportName}${path}: status=${entry.status}, overflow=${dom.overflow}, images=${dom.badImages.length}, errors=${errors.length}, axe=${violations.length}`);
+          if (entry.status !== 200 || dom.overflow || dom.badImages.length || dom.headings !== 1 || errors.length || consoleErrors.length || resourceErrors.length || violations.length) {
+            fail(`${name}/${viewportName}${path}: status=${entry.status}, overflow=${dom.overflow}, images=${dom.badImages.length}, errors=${errors.length}, console=${consoleErrors.length}, resources=${resourceErrors.length}, axe=${violations.length}`);
           }
           if (path === '/' || (violations.length && viewportName === 'mobile')) {
             await page.screenshot({ path: resolve(output, `${name}-${viewportName}-${path === '/' ? 'home' : path.replaceAll('/', '-').replace('.html', '')}.png`), fullPage: path !== '/' });
           }
           page.off('pageerror', capture);
+          page.off('console', captureConsole);
+          page.off('response', captureResponse);
         }
         await page.goto(base, { waitUntil: 'load' });
         const skipKey = name === 'webkit' && process.platform === 'darwin' ? 'Alt+Tab' : 'Tab';
