@@ -107,7 +107,7 @@
 .practice-stage :focus-visible { outline-color: #d6fa58; outline-offset: -4px; }
 .practice-chapter { min-height: 560px; padding: 64px 0; display: flex; flex-direction: column; justify-content: center; border-top: 1px solid #bec9ae; scroll-margin-top: 104px; }
 .practice-chapter:first-child { border: 0; padding-top: 28px; }.practice-chapter:last-child { padding-bottom: 18px; }
-.chapter-kicker { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; color: #657355; font-size: 10px; }.chapter-kicker > span { border: 1px solid #acbd94; border-radius: 20px; padding: 5px 12px; color: #40572c; font-size: 9px; letter-spacing: .08em; font-weight: 650; }
+.chapter-kicker { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; color: #5c694e; font-size: 10px; }.chapter-kicker > span { border: 1px solid #acbd94; border-radius: 20px; padding: 5px 12px; color: #40572c; font-size: 9px; letter-spacing: .08em; font-weight: 650; }
 .practice-chapter h3 { font-size: clamp(30px, 3.1vw, 43px); line-height: 1.35; font-weight: 750; letter-spacing: -.05em; margin-top: 25px; }
 .practice-chapter > p:not(.chapter-kicker) { font-size: 14px; color: #56624c; line-height: 1.95; margin-top: 22px; max-width: 440px; }
 .chapter-points { padding: 0; list-style: none; margin: 25px 0 11px; }
@@ -121,7 +121,7 @@
 .geo-feature-copy > p:not(.project-note) { font-size: 13px; line-height: 1.9; color: #536047; max-width: 310px; }
 .scope-list { list-style: none; margin: 21px 0 13px; padding: 0; font-size: 12px; color: #3e4c32; }
 .scope-list li { margin-top: 5px; }.scope-list li::before { content: '↗'; margin-right: 10px; }
-.project-note { font-size: 11px; line-height: 1.8; color: #636d59; margin-top: 17px; }
+.project-note { font-size: 11px; line-height: 1.8; color: #5b6551; margin-top: 17px; }
 .geo-feature-media { min-width: 0; background: #fafbf5; border: 1px solid #bec8ad; border-radius: 7px; overflow: hidden; box-shadow: 0 16px 32px #4d5b2820; transform: rotate(-1.5deg); transition: transform .35s; }
 .geo-feature-media:hover { transform: rotate(0); }
 .window-bar { display: flex; align-items: center; justify-content: space-between; padding: 11px 13px; background: #f0f2e9; color: #66705c; font-size: 8px; letter-spacing: .08em; border-bottom: 1px solid #dce1d2; }
@@ -176,7 +176,7 @@
 .more-work > .field-eyebrow { margin-bottom: 19px; }
 .work-row { display: grid; grid-template-columns: 26px 1fr 1.6fr auto 22px; gap: 20px; align-items: center; border-top: 1px solid #cdd1c6; padding: 23px 0; min-height: 90px; transition: padding .2s; }
 .work-row:last-child { border-bottom: 1px solid #cdd1c6; }
-.work-row > span:first-child { color: #6e7764; font-size: 10px; }
+.work-row > span:first-child { color: #636d59; font-size: 10px; }
 .work-row strong { font-size: 17px; font-weight: 650; letter-spacing: -.035em; }
 .work-row p { font-size: 12px; color: #5d6459; }
 .work-row-tag { border: 1px solid #cbd3bf; border-radius: 30px; padding: 3px 10px; font-size: 10px; color: #56624b; white-space: nowrap; }
@@ -197,7 +197,7 @@
 .delivery-path p { color: #5d6459; font-size: 12px; line-height: 1.9; padding-right: 12px; }
 .about-section { display: grid; grid-template-columns: 1fr 1.04fr; gap: 100px; padding-block: 106px; }
 .about-manifesto h2 { margin-top: 25px; font-size: clamp(33px,3.4vw,49px); line-height: 1.38; font-weight: 700; letter-spacing: -.05em; }
-.about-large-name { font: 850 clamp(60px,7.5vw,110px)/1 Arial,sans-serif; color: #c9d0bf; letter-spacing: -.075em; margin-top: 78px; display: flex; align-items: start; }
+.about-large-name { font: 850 clamp(60px,7.5vw,110px)/1 Arial,sans-serif; color: #808b71; letter-spacing: -.075em; margin-top: 78px; display: flex; align-items: start; }
 .about-large-name span { color: #78964d; font-size: .56em; margin-left: 7px; }
 .about-person { display: flex; gap: 25px; border-top: 1px solid #cbd2c1; padding-top: 20px; margin-top: 20px; align-items: center; }
 .about-person strong { font-size: 22px; font-weight: 650; }
@@ -213,13 +213,13 @@
 .about-timeline p > span { color: #68725e; font-size: 11px; }
 .about-story > .field-text-link { margin-top: 22px; }
 .personal-index { margin-top: 33px; max-width: 370px; }
-.personal-index > p { font-size: 10px; color: #68735c; margin-bottom: 12px; }
+.personal-index > p { font-size: 10px; color: #626d56; margin-bottom: 12px; }
 .personal-index > a { display: grid; grid-template-columns: 42px 1fr 18px; align-items: center; gap: 16px; border-top: 1px solid #cbd2c1; padding: 16px 0; }
 .personal-mark { display: grid; place-items: center; width: 41px; height: 41px; border: 1px solid #b5c39e; border-radius: 3px; background: #e5eadb; font-size: 15px; color: #40592b; transform: rotate(-5deg); transition: transform .2s; }.personal-index > a:nth-child(3) .personal-mark { transform: rotate(5deg); background: #e8edc4; }.personal-index > a:hover .personal-mark { transform: rotate(0deg); }
 .personal-index strong { display: block; font-size: 12px; font-weight: 600; }.personal-index small { display: block; font-size: 10px; color: #626d57; margin-top: 4px; }
 .resume-invitation { grid-column: 1/-1; border: 1px solid #bcc8aa; background: #e8eddd; display: grid; grid-template-columns: 1fr 1fr 90px; align-items: center; gap: 45px; padding: 37px 42px; position: relative; overflow: hidden; }
 .resume-invitation h3 { margin-top: 16px; font-size: 30px; line-height: 1.4; font-weight: 650; letter-spacing: -.04em; }.resume-invitation-copy > p { font-size: 12px; line-height: 1.9; color: #5b684e; }.resume-invitation-copy > a { margin-top: 16px; }
-.resume-fold { align-self: stretch; display: flex; align-items: center; justify-content: center; border-left: 1px solid #b9c7a6; font: 800 52px/.9 Arial,sans-serif; letter-spacing: -.07em; color: #7f9b59; text-align: center; }
+.resume-fold { align-self: stretch; display: flex; align-items: center; justify-content: center; border-left: 1px solid #b9c7a6; font: 800 52px/.9 Arial,sans-serif; letter-spacing: -.07em; color: #6d864b; text-align: center; }
 .writing-section { background: var(--night); color: #f0f2e8; padding: 80px 0; }
 .writing-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
 .writing-section .field-eyebrow { color: #b2c0a0; }
