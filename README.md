@@ -1,6 +1,6 @@
-# Ethan 恩宇 · Portfolio V3
+# 周恩宇 Ethan · Portfolio V4 — FDE × GEO
 
-静态个人作品集。首页沿用编导与 AI 项目实践的视觉，优先展示 RAG、RelayAudit、Video Engine 三条有证据的工程主线；项目档案保留 16 个公开项目及既有 GEO 参与材料；10 个案例使用统一的六章结构。GitHub Pages 从 `main` 根目录发布，维护改动通过独立 PR 审核。
+静态个人网站。以「在企业一线做 FDE 与 GEO」介绍周恩宇本人，再展示企业参与记录、三条工程主线、工作方法、个人经历与联系方式。项目档案保留 16 个公开项目、3 个进行中项目，10 个案例与旧锚点继续可用。沿用 `main` 根目录 GitHub Pages，不迁移框架或域名。
 
 ## 本地预览
 
@@ -13,6 +13,8 @@ python3 -m http.server 8767 --bind 127.0.0.1
 ```sh
 node tests/check-site.mjs
 node --check script.js
+node --check home.js
+node --check resume.js
 ```
 
 静态检查覆盖页面、资源、锚点、16 项档案、三条主线、联系方式、元信息与事实边界。它不替代浏览器、无障碍或模型评估。
@@ -28,7 +30,7 @@ npm run test:browser
 
 Playwright 与 axe-core 是锁定版本的开发依赖，不进入静态页面运行时。
 CI 在 Linux 安装 Chromium/WebKit 及其系统依赖；本机按实际安装结果执行。
-默认检查13页 × 两个引擎 × 桌面1440×1000/手机390×844，共52个页面组合，
+默认检查14页 × 两个引擎 × 桌面1440×1000/手机390×844，共56个页面组合，
 并检查54秒样片原生播放/51秒定位/字幕轨、键盘跳转、手机菜单/Escape/焦点和真实HTTP404。
 本地测试服务器实现单段 HTTP Range，保持媒体拖动行为与 Pages 一致；视频按原生产属性加载。懒加载图片先滚入视口再
 解码，避免把未加载图片误判为坏图。macOS WebKit 使用平台的 Option-Tab
@@ -43,14 +45,28 @@ axe仅检查所选 WCAG A/AA 自动规则；incomplete规则保留待人工核�
 ## 文件结构
 
 - `tokens.css`：唯一的颜色、字体、间距/尺寸与动效基础变量层。
-- `style.css`：共用导航、首页、图片弹窗、响应式与减少动态模式。
+- `style.css`：共用导航、图片弹窗、响应式与兼容旧页面的基础样式。
+- `home.css` / `home.js`：首页编辑式排版、业务 / GEO / 工程三段 sticky 故事、章节导航与复制邮箱反馈。
+- `resume.html` / `resume.css` / `resume.js`：独立网页简历、打印样式与打印按钮增强。
+- `public/ethan-zhou-resume.pdf` / `scripts/export-resume.py`：两页 A4 简历 PDF 与读取网页简历内容的导出脚本。
+- `DESIGN.md`：视觉、信息结构、参考来源和渐进增强的设计约束。
 - `projects.css` / `case-study.css`：各页面作用域样式。
 - `navigation.js`：首绘前初始化的独立手机菜单；增强脚本失效时仍可导航。
-- `script.js`：原生渐进增强；三项目切换、图片查看器、分镜、档案筛选。
+- `script.js`：原生渐进增强；图片查看器、档案筛选、锚点导航、内容进入与动效偏好；保留旧页面兼容逻辑。
 - `cases/`：保留既有八个案例 URL，新增 RelayAudit 与 Voice Clone Video 两个案例；旧 `s0…` 片段仍可访问。
 - `demos/ai-crm/`：原站内独立演示，保留其内容和路径。
 
-首页关键内容直接存在于 HTML。无 JS 时导航、项目、联系和三段示例仍可阅读。图片可通过普通链接查看。系统减少动态偏好优先于本地动效开关；开关只使用浏览器 localStorage 保存偏好。
+首页关键内容直接存在于 HTML。无 JS 时人物介绍、导航、项目、联系仍可阅读。图片可通过普通链接查看。系统减少动态偏好优先于本地动效开关；开关只使用浏览器 localStorage 保存偏好。
+
+## 网页简历与 PDF
+
+网页入口为 `/resume.html`，PDF 为 `/public/ethan-zhou-resume.pdf`。导出脚本以网页简历为唯一内容来源，使用 ReportLab 独立排成两页 A4；它不是浏览器打印结果。
+
+```sh
+python3 scripts/export-resume.py
+```
+
+导出需要 Python 开发依赖 `reportlab`、`lxml`、`PyMuPDF` 和 `pypdf`，不进入网站运行时。网页内容变更后应重新导出，再核对两页排版、中文、链接与内容一致性。
 
 ## 内容与资产
 
@@ -83,3 +99,26 @@ Relay真实本机开销，以及54秒原创动画的原生播放器和独立用�
 绘制与原创数学合成音乐，文件哈希绑定已有批准；没有公司/客户素材、私人声音或付费模型。
 源文件和许可/来源说明见 [ASSET_SOURCES.md](ASSET_SOURCES.md)。用户已确认审阅62条RAG候选，
 但2条语义改写仍失败；没有把候选集或CI写成真实企业模型准确率。
+
+
+## 2026-10-22 FDE / GEO 个人身份改版（首轮记录）
+
+- 首屏明确姓名、企业一线 FDE / GEO 与 AI 应用工程；以实际工作、项目、方法、个人路径介绍本人。
+- 米白、炭黑、酸橙配色；原创参数化线框图；真实 GEO / RAG 图与已有视频样片。
+- GEO 企业参与内容提前；16 项档案、3 主工程入口、10 案例及联系方式继续保留。
+- 更新分享封面、图标、搜索摘要、Person JSON-LD 与全站浅色 theme-color。
+- 当时本地静态检查及脚本语法通过；使用云端 Chrome 检查首页、档案、RAG 案例、窄屏 iframe、菜单与图片预览。该轮未执行当时定义的 13 页 × 2 引擎 × 2 尺寸，共 52 个组合；这是历史范围，本轮已扩展为 56 个组合。
+- 原 GitHub 发布受本轮连接写权限限制（创建分支返回 403），本条记录不代表 GitHub Pages 已更新。
+
+设计研究参考官方仓库 Motion、React Bits、Lenis、GSAP、Brittany Chiang v4 的交互与信息组织；本站未复制其组件源码或引入运行时依赖。
+
+## 2026-10-22 Zara 参考、滚动叙事与简历（本轮）
+
+研究了 Zara Zhang 的[个人网站观点原帖](https://x.com/zarazhangrui/status/2113148949842534482)、[主站博客](https://zarazhang.com/)、[Wishlist](https://wishlist.zarazhang.com/)、[Tokyo 精选](https://zaraintokyo.com/)、[deck](https://deck.zarazhang.com/) 和本人 GitHub 模板项目。Wishlist 是互动礼物作品，不是简历主页；本站借鉴人物表达、精选内容与章节大字，来源和边界见 `DESIGN.md`。
+
+- 保留象牙白、炭黑、酸绿。首页增加“业务理解 → GEO 实践 → 工程实现”三段自然滚动故事，桌面 sticky 场景随章节切换，移动端保持正常文流。
+- 作品证据使用原生链接；新增独立网页简历、两页 A4 PDF 与可复现导出脚本。没有复制参考站代码或插画，没有引入 Matter.js / GSAP。
+- 本轮静态检查通过：14 页、10 个案例、16 项档案、3 条主线、94 个旧片段、6 个联系方式；四份页面脚本语法通过。两份测试仅将 `resume.html` 加入页面列表，未削弱断言。
+- 云端 Chrome 已检查桌面三场景、键盘操作与关闭动效；375px / 753px 同源 iframe 检查了响应式、手机菜单与 Escape、无 JS 内容及横向溢出。网页简历的桌面与窄屏排版已检查；两页 PDF 已逐页渲染查看，中文与 20 个链接正常。本地预览对 PDF 返回 200 / application/pdf，内容与源文件一致；云端浏览器下载事件等待超时，未确认浏览器下载完成，也未测试打印对话框。
+- 当前完整 14 页 × 2 引擎 × 2 尺寸的 56 组合浏览器矩阵尚未运行，不能以局部检查代替。
+- 预览版本的准确来源提交与部署结果记录在完整交付包的 `VERIFICATION.md`，以部署服务返回值为准。GitHub 写入仍受 403 阻塞，原 GitHub Pages 网址尚未上线本轮版本。

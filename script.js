@@ -359,7 +359,7 @@
     const sections = [
       ...document.querySelectorAll("main > section[id]"),
     ].filter((section) =>
-      ["top", "work", "writing", "about", "contact"].includes(section.id),
+      ["top", "practice", "work", "writing", "about", "contact"].includes(section.id),
     );
     let navObserver;
     const observeNavigation = () => {
