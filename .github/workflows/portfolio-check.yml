@@ -11,7 +11,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: node tests/check-site.mjs
+      - run: npm test
   browsers:
     runs-on: ubuntu-latest
     steps:
@@ -23,6 +23,9 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium webkit
       - run: npm run test:browser
+      - run: npm run test:experience
+        env:
+          SKIP_PERFORMANCE: "1"
       - uses: actions/upload-artifact@v4
         if: always()
         with:

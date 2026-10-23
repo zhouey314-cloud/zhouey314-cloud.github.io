@@ -1,0 +1,39 @@
+{
+  "captured_date": "2026-10-23",
+  "timezone": "Asia/Shanghai",
+  "source_url": "https://zhouey314-cloud.github.io/enterprise-rag-starter/",
+  "source_repository": "https://github.com/zhouey314-cloud/enterprise-rag-starter",
+  "source_main_commit": "45e2daa8fa7cbd4092c08219a68b16ca02148d50",
+  "browser": "Chromium via Playwright 1.64.1; viewport 1200x980; deviceScaleFactor 1; fullPage screenshots",
+  "data": "synthetic",
+  "mode": "lexical; extractive answers; LLMProvider NOT_CONFIGURED",
+  "scope": "public; illustrative scope selector is not authentication",
+  "captures": [
+    {
+      "file": "story-material.webp",
+      "query": "What are the support hours?",
+      "observed": "EXTRACTIVE; Demo support hours; support:0; v1",
+      "width": 1200,
+      "height": 1093,
+      "sha256": "a07e9cddac5ea664b72a3637e857e2e3c997aa0ff0a36cddbc4dc746ad03e23a"
+    },
+    {
+      "file": "story-citation.webp",
+      "query": "What is the refund policy?",
+      "observed": "EXTRACTIVE; 14 calendar days; returns:0; v1",
+      "width": 1200,
+      "height": 1093,
+      "sha256": "eaced6830b66ae370453a6fe750668fa157f82c1958d1b889052372a332bf09b"
+    },
+    {
+      "file": "story-refusal.webp",
+      "query": "What is the support phone number?",
+      "observed": "NO_ANSWER; QUESTION_NOT_ANSWERABLE_BY_TOP_HIT; related support-hours chunk shown",
+      "width": 1200,
+      "height": 1093,
+      "sha256": "7d299d2310cca423e4711dbfd187cc90b3fbc24ea4bba85968c49932adb59b8d"
+    }
+  ],
+  "license": "MIT; ../../licenses/ethan-project-evidence-MIT.txt",
+  "image_encoding": "WebP quality 90; full captured content preserved; no UI data edited."
+}

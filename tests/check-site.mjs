@@ -128,6 +128,22 @@ assert(
   home.includes(`浏览全部 ${baselineProjects.length} 个公开项目`),
   "home: public project total must match the full archive",
 );
+// The homepage promises concrete work before the longer practice narrative.
+const readingOrder = ["top", "work", "practice", "story", "about", "writing", "contact"];
+const positions = readingOrder.map((id) => home.indexOf(`id="${id}"`));
+assert(
+  positions.every((position, index) => position >= 0 && (index === 0 || position > positions[index - 1])),
+  "home: identity → representative work → practice → evidence story → about → writing → contact order",
+);
+assert(
+  (home.match(/data-story-step=/g) || []).length === 3 &&
+    (home.match(/data-story-panel=/g) || []).length === 3,
+  "home: three complete evidence steps and figures must exist in HTML before JavaScript",
+);
+assert(
+  home.includes("广播电视编导专业在读") && home.includes("周恩宇") && home.includes("向 FDE 方向发展"),
+  "home: preserve verified identity and directional FDE positioning",
+);
 assert(
   (hub.match(/class="active-build"/g) || []).length === 3,
   "archive: preserve three separately listed work-in-progress projects",

@@ -127,38 +127,16 @@
               <track kind="captions" src="/public/projects/video/original-54s.vtt" srclang="zh" label="可选中文字幕（原片已烧录）" />
               <a href="/public/projects/video/original-54s.mp4">下载54秒原创动画样片</a>
             </video>
-            <p>2026-10-21 用户批准此动画；H.264/AAC、1280×720、24fps。原文件 SHA256：<code>0a7f73e9a5a0…</code>。没有真人声音、公司或客户素材。</p>
+            <p>2026-10-23 网站改造仅复用原片，并核对 SHA256 一致。2026-10-21 用户批准此动画；H.264/AAC、1280×720、24fps。原文件 SHA256：<code>0a7f73e9a5a0…</code>。没有真人声音、公司或客户素材。</p>
             <figure class="case-visual">
-              <img
-                src="/public/projects/video/demo-frame.png"
-                alt="历史六秒兼容样例的标题卡；上方为新的54秒动画"
-                loading="lazy"
-                decoding="async"
-                class=""
-                width="640"
-                height="360"
-              />
-              <figcaption>
-                <span>历史六秒兼容样例；新作品见上方播放器。</span
-                ><button
-                  class="preview-button enhanced-only"
-                  type="button"
-                  data-preview="/public/projects/video/demo-frame.png"
-                  data-title="AI Video Workflow Engine"
-                  data-case="/cases/video.html"
-                  data-caption="历史六秒合成标题卡与音调；保留为兼容样例，不代表客户商业成片。"
-                >
-                  <span aria-hidden="true">⤢</span> 预览大图</button
-                ><a
-                  class="text-link no-js"
-                  href="/public/projects/video/demo-frame.png"
-                  >查看原图 ↗</a
-                >
-              </figcaption>
+              <a href="/public/projects/video/original-54s-poster.jpg" data-preview="/public/projects/video/original-54s-poster.jpg" data-title="AI Video Workflow · 真实成片抽帧" data-case="/cases/video.html" data-caption="已批准的54秒程序动画第3镜头实际抽帧；不是真人口播、客户成片或模型质量证明。" aria-label="放大：54秒程序动画真实抽帧">
+                <img src="/public/projects/video/original-54s-poster.jpg" alt="54秒原创程序动画的实际抽帧：纸面分镜与剪辑工作流" loading="lazy" decoding="async" width="1280" height="720" />
+              </a>
+              <figcaption><span>同一成片第3镜头的实际抽帧</span><a class="text-link" href="/public/projects/video/original-54s-poster.jpg" target="_blank" rel="noopener">打开原图 ↗</a></figcaption>
             </figure>
             <a
               class="text-link strong-link"
-              href="https://github.com/zhouey314-cloud/ai-video-workflow-engine/blob/main/examples/demo-output.mp4"
+              href="https://github.com/zhouey314-cloud/ai-video-workflow-engine/tree/main/examples/original_54s"
               >查看公开材料 ↗</a
             >
           </div>
@@ -196,7 +174,7 @@
           <h2><span>05</span>成果与限制</h2>
           <div class="case-prose">
             <p>
-              新的54秒动画留下完整解码、字幕层像素边界、音频峰值与来源清单，以及独立的用户批准记录。
+              这条54秒动画留下完整解码、字幕层像素边界、音频峰值与来源清单，以及独立的用户批准记录。
             </p>
             <p class="case-limit">
               人审批准仅绑定这条原创动画。字幕层边界每秒采样2帧；黑场门槛为0.30秒；音频为sample peak而非true peak。这些检查不代表真人口播或客户生产验收。
@@ -213,7 +191,7 @@
           <h2><span>06</span>深入查看</h2>
           <div class="case-prose">
             <p>
-              上一轮36项测试与退出码修复继续保留；本轮加入特殊路径、中文字体、失败恢复、黑帧/音频和字幕几何检查，以及54秒九镜头样例。
+              2026-10-21 的项目记录保留36项测试与退出码修复，并加入特殊路径、中文字体、失败恢复、黑帧/音频和字幕几何检查，以及54秒九镜头样例。
               <a class="text-link" href="https://github.com/zhouey314-cloud/ai-video-workflow-engine/pull/2">查看修复与 CI 记录 ↗</a>
             </p>
             <p>
@@ -221,7 +199,7 @@
               不等于审美验收。
             </p>
             <p>
-              本轮共47项测试；保留旧退出码与36项基线，新增真实媒体 QA、样片复现和批准哈希漂移守卫。完整54秒已实际渲染与解码，用户批准的是上方同一文件；CI还单独执行缩短的九镜头机械夹具。
+              2026-10-21 记录共47项测试；保留旧退出码与36项基线，新增真实媒体 QA、样片复现和批准哈希漂移守卫。完整54秒已实际渲染与解码，用户批准的是上方同一文件；CI还单独执行缩短的九镜头机械夹具。
               <a class="text-link" href="https://github.com/zhouey314-cloud/ai-video-workflow-engine/pull/4">样片、来源清单、用户批准与 CI ↗</a>
             </p>
             <pre><code>python -m unittest discover -s tests
@@ -240,7 +218,7 @@ python examples/original_54s/generate.py --output output/original54 --font /path
                 >阅读项目仓库 ↗</a
               ><a
                 class="text-link"
-                href="https://github.com/zhouey314-cloud/ai-video-workflow-engine/blob/main/examples/demo-output.mp4"
+                href="https://github.com/zhouey314-cloud/ai-video-workflow-engine/tree/main/examples/original_54s"
                 >查看公开材料 ↗</a
               >
             </div>

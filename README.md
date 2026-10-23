@@ -1,84 +1,60 @@
-# 周恩宇 Ethan · Portfolio V4 — FDE × GEO
+# 周恩宇 Ethan · 个人作品网站
 
-静态个人网站。以「在企业一线做 FDE 与 GEO」介绍周恩宇本人，再展示企业参与记录、三条工程主线、工作方法、个人经历与联系方式。项目档案保留 16 个公开项目、3 个进行中项目，10 个案例与旧锚点继续可用。沿用 `main` 根目录 GitHub Pages，不迁移框架或域名。
+本轮改版：[PR #6](https://github.com/zhouey314-cloud/zhouey314-cloud.github.io/pull/6) · [CI 检查记录](https://github.com/zhouey314-cloud/zhouey314-cloud.github.io/actions/workflows/portfolio-check.yml) · [Pages 发布记录](https://github.com/zhouey314-cloud/zhouey314-cloud.github.io/actions/workflows/pages/pages-build-deployment) · [实际网站](https://zhouey314-cloud.github.io/)。各阶段是否完成以对应提交的实际记录为准，历史未上线说明见文末。
 
-## 本地预览
+原生 HTML / CSS / JavaScript，沿用 `main` 根目录 GitHub Pages 与原域名。当前改版基于 `1b030b8`，保留 16 个公开项目、3 个开发中项目、10 个案例及旧链接。
 
-```sh
-python3 -m http.server 8767 --bind 127.0.0.1
-```
+首页顺序：本人定位 → 三个代表项目 → GEO 企业参与 → RAG 三步证据 → 关于我 → 写作入口 → 简历与联系 → 完整档案。FDE 是职业方向，GEO 说明本人参与范围；项目事实边界保留在卡片和案例中。
 
-打开 <http://127.0.0.1:8767/>。无需构建、运行时依赖、账号、数据库或模型服务。
-
-```sh
-node tests/check-site.mjs
-node --check script.js
-node --check home.js
-node --check resume.js
-```
-
-静态检查覆盖页面、资源、锚点、16 项档案、三条主线、联系方式、元信息与事实边界。它不替代浏览器、无障碍或模型评估。
-
-## 实际浏览器回归
+## 预览与维护
 
 ```sh
 npm ci
-npm run install:browsers
-npm test
-npm run test:browser
+npm run build
+python3 -m http.server 8767 --bind 127.0.0.1
 ```
 
-Playwright 与 axe-core 是锁定版本的开发依赖，不进入静态页面运行时。
-CI 在 Linux 安装 Chromium/WebKit 及其系统依赖；本机按实际安装结果执行。
-默认检查14页 × 两个引擎 × 桌面1440×1000/手机390×844，共56个页面组合，
-并检查54秒样片原生播放/51秒定位/字幕轨、键盘跳转、手机菜单/Escape/焦点和真实HTTP404。
-本地测试服务器实现单段 HTTP Range，保持媒体拖动行为与 Pages 一致；视频按原生产属性加载。懒加载图片先滚入视口再
-解码，避免把未加载图片误判为坏图。macOS WebKit 使用平台的 Option-Tab
-访问链接，其他环境使用 Tab；不改用户浏览器设置。参见
-[Apple 键盘说明](https://support.apple.com/en-in/guide/safari/cpsh003/mac)。
+打开 http://127.0.0.1:8767/。构建只把本地内容写入静态 HTML，不需要服务端、模型或账号。核心内容在 HTML 中，脚本关闭或动效失效时仍可阅读。
 
-报告与截图默认写到忽略的 `test-results/`，可用 `BROWSER_REPORT_DIR` 指定
-输出目录。`BROWSER_ENGINES` / `BROWSER_PAGES` 只用于局部诊断，CI默认运行完整集。
-axe仅检查所选 WCAG A/AA 自动规则；incomplete规则保留待人工核查，0报告项不等于
-完整无障碍认证、实体手机或真人审美验收。未能启动浏览器会明确失败，不静默跳过。
+- **姓名、简介、邮箱、三个项目、精选文章：** 编辑 `content/portfolio.json`，然后 `npm run build`。`writing` 当前为空，仅显示真实 X 主页。将来添加 `{title, takeaway, date, url}` 前，先核实原文与日期。
+- **首页段落／个人经历：** 编辑 `content/home.template.html`，然后构建。不要手改生成的 `index.html`；CI 检查是否同步。
+- **照片：** 尚无已核实可用头像，现用文字身份。取得本人授权素材后，在模板的 `#about` 中添加带实际宽高和说明的图片；不要用生成图冒充真人。
+- **项目事实与验证：** 首页状态在 JSON，详细证据在 `cases/`；修改能力表述时同时核对项目 README。素材来源、批准和哈希见 `ASSET_SOURCES.md`。
+- **简历与 PDF：** `resume.html` 是简历的内容源。修改后运行 `python3 scripts/export-resume.py`，并逐页核对 PDF；导出需要 ReportLab、lxml、PyMuPDF、pypdf。
+- **动效：** `home.js` 负责首页阅读进度、章节与 RAG 三步；`script.js` 负责共用弹窗、动效偏好和项目筛选；`navigation.js` 独立负责手机菜单。
+- **样式：** `tokens.css` 共享变量，`style.css` 共用基础，`home.css` 首页范围内样式。系统中文字体，无远程字体请求。
 
-## 文件结构
+## 依赖与回退
 
-- `tokens.css`：唯一的颜色、字体、间距/尺寸与动效基础变量层。
-- `style.css`：共用导航、图片弹窗、响应式与兼容旧页面的基础样式。
-- `home.css` / `home.js`：首页编辑式排版、业务 / GEO / 工程三段 sticky 故事、章节导航与复制邮箱反馈。
-- `resume.html` / `resume.css` / `resume.js`：独立网页简历、打印样式与打印按钮增强。
-- `public/ethan-zhou-resume.pdf` / `scripts/export-resume.py`：两页 A4 简历 PDF 与读取网页简历内容的导出脚本。
-- `DESIGN.md`：视觉、信息结构、参考来源和渐进增强的设计约束。
-- `projects.css` / `case-study.css`：各页面作用域样式。
-- `navigation.js`：首绘前初始化的独立手机菜单；增强脚本失效时仍可导航。
-- `script.js`：原生渐进增强；图片查看器、档案筛选、锚点导航、内容进入与动效偏好；保留旧页面兼容逻辑。
-- `cases/`：保留既有八个案例 URL，新增 RelayAudit 与 Voice Clone Video 两个案例；旧 `s0…` 片段仍可访问。
-- `demos/ai-crm/`：原站内独立演示，保留其内容和路径。
+唯一新增运行库为本地固定版本 GSAP / ScrollTrigger 3.15.0，只在桌面且允许动效时按需加载。CSS sticky 和原生滚动负责布局，ScrollTrigger 切换真实截图。手机、减少动效、手动关闭动效、无 JS 和库加载失败时均以完整的三段图文呈现。无 Lenis、React、CMS、付费 API 或自动播放。
 
-首页关键内容直接存在于 HTML。无 JS 时人物介绍、导航、项目、联系仍可阅读。图片可通过普通链接查看。系统减少动态偏好优先于本地动效开关；开关只使用浏览器 localStorage 保存偏好。
+依赖版本、哈希、许可与参考文档见 `THIRD_PARTY.md`。GSAP 运行库是 Standard No Charge License，**不是 MIT**。公开项目截图的许可和事实边界另记在资产清单。
 
-## 网页简历与 PDF
-
-网页入口为 `/resume.html`，PDF 为 `/public/ethan-zhou-resume.pdf`。导出脚本以网页简历为唯一内容来源，使用 ReportLab 独立排成两页 A4；它不是浏览器打印结果。
+## 检查
 
 ```sh
-python3 scripts/export-resume.py
+npm test
+npm run install:browsers
+npm run test:browser
+SKIP_PERFORMANCE=1 npm run test:experience
 ```
 
-导出需要 Python 开发依赖 `reportlab`、`lxml`、`PyMuPDF` 和 `pypdf`，不进入网站运行时。网页内容变更后应重新导出，再核对两页排版、中文、链接与内容一致性。
+- 静态检查：14 页、10 案例、16 项档案、94 个旧片段、6 个联系方式，HTML 构建一致性和首页顺序。
+- `test:browser`：14 页 × Chromium/WebKit × 桌面/手机，共 56 组合；axe 自动规则、坏图、链接、键盘、手机菜单及原生视频播放/定位/字幕轨。测试服务器支持单段 Range。
+- `test:experience`：390×844、768×1024、1440×900、320px；200% 等效 CSS 视口、无 JS、库加载失败、减少动效、开关与响应式清理、图片弹窗焦点、邮箱失败提示、hash 历史。它保留实际滚动录屏。
+- 不设置 `SKIP_PERFORMANCE=1` 时附三次冷启动移动端实验室测量。环境：Chromium、4×CPU、150ms RTT、1.6Mbps。一次本地测量不是实际用户 INP/CrUX，也不代表实体 Safari/iPhone。
 
-## 内容与资产
+结果与截图输出在忽略的 `test-results/` 或指定的 `BROWSER_REPORT_DIR` / `EXPERIENCE_REPORT_DIR`。交付截图与发布验收记录另存工作区 `evidence/`，不随站点发布。历史失败也保留，修复后另录结果。
 
-项目状态是公开示例、原型或工作流的实际范围，不代表客户生产部署或验收。网站未调用项目模型，也不能以本次 UI 检查证明模型质量。X 记录保留公开主页入口。
+## 发布
 
-已有项目图与微信二维码沿用此前公开资产。新增 Thought-to-X 图是公开示例原文的原创排版，明确标注非实时模型运行；见 [ASSET_SOURCES.md](ASSET_SOURCES.md) 与 MIT 许可全文。字体使用系统栈，未打包或下载商业字体。无第三方运行时库。
+沿用原仓库的 PR → Portfolio checks → 合并 `main` → GitHub Pages 流程；无 CNAME，无托管迁移。CI 同时检查静态构建一致性、56 组合浏览器及体验回归。发布结果必须对照实际提交、Actions 和 Pages 部署，并核对线上资源与交互。
 
-## 验收与发布
+本轮仅修改静态作品呈现，没有改变 RAG、模型、Prompt 或 Agent 行为；这里的检查不构成 AI 质量评估。项目历史指标和本次合成 fixture 均保留原范围。
 
-浏览器截图、性能原始 JSON 和测试报告保存在被忽略的目录或 CI artifact，避免随 Pages 发布。浏览器回归使用本仓锁定的开发依赖；Chromium 与 WebKit 结果不等于真机 Safari/Android。
+## 历史记录
 
-V3 首次交付停在本地分支，未发布。2026-10-11，用户随后明确授权将已验收版本发布到原域名 `https://zhouey314-cloud.github.io/`。沿用现有 `main` 根目录 GitHub Pages 发布方式，不新增 CNAME 或改变域名设置；具体构建结果以对应提交的 GitHub Actions / Pages 记录为准。
+以下记录保留原时间与条件；其中“未发布”“403”等描述是当时的状态，不是当前部署结论。2026-10-23 的基线 `1b030b8` 已由 PR #5 发布。后续改造以对应 PR/部署记录及交付报告为准。
 
 ## 2026-10-11 最近项目补充（历史记录）
 
