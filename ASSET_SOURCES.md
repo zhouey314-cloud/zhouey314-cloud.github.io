@@ -110,4 +110,4 @@
 | `public/projects/relay/fixture-report-preview.webp` | `public/projects/relay/fixture-report.webp` | 640×743 | 40,904 | `1344de230ea3aa66c52f871bd872df57349b5d6d7eb98292a330e9b8f5e8a40f` |
 | `public/projects/video/original-54s-poster-preview.webp` | `public/projects/video/original-54s-poster.jpg` | 640×360 | 14,670 | `3b1819845cbaa7c07105610d2e43908ae6610161009ab5e38cdeca998947fa99` |
 
-本次简历 PDF SHA256：`243b3100c5009d9378f8be2de6ae03a0511069e1d2a970de0b750e0c57f24703`。
+本次简历 PDF SHA256：`cf8ec1e3f4b056045295d79ee1ceee01351511c0c28f8a2e66e9aa68c5440e98`。

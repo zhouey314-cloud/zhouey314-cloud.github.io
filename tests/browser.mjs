@@ -95,6 +95,12 @@ try {
           await page.evaluate(() => scrollTo(0, 0));
           const dom = await page.evaluate(() => ({
             overflow: document.documentElement.scrollWidth > innerWidth + 1,
+            documentWidth: document.documentElement.scrollWidth,
+            viewportWidth: innerWidth,
+            overflowElements: document.documentElement.scrollWidth > innerWidth + 1 ? [...document.querySelectorAll('body *')].map(el => {
+              const rect = el.getBoundingClientRect(), style = getComputedStyle(el);
+              return { tag: el.tagName, id: el.id, className: typeof el.className === 'string' ? el.className : '', text: el.textContent.trim().slice(0, 80), left: rect.left, right: rect.right, width: rect.width, fontFamily: style.fontFamily, fontSize: style.fontSize };
+            }).filter(el => el.width > 0 && (el.right > innerWidth + 1 || el.left < -1)).slice(0, 40) : [],
             badImages: [...document.querySelectorAll('img[src]')].filter(i => !i.complete || i.naturalWidth === 0 || !i.alt.trim()).map(i => i.getAttribute('src')),
             headings: document.querySelectorAll('h1').length,
           }));
@@ -160,6 +166,7 @@ try {
           if (path === '/' || (violations.length && viewportName === 'mobile')) {
             await page.screenshot({ path: resolve(output, `${name}-${viewportName}-${path === '/' ? 'home' : path.replaceAll('/', '-').replace('.html', '')}.png`), fullPage: path !== '/' });
           }
+          if (dom.overflow) await page.screenshot({ path: resolve(output, `${name}-${viewportName}-${path === '/' ? 'home' : path.replaceAll('/', '-').replace('.html', '')}-overflow.png`), fullPage: true });
           page.off('pageerror', capture);
           page.off('console', captureConsole);
           page.off('response', captureResponse);

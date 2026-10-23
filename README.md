@@ -1,5 +1,7 @@
 # 周恩宇 Ethan · 个人作品网站
 
+本轮改版：[PR #6](https://github.com/zhouey314-cloud/zhouey314-cloud.github.io/pull/6) · [CI 检查记录](https://github.com/zhouey314-cloud/zhouey314-cloud.github.io/actions/workflows/portfolio-check.yml) · [Pages 发布记录](https://github.com/zhouey314-cloud/zhouey314-cloud.github.io/actions/workflows/pages/pages-build-deployment) · [实际网站](https://zhouey314-cloud.github.io/)。各阶段是否完成以对应提交的实际记录为准，历史未上线说明见文末。
+
 原生 HTML / CSS / JavaScript，沿用 `main` 根目录 GitHub Pages 与原域名。当前改版基于 `1b030b8`，保留 16 个公开项目、3 个开发中项目、10 个案例及旧链接。
 
 首页顺序：本人定位 → 三个代表项目 → GEO 企业参与 → RAG 三步证据 → 关于我 → 写作入口 → 简历与联系 → 完整档案。FDE 是职业方向，GEO 说明本人参与范围；项目事实边界保留在卡片和案例中。
