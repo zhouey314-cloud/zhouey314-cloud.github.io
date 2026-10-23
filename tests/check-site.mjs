@@ -21,6 +21,7 @@ const caseIds = [
 const pages = [
   "index.html",
   "projects.html",
+  "resume.html",
   "404.html",
   ...caseIds.map((id) => `cases/${id}.html`),
 ];

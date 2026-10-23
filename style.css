@@ -51,7 +51,7 @@ button:active,
 }
 ::selection {
   color: var(--ink);
-  background: var(--accent);
+  background: var(--acid);
 }
 img,
 svg {
@@ -128,15 +128,17 @@ p {
   flex: none;
 }
 .brand-latin {
-  font: italic 600 36px/0.9 var(--display);
-  letter-spacing: -2px;
+  font: 850 34px/1 var(--display);
+  letter-spacing: -1.8px;
+  text-transform: uppercase;
 }
 .brand-stop {
   color: var(--accent);
 }
 .brand-cn {
-  font-size: 16px;
-  border-left: 1px solid #555a54;
+  font-size: 14px;
+  font-weight: 600;
+  border-left: 1px solid var(--line);
   padding-left: 14px;
   line-height: 22px;
 }
@@ -183,7 +185,7 @@ p {
   font-size: 13px;
 }
 .motion-toggle span {
-  background: var(--accent);
+  background: var(--acid);
   color: var(--ink);
   width: 22px;
   height: 22px;
@@ -194,6 +196,7 @@ p {
 }
 .motion-toggle[aria-pressed="true"] span {
   background: var(--muted);
+  color: var(--paper);
 }
 .enhanced .menu-toggle {
   display: none !important;
@@ -335,8 +338,8 @@ video.approved-sample {
   min-height: 48px;
   padding: 11px 20px;
   border: 1px solid var(--line);
-  border-radius: 6px;
-  font-weight: 550;
+  border-radius: 999px;
+  font-weight: 650;
   font-size: 15px;
   transition:
     background var(--fast),
@@ -344,12 +347,13 @@ video.approved-sample {
 }
 .button.primary {
   color: var(--ink);
-  background: var(--accent);
-  border-color: var(--accent);
+  background: var(--acid);
+  border-color: var(--acid);
 }
 .button.primary:hover {
-  background: #dbf7a3;
-  border-color: #dbf7a3;
+  color: var(--ink);
+  background: #c7ed3f;
+  border-color: #c7ed3f;
 }
 .button.secondary:hover {
   color: var(--text);
@@ -475,7 +479,7 @@ video.approved-sample {
   margin: 0;
 }
 .desk-excerpt mark {
-  background: var(--accent);
+  background: var(--acid);
   color: var(--ink);
 }
 .desk-excerpt small {
@@ -878,8 +882,8 @@ video.approved-sample {
 }
 .story-controls button[aria-pressed="true"] {
   color: var(--ink);
-  background: var(--accent);
-  border-color: var(--accent);
+  background: var(--acid);
+  border-color: var(--acid);
 }
 .story-controls button:hover {
   border-color: var(--muted);
@@ -1044,10 +1048,10 @@ video.approved-sample {
   width: min(1220px, calc(100% - 64px));
   max-height: calc(100dvh - 64px);
   padding: 0;
-  background: var(--surface);
+  background: var(--paper);
   color: var(--text);
-  border: 1px solid #646861;
-  border-radius: 12px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
   overflow: auto;
   overscroll-behavior: contain;
 }
@@ -1062,14 +1066,14 @@ video.approved-sample {
   justify-content: space-between;
   position: sticky;
   top: 0;
-  background: var(--surface);
+  background: var(--paper);
   z-index: 1;
   border-bottom: 1px solid var(--line);
 }
 .viewer-head h2 {
   margin-top: 5px;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 650;
 }
 .icon-button {
   min-width: 44px;
@@ -1085,7 +1089,7 @@ video.approved-sample {
 }
 .viewer-media {
   padding: 24px;
-  background: #0b0d0e;
+  background: var(--surface);
 }
 .viewer-media img {
   width: auto;
@@ -1781,8 +1785,8 @@ html[data-motion="off"]::view-transition-new(*) {
 }
 .story-mobile-controls button[aria-pressed="true"] {
   color: var(--ink);
-  background: var(--accent);
-  border-color: var(--accent);
+  background: var(--acid);
+  border-color: var(--acid);
 }
 .not-found {
   padding-block: 120px;
@@ -1932,5 +1936,46 @@ html[data-motion="off"]::view-transition-new(*) {
   }
   .recent-now .text-link {
     margin-left: 0;
+  }
+}
+
+/* Shared editorial identity. Home-specific composition lives in home.css. */
+.site-header .brand:hover,
+.site-footer .brand:hover {
+  color: var(--text);
+}
+.site-nav a {
+  font-weight: 600;
+}
+.site-nav a:hover {
+  color: var(--accent);
+}
+.text-link,
+.preview-button,
+.icon-button {
+  transition: color var(--fast), background var(--fast), border-color var(--fast);
+}
+.text-link:hover {
+  text-decoration: underline;
+}
+.motion-toggle,
+.menu-toggle {
+  font-weight: 550;
+}
+.preview-button {
+  border-radius: 999px;
+}
+.viewer-foot .actions {
+  flex-wrap: wrap;
+}
+.site-footer {
+  padding-block: 36px;
+}
+@media (max-width: 600px) {
+  .site-footer {
+    padding-block: 28px;
+  }
+  .image-viewer {
+    border-radius: 12px;
   }
 }

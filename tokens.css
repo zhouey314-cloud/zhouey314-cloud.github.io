@@ -1,20 +1,21 @@
 :root {
-  color-scheme: dark;
-  --bg: #111214;
-  --surface: #1a1d20;
-  --surface-hover: #23272a;
-  --text: #f4f1e8;
-  --muted: #afb4af;
-  --subtle: #868d87;
-  --accent: #c9ef73;
-  --paper: #eee8dc;
-  --ink: #1b1c1b;
-  --line: #363b3a;
+  color-scheme: light;
+  --bg: #f3f3ec;
+  --surface: #e9ece2;
+  --surface-hover: #e0e6d6;
+  --text: #171b18;
+  --muted: #5d6459;
+  --subtle: #68705f;
+  --accent: #3c531e;
+  --acid: #d6fa58;
+  --paper: #fcfcf7;
+  --ink: #171b18;
+  --line: #d1d5c8;
   --font:
-    -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei",
+    "Inter", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei",
     sans-serif;
-  --display: Georgia, "Times New Roman", serif;
-  --max: 1200px;
+  --display: "Inter", "Arial", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --max: 1280px;
   --radius: 12px;
   --fast: 160ms;
   --switch: 300ms;

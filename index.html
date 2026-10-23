@@ -1,922 +1,143 @@
 <!doctype html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="theme-color" content="#111214" />
-    <meta
-      name="description"
-      content="我是恩宇，在郑州读编导，也在真实项目里学习把想法做出来。这里是我的 AI 工具、创作实验和项目记录。"
-    />
-    <meta name="author" content="Ethan 恩宇" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Ethan 恩宇 — 读编导，也用 AI 做工具" />
-    <meta
-      property="og:description"
-      content="我是恩宇，在郑州读编导，也在真实项目里学习把想法做出来。这里是我的 AI 工具、创作实验和项目记录。"
-    />
-    <meta property="og:url" content="https://zhouey314-cloud.github.io/" />
-    <meta
-      property="og:image"
-      content="https://zhouey314-cloud.github.io/public/social-preview.png"
-    />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:creator" content="@UPing123zzz" />
-    <meta name="twitter:title" content="Ethan 恩宇 — 读编导，也用 AI 做工具" />
-    <meta
-      name="twitter:description"
-      content="我是恩宇，在郑州读编导，也在真实项目里学习把想法做出来。这里是我的 AI 工具、创作实验和项目记录。"
-    />
-    <meta
-      name="twitter:image"
-      content="https://zhouey314-cloud.github.io/public/social-preview.png"
-    />
-    <link rel="canonical" href="https://zhouey314-cloud.github.io/" />
-    <link rel="icon" href="/public/favicon.svg" type="image/svg+xml" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <script src="/navigation.js"></script>
-    <link rel="stylesheet" href="/tokens.css" />
-    <link rel="stylesheet" href="/style.css" />
-    <script src="/script.js" defer></script>
-    <title>Ethan 恩宇 — 读编导，也用 AI 做工具</title>
-  </head>
-  <body>
-    <a class="skip-link" href="#main">跳到主要内容</a>
-    <header class="site-header wrap">
-      <a class="brand" href="/" aria-label="Ethan 恩宇，首页"
-        ><span class="brand-latin">Ethan<span class="brand-stop">.</span></span
-        ><span class="brand-cn">恩宇</span></a
-      >
-      <div class="header-controls">
-        <button
-          class="motion-toggle enhanced-only"
-          type="button"
-          data-motion-toggle
-          aria-pressed="false"
-          aria-label="关闭装饰动效"
-        >
-          动效 <span data-motion-label>开</span></button
-        ><button
-          class="menu-toggle enhanced-only"
-          type="button"
-          aria-controls="site-nav"
-          aria-expanded="false"
-        >
-          菜单 <span aria-hidden="true">＋</span>
-        </button>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#f3f3ec" />
+  <meta name="description" content="我是周恩宇 Ethan，编导生转 AI，正在企业一线做 FDE 与 GEO。从理解业务需求，到 AI 应用、知识工作流与交付验证，这里记录我的项目、实践和判断。" />
+  <meta name="author" content="周恩宇 Ethan" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="周恩宇 Ethan｜在企业一线做 FDE 与 GEO" />
+  <meta property="og:description" content="走进企业一线，把 AI 做成交付。认识周恩宇，以及他的 GEO、RAG、Agent 与内容生产实践。" />
+  <meta property="og:url" content="https://zhouey314-cloud.github.io/" />
+  <meta property="og:image" content="https://zhouey314-cloud.github.io/public/social-preview.png" />
+  <meta property="og:image:width" content="1200" /><meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:creator" content="@UPing123zzz" />
+  <meta name="twitter:title" content="周恩宇 Ethan｜在企业一线做 FDE 与 GEO" />
+  <meta name="twitter:description" content="编导生转 AI。在企业现场理解需求，在工程与内容之间完成交付。" />
+  <meta name="twitter:image" content="https://zhouey314-cloud.github.io/public/social-preview.png" />
+  <link rel="canonical" href="https://zhouey314-cloud.github.io/" />
+  <link rel="icon" href="/public/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <script src="/navigation.js"></script>
+  <link rel="stylesheet" href="/tokens.css" /><link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/home.css" />
+  <script src="/script.js" defer></script><script src="/home.js" defer></script>
+  <title>周恩宇 Ethan｜在企业一线做 FDE 与 GEO</title>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"周恩宇","alternateName":"Ethan Zhou","url":"https://zhouey314-cloud.github.io/","description":"广播电视编导专业在读，在企业一线参与 FDE、GEO 与 AI 应用实践。","knowsAbout":["Forward Deployed Engineering","Generative Engine Optimization","RAG","AI applications","Content workflows"],"sameAs":["https://github.com/zhouey314-cloud","https://x.com/UPing123zzz","https://t.me/ethanyu520"]}</script>
+</head>
+<body class="portfolio-home">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+  <header class="site-header wrap">
+    <a class="brand" href="/" aria-label="Ethan. 周恩宇，首页"><span class="brand-latin">Ethan<span class="brand-stop">.</span></span><span class="brand-cn">周恩宇</span></a>
+    <div class="header-controls">
+      <button class="motion-toggle enhanced-only" type="button" data-motion-toggle aria-pressed="false" aria-label="关闭装饰动效">动效 <span data-motion-label>开</span></button>
+      <button class="menu-toggle enhanced-only" type="button" aria-controls="site-nav" aria-expanded="false">菜单 <span aria-hidden="true">＋</span></button>
+    </div>
+    <nav id="site-nav" class="site-nav" aria-label="主要导航"><a href="#practice">我的价值</a><a href="#work">作品</a><a href="#about">关于我</a><a href="/resume.html">简历 <span aria-hidden="true">↗</span></a><a href="#contact">聊一聊 <span aria-hidden="true">↗</span></a></nav>
+  </header>
+  <nav class="chapter-rail" aria-label="页面章节"><a href="#practice" data-chapter-link aria-label="01 我的价值">01<span>我的价值</span></a><a href="#work" data-chapter-link aria-label="02 作品证据">02<span>作品证据</span></a><a href="#process" data-chapter-link aria-label="03 工作方法">03<span>工作方法</span></a><a href="#about" data-chapter-link aria-label="04 关于我">04<span>关于我</span></a></nav>
+  <main id="main">
+    <section class="field-hero wrap" id="top" aria-labelledby="hero-title">
+      <div class="field-intro">
+        <p class="field-eyebrow intro-label"><span class="status-dot" aria-hidden="true"></span> 周恩宇 ETHAN ZHOU <span class="eyebrow-divider">/</span> 郑州</p>
+        <h1 id="hero-title">走进企业一线。<br />把 AI 做成<span class="highlight-word">交付<svg viewBox="0 0 270 24" aria-hidden="true"><path d="M3 17C79 3 160 1 263 8M31 22C95 13 174 10 235 15" /></svg></span>。</h1>
+        <p class="field-role">FDE <span>×</span> GEO <span>×</span> AI 应用工程</p>
+        <p class="field-description">我是恩宇，一名编导生，也正在企业一线做 FDE 与 GEO。理解业务、搭建工作流、开发 AI 应用，再把项目推进到能运行、能验证、能交接。</p>
+        <div class="field-actions"><a class="field-button field-button-dark" href="#work">看看我做的项目 <span aria-hidden="true">↗</span></a><a class="field-text-link resume-quick-link" href="/resume.html"><span>30 秒看简历<small>经历 · 能力 · 项目证据</small></span><span aria-hidden="true">↗</span></a></div>
+        <div class="hero-social"><a href="https://github.com/zhouey314-cloud" target="_blank" rel="noopener noreferrer">GITHUB ↗</a><a href="https://x.com/UPing123zzz" target="_blank" rel="noopener noreferrer">X / @UPing123zzz ↗</a><span>持续实践，公开记录。</span></div>
       </div>
-      <nav id="site-nav" class="site-nav" aria-label="主要导航">
-        <a href="#work">作品</a><a href="#writing">记录</a
-        ><a href="#about">关于</a
-        ><a href="#contact">联系 <span aria-hidden="true">↗</span></a>
-      </nav>
-    </header>
-    <main id="main">
-      <section class="hero wrap" id="top" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow intro-label">
-            <span class="tiny-line"></span> 编导 × AI · 个人作品与实践
-          </p>
-          <h1 id="hero-title">
-            <span class="hello">你好，我是<span class="name">恩宇</span>。</span
-            ><span>读编导，</span><span>也用 AI 做工具。</span>
-          </h1>
-          <p class="hero-intro">
-            我在郑州读编导，也把 AI 想法做成可运行、可验证的工具。这里有源码、演示，也有实际测试留下的限制。
-          </p>
-          <ul class="flagship-proof" id="flagship-evidence" aria-label="三条工程主线与证据入口">
-            <li data-project="rag">
-              <strong>Enterprise RAG</strong><span>文件版本、可信身份与逐项评测</span>
-              <div aria-label="Enterprise RAG 入口">
-                <a data-entry="demo" href="https://zhouey314-cloud.github.io/enterprise-rag-starter/">Demo<span class="visually-hidden">：RAG 词面预览</span></a>
-                <a data-entry="code" href="https://github.com/zhouey314-cloud/enterprise-rag-starter">Code<span class="visually-hidden">：RAG 源码</span></a>
-                <a data-entry="evidence" href="/cases/rag.html#deep">Evidence<span class="visually-hidden">：RAG 验收与限制</span></a>
-              </div>
-            </li>
-            <li data-project="relay">
-              <strong>RelayAudit</strong><span>流式异常、协议回归与开销实测</span>
-              <div aria-label="RelayAudit 入口">
-                <a data-entry="demo" href="/cases/relay-audit.html#result">Demo<span class="visually-hidden">：Relay 合成链路</span></a>
-                <a data-entry="code" href="https://github.com/zhouey314-cloud/relay-audit">Code<span class="visually-hidden">：Relay 源码</span></a>
-                <a data-entry="evidence" href="/cases/relay-audit.html#deep">Evidence<span class="visually-hidden">：Relay 压测与限制</span></a>
-              </div>
-            </li>
-            <li data-project="video">
-              <strong>Video Engine</strong><span>54 秒原创动画、机械 QA 与用户审片</span>
-              <div aria-label="Video Engine 入口">
-                <a data-entry="demo" href="/cases/video.html#result">Demo<span class="visually-hidden">：54 秒动画</span></a>
-                <a data-entry="code" href="https://github.com/zhouey314-cloud/ai-video-workflow-engine">Code<span class="visually-hidden">：视频引擎源码</span></a>
-                <a data-entry="evidence" href="/cases/video.html#deep">Evidence<span class="visually-hidden">：视频 QA 与审片范围</span></a>
-              </div>
-            </li>
-          </ul>
-          <div class="actions hero-actions">
-            <a class="button primary" href="#work"
-              >看我的作品 <span aria-hidden="true">↘</span></a
-            ><a class="button secondary" href="#contact"
-              >联系我 <span aria-hidden="true">↗</span></a
-            >
-          </div>
-          <div class="social-links">
-            <a
-              href="https://github.com/zhouey314-cloud"
-              target="_blank"
-              rel="noopener noreferrer"
-              >GitHub ↗</a
-            ><a
-              href="https://x.com/UPing123zzz"
-              target="_blank"
-              rel="noopener noreferrer"
-              >X / @UPing123zzz ↗</a
-            >
-          </div>
-        </div>
-        <div class="creator-desk" aria-label="我的作品创作台">
-          <div class="desk-decoration" data-desk-decoration aria-hidden="true">
-            <div class="back-paper"><span>想法 / 片段 / 下一步</span></div>
-            <div class="desk-note">
-              <span>一点想法，</span><span>一点动手。</span
-              ><svg viewBox="0 0 90 42">
-                <path d="M5 6Q42 36 79 16M67 11l15 3-9 12" />
-              </svg>
-            </div>
-          </div>
-          <div class="desk-stage">
-            <div
-              class="desk-panel"
-              id="desk-thought"
-              role="tabpanel"
-              aria-labelledby="tab-thought"
-            >
-              <div class="desk-frame">
-                <div class="frame-meta">
-                  <span>01 / 作品切片</span><span aria-hidden="true">↗</span>
-                </div>
-                <div class="desk-excerpt">
-                  <p>命运与选择 <span>公开文稿 · 节选</span></p>
-                  <blockquote>
-                    命运是否写好，我不知道。<br />但至少在走过它的时候，<br /><mark
-                      >我想尽量真实一点。</mark
-                    >
-                  </blockquote>
-                  <small>从零碎想法，到自己的表达。</small>
-                </div>
-                <div class="frame-footer">
-                  <strong>Thought-to-X</strong
-                  ><span>本地写作工作流 · 公开示例</span>
-                </div>
-              </div>
-              <div class="desk-links">
-                <button
-                  class="preview-button enhanced-only"
-                  type="button"
-                  data-preview="/public/projects/thought/example.svg"
-                  data-title="Thought-to-X"
-                  data-case="/cases/thought-to-x.html"
-                  data-caption="本地写作工作流 · 公开示例"
-                >
-                  <span aria-hidden="true">⤢</span> 放大预览</button
-                ><a
-                  class="text-link no-js"
-                  href="/public/projects/thought/example.svg"
-                  >查看原图 ↗</a
-                ><a class="text-link" href="/cases/thought-to-x.html"
-                  >看这个作品 <span aria-hidden="true">↗</span></a
-                >
-              </div>
-            </div>
-            <div
-              class="desk-panel"
-              id="desk-rag"
-              role="tabpanel"
-              aria-labelledby="tab-rag"
-              hidden
-            >
-              <div class="desk-frame">
-                <div class="frame-meta">
-                  <span>02 / 作品切片</span><span aria-hidden="true">↗</span>
-                </div>
-                <img
-                  src="/public/projects/rag/demo-query.png"
-                  alt="Enterprise RAG Starter：线上词面检索 · 合成资料"
-                  loading="eager"
-                  decoding="async"
-                  class=""
-                  width="985"
-                  height="887"
-                />
-                <div class="frame-footer">
-                  <strong>Enterprise RAG Starter</strong
-                  ><span>线上词面检索 · 合成资料</span>
-                </div>
-              </div>
-              <div class="desk-links">
-                <button
-                  class="preview-button enhanced-only"
-                  type="button"
-                  data-preview="/public/projects/rag/demo-query.png"
-                  data-title="Enterprise RAG Starter"
-                  data-case="/cases/rag.html"
-                  data-caption="线上词面检索 · 合成资料"
-                >
-                  <span aria-hidden="true">⤢</span> 放大预览</button
-                ><a
-                  class="text-link no-js"
-                  href="/public/projects/rag/demo-query.png"
-                  >查看原图 ↗</a
-                ><a class="text-link" href="/cases/rag.html"
-                  >看这个作品 <span aria-hidden="true">↗</span></a
-                >
-              </div>
-            </div>
-            <div
-              class="desk-panel"
-              id="desk-workflow"
-              role="tabpanel"
-              aria-labelledby="tab-workflow"
-              hidden
-            >
-              <div class="desk-frame">
-                <div class="frame-meta">
-                  <span>03 / 作品切片</span><span aria-hidden="true">↗</span>
-                </div>
-                <img
-                  src="/public/projects/workflow/hero.png"
-                  alt="Multi-Tenant Workflow：浏览器演示 · 角色模拟"
-                  loading="eager"
-                  decoding="async"
-                  class=""
-                  width="1440"
-                  height="900"
-                />
-                <div class="frame-footer">
-                  <strong>Multi-Tenant Workflow</strong
-                  ><span>浏览器演示 · 角色模拟</span>
-                </div>
-              </div>
-              <div class="desk-links">
-                <button
-                  class="preview-button enhanced-only"
-                  type="button"
-                  data-preview="/public/projects/workflow/hero.png"
-                  data-title="Multi-Tenant Workflow"
-                  data-case="/cases/multi-tenant.html"
-                  data-caption="浏览器演示 · 角色模拟"
-                >
-                  <span aria-hidden="true">⤢</span> 放大预览</button
-                ><a
-                  class="text-link no-js"
-                  href="/public/projects/workflow/hero.png"
-                  >查看原图 ↗</a
-                ><a class="text-link" href="/cases/multi-tenant.html"
-                  >看这个作品 <span aria-hidden="true">↗</span></a
-                >
-              </div>
-            </div>
-          </div>
-          <div
-            class="desk-tabs enhanced-only"
-            role="tablist"
-            aria-label="切换作品预览"
-          >
-            <button
-              id="tab-thought"
-              role="tab"
-              aria-selected="true"
-              aria-controls="desk-thought"
-              data-desk="thought"
-            >
-              <span>01</span> 表达</button
-            ><button
-              id="tab-rag"
-              role="tab"
-              aria-selected="false"
-              aria-controls="desk-rag"
-              tabindex="-1"
-              data-desk="rag"
-            >
-              <span>02</span> 知识</button
-            ><button
-              id="tab-workflow"
-              role="tab"
-              aria-selected="false"
-              aria-controls="desk-workflow"
-              tabindex="-1"
-              data-desk="workflow"
-            >
-              <span>03</span> 流程
-            </button>
-          </div>
-        </div>
-        <div class="hero-bottom">
-          <span>从一个想法，开始认识我。</span
-          ><a href="#work" aria-label="往下看：浏览精选作品"
-            >往下看 <span aria-hidden="true">↓</span></a
-          >
-        </div>
-      </section>
-      <section
-        class="section wrap selected-work"
-        id="work"
-        aria-labelledby="work-title"
-      >
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">01 / 精选作品</p>
-            <h2 id="work-title">
-              把想法，<br class="mobile-break" />做成看得见的东西<span
-                class="accent"
-                >。</span
-              >
-            </h2>
-          </div>
-          <a class="text-link" href="/projects.html"
-            >完整项目档案 <span aria-hidden="true">↗</span></a
-          >
-        </div>
-        <article class="work-feature" data-reveal>
-          <div class="work-copy">
-            <div class="project-order">
-              <span>01</span><span>想法与表达</span>
-            </div>
-            <h3>整理表达，<br />不改掉自己。</h3>
-            <p class="project-name">Thought-to-X</p>
-            <p>
-              把随手记下的想法，整理成更清楚的文字。先找到想说的意思，再处理结构、语气和节奏。
-            </p>
-            <p class="project-status">
-              <span></span> 本地工作流 · 人工确认后发布
-            </p>
-            <p class="boundary">
-              辅助整理表达，不自动发帖。示例不代表经过独立评审的模型效果。
-            </p>
-            <div class="actions">
-              <a class="text-link strong-link" href="/cases/thought-to-x.html"
-                >阅读案例 <span aria-hidden="true">↗</span></a
-              ><a
-                class="text-link"
-                href="https://github.com/zhouey314-cloud/thought-to-x"
-                >查看源码 ↗</a
-              >
-            </div>
-          </div>
-          <figure class="project-visual thought-visual">
-            <img
-              src="/public/projects/thought/example.svg"
-              alt="Thought-to-X 公开命运示例：原始想法与整理后的表达"
-              loading="lazy"
-              decoding="async"
-              class=""
-              width="1400"
-              height="900"
-            />
-            <figcaption>
-              <span>公开示例 · 原文重新排版</span
-              ><button
-                class="preview-button enhanced-only"
-                type="button"
-                data-preview="/public/projects/thought/example.svg"
-                data-title="Thought-to-X · 命运与选择"
-                data-case="/cases/thought-to-x.html"
-                data-caption="公开示例原文重新排版；流程示意，非实时模型运行。"
-              >
-                <span aria-hidden="true">⤢</span> 预览大图</button
-              ><a
-                class="text-link no-js"
-                href="/public/projects/thought/example.svg"
-                >查看原图 ↗</a
-              >
-            </figcaption>
-          </figure>
-        </article>
-        <div class="work-pair">
-          <article data-reveal>
-            <figure class="project-visual rag-visual">
-              <img
-                src="/public/projects/rag/demo-query.png"
-                alt="公开词面 Demo：合成问题、抽取式答案与引用"
-                loading="lazy"
-                decoding="async"
-                class=""
-                width="985"
-                height="887"
-              />
-              <figcaption>
-                <span>真实界面 · 合成资料</span
-                ><button
-                  class="preview-button enhanced-only"
-                  type="button"
-                  data-preview="/public/projects/rag/demo-query.png"
-                  data-title="Enterprise RAG Starter"
-                  data-case="/cases/rag.html"
-                  data-caption="线上词面检索演示；查询与文档均为合成数据，本地语义模式另行运行。"
-                >
-                  <span aria-hidden="true">⤢</span> 预览大图</button
-                ><a
-                  class="text-link no-js"
-                  href="/public/projects/rag/demo-query.png"
-                  >查看原图 ↗</a
-                >
-              </figcaption>
-            </figure>
-            <div class="work-copy">
-              <div class="project-order">
-                <span>02</span><span>知识与来源</span>
-              </div>
-              <h3>回答之外，<br />还要看得到出处。</h3>
-              <p class="project-name">Enterprise RAG Starter</p>
-              <p>
-                找到资料、过滤访问范围，再把来源交给读者。资料不足时，给出明确的无答案状态。
-              </p>
-              <p class="project-status">
-                <span></span> 线上词面演示 · 本地语义模式
-              </p>
-              <p class="boundary">
-                公开资料为合成数据，不代表真实企业回答准确率。
-              </p>
-              <div class="actions">
-                <a class="text-link strong-link" href="/cases/rag.html"
-                  >阅读案例 ↗</a
-                ><a
-                  class="text-link"
-                  href="https://zhouey314-cloud.github.io/enterprise-rag-starter/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >打开演示 ↗</a
-                >
-              </div>
-            </div>
-          </article>
-          <article data-reveal>
-            <figure class="project-visual workflow-visual">
-              <img
-                src="/public/projects/workflow/hero.png"
-                alt="TenantFlow 公开角色与内容流程模拟界面"
-                loading="lazy"
-                decoding="async"
-                class=""
-                width="1440"
-                height="900"
-              />
-              <figcaption>
-                <span>真实界面 · 虚构租户</span
-                ><button
-                  class="preview-button enhanced-only"
-                  type="button"
-                  data-preview="/public/projects/workflow/hero.png"
-                  data-title="Multi-Tenant Workflow"
-                  data-case="/cases/multi-tenant.html"
-                  data-caption="角色与审批的浏览器模拟；不提供生产身份认证或服务端安全隔离。"
-                >
-                  <span aria-hidden="true">⤢</span> 预览大图</button
-                ><a
-                  class="text-link no-js"
-                  href="/public/projects/workflow/hero.png"
-                  >查看原图 ↗</a
-                >
-              </figcaption>
-            </figure>
-            <div class="work-copy">
-              <div class="project-order">
-                <span>03</span><span>角色与协作</span>
-              </div>
-              <h3>让一份内容，<br />走过清楚的流程。</h3>
-              <p class="project-name">Multi-Tenant Workflow</p>
-              <p>
-                从共享知识到审核、发布，把谁能看、谁能操作、下一步是什么放在同一条路径里。
-              </p>
-              <p class="project-status"><span></span> 浏览器演示 · 角色模拟</p>
-              <p class="boundary">
-                演示口令是角色选择器，不是生产认证或服务端安全隔离。
-              </p>
-              <div class="actions">
-                <a class="text-link strong-link" href="/cases/multi-tenant.html"
-                  >阅读案例 ↗</a
-                ><a
-                  class="text-link"
-                  href="https://github.com/zhouey314-cloud/multi-tenant-ai-workflow-saas"
-                  >查看源码 ↗</a
-                >
-              </div>
-            </div>
-          </article>
-        </div>
-        <div class="archive-invitation">
-          <span>还有评估工具、视频实验、CRM 和可复用的方法。</span
-          ><a class="text-link" href="/projects.html"
-            >浏览全部 16 个公开项目 <span aria-hidden="true">↗</span></a
-          >
-        </div>
-      </section>
+      <div class="field-art" data-field-art aria-label="FDE 与 GEO：连接业务、工程和表达">
+        <div class="art-topline"><span><i aria-hidden="true"></i> IN THE FIELD</span><span>EST. 2026</span></div>
+        <div class="art-coordinates" aria-hidden="true"><span>01 / BUSINESS</span><span>02 / ENGINEERING</span></div>
+        <div class="art-sculpture" aria-hidden="true"><img src="/public/field-form.svg" width="560" height="560" alt="连接业务、工程与表达的原创绿色线框雕塑" fetchpriority="high" /></div>
+        <div class="art-word" aria-hidden="true">FDE<span>↗</span><br /><span class="art-word-outline">GEO</span></div>
+        <div class="art-bottomline"><span>业务 × 工程 × 表达</span><span>BUILD WITH CONTEXT.</span></div>
+        <span class="art-plus art-plus-one" aria-hidden="true">＋</span><span class="art-plus art-plus-two" aria-hidden="true">＋</span>
+      </div>
+      <div class="hero-footnote"><span>业务现场的理解力 · 工程实现的行动力 · 编导的表达力</span><a href="#practice">向下，认识我的工作 <span aria-hidden="true">↓</span></a></div>
+    </section>
 
-      <section
-        class="section section-rule wrap"
-        id="process"
-        aria-labelledby="story-title"
-        data-story
-      >
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">02 / 作品如何形成</p>
-            <h2 id="story-title">一个想法的三个分镜。</h2>
+    <section class="practice-section" id="practice" aria-labelledby="practice-title">
+      <div class="wrap">
+        <div class="field-heading"><p class="field-eyebrow">01 / WHAT I BRING</p><h2 id="practice-title">三种视角。<br />同一个交付现场。</h2><p class="heading-aside">向下看，走进我的工作。<br />每一种能力，都有作品可以打开。</p></div>
+        <div class="practice-story">
+          <div class="practice-stage" data-practice-stage data-scene="fde">
+            <div class="stage-topline"><span>ETHAN / FIELD NOTES</span><span aria-hidden="true">↗</span></div>
+            <div class="scene-canvas" aria-hidden="true">
+              <div class="scene-panel scene-fde" data-scene-panel="fde">
+                <span class="scene-word">FDE</span>
+                <div class="scene-orbit"></div>
+                <div class="field-ticket ticket-question"><small>START WITH PEOPLE</small><strong>谁在用？<br />卡在哪？</strong><span>把真实问题问清楚。</span></div>
+                <div class="field-ticket ticket-flow"><small>CONTEXT → WORKFLOW</small><div class="ticket-nodes"><i></i><b></b><i></i><b></b><i></i></div><strong>从需求<br />走到交付。</strong></div>
+                <span class="scene-stamp">IN THE<br />FIELD.</span>
+              </div>
+              <div class="scene-panel scene-geo" data-scene-panel="geo" hidden>
+                <span class="scene-word">GEO</span>
+                <div class="knowledge-sheet sheet-back"><span>01 / KNOWLEDGE</span><strong>企业知识</strong><i></i><i></i><i></i></div>
+                <div class="knowledge-sheet sheet-front"><span>02 / WORKFLOW</span><strong>内容生成<br />审核交接。</strong><div class="sheet-route"><b>知识</b><span>→</span><b>内容</b><span>→</span><b>人</b></div></div>
+                <span class="scene-caption">把知识，接进工作流。</span>
+              </div>
+              <div class="scene-panel scene-build" data-scene-panel="build" hidden>
+                <span class="scene-word">BUILD</span>
+                <div class="build-window"><div class="build-window-bar"><span></span><span></span><span></span><small>FROM IDEA TO EVIDENCE</small></div><div class="build-lines"><p><em>01</em><span>输入与边界</span><b>DEFINE</b></p><p><em>02</em><span>实现与排错</span><b>BUILD</b></p><p><em>03</em><span>验证与说明</span><b>VERIFY</b></p></div></div>
+                <span class="build-seal">可运行<br />可检查<br />可交接<span>↗</span></span>
+                <span class="scene-caption">让实现留下证据。</span>
+              </div>
+            </div>
+            <nav class="scene-navigation" aria-label="跳转到能力章节"><a href="#practice-fde" data-scene-link="fde" aria-current="step"><span>01</span> 业务理解</a><a href="#practice-geo" data-scene-link="geo"><span>02</span> GEO 实践</a><a href="#practice-build" data-scene-link="build"><span>03</span> 工程实现</a></nav>
           </div>
-          <p class="story-intro">
-            以 Thought-to-X 的“命运与选择”为例。<br />从原始材料，到想保留的意思，再到一段表达。
-          </p>
-        </div>
-        <div class="story-context">
-          <span class="story-label">公开示例 · 流程讲解</span>
-          <p>以下是已有文稿，非实时模型运行。</p>
-        </div>
-        <div class="story-mobile-controls enhanced-only" aria-label="跳转分镜">
-          <button type="button" data-story-select="0" aria-pressed="true">
-            01 想法</button
-          ><button type="button" data-story-select="1" aria-pressed="false">
-            02 原意</button
-          ><button type="button" data-story-select="2" aria-pressed="false">
-            03 表达
-          </button>
-        </div>
-        <div class="story-layout">
-          <div class="story-steps">
-            <article class="story-step" id="story-1" data-story-step>
-              <span class="step-number">01</span>
-              <h3>先留下，还没说完的想法。</h3>
-              <p>
-                这里的起点是一段零碎的想法。电影比喻、疑问和不确定，都先保留下来。
-              </p>
-              <div class="story-document">
-                <div class="document-top">
-                  <span>命运与选择 / RAW</span><span>01</span>
-                </div>
-                <blockquote>
-                  每个人自己的命运从出生那一刻可能就已经定好<br />就像电影每个时间点时间线都存在<br />但是安于现状还是应该问自己想要什么
-                </blockquote>
-                <p class="source-caption">
-                  公开示例原始输入 · 节选，保留原换行
-                </p>
-              </div>
+          <div class="practice-chapters">
+            <article class="practice-chapter" id="practice-fde" data-practice-step="fde">
+              <p class="chapter-kicker"><span>01 / FDE</span> 走近使用者</p><h3>先把业务读懂，<br />再把事情做成。</h3><p>我正在企业一线实践 FDE 的工作方式：从具体的人和场景出发，把一句模糊的「能不能」，拆成页面、角色、数据与工作流。</p><ul class="chapter-points"><li><strong>需求理解</strong><span>谁来用、哪里卡住、什么结果才算完成。</span></li><li><strong>流程拆解</strong><span>理清输入、步骤、权限与人工判断的位置。</span></li><li><strong>交付整理</strong><span>参与实现、功能检查和说明，让下一位能接着用。</span></li></ul><a class="field-text-link" href="/projects.html#geo-title">看我的企业参与记录 <span aria-hidden="true">↗</span></a>
             </article>
-            <article class="story-step" id="story-2" data-story-step>
-              <span class="step-number">02</span>
-              <h3>找到真正想保留的意思。</h3>
-              <p>
-                “可能早已存在”和“仍然主动选择”同时成立。整理结构，不替作者升级立场。
-              </p>
-              <div class="story-document">
-                <div class="document-top">
-                  <span>命运与选择 / INTENT</span><span>02</span>
-                </div>
-                <p class="core-claim">
-                  即使命运可能早已存在，人仍应诚实面对自己真正想要的生活
-                </p>
-                <ul>
-                  <li>命运可能已经定好</li>
-                  <li>这不等于安于现状</li>
-                  <li>喜欢现在的生活也没问题</li>
-                </ul>
-                <p class="source-caption">
-                  公开示例 core_claim 与 must_preserve 原文
-                </p>
-              </div>
+            <article class="practice-chapter" id="practice-geo" data-practice-step="geo">
+              <p class="chapter-kicker"><span>02 / GEO</span> 把知识变成流程</p><h3>让企业知识，<br />进入内容生产。</h3><p>围绕生成式引擎优化，我参与企业知识、内容生成、审核与发布交接相关页面和 Skill / Workflow，把内容需求落实到具体流程。</p><ul class="chapter-points"><li><strong>知识作用域</strong><span>整理内容从哪里来、在哪个范围内被使用。</span></li><li><strong>生成与审核</strong><span>连接知识、生成步骤和人工复核。</span></li><li><strong>表达与交接</strong><span>让内容结构清楚，也让流程有说明可循。</span></li></ul><a class="field-text-link" href="/projects.html#geo-title">打开已公开的脱敏界面 <span aria-hidden="true">↗</span></a>
             </article>
-            <article class="story-step" id="story-3" data-story-step>
-              <span class="step-number">03</span>
-              <h3>把话说清楚，决定留给自己。</h3>
-              <p>
-                公开示例保留了“也许”“不知道”。文稿依然需要作者复核，工作流不会代替作者发布。
-              </p>
-              <div class="story-document">
-                <div class="document-top">
-                  <span>命运与选择 / FINAL</span><span>03</span>
-                </div>
-                <blockquote>
-                  <p>
-                    我有时会觉得，人的命运也许从出生那一刻就已经存在了。像一部已经拍完的电影，我们只是依次走到每个时间点。
-                  </p>
-                  <p>
-                    命运是否写好，我不知道。但至少在走过它的时候，我想尽量真实一点。
-                  </p>
-                </blockquote>
-                <p class="source-caption">
-                  公开 FINAL 文稿 · 第一、三段；完整示例见来源
-                </p>
-              </div>
+            <article class="practice-chapter" id="practice-build" data-practice-step="build">
+              <p class="chapter-kicker"><span>03 / BUILD</span> 让作品可以核实</p><h3>动手实现，<br />也留下验证。</h3><p>我把工程实践放进个人开源项目：知识检索要能回到来源，Agent 链路要能定位异常，视频工作流要交出能播放、能检查的作品。</p><ul class="chapter-points"><li><strong>RAG</strong><span>文档、引用、访问边界与检索评测。</span></li><li><strong>Agent 工具</strong><span>HTTP / SSE、异常处理、链路与报告。</span></li><li><strong>内容工程</strong><span>脚本、渲染、媒体 QA 与人工审片。</span></li></ul><a class="field-text-link" href="#flagship-evidence">看三个项目和验证记录 <span aria-hidden="true">↓</span></a>
             </article>
           </div>
-          <div class="story-preview">
-            <div data-story-preview aria-hidden="true"></div>
-            <div class="story-controls enhanced-only" aria-label="切换当前分镜">
-              <button type="button" data-story-select="0" aria-pressed="true">
-                01 原始想法</button
-              ><button type="button" data-story-select="1" aria-pressed="false">
-                02 提取原意</button
-              ><button type="button" data-story-select="2" aria-pressed="false">
-                03 整理表达
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="story-source">
-          <p>
-            原文来自 Thought-to-X 公开示例，展示工作流思路，不作为写作质量评分。
-          </p>
-          <a
-            class="text-link"
-            href="https://github.com/zhouey314-cloud/thought-to-x/blob/main/examples/destiny-example.md"
-            >阅读完整示例 ↗</a
-          >
-        </div>
-      </section>
-      <!-- Latest verified public work: separate from previously selected projects. -->
-      <section
-        class="section section-rule wrap recent-work"
-        id="recent"
-        aria-labelledby="recent-title"
-      >
-        <div class="section-heading recent-heading">
-          <div>
-            <p class="eyebrow">03 / 最新公开作品</p>
-            <h2 id="recent-title">
-              最近，也在把新的问题做出来<span class="accent">。</span>
-            </h2>
-            <p class="recent-intro">
-              从 Agent
-              请求链路，到授权配音。这里展示已公开的仓库与证据，不把模拟结果写成真实生产效果。
-            </p>
-          </div>
-          <a class="text-link" href="/projects.html"
-            >查看全部作品 <span aria-hidden="true">↗</span></a
-          >
-        </div>
-        <div class="recent-grid">
-          <article class="recent-card" aria-labelledby="recent-relay-title">
-            <div class="recent-image">
-              <img
-                src="/public/projects/recent/relay-flow.svg"
-                width="800"
-                height="640"
-                alt="RelayAudit 结构示意：Agent 经本地网关转发至用户配置的中转 API，并保留独立告警路径。非真实运行截图。"
-                loading="lazy"
-                decoding="async"
-              />
-              <div class="recent-figure-caption">
-                <span>结构示意 · 非实机截图</span
-                ><button
-                  class="preview-button enhanced-only"
-                  type="button"
-                  data-preview="/public/projects/recent/relay-flow.svg"
-                  data-title="RelayAudit / AgentGuard · 流程示意"
-                  data-case="/cases/relay-audit.html"
-                  data-caption="原创结构示意；不是实机截图、实时模型运行或效果验收。"
-                >
-                  <span aria-hidden="true">⤢</span> 放大示意</button
-                ><a
-                  class="text-link no-js"
-                  href="/public/projects/recent/relay-flow.svg"
-                  >查看原图 ↗</a
-                >
-              </div>
-            </div>
-            <div class="recent-body">
-              <p class="recent-kicker">NEW / AGENT INFRASTRUCTURE</p>
-              <h3 id="recent-relay-title">
-                看清 Agent 中转链路里的变化。
-              </h3>
-              <p class="recent-project-name">RelayAudit / AgentGuard</p>
-              <p>
-                用本地网关被动观察请求链路：协议状态、模型声明与服务波动出现异常时，形成独立的告警和可回看的报告。
-              </p>
-              <p class="boundary">
-                当前证据来自合成服务与本机接入测试，不代表能识别所有真实换模；模型身份仍未验证。
-              </p>
-              <div class="actions">
-                <a class="text-link strong-link" href="/cases/relay-audit.html"
-                  >阅读案例 ↗</a
-                ><a
-                  class="text-link"
-                  href="https://github.com/zhouey314-cloud/relay-audit"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >开源代码 ↗</a
-                >
-              </div>
-            </div>
-          </article>
-          <article class="recent-card" aria-labelledby="recent-voice-title">
-            <div class="recent-image">
-              <img
-                src="/public/projects/recent/voice-flow.svg"
-                width="800"
-                height="640"
-                alt="Voice Clone Video 工作流程示意：授权检查、字幕与语音时间轴、FFmpeg 视频合成，再交给人工复核。非真实音色效果展示。"
-                loading="lazy"
-                decoding="async"
-              />
-              <div class="recent-figure-caption">
-                <span>结构示意 · 非实机截图</span
-                ><button
-                  class="preview-button enhanced-only"
-                  type="button"
-                  data-preview="/public/projects/recent/voice-flow.svg"
-                  data-title="Voice Clone Video · 流程示意"
-                  data-case="/cases/voice-clone-video.html"
-                  data-caption="原创结构示意；不是实机截图、实时模型运行或效果验收。"
-                >
-                  <span aria-hidden="true">⤢</span> 放大示意</button
-                ><a
-                  class="text-link no-js"
-                  href="/public/projects/recent/voice-flow.svg"
-                  >查看原图 ↗</a
-                >
-              </div>
-            </div>
-            <div class="recent-body">
-              <p class="recent-kicker">NEW / CREATOR WORKFLOW</p>
-              <h3 id="recent-voice-title">声音有授权，配音流程也有边界。</h3>
-              <p class="recent-project-name">Voice Clone Video</p>
-              <p>
-                把授权检查、SRT/VTT
-                字幕、逐条语音生成和视频合成连接起来，并保留供人工试听与检查的状态和报告。
-              </p>
-              <p class="boundary">
-                离线 Mock 是静音合成验证，不证明真人声音克隆质量，也不自动发布。
-              </p>
-              <div class="actions">
-                <a
-                  class="text-link strong-link"
-                  href="/cases/voice-clone-video.html"
-                  >阅读案例 ↗</a
-                ><a
-                  class="text-link"
-                  href="https://github.com/zhouey314-cloud/voice-clone-video"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >开源代码 ↗</a
-                >
-              </div>
-            </div>
-          </article>
-        </div>
-        <div class="recent-now" aria-label="进行中的项目">
-          <span class="recent-now-label">ON THE DESK / 正在进行</span>
-          <p>
-            <strong>黑客松项目</strong>正在整理可以公开的内容；<strong
-              >Ethan Creator Studio</strong
-            >
-            与
-            <strong>本地录音转写工作台</strong
-            >还在开发、验证中。它们不计入已公开作品数量，也不宣称正式上线。
-          </p>
-          <a class="text-link" href="/projects.html#building-now"
-            >查看当前进度 ↗</a
-          >
-        </div>
-      </section>
-      <section
-        class="section section-rule wrap"
-        id="writing"
-        aria-labelledby="writing-title"
-      >
-        <div class="writing-layout">
-          <div>
-            <p class="eyebrow">04 / 创作记录</p>
-            <h2 id="writing-title">做的过程，<br />也值得留下。</h2>
-          </div>
-          <div class="writing-entry">
-            <h3>项目之外，在 X 继续聊。</h3>
-            <p>
-              关于 AI 工具、创作实践，以及把想法做出来时遇到的问题和新的理解。
-            </p>
-            <a
-              class="text-link strong-link"
-              href="https://x.com/UPing123zzz"
-              target="_blank"
-              rel="noopener noreferrer"
-              >@UPing123zzz <span aria-hidden="true">↗</span></a
-            >
-          </div>
-        </div>
-      </section>
-      <section
-        class="section section-rule wrap"
-        id="about"
-        aria-labelledby="about-title"
-      >
-        <div class="about-layout">
-          <div>
-            <p class="eyebrow">05 / 关于我</p>
-            <h2 id="about-title">在叙事与构建之间。</h2>
-            <div class="about-signature" aria-hidden="true">Ethan.</div>
-          </div>
-          <div class="about-copy">
-            <p class="lead">
-              我是恩宇，也叫周恩宇。<br />编导专业在读，在郑州生活和学习。
-            </p>
-            <p>
-              我关心一个想法怎样被讲清楚，也关心它怎样被做出来。现在，我把这两件事放进
-              AI 工具、GEO 和工作流相关的项目实践里。
-            </p>
-            <p>
-              这里记录我做过的尝试、实现中的选择，以及作品目前还做不到的部分。它们会继续生长。
-            </p>
-          </div>
-        </div>
-      </section>
-      <section
-        class="section section-rule wrap"
-        id="contact"
-        aria-labelledby="contact-title"
-      >
-        <div class="contact-layout">
-          <div class="contact-copy">
-            <p class="eyebrow">06 / 联系</p>
-            <h2 id="contact-title">
-              有个想法？<br />聊聊看<span class="accent">。</span>
-            </h2>
-            <p>关于项目、工具、创作，或最近学到的东西，都欢迎交流。</p>
-            <div class="contact-links">
-              <a class="contact-link" href="mailto:zhouey314@gmail.com"
-                ><span
-                  ><small>EMAIL</small
-                  ><strong>zhouey314@gmail.com</strong></span
-                ><span aria-hidden="true">↗</span></a
-              ><a
-                class="contact-link"
-                href="https://t.me/ethanyu520"
-                target="_blank"
-                rel="noopener noreferrer"
-                ><span><small>TELEGRAM</small><strong>@ethanyu520</strong></span
-                ><span aria-hidden="true">↗</span></a
-              >
-            </div>
-          </div>
-          <figure class="wechat">
-            <a
-              href="https://u.wechat.com/MJNJhDRZFiAFKD09uKIRGvM?s=3"
-              aria-label="打开 Ethan 恩宇的微信联系链接"
-              ><img
-                src="/public/contact/wechat-qr.svg"
-                alt="Ethan 恩宇微信二维码"
-                loading="lazy"
-                decoding="async"
-                class=""
-                width="49"
-                height="49"
-            /></a>
-            <figcaption>
-              <span class="eyebrow">微信</span><strong>Ethan 恩宇</strong>
-              <p>
-                扫码添加。<br />也可以直接发邮件<br />或通过 Telegram 联系。
-              </p>
-            </figcaption>
-          </figure>
-        </div>
-      </section>
-    </main>
-    <footer class="site-footer wrap">
-      <a class="brand" href="/"
-        ><span class="brand-latin">Ethan<span class="brand-stop">.</span></span
-        ><span class="brand-cn">恩宇</span></a
-      >
-      <p>想法，慢慢成为作品。</p>
-      <a href="/projects.html">完整项目档案 <span aria-hidden="true">↗</span></a
-      ><small>© 2026 Ethan 恩宇</small>
-    </footer>
-    <dialog class="image-viewer" aria-labelledby="viewer-title" data-viewer>
-      <div class="viewer-head">
-        <div>
-          <p class="eyebrow">作品预览</p>
-          <h2 id="viewer-title"></h2>
-        </div>
-        <button
-          class="icon-button"
-          type="button"
-          data-viewer-close
-          aria-label="关闭预览"
-          autofocus
-        >
-          ×
-        </button>
-      </div>
-      <div class="viewer-media"><img data-viewer-image alt="" /></div>
-      <div class="viewer-foot">
-        <p data-viewer-caption></p>
-        <div class="actions">
-          <a
-            class="text-link"
-            data-viewer-original
-            href="/"
-            target="_blank"
-            rel="noopener"
-            >打开原图 ↗</a
-          ><a class="button primary" data-viewer-case href="/projects.html"
-            >阅读案例 ↗</a
-          >
         </div>
       </div>
-    </dialog>
-  </body>
+    </section>
+
+    <section class="work-section wrap" id="work" aria-labelledby="work-title">
+      <div class="field-heading"><p class="field-eyebrow">02 / SELECTED WORK</p><h2 id="work-title">实战，留下作品。</h2><a class="field-text-link heading-aside" href="/projects.html">完整项目档案 <span aria-hidden="true">↗</span></a></div>
+      <article class="geo-feature" data-reveal>
+        <div class="geo-feature-copy"><span class="project-label">FIELD EXPERIENCE / 企业实践</span><h3>GEO，<br />从知识到内容。</h3><p>在企业里参与内容与知识工作流，把知识作用域、内容生成、审核和发布交接连接起来。</p><ul class="scope-list"><li>页面与业务流程</li><li>Skill / Workflow 实现</li><li>验证与交付整理</li></ul><a class="field-text-link" href="/projects.html#geo-title">看看我参与的工作 <span aria-hidden="true">↗</span></a><p class="project-note">2026.06 — 至今 · 本人参与范围见案例</p></div>
+        <figure class="geo-feature-media"><div class="window-bar" aria-hidden="true"><span><i></i><i></i><i></i></span><span>GEO / CONTENT WORKFLOW</span><span>↗</span></div><img src="/public/projects/geo/geo-generation-flow.webp" alt="GEO 内容生成工作流的已有公开脱敏界面" width="1600" height="900" loading="lazy" decoding="async" /><figcaption><span>企业知识 → 内容生成 → 审核交接</span><button class="preview-button enhanced-only" type="button" data-preview="/public/projects/geo/geo-generation-flow.webp" data-title="GEO 内容与知识工作流" data-case="/projects.html#geo-title" data-caption="本人参与部分页面、Skill / Workflow、验证与交付整理；沿用已公开脱敏截图。"><span aria-hidden="true">⤢</span> 看大图</button><a class="no-js field-text-link" href="/public/projects/geo/geo-generation-flow.webp">查看原图 ↗</a></figcaption></figure>
+      </article>
+
+      <ul class="project-selection" id="flagship-evidence" aria-label="三条工程主线与证据入口">
+        <li class="selected-project rag-project" data-project="rag" data-reveal>
+          <a class="project-cover rag-cover" href="/cases/rag.html"><span class="cover-topline">01 / KNOWLEDGE SYSTEMS <span>RAG</span></span><div class="rag-screen"><img src="/public/projects/rag/demo-query.png" alt="Enterprise RAG：合成资料中的检索、答案与来源引用界面" width="985" height="887" loading="lazy" decoding="async" /></div><span class="cover-link" aria-hidden="true">↗</span></a>
+          <div class="selected-copy"><div class="project-topline"><span class="project-label">AI APPLICATION / 企业知识</span><span class="project-state"><i aria-hidden="true"></i> 在线演示</span></div><h3>让每一个回答，<br />找得到依据。</h3><p class="project-product">Enterprise RAG Starter</p><p class="project-description">实现文档入库、版本管理、检索前的访问过滤与来源引用。让知识问答能回到原始材料，也让证据不足时的拒答有章可循。</p><div class="project-stack"><span>RAG</span><span>检索与引用</span><span>权限与评测</span></div><div class="project-entry"><a data-entry="demo" href="https://zhouey314-cloud.github.io/enterprise-rag-starter/">打开演示 ↗</a><a data-entry="code" href="https://github.com/zhouey314-cloud/enterprise-rag-starter" target="_blank" rel="noopener noreferrer">源码 ↗</a><a data-entry="evidence" href="/cases/rag.html#deep">验证记录 ↗</a></div><p class="project-note">线上词面检索 · 合成资料；完整实现与限制见案例。</p></div>
+        </li>
+        <li class="selected-project compact-project" data-project="relay" data-reveal>
+          <a class="project-cover relay-cover" href="/cases/relay-audit.html"><span class="cover-topline">02 / AGENT INFRASTRUCTURE <span>↗</span></span><div class="relay-art" aria-hidden="true"><span class="relay-node">AGENT</span><span class="relay-path"><i></i></span><span class="relay-core"><span>RELAY<br />AUDIT</span><small>OBSERVE / REPORT</small></span><span class="relay-path"><i></i></span><span class="relay-node">API</span></div><span class="cover-caption">链路观测结构示意</span></a>
+          <div class="selected-copy"><div class="project-topline"><span class="project-label">OBSERVABILITY / 链路观测</span><span class="project-state">开源项目</span></div><h3>把 Agent 的链路，<br />放到明处。</h3><p class="project-product">RelayAudit / AgentGuard</p><p class="project-description">搭建本地转发网关，观察 HTTP / SSE、超时与取消，保留传输终止原因、告警与报告。把难以描述的链路异常，变成能继续排查的线索。</p><div class="project-entry"><a data-entry="demo" href="/cases/relay-audit.html#result">查看演示 ↗</a><a data-entry="code" href="https://github.com/zhouey314-cloud/relay-audit" target="_blank" rel="noopener noreferrer">源码 ↗</a><a data-entry="evidence" href="/cases/relay-audit.html#deep">验证记录 ↗</a></div><p class="project-note">本地与合成链路测试 · 不作为上游模型身份鉴定。</p></div>
+        </li>
+        <li class="selected-project compact-project" data-project="video" data-reveal>
+          <a class="project-cover video-cover" href="/cases/video.html#result"><img src="/public/projects/video/original-54s-poster.jpg" alt="AI Video Workflow Engine 已有 54 秒原创程序动画的真实成片画面" width="1280" height="720" loading="lazy" decoding="async" /><span class="cover-topline">03 / CONTENT ENGINEERING <span>00:54</span></span><span class="video-play" aria-hidden="true">▶</span><span class="video-watch">观看原创样片 ↗</span></a>
+          <div class="selected-copy"><div class="project-topline"><span class="project-label">VIDEO WORKFLOW / 视频工程</span><span class="project-state">可播放样片</span></div><h3>让创作流程，<br />也能被复现。</h3><p class="project-product">AI Video Workflow Engine</p><p class="project-description">用 Python 与 FFmpeg 串起素材、时间轴、字幕、渲染和质量检查。交出一支能播放的原创动画，也留下运行和审片记录。</p><div class="project-entry"><a data-entry="demo" href="/cases/video.html#result">播放样片 ↗</a><a data-entry="code" href="https://github.com/zhouey314-cloud/ai-video-workflow-engine" target="_blank" rel="noopener noreferrer">源码 ↗</a><a data-entry="evidence" href="/cases/video.html#deep">验证记录 ↗</a></div><p class="project-note">54 秒原创程序动画 · 机械 QA 与独立审片记录。</p></div>
+        </li>
+      </ul>
+      <div class="more-work" aria-label="更多项目"><p class="field-eyebrow">ALSO EXPLORING / 也在做</p><a class="work-row" href="/cases/thought-to-x.html"><span>04</span><strong>Thought-to-X</strong><p>把零散想法，整理成自己的表达。</p><span class="work-row-tag">写作 Skill</span><span aria-hidden="true">↗</span></a><a class="work-row" href="/cases/multi-tenant.html"><span>05</span><strong>TenantFlow</strong><p>总部、门店与审核，如何一起工作。</p><span class="work-row-tag">流程演示</span><span aria-hidden="true">↗</span></a><a class="work-row" href="/cases/voice-clone-video.html"><span>06</span><strong>Voice Clone Video</strong><p>把授权配音、字幕与视频合成接起来。</p><span class="work-row-tag">内容工作流</span><span aria-hidden="true">↗</span></a></div>
+      <details class="work-context"><summary>关于这些项目的展示范围 <span aria-hidden="true">＋</span></summary><p>这里包含个人开源项目、演示原型和企业参与记录，具体实现与验证材料都保留在对应案例中。GEO 展示本人参与范围；TenantFlow 使用合成数据和角色选择器；Thought-to-X 需要人工确认，不自动发帖；页面截图与结构示意均为既有材料，非实时模型运行。Voice Clone Video 的离线 Mock 不代表真人音色效果。</p></details>
+      <div class="archive-callout"><span>项目还在继续，记录也在继续。</span><a class="field-button field-button-dark" href="/projects.html">浏览全部 16 个公开项目 <span aria-hidden="true">↗</span></a></div>
+    </section>
+
+    <section class="process-section" id="process" aria-labelledby="process-title"><div class="wrap"><div class="field-heading"><p class="field-eyebrow">03 / HOW I WORK</p><h2 id="process-title">从一句「能不能」，<br />到一个能用的东西。</h2><p class="heading-aside">我关心的不止是实现，<br />还有它怎样进入实际工作。</p></div><ol class="delivery-path"><li><span>01 / DISCOVER</span><h3>先把问题问清楚。</h3><p>谁来用？哪里耗时？什么结果才算完成？先找到具体的使用场景。</p></li><li><span>02 / DESIGN</span><h3>把工作拆成流程。</h3><p>整理知识、输入、角色与关键步骤，确定应该自动化和需要人判断的部分。</p></li><li><span>03 / BUILD</span><h3>做出来，也验一遍。</h3><p>实现界面与工作流，检查正常路径、错误处理和容易失效的地方。</p></li><li><span>04 / DELIVER</span><h3>让下一位能接着用。</h3><p>留下运行说明、案例与验证记录，再根据真实反馈继续改进。</p></li></ol></div></section>
+
+    <section class="about-section wrap" id="about" aria-labelledby="about-title"><div class="about-manifesto"><p class="field-eyebrow">04 / THE PERSON BEHIND THE WORK</p><h2 id="about-title">编导的视角。<br />工程的行动。</h2><p class="about-large-name" aria-hidden="true">ETHAN<span>↗</span></p><div class="about-person"><strong>周恩宇</strong><span>ETHAN ZHOU<br />编导生转 AI · FDE / GEO</span></div><div class="personal-index"><p>从这些作品，再认识我一点。</p><a href="/cases/video.html#result"><span class="personal-mark" aria-hidden="true">▶</span><span><strong>编导的视角</strong><small>画面、节奏与叙事。</small></span><span aria-hidden="true">↗</span></a><a href="/cases/thought-to-x.html"><span class="personal-mark" aria-hidden="true">Aa</span><span><strong>写作与表达</strong><small>把零散想法，写成自己的话。</small></span><span aria-hidden="true">↗</span></a><a href="/cases/relay-audit.html#decision"><span class="personal-mark" aria-hidden="true">&lt;/&gt;</span><span><strong>工程的判断</strong><small>做了什么，也说清为什么。</small></span><span aria-hidden="true">↗</span></a></div></div><div class="about-story"><p class="about-lead">我想成为的，是能听懂需求，<br />也能把事情做完的人。</p><p>我是恩宇，广播电视编导专业在读，目前在郑州。2026 年 6 月开始参与企业里的 GEO 与 AI 应用实践，现在把重心放在 FDE、GEO 和软件开发上。</p><p>编导让我习惯关注人、情境和表达。到了企业现场，我又开始关心：一个需求为什么会出现，一条流程到底卡在哪里，做出来的东西怎样交给别人用。</p><p>所以你会在这里看到知识检索、Agent 工具、内容工作流，也会看到视频与写作。它们都来自同一件事：把真实需求做成能交付的 AI 项目。</p><div class="about-timeline"><div><time datetime="2026-06">2026.06</time><p><strong>走进企业现场</strong><span>从 GEO 实践开始，接触真实需求与交付。</span></p></div><div><time datetime="2026-10">2026.10</time><p><strong>把实践变成公开作品</strong><span>Thought-to-X、RelayAudit，以及持续迭代的项目档案。</span></p></div><div><span class="timeline-now">NOW</span><p><strong>继续向 FDE 深入</strong><span>企业知识、工作流、工程可靠性与内容表达。</span></p></div></div><a class="field-text-link" href="/projects.html#building-now">看看正在推进的项目 <span aria-hidden="true">↗</span></a></div><div class="resume-invitation"><div><p class="field-eyebrow">TAKE A CLOSER LOOK / 简历</p><h3>经历、能力和作品，<br />一页看清。</h3></div><div class="resume-invitation-copy"><p>企业实践、三个代表项目与公开证据。<br />适合招聘、合作，或下一次深入交流。</p><a class="field-button field-button-dark" href="/resume.html">打开我的简历 <span aria-hidden="true">↗</span></a></div><span class="resume-fold" aria-hidden="true">CV<br />↗</span></div></section>
+
+    <section class="writing-section" id="writing" aria-labelledby="writing-title"><div class="wrap writing-inner"><div><p class="field-eyebrow">05 / BUILD IN PUBLIC</p><h2 id="writing-title">一边做，<br />一边把过程讲清楚。</h2></div><div class="writing-copy"><p>我在 X 分享企业 AI 实践、FDE 与 GEO、项目里踩过的坑，也记录自己的成长和判断。技术、需求、交付，还有真实的生活。</p><div class="writing-topics"><span>AI 实战</span><span>方法与判断</span><span>成长复盘</span></div><a class="field-button field-button-light" href="https://x.com/UPing123zzz" target="_blank" rel="noopener noreferrer">在 X 继续认识我 <span aria-hidden="true">↗</span></a></div></div></section>
+
+    <section class="contact-section wrap" id="contact" aria-labelledby="contact-title"><div class="contact-panel"><div class="contact-main"><p class="field-eyebrow">06 / LET’S TALK</p><h2 id="contact-title">有个真实问题？<br />一起把它做出来<span>↗</span></h2><p>聊聊 FDE 岗位、GEO 实践、项目合作，<br />或者交换一个正在动手做的想法。</p><div class="email-row"><a href="mailto:zhouey314@gmail.com">zhouey314@gmail.com</a><button class="copy-email enhanced-only" type="button" data-copy-email aria-label="复制邮箱地址">复制 ↗</button></div><p class="copy-feedback" role="status" data-copy-feedback></p><div class="contact-socials"><a href="https://github.com/zhouey314-cloud" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://x.com/UPing123zzz" target="_blank" rel="noopener noreferrer">X ↗</a><a href="https://t.me/ethanyu520" target="_blank" rel="noopener noreferrer">Telegram ↗</a></div></div><figure class="contact-qr"><a href="https://u.wechat.com/MJNJhDRZFiAFKD09uKIRGvM?s=3" aria-label="打开 Ethan 恩宇的微信联系链接"><img src="/public/contact/wechat-qr.svg" width="49" height="49" alt="Ethan 恩宇的公开微信联系二维码" loading="lazy" decoding="async" /></a><figcaption><strong>微信 / Ethan 恩宇</strong><span>扫码认识一下。<br />加好友时，聊聊你从哪里看到我。</span></figcaption></figure></div></section>
+  </main>
+  <footer class="field-footer wrap"><div class="footer-word" aria-hidden="true">ETHAN<span>↗</span></div><div class="footer-line"><span>© 2026 周恩宇 ETHAN ZHOU</span><span>扎进真实世界，持续把事情做出来。</span><a href="#top">回到顶部 ↑</a></div></footer>
+  <dialog class="image-viewer" aria-labelledby="viewer-title" data-viewer><div class="viewer-head"><div><p class="eyebrow">项目预览</p><h2 id="viewer-title"></h2></div><button class="icon-button" type="button" data-viewer-close aria-label="关闭预览" autofocus>×</button></div><div class="viewer-media"><img data-viewer-image alt="" /></div><div class="viewer-foot"><p data-viewer-caption></p><div class="actions"><a class="text-link" data-viewer-original href="/" target="_blank" rel="noopener">打开原图 ↗</a><a class="button primary" data-viewer-case href="/projects.html">阅读案例 ↗</a></div></div></dialog>
+</body>
 </html>

@@ -1,11 +1,15 @@
 {
-  "name": "Ethan 恩宇 · 个人作品与实践",
+  "name": "周恩宇 Ethan｜FDE · GEO · AI 应用工程",
   "short_name": "Ethan 恩宇",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#111214",
-  "theme_color": "#111214",
+  "background_color": "#f3f3ec",
+  "theme_color": "#f3f3ec",
   "icons": [
-    { "src": "/public/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+    {
+      "src": "/public/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
   ]
 }

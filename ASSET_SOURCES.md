@@ -11,7 +11,7 @@
 | `public/contact/wechat-qr.svg` | 沿用 `ef00327` 的有意公开联系方式，文件未改动 | 仅作 Ethan 恩宇联系入口 |
 | `public/projects/thought/example.svg`、首页与案例摘录 | [Thought-to-X 公开示例](https://github.com/zhouey314-cloud/thought-to-x/blob/b8a3c18ebe11bd36e25ccebc7ec7e0f38a99b032/examples/destiny-example.md) 的原文重新排版 | MIT；Copyright (c) 2026 Thought-to-X contributors；完整许可在 `public/licenses/thought-to-x-MIT.txt`。不是产品截图或本轮实时模型输出 |
 | `public/favicon.svg`、Ethan 恩宇文字字标 | 本轮原创简单图形与系统字体排版 | 不复用参考站字标、人物、相机、车辆、插画或商用字体 |
-| `public/social-preview.png` | 新首页真实浏览器截图 | 仅包含本轮已允许公开的文案和项目内容 |
+| `public/social-preview.png` | 2026-10-22 原创分享封面：准确中文排版与参数化几何线框 | 用于分享卡片；是设计图，不是浏览器截图 |
 
 参考站只用于观察设计原则。没有复制它们的布局源码、插画、字体文件或互动资产。第三方网站的研究截图位于仓库外，未加入站点资源。
 
@@ -38,3 +38,20 @@
   [原动画源码与许可](https://github.com/zhouey314-cloud/ai-video-workflow-engine/tree/main/examples/original_54s)。
 
 未新增或改写既有GEO参与材料；不把参与工作归为个人独立完成的系统。
+
+
+## 2026-10-22 身份与视觉更新
+
+- `public/field-form.svg`：本轮原创参数化环面线框，作为 FDE / GEO 品牌装饰，不是产品截图或业务成果图。
+- `public/social-preview.png` / `public/og-image.svg`：基于新首页身份文案的原创文字与几何排版。PNG 渲染使用 Noto Sans CJK SC 字形；字体来自 https://github.com/notofonts/noto-cjk ，字体文件未随网站分发。
+- `public/favicon.svg`：原创 E 字母路径，炭黑与酸橙配色。
+- 沿用既有 GEO / RAG / 视频 / 微信资产，保留各自原授权范围。没有使用生成的人物照或替换用户的真人形象。
+- 设计研究：https://github.com/motiondivision/motion 、https://github.com/DavidHDev/react-bits 、https://github.com/darkroomengineering/lenis 、https://github.com/greensock/GSAP 、https://github.com/bchiang7/v4 。仅研究设计原则，无上述项目代码或第三方运行时依赖被打包。
+
+
+## 2026-10-22 可下载简历 PDF
+
+- `public/ethan-zhou-resume.pdf`：由 `scripts/export-resume.py` 使用 ReportLab 导出为 2 页 A4。`resume.html` 是简历正文的唯一来源；导出器从该页读取简介、经历、项目、能力、教育与联系方式，不维护另一份简历文案。网页上的「打印 / 保存 PDF」调用浏览器打印；下载文件采用独立的 ReportLab 排版，不声称与 Chrome 打印结果相同。
+- PDF 的中文字体为 **Droid Sans Fallback Regular**，由本地已安装的正式 Python 包 **PyMuPDF 1.26.6** 提供，通过 `fitz.Font("cjk").buffer` 读取其底层 MuPDF 内置的 TTF。本次使用的字体为 3,556,308 字节，Git blob SHA-1 为 `cc7d41d3483cafbbbda246ee4a2bb93f88a51835`，与 [MuPDF 1.26.6 官方字体文件](https://github.com/ArtifexSoftware/mupdf/blob/1.26.6/resources/fonts/droid/DroidSansFallback.ttf) 完全一致。
+- 字体版权归 **Copyright (c) 2005-2008, The Android Open Source Project**，许可为 **Apache License, Version 2.0**。依据同版本 [官方 `resources/fonts/droid/NOTICE`](https://github.com/ArtifexSoftware/mupdf/blob/1.26.6/resources/fonts/droid/NOTICE) 核对，并将该文件的版权声明和完整许可条款保留在 [`public/licenses/DroidSansFallback-NOTICE.txt`](public/licenses/DroidSansFallback-NOTICE.txt)。这项说明针对 PDF 内嵌字体，不为本站其他资产指定许可证。
+- ReportLab 将使用到的字形转换为 PDF 字体子集并嵌入文件，字体子集名称带有 ReportLab 生成的前缀；没有另行绘制或替换字形。网站不单独分发完整 TTF。拉丁文标题使用 PDF 标准字体 Helvetica-Bold。

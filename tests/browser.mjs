@@ -9,7 +9,7 @@ import AxeBuilder from '@axe-core/playwright';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const output = resolve(process.env.BROWSER_REPORT_DIR || 'test-results');
 await mkdir(output, { recursive: true });
-const allPages = ['/', '/projects.html', '/404.html', ...[
+const allPages = ['/', '/projects.html', '/resume.html', '/404.html', ...[
   'multi-tenant', 'rag', 'eval', 'video', 'crm', 'skills', 'recruitment',
   'thought-to-x', 'relay-audit', 'voice-clone-video',
 ].map(id => `/cases/${id}.html`)];
