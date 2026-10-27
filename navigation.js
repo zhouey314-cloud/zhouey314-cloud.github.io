@@ -27,7 +27,7 @@
     )
       close(true);
   });
-  matchMedia("(min-width: 601px)").addEventListener("change", () => close());
+  matchMedia("(min-width: 761px)").addEventListener("change", () => close());
   window.addEventListener("pageshow", () => close());
   document.documentElement.classList.add("nav-ready");
 })();

@@ -1,0 +1,40 @@
+{
+  "at": "2026-10-27T15:25:33.518Z",
+  "upstream": "MengTo/threeui@68802d5428071ada5c20db8094b1649e6bb770ed",
+  "source": "public/landing-pages/inner-green-3d.html",
+  "method": "Actual isolated scene rendered with reduced motion, DPR1, then lossily compressed to WebP quality86. No UI, remote preview or generated imagery.",
+  "captures": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1600,
+        "height": 880
+      },
+      "browser": "27.2",
+      "gl": {
+        "ready": true,
+        "lost": false,
+        "revision": "149",
+        "renderer": "Apple GPU"
+      },
+      "bytes": 111614,
+      "sha256": "2f0958df0729e2425b47cadcf3ca01534926dcaad0ece5b09bcb6bf1176857a8"
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 935
+      },
+      "browser": "27.2",
+      "gl": {
+        "ready": true,
+        "lost": false,
+        "revision": "149",
+        "renderer": "Apple GPU"
+      },
+      "bytes": 16146,
+      "sha256": "ca5f9ee7e2b14a7c24919e43933fe134594b17f80b1d2bd36682e7e53a2cbed8"
+    }
+  ]
+}

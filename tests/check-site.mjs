@@ -1,6 +1,7 @@
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join, dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { createHash } from "node:crypto";
 const root = fileURLToPath(new URL("../", import.meta.url));
 const failures = [];
 const assert = (condition, message) => {
@@ -94,7 +95,7 @@ for (const page of pages) {
   for (const match of html.matchAll(/<img\b[^>]*>/g)) {
     if (!/\bsrc=/.test(match[0])) continue; // Empty modal media is populated and checked by browser QA.
     assert(
-      /\balt="[^"]+"/.test(match[0]),
+      /\balt="[^"]+"/.test(match[0]) || (/\balt=""/.test(match[0]) && /aria-hidden="true"|role="presentation"/.test(match[0])),
       `${page}: image missing meaningful alt`,
     );
     assert(
@@ -129,16 +130,16 @@ assert(
   "home: public project total must match the full archive",
 );
 // The homepage promises concrete work before the longer practice narrative.
-const readingOrder = ["top", "work", "practice", "story", "about", "writing", "contact"];
+const readingOrder = ["top", "work", "practice", "about", "contact"];
 const positions = readingOrder.map((id) => home.indexOf(`id="${id}"`));
 assert(
   positions.every((position, index) => position >= 0 && (index === 0 || position > positions[index - 1])),
-  "home: identity → representative work → practice → evidence story → about → writing → contact order",
+  "home: identity → representative work → practice → about → contact reading path",
 );
 assert(
-  (home.match(/data-story-step=/g) || []).length === 3 &&
-    (home.match(/data-story-panel=/g) || []).length === 3,
-  "home: three complete evidence steps and figures must exist in HTML before JavaScript",
+  ["rag", "relay", "video"].every(id => home.includes(`data-project="${id}"`)) &&
+    home.includes('data-forest-mount') && home.includes('forest-desktop.webp'),
+  "home: three real projects plus forest fallback must exist before JavaScript",
 );
 assert(
   home.includes("广播电视编导专业在读") && home.includes("周恩宇") && home.includes("向 FDE 方向发展"),
@@ -170,9 +171,11 @@ for (const contact of [
 ])
   assert(home.includes(contact), `home: missing current contact ${contact}`);
 for (const text of [
-  "线上词面",
-  "合成数据",
-  "角色选择器",
+  "合成资料",
+  "未接入生成模型",
+  "范围选择不是生产身份鉴权",
+  "不能证明上游真实模型身份",
+  "原创程序动画",
   "不自动发帖",
   "非实时模型运行",
 ])
@@ -208,6 +211,12 @@ assert(
   "Thought example MIT notice missing",
 );
 assert(!existsSync(join(root, "CNAME")), "unexpected domain migration");
+for (const [file, hash] of [
+  ["public/vendor/threejs/r149/three.min.js", "8a5f7249903b54d30f79f708699d2fed2d6a1d0741a4cd41377d1f01bb5a2271"],
+  ["public/fonts/lexend-latin.woff2", "1ec8f6ee2750554b4bc59ff0b507d316a82a7ba37e0e5bebc41d3bd9b9faad46"],
+]) assert(createHash("sha256").update(readFileSync(join(root,file))).digest("hex") === hash, `pinned authored runtime/font changed: ${file}`);
+for (const file of ["public/vendor/threeui/LICENSE", "public/vendor/threejs/r149/LICENSE", "public/fonts/Lexend-OFL.txt", "public/scenes/sylva/capture.json"])
+  assert(existsSync(join(root,file)), `source/license provenance missing: ${file}`);
 if (failures.length) {
   console.error("SITE_CHECK_FAIL\n" + failures.join("\n"));
   process.exitCode = 1;

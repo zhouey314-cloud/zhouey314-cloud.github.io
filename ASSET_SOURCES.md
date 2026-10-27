@@ -1,5 +1,23 @@
 # 公开资产与许可
 
+## 2026-10-27 · 完整 Sylva 森林与分享图
+
+本轮不新增人物照片、客户素材或生成媒体。ThreeUI Community 1.2.0，固定 commit `68802d5428071ada5c20db8094b1649e6bb770ed`，MIT。采用完整 public Hero 的程序几何、Shader、材质、光照与原版质量分档；不是三张截图或官网远程预览。源文件、runtime/font 固定 blob、许可及改动范围见 [THIRD_PARTY.md](THIRD_PARTY.md)。
+
+- 正式场景：`public/scenes/sylva/scene.js`；匹配 r149：`public/vendor/threejs/r149/three.min.js`，原始版权头和 MIT 保留。
+- 字体：`public/fonts/lexend-latin.woff2`，39692 bytes；原版文件，SIL OFL 1.1 见同目录 `Lexend-OFL.txt`。
+- 静态回退：`node scripts/capture-forest.mjs` 用本机 WebKit / Apple GPU 实际运行同一场景，减少动效、DPR1、desktop1600×880 / mobile390×935，经第二次成功 WebGL 绘制后截图，再以 WebP quality86 压缩。来源记录在 `public/scenes/sylva/capture.json`。不是生成图，不是远程缩略图；静态回退不作为实时3D成功证明。
+- 分享图：`node scripts/export-social.mjs` 将实际森林与本站身份文字排成1200×630，输出 `public/social-preview.png`、`public/og-image.svg`。
+- 原版两张卡片照片只用于工作区的完整参考运行，没有复制进正式个人站。正式作品证据仍为已有 RAG、Relay、GEO 与54秒样片素材。
+- PR7未使用的Gallery/Dock/r186与旧预览图移除；旧批准项目图片、原始视频、字幕、PDF和微信二维码保留，字节清单在本轮迁移证据中。
+
+| 回退资产 | 实际字节与校验 |
+| --- | --- |
+| `public/scenes/sylva/forest-desktop.webp` | 111614 bytes · SHA-256 `2f0958df0729e2425b47cadcf3ca01534926dcaad0ece5b09bcb6bf1176857a8` |
+| `public/scenes/sylva/forest-mobile.webp` | 16146 bytes · SHA-256 `ca5f9ee7e2b14a7c24919e43933fe134594b17f80b1d2bd36682e7e53a2cbed8` |
+
+以下保留既有项目素材的来源和批准记录，日期、版本及历史测量按各条原范围解释。
+
 核对日期：2026-10-11。
 
 | 资产 | 来源与用途 | 权限／边界 |
