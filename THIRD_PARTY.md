@@ -1,6 +1,6 @@
 # Portfolio official reference audit
 
-Verified 2026-10-23 (Asia/Shanghai). Official-source verification and actual runtime integration.
+Verified 2026-10-23; ThreeUI edition added 2026-10-27 (Asia/Shanghai). Official-source verification and actual runtime integration.
 
 The official runtime and license notice are vendored under `public/`; integration is scoped to the homepage.
 
@@ -15,7 +15,17 @@ The official runtime and license notice are vendored under `public/`; integratio
 
 ## Smallest dependency set
 
-Keep native HTML/CSS/JS, CSS Grid/Flex/sticky, native scrolling, dialog, video and anchors. Add only GSAP core plus ScrollTrigger **3.15.0**, exact version pinned. Prefer self-hosting the two minified distributions with upstream notices preserved so core navigation and evidence do not depend on a runtime CDN. Skip Lenis, ScrollSmoother, Motion, React component kits, PhotoSwipe, carousel and WebGL: this three-step narrative has no demonstrated need for them.
+Keep native HTML/CSS/JS, CSS Grid/Flex/sticky, native scrolling, dialog, video and anchors. GSAP core plus ScrollTrigger **3.15.0** continue to enhance the three-step narrative. The owner's October 27 request adds a real ThreeUI-derived **Three.js r186** scene to the hero and a small ThreeUI-derived navigation response. Each is optional and self-hosted. No React migration, smooth-scroll replacement, runtime CDN, paid ThreeUI component or extra carousel library is needed.
+
+## ThreeUI edition: sources and integration
+
+- **ThreeUI Community Gallery**: `public/js/threeui-gallery.js` adapts the open-cylinder screenshot geometry and scene lifecycle from [Gallery.tsx at 68802d5](https://github.com/MengTo/threeui/blob/68802d5428071ada5c20db8094b1649e6bb770ed/src/shaders/gallery/Gallery.tsx). The native bootstrap is `hero-scene.js`. Full MIT license and adaptation record: `public/vendor/threeui/LICENSE` and `SOURCE.md`.
+- **ThreeUI AnimatedTopDock**: `dock.js` adapts the proximity/spring controller to the existing semantic navigation. Only an inner text label moves by at most two pixels; the link hit area and keyboard focus stay fixed. Full source/notice: `public/vendor/threeui/top-dock-source.md`.
+- **Three.js r186**: a locally served, tree-shaken ESM build containing the required exports. Pinned upstream hashes, esbuild version and reproduction command are in `public/vendor/threejs/SOURCE.md`; upstream MIT license is retained alongside it. The shipped engine is 536,219 bytes (133,616 bytes with local gzip); hosting transfer size depends on server compression.
+- The three scene images are the portfolio's existing RAG screenshot, synthetic RelayAudit report and original programmatic video poster. No third-party demo media, external fonts or Pro/Beta assets were copied.
+- A single decorative canvas sits beside normal HTML identity, text and links. A complete static screenshot composition remains visible until the first successful render and whenever motion is disabled or rendering fails. Canvas content is not the only way to access a project.
+- The renderer stops when the hero is offscreen, the tab is hidden, system reduced motion is enabled or the existing manual switch is off. Initial reduced motion/manual-off/data-saving mode avoids downloading the engine. Desktop draw-buffer cap is 1.5 million pixels; narrow-screen cap is 900,000. These are configured budgets, not physical-device speed guarantees.
+- New lifecycle regression suite: `npm run test:threeui`. It observes real WebGL draw calls, dynamic motion preferences, native mobile scrolling, failed modules/context creation, and keyboard-safe dock behavior. The browser report states whether software WebGL or injected visibility events were used.
 
 ## Runtime version and license
 
