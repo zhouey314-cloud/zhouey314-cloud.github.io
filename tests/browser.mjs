@@ -101,7 +101,7 @@ try {
               const rect = el.getBoundingClientRect(), style = getComputedStyle(el);
               return { tag: el.tagName, id: el.id, className: typeof el.className === 'string' ? el.className : '', text: el.textContent.trim().slice(0, 80), left: rect.left, right: rect.right, width: rect.width, fontFamily: style.fontFamily, fontSize: style.fontSize };
             }).filter(el => el.width > 0 && (el.right > innerWidth + 1 || el.left < -1)).slice(0, 40) : [],
-            badImages: [...document.querySelectorAll('img[src]')].filter(i => !i.complete || i.naturalWidth === 0 || !i.alt.trim()).map(i => i.getAttribute('src')),
+            badImages: [...document.querySelectorAll('img[src]')].filter(i => !i.complete || i.naturalWidth === 0 || (!i.alt.trim() && i.getAttribute('aria-hidden') !== 'true' && i.getAttribute('role') !== 'presentation')).map(i => i.getAttribute('src')),
             headings: document.querySelectorAll('h1').length,
           }));
           await progress(`${name}/${viewportName}${path}: axe`);
@@ -150,7 +150,7 @@ try {
             }
           }
           if (path === '/') {
-            const primary = await page.locator('#flagship-evidence > li').evaluateAll(items => items.map(item => ({
+            const primary = await page.locator('#work article[data-project]').evaluateAll(items => items.map(item => ({
               project: item.dataset.project,
               entries: [...item.querySelectorAll('a')].map(a => a.dataset.entry),
             })));

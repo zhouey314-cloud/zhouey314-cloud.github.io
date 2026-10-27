@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ethan 的数字花园 · Sylva 场景</title>
+<style>
+:root{--u:calc(100vw / 1600)}*{box-sizing:border-box}html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#4a4d44}
+.hero{position:relative;width:100%;height:100%;isolation:isolate;background:radial-gradient(64% 52% at 27% 84%,rgba(232,238,222,.085),transparent 72%),radial-gradient(70% 60% at 92% 8%,rgba(24,28,20,.10),transparent 68%),#4a4d44}
+.hero:after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(72% 44% at 50% 117%,rgba(238,243,231,.50),rgba(238,243,231,.21) 42%,rgba(238,243,231,.04) 72%,transparent 88%),linear-gradient(180deg,transparent 54%,rgba(238,243,231,.03) 78%,rgba(238,243,231,.085) 100%)}
+#scene{position:absolute;inset:0;z-index:3;width:100%;height:100%}.stage{position:absolute;left:50%;top:50%;margin-left:calc(-800 * var(--u));margin-top:calc(-440 * var(--u));width:calc(1600 * var(--u));height:calc(880 * var(--u))}
+@media(min-width:1900px){:root{--u:calc(1900px / 1600)}}
+@media(max-width:900px){:root{--u:calc(100vw / 760)}.stage{position:relative;left:auto;top:auto;margin:0;width:100%;height:calc(1625 * var(--u))}.hero:after{background:radial-gradient(90% 30% at 50% 74%,rgba(238,243,231,.40),rgba(238,243,231,.14) 46%,transparent 82%),linear-gradient(180deg,transparent 62%,rgba(238,243,231,.05))}}
+</style>
+<script>
+(() => {
+ const token=location.hash.slice(1), channel='ethan-sylva';
+ const bridge=window.__sylvaBridge={token,failed:false,post(type,payload){parent.postMessage({channel,token,type,payload},'*')},fail(code,message){if(this.failed)return;this.failed=true;this.post('error',{code,message:String(message).slice(0,1000)})}};
+ addEventListener('error',event=>bridge.fail(event.target?.src?'resource-load':'uncaught',event.message||event.target?.src||'Scene error'),true);
+ addEventListener('unhandledrejection',event=>bridge.fail('promise',event.reason));
+ bridge.post('boot',{});
+})();
+</script></head><body><main class="hero" id="hero"><canvas id="scene" role="img" aria-label="苔藓根拱、蕨类、花朵与漂浮花粉"></canvas><div class="stage" id="stage" aria-hidden="true"></div></main>
+<script src="/public/vendor/threejs/r149/three.min.js"></script><script src="/public/scenes/sylva/scene.js"></script></body></html>

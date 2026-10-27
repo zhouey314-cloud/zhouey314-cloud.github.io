@@ -1,5 +1,5 @@
 {
-  "name": "周恩宇 Ethan",
+  "name": "周恩宇 Ethan Zhou",
   "intro": "我是恩宇，广播电视编导专业在读，正在企业场景里参与 AI 应用开发与 GEO 实践。主要做知识检索、内容生产工作流和 AI 工具，把需求推进到能演示、能验证、能交接。",
   "email": "zhouey314@gmail.com",
   "projects": [
@@ -11,7 +11,7 @@
       "headline": "让回答，回到原始资料。",
       "problem": "企业资料散在不同文档里，回答需要有据可查。",
       "role": "我实现文档管理、检索前访问过滤、引用定位与证据不足时的处理。",
-      "status": "公开演示 · 合成资料上的线上词面检索与抽取式回答",
+      "status": "公开演示",
       "image": "/public/projects/rag/story-citation.webp",
       "width": 1200,
       "height": 1093,
@@ -30,7 +30,7 @@
       "headline": "让异常，留下排查线索。",
       "problem": "AI 调用出错时，需要分清连接、响应与中断。",
       "role": "我搭建本地网关，记录 HTTP / SSE、超时、取消与标签变化，并输出报告。",
-      "status": "本地工具 · 合成演示；不能证明上游模型身份",
+      "status": "开源本地工具",
       "image": "/public/projects/relay/fixture-report.webp",
       "width": 1200,
       "height": 1394,
@@ -49,7 +49,7 @@
       "headline": "让制作过程，可以复现。",
       "problem": "视频不止是一次导出，还要能复现和检查。",
       "role": "我用 Python / FFmpeg 串起素材、时间轴、字幕、渲染与质量检查。",
-      "status": "可播放 · 54 秒原创程序动画，含审片记录",
+      "status": "可播放样片",
       "image": "/public/projects/video/original-54s-poster.jpg",
       "width": 1280,
       "height": 720,

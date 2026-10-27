@@ -1,10 +1,10 @@
 {
-  "name": "周恩宇 Ethan｜FDE · GEO · AI 应用工程",
+  "name": "周恩宇 Ethan Zhou｜数字花园",
   "short_name": "Ethan 恩宇",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f3f3ec",
-  "theme_color": "#f3f3ec",
+  "background_color": "#4a4d44",
+  "theme_color": "#4a4d44",
   "icons": [
     {
       "src": "/public/favicon.svg",
