@@ -30,7 +30,7 @@ await new Promise((resolve, reject) => { server.on('error', reject); server.list
 const base = (process.env.BASE_URL || process.env.TEST_BASE_URL)?.replace(/\/$/, '') || `http://127.0.0.1:${server.address().port}`;
 const report = {
   at: new Date().toISOString(), root, base, base_url: base, baseline, performanceOnly, skipPerformance,
-  scope: 'Automated Chromium/WebKit on macOS. Viewports are emulated, not physical iPhone/Safari acceptance. Local lab metrics are not field Core Web Vitals; field INP unavailable.',
+  scope: 'Automated Chromium/WebKit. Viewports are emulated, not physical iPhone/Safari acceptance. Local lab metrics are not field Core Web Vitals; field INP unavailable.',
   labEnvironment: { device: process.platform + '/' + process.arch, network: 'local HTTP, cache disabled, 150ms latency, 1.6Mbps download, 750Kbps upload', cpu: '4x slowdown (Chromium CDP)', runs: 3, motion: 'system reduced motion for stable comparison' },
   layouts: [], interactions: [], performance: [], failures: [],
 };

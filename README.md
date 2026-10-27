@@ -1,8 +1,8 @@
 # 周恩宇 Ethan · 个人作品网站
 
-本轮改版：[PR #6](https://github.com/zhouey314-cloud/zhouey314-cloud.github.io/pull/6) · [CI 检查记录](https://github.com/zhouey314-cloud/zhouey314-cloud.github.io/actions/workflows/portfolio-check.yml) · [Pages 发布记录](https://github.com/zhouey314-cloud/zhouey314-cloud.github.io/actions/workflows/pages/pages-build-deployment) · [实际网站](https://zhouey314-cloud.github.io/)。各阶段是否完成以对应提交的实际记录为准，历史未上线说明见文末。
+当前版本：[ThreeUI 改版说明与预览](docs/threeui-redesign.md) · [CI 检查记录](https://github.com/zhouey314-cloud/zhouey314-cloud.github.io/actions/workflows/portfolio-check.yml) · [Pages 发布记录](https://github.com/zhouey314-cloud/zhouey314-cloud.github.io/actions/workflows/pages/pages-build-deployment) · [实际网站](https://zhouey314-cloud.github.io/)。各阶段是否完成以对应提交的实际记录为准；上一轮内容重构见 [PR #6](https://github.com/zhouey314-cloud/zhouey314-cloud.github.io/pull/6)。
 
-原生 HTML / CSS / JavaScript，沿用 `main` 根目录 GitHub Pages 与原域名。当前改版基于 `1b030b8`，保留 16 个公开项目、3 个开发中项目、10 个案例及旧链接。
+原生 HTML / CSS / JavaScript，沿用 `main` 根目录 GitHub Pages 与原域名。ThreeUI 改版基于 `d3859d9`，保留 16 个公开项目、3 个开发中项目、10 个案例及旧链接。
 
 首页顺序：本人定位 → 三个代表项目 → GEO 企业参与 → RAG 三步证据 → 关于我 → 写作入口 → 简历与联系 → 完整档案。FDE 是职业方向，GEO 说明本人参与范围；项目事实边界保留在卡片和案例中。
 
@@ -21,12 +21,14 @@ python3 -m http.server 8767 --bind 127.0.0.1
 - **照片：** 尚无已核实可用头像，现用文字身份。取得本人授权素材后，在模板的 `#about` 中添加带实际宽高和说明的图片；不要用生成图冒充真人。
 - **项目事实与验证：** 首页状态在 JSON，详细证据在 `cases/`；修改能力表述时同时核对项目 README。素材来源、批准和哈希见 `ASSET_SOURCES.md`。
 - **简历与 PDF：** `resume.html` 是简历的内容源。修改后运行 `python3 scripts/export-resume.py`，并逐页核对 PDF；导出需要 ReportLab、lxml、PyMuPDF、pypdf。
-- **动效：** `home.js` 负责首页阅读进度、章节与 RAG 三步；`script.js` 负责共用弹窗、动效偏好和项目筛选；`navigation.js` 独立负责手机菜单。
+- **动效：** `home.js` 负责首页阅读进度、章节与 RAG 三步；`hero-scene.js` 按需加载 ThreeUI 衍生场景 `public/js/threeui-gallery.js`；`dock.js` 增强导航文字反馈。`script.js` 统一管理动效偏好、共用弹窗和项目筛选；`navigation.js` 独立负责手机菜单。
 - **样式：** `tokens.css` 共享变量，`style.css` 共用基础，`home.css` 首页范围内样式。系统中文字体，无远程字体请求。
 
 ## 依赖与回退
 
-唯一新增运行库为本地固定版本 GSAP / ScrollTrigger 3.15.0，只在桌面且允许动效时按需加载。CSS sticky 和原生滚动负责布局，ScrollTrigger 切换真实截图。手机、减少动效、手动关闭动效、无 JS 和库加载失败时均以完整的三段图文呈现。无 Lenis、React、CMS、付费 API 或自动播放。
+首页按需加载本地固定版本的 GSAP / ScrollTrigger 3.15.0 与 Three.js r186。ThreeUI Community Gallery 的原生适配只渲染一个装饰 canvas，真实文字、项目链接、截图拼贴均在 HTML 中。减少动效、手动关闭、数据节省模式不加载 3D 引擎；模块失败或 WebGL 不可用时保留静态拼贴。页面隐藏、首屏离开视口时停止绘制。
+
+CSS sticky 和原生滚动继续负责案例布局，ScrollTrigger 只在桌面且允许动效时切换真实截图。手机、减少动效、手动关闭动效、无 JS 和库加载失败时均以完整的三段图文呈现。无 Lenis、React、CMS、付费 API 或视频自动播放。
 
 依赖版本、哈希、许可与参考文档见 `THIRD_PARTY.md`。GSAP 运行库是 Standard No Charge License，**不是 MIT**。公开项目截图的许可和事实边界另记在资产清单。
 
@@ -36,15 +38,18 @@ python3 -m http.server 8767 --bind 127.0.0.1
 npm test
 npm run install:browsers
 npm run test:browser
+npm run test:threeui
+THREEUI_ENGINE=webkit THREEUI_REPORT_DIR=test-results/threeui-webkit npm run test:threeui
 SKIP_PERFORMANCE=1 npm run test:experience
 ```
 
 - 静态检查：14 页、10 案例、16 项档案、94 个旧片段、6 个联系方式，HTML 构建一致性和首页顺序。
 - `test:browser`：14 页 × Chromium/WebKit × 桌面/手机，共 56 组合；axe 自动规则、坏图、链接、键盘、手机菜单及原生视频播放/定位/字幕轨。测试服务器支持单段 Range。
+- `test:threeui`：实际 WebGL 首帧与 draw calls、动态动效开关、离屏／后台停帧、像素预算、手机滚动、WebGL／模块／脚本失败、无 JS，以及导航命中区和焦点；每引擎 9 组。报告标明软件渲染与 headless visibility 注入，不能据此声称实体手机帧率。
 - `test:experience`：390×844、768×1024、1440×900、320px；200% 等效 CSS 视口、无 JS、库加载失败、减少动效、开关与响应式清理、图片弹窗焦点、邮箱失败提示、hash 历史。它保留实际滚动录屏。
 - 不设置 `SKIP_PERFORMANCE=1` 时附三次冷启动移动端实验室测量。环境：Chromium、4×CPU、150ms RTT、1.6Mbps。一次本地测量不是实际用户 INP/CrUX，也不代表实体 Safari/iPhone。
 
-结果与截图输出在忽略的 `test-results/` 或指定的 `BROWSER_REPORT_DIR` / `EXPERIENCE_REPORT_DIR`。交付截图与发布验收记录另存工作区 `evidence/`，不随站点发布。历史失败也保留，修复后另录结果。
+结果与截图输出在忽略的 `test-results/` 或指定的 `BROWSER_REPORT_DIR` / `EXPERIENCE_REPORT_DIR` / `THREEUI_REPORT_DIR`。一张经过核对的 ThreeUI 视觉预览随维护文档保存；完整测试证据由 CI artifact 保存。历史失败报告不会冒充最终验收结果。
 
 ## 发布
 

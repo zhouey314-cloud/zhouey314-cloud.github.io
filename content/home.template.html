@@ -22,7 +22,8 @@
   <script src="/navigation.js"></script>
   <link rel="stylesheet" href="/tokens.css" /><link rel="stylesheet" href="/style.css" />
   <link rel="stylesheet" href="/home.css" />
-  <script src="/script.js" defer></script><script src="/home.js" defer></script>
+  <script src="/script.js" defer></script><script src="/home.js" defer></script><script src="/dock.js" defer></script>
+  <script type="module" src="/hero-scene.js"></script>
   <title>周恩宇 Ethan｜编导生转 AI · 应用与工作流</title>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"周恩宇","alternateName":"Ethan Zhou","url":"https://zhouey314-cloud.github.io/","description":"广播电视编导专业在读，在企业场景参与 GEO 与 AI 应用实践，向 FDE 方向发展。","knowsAbout":["Forward Deployed Engineering","Generative Engine Optimization","RAG","AI applications","Content workflows"],"sameAs":["https://github.com/zhouey314-cloud","https://x.com/UPing123zzz","https://t.me/ethanyu520"]}</script>
 </head>
@@ -36,22 +37,27 @@
   </header>
   <nav class="chapter-rail" aria-label="页面章节"><a href="#work" data-chapter-link aria-label="01 代表项目">01<span>代表项目</span></a><a href="#practice" data-chapter-link aria-label="02 企业实践">02<span>企业实践</span></a><a href="#story" data-chapter-link aria-label="03 一次检索">03<span>一次检索</span></a><a href="#about" data-chapter-link aria-label="04 关于我">04<span>关于我</span></a><a href="#writing" data-chapter-link aria-label="05 写作">05<span>写作</span></a><a href="#contact" data-chapter-link aria-label="06 联系">06<span>联系</span></a></nav>
   <main id="main">
-    <section class="field-hero wrap" id="top" aria-labelledby="hero-title">
+    <section class="field-hero immersive-hero wrap" id="top" aria-labelledby="hero-title">
+      <span class="hero-watermark" aria-hidden="true">ETHAN.</span>
       <div class="field-intro">
-        <p class="field-eyebrow intro-label"><span class="status-dot" aria-hidden="true"></span> 编导生转 AI · 郑州</p>
-        <p class="hero-name">{{name}}<span>很高兴，在这里认识你。</span></p>
-        <h1 id="hero-title">把企业里的实际需求，<br />做成能运行的 <span class="highlight-word">AI 应用。</span></h1>
+        <p class="field-eyebrow intro-label"><span class="status-dot" aria-hidden="true"></span> 编导生转 AI <span class="eyebrow-divider">/</span> 郑州</p>
+        <p class="hero-name">{{name}}<span>CREATIVE MIND. BUILDER’S HANDS.</span></p>
+        <h1 id="hero-title">把想法，<br />做成<span class="highlight-word">可用的 AI 应用。</span></h1>
         <p class="field-description">{{intro}}</p>
-        <div class="field-actions"><a class="field-button field-button-dark" href="#work">看三个代表项目 <span aria-hidden="true">↓</span></a><a class="field-text-link" href="/resume.html">查看简历 <span aria-hidden="true">↗</span></a></div>
+        <div class="field-actions"><a class="field-button field-button-dark" href="#work">走进我的作品 <span aria-hidden="true">↘</span></a><a class="field-text-link" href="/resume.html">查看简历 <span aria-hidden="true">↗</span></a></div>
         <div class="hero-social"><a href="#contact">聊聊合作 ↗</a><a href="https://github.com/zhouey314-cloud" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://x.com/UPing123zzz" target="_blank" rel="noopener noreferrer">X ↗</a></div>
       </div>
-      <aside class="hero-evidence" aria-label="从一个真实作品开始">
-        <div class="evidence-topline"><span>从一个作品开始</span><span>01 / 03</span></div>
-        <a class="hero-screenshot" href="/public/projects/rag/story-citation.webp" data-preview="/public/projects/rag/story-citation.webp" data-title="Enterprise RAG Starter" data-caption="已有公开演示截图；合成企业资料、词面检索与抽取式回答。没有运行生成模型。" data-case="/cases/rag.html"><img src="/public/projects/rag/story-citation-preview.webp" srcset="/public/projects/rag/story-citation-preview.webp 640w, /public/projects/rag/story-citation.webp 1200w" sizes="(max-width: 600px) 110px, (max-width: 1392px) 40vw, 500px" alt="RAG 公开演示中的检索结果和可定位的文档来源" width="1200" height="1093" fetchpriority="high" decoding="async" /><span>真实演示截图 · 点击放大 ⤢</span></a>
-        <div class="evidence-caption"><p>回答之后，<br /><strong>还要找得到出处。</strong></p><a href="/cases/rag.html" aria-label="阅读 Enterprise RAG 案例">↗</a></div>
-        <p class="evidence-footnote">Enterprise RAG Starter / 合成资料演示</p>
+      <aside class="hero-lab" data-hero-scene aria-label="代表作品视觉展示：知识检索、AI 链路排查与视频工作流">
+        <div class="lab-topline"><span><i aria-hidden="true"></i> THE WORK, IN ORBIT</span><span>2026 / SELECTED</span></div>
+        <div class="scene-fallback" data-hero-fallback data-scene-fallback aria-hidden="true">
+          <div class="fallback-orbit orbit-one"></div><div class="fallback-orbit orbit-two"></div><div class="fallback-core"><span>e.</span></div>
+          <figure class="floating-project floating-rag"><div><span>01 / KNOWLEDGE</span><span>↗</span></div><img src="/public/projects/rag/story-citation-preview.webp" alt="Enterprise RAG 公开演示的回答与来源截图" width="640" height="583" fetchpriority="high" decoding="async" /><figcaption>Enterprise RAG <span>找到答案，也找到出处。</span></figcaption></figure>
+          <figure class="floating-project floating-relay"><div><span>02 / RELIABILITY</span><span>↗</span></div><img src="/public/projects/relay/fixture-report-preview.webp" alt="RelayAudit 合成测试报告截图" width="640" height="743" decoding="async" /><figcaption>RelayAudit <span>让异常，留下线索。</span></figcaption></figure>
+          <figure class="floating-project floating-video"><div><span>03 / CREATION</span><span>↗</span></div><img src="/public/projects/video/original-54s-poster-preview.webp" alt="54 秒原创程序动画的成片画面" width="640" height="360" decoding="async" /><figcaption>Video Workflow <span>54 秒，原创程序动画。</span></figcaption></figure>
+        </div>
+        <div class="lab-bottomline"><span class="scene-static-hint">用作品，介绍自己。</span><span class="scene-motion-hint">移动鼠标，换个角度看。</span><a href="#work" aria-label="EXPLORE THE WORK：向下查看三个代表作品">EXPLORE THE WORK <span aria-hidden="true">↓</span></a></div>
       </aside>
-      <div class="hero-footnote"><p>知识检索与来源引用 <span>/</span> 内容生产工作流 <span>/</span> AI 工具与链路排查</p><a href="#about">我的方向：FDE <span aria-hidden="true">↗</span><small>在客户现场理解需求并参与实现</small></a></div>
+      <div class="hero-footnote"><p><span class="hero-index">01 — 03</span> 知识检索 <span>/</span> AI 工具 <span>/</span> 内容工作流</p><a href="#about">我的方向：FDE <span aria-hidden="true">↗</span><small>在客户现场理解需求并参与实现</small></a></div>
     </section>
 
     <section class="work-section wrap" id="work" aria-labelledby="work-title">
