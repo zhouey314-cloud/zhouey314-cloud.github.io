@@ -1,0 +1,32 @@
+[
+  {
+    "id": "rag",
+    "image": "/public/workbench/rag-workspace.webp",
+    "preview": "/public/workbench/rag-workspace-preview.webp",
+    "width": 1480,
+    "height": 721,
+    "source": "/workbench.html#rag",
+    "capture": "Actual WebKit rendered UI, no image generation",
+    "caption": "本站检索工作台的真实浏览器截图：合成资料、词法检索、原文摘录与来源定位；未调用生成模型。"
+  },
+  {
+    "id": "relay",
+    "image": "/public/workbench/relay-workspace.webp",
+    "preview": "/public/workbench/relay-workspace-preview.webp",
+    "width": 1480,
+    "height": 620,
+    "source": "/workbench.html#relay",
+    "capture": "Actual WebKit rendered UI, no image generation",
+    "caption": "本站报告检查器的真实浏览器截图，字段来自 2026-10-23 合成 fixture 报告；不是实时网关监控，也不能确认模型身份。"
+  },
+  {
+    "id": "video",
+    "image": "/public/workbench/video-workspace.webp",
+    "preview": "/public/workbench/video-workspace-preview.webp",
+    "width": 1480,
+    "height": 682,
+    "source": "/workbench.html#video",
+    "capture": "Actual WebKit rendered UI, no image generation",
+    "caption": "本站视频工作台的真实截图，播放已有 54 秒原创程序动画并读取实际字幕；不是真人口播或客户商业成片。"
+  }
+]

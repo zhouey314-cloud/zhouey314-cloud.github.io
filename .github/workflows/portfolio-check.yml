@@ -28,6 +28,7 @@ jobs:
         env:
           THREEUI_ENGINE: webkit
           THREEUI_REPORT_DIR: test-results/threeui-webkit
+      - run: npm run test:workbench
       - run: npm run test:experience
         env:
           SKIP_PERFORMANCE: "1"

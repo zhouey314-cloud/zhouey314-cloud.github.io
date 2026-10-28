@@ -24,6 +24,7 @@ const pages = [
   "projects.html",
   "resume.html",
   "404.html",
+  "workbench.html",
   ...caseIds.map((id) => `cases/${id}.html`),
 ];
 const hub = readFileSync(join(root, "projects.html"), "utf8");
@@ -142,7 +143,7 @@ assert(
   "home: three real projects plus forest fallback must exist before JavaScript",
 );
 assert(
-  home.includes("广播电视编导专业在读") && home.includes("周恩宇") && home.includes("向 FDE 方向发展"),
+  home.includes("广播电视编导专业在读") && home.includes("恩宇") && home.includes("向 FDE 方向发展"),
   "home: preserve verified identity and directional FDE positioning",
 );
 assert(
@@ -213,6 +214,9 @@ assert(
 assert(!existsSync(join(root, "CNAME")), "unexpected domain migration");
 for (const [file, hash] of [
   ["public/vendor/threejs/r149/three.min.js", "8a5f7249903b54d30f79f708699d2fed2d6a1d0741a4cd41377d1f01bb5a2271"],
+  ["public/vendor/fuse/fuse.js", "8d0ff71fbe94cadc319be0c559c64fe7ce2754afe47c9f0a67579d4112c6b62b"],
+  ["public/workbench/rag.js", "1ba20ecf72a2c939c76cc806186e1ca6ae9d5d221429e42e50fa788c91f31910"],
+  ["public/workbench/documents.json", "0f1d7eeb0ef8568e55287e48205975c8dfb9a6059f6a7c8f050b3653f84ab204"],
   ["public/fonts/lexend-latin.woff2", "1ec8f6ee2750554b4bc59ff0b507d316a82a7ba37e0e5bebc41d3bd9b9faad46"],
 ]) assert(createHash("sha256").update(readFileSync(join(root,file))).digest("hex") === hash, `pinned authored runtime/font changed: ${file}`);
 for (const file of ["public/vendor/threeui/LICENSE", "public/vendor/threejs/r149/LICENSE", "public/fonts/Lexend-OFL.txt", "public/scenes/sylva/capture.json"])

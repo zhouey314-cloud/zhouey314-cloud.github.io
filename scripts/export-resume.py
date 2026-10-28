@@ -260,7 +260,7 @@ def page_decoration(canvas, doc):
     canvas.line(40, 29, width - 40, 29)
     canvas.setFont("ResumeCJK", 6.8)
     canvas.setFillColor(MUTED)
-    canvas.drawString(40, 17, "周恩宇 Ethan | FDE / AI 应用工程方向")
+    canvas.drawString(40, 17, "恩宇 Ethan | FDE / AI 应用工程方向")
     canvas.drawRightString(width - 40, 17, f"0{doc.page} / 02")
     canvas.setFillColor(ACID)
     canvas.rect(width - 48, height - 37, 8, 3, stroke=0, fill=1)
@@ -272,7 +272,7 @@ def verify_pdf(path):
     if len(reader.pages) != 2:
         raise ValueError(f"Expected exactly two A4 pages; got {len(reader.pages)}")
     full_text = "\n".join(page.extract_text() or "" for page in reader.pages)
-    for phrase in ["周恩宇", "企业实践", "个人开源项目", "广播电视编导", "Enterprise RAG", "RelayAudit", "AI Video Workflow Engine", "zhouey314@gmail.com"]:
+    for phrase in ["恩宇", "企业实践", "个人开源项目", "广播电视编导", "Enterprise RAG", "RelayAudit", "AI Video Workflow Engine", "zhouey314@gmail.com"]:
         if phrase not in full_text:
             raise ValueError(f"Missing extractable PDF content: {phrase}")
     links = []
@@ -315,8 +315,8 @@ def main():
         temporary = Path(directory) / "resume.pdf"
         doc = SimpleDocTemplate(
             str(temporary), pagesize=A4, leftMargin=40, rightMargin=40,
-            topMargin=32, bottomMargin=41, title="周恩宇 Ethan - 工作与项目简历",
-            author="周恩宇 Ethan", subject="FDE / AI 应用工程方向；内容来自 resume.html",
+            topMargin=32, bottomMargin=41, title="恩宇 Ethan - 工作与项目简历",
+            author="恩宇 Ethan", subject="FDE / AI 应用工程方向；内容来自 resume.html",
             creator="ReportLab document export from resume.html", pageCompression=1,
         )
         story = first_page(tree, s, width) + [PageBreak()] + second_page(tree, s, width)

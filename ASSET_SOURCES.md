@@ -129,3 +129,14 @@
 | `public/projects/video/original-54s-poster-preview.webp` | `public/projects/video/original-54s-poster.jpg` | 640×360 | 14,670 | `3b1819845cbaa7c07105610d2e43908ae6610161009ab5e38cdeca998947fa99` |
 
 本次简历 PDF SHA256：`cf8ec1e3f4b056045295d79ee1ceee01351511c0c28f8a2e66e9aa68c5440e98`。
+
+
+## 2026-10-28 展示名与工作台
+
+根据用户直接要求，将公开展示名改成「恩宇」。`public/ethan-zhou-resume.pdf` 仍使用原 URL，从更新后的 resume.html 导出两页 A4、20 个链接并逐页检查；分享图使用原森林渲染与更名文字重新生成。
+
+`public/workbench/video-1.webp` 至 `video-9.webp`：从原授权 `public/projects/video/original-54s.mp4` 分别在 2、8、14、20、26、32、38、44、50 秒抽取，240×135，WebP quality 80。原视频与 VTT 未改写；它们是可点击章节的真实缩略图。
+
+新增 `public/workbench/rag.js`、documents.json 与 RAG-LICENSE，来源与固定版本见 THIRD_PARTY.md。报告检查器读取既有真实报告文件，不将展示界面描述成实时监控或身份识别结果。
+
+`public/workbench/{rag,relay,video}-workspace.webp` 及 `-preview.webp`：使用 `scripts/capture-workbench.mjs` 在本站运行中的工作台实际截取，原画宽 1480px，预览宽 640px，等比例 WebP 转码。来源与说明见同目录 captures.json；仅显示公开合成资料、原报告与原创视频，不是概念图或第三方产品截图。首页、项目档案与三个案例使用这一组当前界面图，旧证据素材继续保留。
