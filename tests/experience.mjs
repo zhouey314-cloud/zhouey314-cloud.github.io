@@ -47,6 +47,29 @@ try{
      await page.goto(site.base+'/',{waitUntil:'load'});const [download]=await Promise.all([page.waitForEvent('download'),page.locator('a[download][href$=".pdf"]').click()]);await download.saveAs(resolve(out,engineName+'-resume.pdf'));const bytes=await readFile(resolve(out,engineName+'-resume.pdf')),original=await readFile(resolve(root,'public/ethan-zhou-resume.pdf'));assert(bytes.subarray(0,5).toString()==='%PDF-'&&bytes.subarray(-1024).includes(Buffer.from('%%EOF'))&&bytes.equals(original),'downloaded PDF is valid and byte-identical');report.interactions.push({engine:engineName,legacyFragments:true,pdf:{bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex')}});
     }finally{await context.close()}
    });
+   await run(`${engineName}: project window and continuous case reading`,async()=>{
+    const context=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'reduce'}),page=await context.newPage();
+    try{
+     await page.goto(site.base,{waitUntil:'load'});
+     // macOS WebKit intentionally does not focus buttons on pointer click.
+     // Check keyboard focus through keyboard activation; test pointer selection separately.
+     const relay=page.locator('[data-hero-select="relay"]');await relay.focus();await page.keyboard.press('Enter');
+     assert(await relay.getAttribute('aria-pressed')==='true'&&await page.locator('[data-hero-select][aria-pressed="true"]').count()===1,'one selected project');
+     assert(await page.locator('[data-hero-stage] a').first().getAttribute('href')==='/cases/relay-audit.html','selected preview leads to real Relay case');
+     assert(await relay.evaluate(e=>e===document.activeElement),'switch retains button focus');
+     await page.keyboard.press('End');assert(await page.locator('[data-hero-select="video"]').getAttribute('aria-pressed')==='true','End selects last project');
+     await page.keyboard.press('Home');assert(await page.locator('[data-hero-select="rag"]').getAttribute('aria-pressed')==='true','Home selects first project');
+     await page.keyboard.press('ArrowRight');assert(await relay.getAttribute('aria-pressed')==='true','arrow keys move and select');
+     assert(await page.locator('[data-hero-stage]').evaluate(e=>e.getAnimations().length===0),'reduced motion has no project-switch animation');
+     await page.locator('[data-hero-select="video"]').click();assert(await page.locator('[data-hero-select="video"]').getAttribute('aria-pressed')==='true','pointer selects project');await page.locator('[data-hero-stage] .hero-project-image').click();await page.waitForURL('**/cases/video.html');
+     const limits=page.locator('.case-toc a[href="#limits"]');await limits.click();
+     await page.waitForFunction(()=>document.querySelector('.case-toc a[aria-current]')?.hash==='#limits');
+     const toc=await page.locator('.case-toc').boundingBox();assert(toc.y>=80&&toc.y<200,'desktop reading guide remains visible while reading');
+     assert((await page.locator('[data-case-percent]').textContent())!=='0%','reading progress follows scroll');
+     await page.locator('.next-case').click();await page.waitForURL('**/cases/thought-to-x.html');assert(await page.locator('h1').isVisible(),'next case is a real distinct page');
+     report.interactions.push({engine:engineName,projectWindow:{mouse:true,keyboard:true,realCaseLink:true,reducedMotion:true},caseReading:{activeChapter:true,stickyGuide:true,progress:true,nextCase:true}});
+    }finally{await context.close()}
+   });
   }finally{await browser.close()}
  }
 }finally{await site.close();report.status=report.failures.length?'FAIL':'PASS';await save()}

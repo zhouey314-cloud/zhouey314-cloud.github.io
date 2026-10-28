@@ -4,6 +4,8 @@
 
 2026-10-27 基于最新 `main@e1929e1` 重做。原生静态 HTML/CSS/JS 整合 ThreeUI Community 的完整 Sylva Living Green 植物场景，沿用原仓库、域名和 GitHub Pages 根目录。保留 16 个公开项目、3 项在推进工作、10 个案例、原有 URL/深链和联系方式。
 
+2026-10-28 补全前端体验：首屏可手动切换三个代表作品，档案有精选入口，十篇案例有材料封面、固定章节目录、阅读进度和下一案例；简历与 404 也沿用花园视觉。ThreeUI 场景、r149 和原版植物密度保持不变。
+
 首页阅读路径：完整数字花园与人物身份 → 三个真实作品 → GEO 企业参与 → 编导与工程实践 → 简历、写作入口与联系。没有虚构照片、文章、客户、生产验收或商业成绩。
 
 ## 本地运行
@@ -24,6 +26,7 @@ python3 -m http.server 8810 --bind 127.0.0.1
 | 姓名、栏目、经历、社交/微信入口与页面结构 | `content/home.template.html`；同步对应 metadata、简历后构建 |
 | 首页排版与手机样式 | `home.css` |
 | 全站字体、配色、导航、案例与简历的统一样式 | `tokens.css`、`garden.css` |
+| 首屏作品切换、案例目录与阅读进度 | `garden-ui.js`；作品窗口从 `content/portfolio.json` 构建，案例封面和后续阅读链接在各篇 `cases/*.html` |
 | 场景加载、沙箱握手、指针/滚动、暂停与恢复 | `forest.js` |
 | 苔藓、根拱、蕨类、花朵、花粉、蝴蝶与光照 | `public/scenes/sylva/scene.js`；来源和改动见 `THIRD_PARTY.md` |
 | 场景隔离文档与匹配运行库 | `public/scenes/sylva/index.html`、`public/vendor/threejs/r149/` |
@@ -64,7 +67,7 @@ THREEUI_ENGINE=webkit SYLVA_REQUIRE_WEBGL=1 npm run test:threeui
 
 - 静态：构建一致性、14 页、10 案例、16 项公开档案、3 项在推进工作、原有 94 个案例片段、metadata、媒体与本地链接。
 - 浏览器：Chromium/WebKit × 14 页 × 桌面/手机 = 56 组合；axe、资源、键盘、菜单与真实视频播放/定位/字幕。
-- 体验：14 布局/降级配置与 12 组交互，含 1600/768/390/320px、200% 等效 CSS 重排、无 JS、脚本失败、对话框、复制失败、hash/历史、深链和实际 PDF 下载。
+- 体验：14 布局/降级配置与 14 组交互，含 1600/768/390/320px、200% 等效 CSS 重排、无 JS、脚本失败、对话框、复制失败、hash/历史、深链、实际 PDF 下载，以及作品窗口键盘/鼠标切换、案例章节跟随与继续阅读。
 - 场景：独立观察 GL draw calls、r149、完整几何、指针、滚动镜头、单一 rAF、暂停/恢复、真实 context loss、Shader 编译失败、404、异常、沙箱消息校验与手机质量档。Chromium 明确使用软件 WebGL；其他没有 GL 的环境只报告 fallback 验收。`SYLVA_REQUIRE_WEBGL=1` 禁止把 fallback 当实际渲染通过。
 
 `BASE_URL=https://zhouey314-cloud.github.io` 可以直接验收实际网站。各脚本支持 `BROWSER_REPORT_DIR` / `EXPERIENCE_REPORT_DIR` / `THREEUI_REPORT_DIR`。结果默认在忽略的 `test-results/`；独立的视觉、录屏和发布材料保存于交付工作区，实际 CI 与部署结论以对应提交为准。
