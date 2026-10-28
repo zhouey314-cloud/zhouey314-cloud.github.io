@@ -23,7 +23,7 @@
 
   var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var bridge = window.__sylvaBridge;
-  var hostVisible = true, frameRequest = 0, journey = 0;
+  var hostVisible = true, frameRequest = 0, journey = 0, journeySmooth = 0;
   var qualitySmall = false, geometryBytes = 0;
   function snapshot() {
     return { frames: frames || 0, time: uTime ? uTime.value : 0, small: qualitySmall,
@@ -106,8 +106,9 @@
     drawSpec(dtUI);
     aimMoved = false;
     if (parOn) {
-      smooth.x += (pointer.x - smooth.x) * 0.055;
-      smooth.y += (pointer.y - smooth.y) * 0.055;
+      var pointerEase = 1 - Math.exp(-3.4 * dtUI);
+      smooth.x += (pointer.x - smooth.x) * pointerEase;
+      smooth.y += (pointer.y - smooth.y) * pointerEase;
       /* three decimals is finer than a pixel of travel, and rounding lets the
          writes stop entirely once the pointer settles — no style invalidation
          on an idle page */
@@ -1762,7 +1763,7 @@
     });
     canvas.addEventListener('webglcontextrestored', function () { bridge.post('restore-available', {}); });
     renderer.setClearColor(0x000000, 0);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, small ? 1.6 : 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, small ? 1.6 : 1.5));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.30;
     if ('sRGBEncoding' in THREE) renderer.outputEncoding = THREE.sRGBEncoding;
@@ -2637,7 +2638,8 @@
     if (!REDUCED) uTime.value += dt;
 
     camera.position.x = -smooth.x * 26;
-    camera.position.y = smooth.y * 16 + journey * 48;
+    journeySmooth += (journey - journeySmooth) * (REDUCED ? 1 : 1 - Math.exp(-9 * dt));
+    camera.position.y = smooth.y * 16 + journeySmooth * 48;
     camera.lookAt(camera.position.x * 0.42, camera.position.y * 0.42, 0);
 
     if (!REDUCED) {

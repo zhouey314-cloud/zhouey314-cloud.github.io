@@ -1,5 +1,5 @@
 {
-  "name": "周恩宇 Ethan Zhou",
+  "name": "恩宇 Ethan Zhou",
   "intro": "我是恩宇，广播电视编导专业在读，正在企业场景里参与 AI 应用开发与 GEO 实践。主要做知识检索、内容生产工作流和 AI 工具，把需求推进到能演示、能验证、能交接。",
   "email": "zhouey314@gmail.com",
   "projects": [
@@ -12,15 +12,15 @@
       "problem": "企业资料散在不同文档里，回答需要有据可查。",
       "role": "我实现文档管理、检索前访问过滤、引用定位与证据不足时的处理。",
       "status": "公开演示",
-      "image": "/public/projects/rag/story-citation.webp",
-      "width": 1200,
-      "height": 1093,
-      "caption": "Enterprise RAG 公开演示：合成资料中的问题、回答与来源引用。页面没有接入生成模型。",
+      "image": "/public/workbench/rag-workspace.webp",
+      "width": 1480,
+      "height": 721,
+      "caption": "本站检索工作台的真实浏览器截图：合成资料、词法检索、原文摘录与来源定位；未调用生成模型。",
       "case": "/cases/rag.html",
-      "demo": "https://zhouey314-cloud.github.io/enterprise-rag-starter/",
-      "demoLabel": "打开演示",
+      "demo": "/workbench.html#rag",
+      "demoLabel": "打开检索工作台",
       "code": "https://github.com/zhouey314-cloud/enterprise-rag-starter",
-      "preview": "/public/projects/rag/story-citation-preview.webp"
+      "preview": "/public/workbench/rag-workspace-preview.webp"
     },
     {
       "id": "relay",
@@ -31,15 +31,15 @@
       "problem": "AI 调用出错时，需要分清连接、响应与中断。",
       "role": "我搭建本地网关，记录 HTTP / SSE、超时、取消与标签变化，并输出报告。",
       "status": "开源本地工具",
-      "image": "/public/projects/relay/fixture-report.webp",
-      "width": 1200,
-      "height": 1394,
-      "caption": "RelayAudit 当前公开项目纯合成 fixture 的实际 Markdown 报告截图；synthetic_unverified，不能证明上游模型身份。",
+      "image": "/public/workbench/relay-workspace.webp",
+      "width": 1480,
+      "height": 620,
+      "caption": "本站报告检查器的真实浏览器截图，字段来自 2026-10-23 合成 fixture 报告；不是实时网关监控，也不能确认模型身份。",
       "case": "/cases/relay-audit.html",
-      "demo": "/cases/relay-audit.html#result",
-      "demoLabel": "查看演示",
+      "demo": "/workbench.html#relay",
+      "demoLabel": "打开报告检查器",
       "code": "https://github.com/zhouey314-cloud/relay-audit",
-      "preview": "/public/projects/relay/fixture-report-preview.webp"
+      "preview": "/public/workbench/relay-workspace-preview.webp"
     },
     {
       "id": "video",
@@ -50,15 +50,15 @@
       "problem": "视频不止是一次导出，还要能复现和检查。",
       "role": "我用 Python / FFmpeg 串起素材、时间轴、字幕、渲染与质量检查。",
       "status": "可播放样片",
-      "image": "/public/projects/video/original-54s-poster.jpg",
-      "width": 1280,
-      "height": 720,
-      "caption": "54 秒原创程序动画的真实成片画面；不是真人口播、客户投产或数字人效果证明。",
+      "image": "/public/workbench/video-workspace.webp",
+      "width": 1480,
+      "height": 682,
+      "caption": "本站视频工作台的真实截图，播放已有 54 秒原创程序动画并读取实际字幕；不是真人口播或客户商业成片。",
       "case": "/cases/video.html",
-      "demo": "/cases/video.html#result",
-      "demoLabel": "播放 54 秒样片",
+      "demo": "/workbench.html#video",
+      "demoLabel": "打开视频工作台",
       "code": "https://github.com/zhouey314-cloud/ai-video-workflow-engine",
-      "preview": "/public/projects/video/original-54s-poster-preview.webp"
+      "preview": "/public/workbench/video-workspace-preview.webp"
     }
   ],
   "writing": []

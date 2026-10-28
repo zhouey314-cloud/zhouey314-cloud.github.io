@@ -1,4 +1,4 @@
-# 周恩宇 Ethan Zhou · 数字花园
+# 恩宇 Ethan Zhou · 数字花园
 
 [实际网站](https://zhouey314-cloud.github.io/) · [检查记录](https://github.com/zhouey314-cloud/zhouey314-cloud.github.io/actions/workflows/portfolio-check.yml) · [Pages 发布](https://github.com/zhouey314-cloud/zhouey314-cloud.github.io/actions/workflows/pages/pages-build-deployment)
 
@@ -40,7 +40,7 @@ python3 -m http.server 8810 --bind 127.0.0.1
 
 ThreeUI Community **1.2.0 / `68802d5428071ada5c20db8094b1649e6bb770ed`**；Three.js **r149**。几何、Shader、材质、光照、植物密度和质量分档来自完整 Sylva Hero；没有沿用 PR #7 的三张曲面截图。新增的滚动镜头偏移和生命周期属于本站定制，不是公开 React 组件的 props。
 
-1600×880 的宽场景保留桌面蝴蝶。原版宽度 ≤900px 或面积 <620000px² 的 small 档保留植物并省略蝴蝶。原版 DPR 上限为桌面 2、small 1.6。字体与静态森林先绘制，随后再启动 Shader 编译。
+1600×880 的宽场景保留桌面蝴蝶。原版宽度 ≤900px 或面积 <620000px² 的 small 档保留植物并省略蝴蝶。原版 DPR 上限为桌面 2、small 1.6；本站 2026-10-28 将桌面上限调为 1.5，small 仍为 1.6，几何密度不变。字体与静态森林先绘制，随后再启动 Shader 编译。
 
 场景位于 `sandbox="allow-scripts"` 的 opaque iframe。父页校验对应 `contentWindow`、`origin` 与本次 token；只有第二次成功实际绘制、非丢失上下文及有效 draw call 才能发出 ready。编译、资源、上下文与脚本错误单独报告，不根据 `iframe.onload` 宣称 WebGL 成功。
 
@@ -77,3 +77,15 @@ THREEUI_ENGINE=webkit SYLVA_REQUIRE_WEBGL=1 npm run test:threeui
 ## 来源与历史
 
 [依赖、许可与固定来源](THIRD_PARTY.md) · [素材来源](ASSET_SOURCES.md) · [设计与移植说明](DESIGN.md)。PR #7 的 Gallery 方案保存在 [历史提交](https://github.com/zhouey314-cloud/zhouey314-cloud.github.io/tree/e1929e12f4967d7fb8f3f2f7b33154c38abd4561)，不是本轮视觉目标。
+
+## 作品工作台（2026-10-28）
+
+`/workbench.html#rag` / `#relay` / `#video` 提供实际的来源检查、报告解析和媒体定位；入口已连接首页、档案及对应案例。展示姓名统一为「恩宇」，GitHub、邮件与旧 URL 不改。详见 [实现、来源与维护](docs/STUDIO.md)。
+
+- `workbench.html`、`workbench.css`、`workbench.js`：工作台结构、排版与交互；数据始终用 textContent 展示，不执行导入内容。
+- `public/workbench/rag.js` 与 `documents.json`：固定公开引擎与合成资料，原引擎字节不改；不要只为画面改变证据判断。
+- `archive-search.js`、`public/vendor/fuse/`：项目标题与公开介绍的本地容错检索，跟 RAG 引擎分开。
+- `studio.css`：整站最后一层排版；`scripts/prepare-sylva.py` 已同步 DPR 与按时间插值，重新生成场景可逐字节复现。
+- `npm test` 包含 36 条原有合成回归；`npm run test:workbench` 检查输入、导出、上传失败、键盘、媒体、搜索、无 JS、失败回退和各标签无障碍。CI 同步运行。
+
+新工作台不启动网关、不上传文件、不接模型 API。本地文件只留当前页面内存，刷新或重置清除；用户主动导出时生成下载。其他开源项目及服务端未被此次网站改造重写，也未新增生产验收声明。

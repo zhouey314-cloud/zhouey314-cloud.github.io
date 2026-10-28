@@ -50,13 +50,14 @@
     <title>Enterprise RAG Starter — Ethan 恩宇</title>
   <link rel="stylesheet" href="/garden.css" />
   <script src="/garden-ui.js" defer></script>
+  <link rel="stylesheet" href="/studio.css" />
 </head>
   <body class="case-study">
     <a class="skip-link" href="#main">跳到主要内容</a>
     <header class="site-header wrap">
-      <a class="brand" href="/" aria-label="Ethan Zhou，周恩宇，首页"
+      <a class="brand" href="/" aria-label="Ethan Zhou，恩宇，首页"
         ><span class="brand-latin">Ethan Zhou<span class="brand-stop">.</span></span
-        ><span class="brand-cn">周恩宇</span></a
+        ><span class="brand-cn">恩宇</span></a
       >
       <div class="header-controls">
         <button
@@ -87,11 +88,11 @@
         <a class="text-link" href="/projects.html">← 项目档案</a>
         <p class="eyebrow">作品 / Enterprise RAG Starter</p>
         <h1>回答要有来源，<br />也要知道何时停下。</h1>
-        <p class="case-status">线上词面演示 / 本地文件与身份服务</p>
+        <a class="studio-case-entry" href="/workbench.html#rag">打开交互工作台 <span aria-hidden="true">↗</span></a><p class="case-status">线上词面演示 / 本地文件与身份服务</p>
         <p class="case-boundary">
           公开演示使用合成资料做词法检索与原文摘录；本地文件、身份和可选语义模式另行运行。生成模型未配置，尚无真实企业回答准确率。
         </p>
-      </div><figure class="case-cover"><a href="#result"><span class="case-cover-label">ARTIFACT / 01</span><img src="/public/projects/rag/story-material.webp" alt="真实浏览器截图：合成支持时间资料、公开范围与 v1 来源片段" width="1200" height="900" decoding="async" /><span class="case-cover-open">查看结果与说明 <span aria-hidden="true">↘</span></span></a><figcaption>已有公开材料 · 范围与来源见正文</figcaption></figure></header>
+      </div><figure class="case-cover"><a href="#result"><span class="case-cover-label">ARTIFACT / 01</span><img src="/public/workbench/rag-workspace.webp" alt="本站检索工作台的真实浏览器截图：合成资料、词法检索、原文摘录与来源定位；未调用生成模型。" width="1480" height="721" decoding="async" /><span class="case-cover-open">查看结果与说明 <span aria-hidden="true">↘</span></span></a><figcaption>已有公开材料 · 范围与来源见正文</figcaption></figure></header>
       <nav class="case-toc" aria-label="案例章节"><p class="case-guide-label" aria-hidden="true">IN THIS CASE</p>
         <a href="#what">这是什么</a><a href="#result">看结果</a
         ><a href="#build">我做了什么</a><a href="#decision">关键选择</a
@@ -194,6 +195,7 @@
           </div>
         </section>
         <section class="case-section" id="deep">
+          <p class="case-regression-note">2026-10-28：本站工作台复用公开引擎，36 条既有 Node 回归通过。合成语料检验不代表真实企业回答质量。可直接导入本地文本、查看原文并导出结果。</p>
           <span class="legacy-anchor" id="s6"></span
           ><span class="legacy-anchor" id="s7"></span
           ><span class="legacy-anchor" id="s13"></span>
@@ -252,7 +254,7 @@ python evals/local.py --output .rag-data/eval/local-latest.json</code></pre>
     <footer class="site-footer wrap">
       <a class="brand" href="/"
         ><span class="brand-latin">Ethan Zhou<span class="brand-stop">.</span></span
-        ><span class="brand-cn">周恩宇</span></a
+        ><span class="brand-cn">恩宇</span></a
       >
       <p>想法，慢慢成为作品。</p>
       <a href="/projects.html">完整项目档案 <span aria-hidden="true">↗</span></a

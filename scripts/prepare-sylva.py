@@ -22,7 +22,7 @@ def replace(before, after):
 
 replace("  var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;", """  var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var bridge = window.__sylvaBridge;
-  var hostVisible = true, frameRequest = 0, journey = 0;
+  var hostVisible = true, frameRequest = 0, journey = 0, journeySmooth = 0;
   var qualitySmall = false, geometryBytes = 0;
   function snapshot() {
     return { frames: frames || 0, time: uTime ? uTime.value : 0, small: qualitySmall,
@@ -97,7 +97,7 @@ replace("    renderer.setClearColor(0x000000, 0);", """    var gl = renderer.get
     });
     canvas.addEventListener('webglcontextrestored', function () { bridge.post('restore-available', {}); });
     renderer.setClearColor(0x000000, 0);""")
-replace("    camera.position.y =  smooth.y * 16;", "    camera.position.y = smooth.y * 16 + journey * 48;")
+replace("    camera.position.y =  smooth.y * 16;", "    journeySmooth += (journey - journeySmooth) * (REDUCED ? 1 : 1 - Math.exp(-9 * dt));\n    camera.position.y = smooth.y * 16 + journeySmooth * 48;")
 replace("    if (++frames === 2) window.__ready = true;", """    ++frames;
     if (bridge.failed || renderer.getContext().isContextLost()) return;
     if (frames === 2 && renderer.info.render.calls > 0) {
@@ -123,6 +123,9 @@ replace("    buildAmbient();\n    layout();", """    buildAmbient();
     });
     arrays.forEach(function (array) { geometryBytes += array.byteLength; });
     layout();""")
+
+replace("small ? 1.6 : 2", "small ? 1.6 : 1.5")
+replace("      smooth.x += (pointer.x - smooth.x) * 0.055;\n      smooth.y += (pointer.y - smooth.y) * 0.055;", "      var pointerEase = 1 - Math.exp(-3.4 * dtUI);\n      smooth.x += (pointer.x - smooth.x) * pointerEase;\n      smooth.y += (pointer.y - smooth.y) * pointerEase;")
 
 out = root / 'public/scenes/sylva'
 out.mkdir(parents=True, exist_ok=True)

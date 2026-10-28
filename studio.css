@@ -1,0 +1,48 @@
+/* A quieter frame for substantial work: generous type, clear controls, fewer layers. */
+.site-header {backdrop-filter:none;background:#f4f5edf5;box-shadow:0 4px 18px #2531260a}
+.studio-banner {position:relative;display:grid;gap:22px;padding:44px 48px;margin:0 0 64px;background:#203c35;color:#f2f2e7;border-radius:4px;overflow:hidden;text-decoration:none}
+.studio-banner::after {content:'';position:absolute;width:360px;height:360px;border:1px solid #77918540;border-radius:50%;right:4%;top:-60px;pointer-events:none;box-shadow:0 0 0 50px #7791850b,0 0 0 100px #7791850a}
+.studio-banner-label {font:11px/1.7 var(--font);letter-spacing:.14em;color:#c6d8bf}
+.studio-banner strong {font:400 clamp(30px,4vw,55px)/1.25 var(--editorial);letter-spacing:-.03em;position:relative;z-index:1}
+.studio-banner>span:last-of-type {font-size:13px;line-height:1.9;color:#d8e1d4;max-width:80%}
+.studio-banner i {font:11px var(--font);color:#c6d8bf;margin-inline:8px 14px}
+.studio-banner b {position:absolute;right:48px;bottom:36px;font-size:46px;font-weight:300;transition:transform .2s}
+.studio-banner:hover b {transform:translate(4px,-4px)}
+.archive-studio {margin-top:30px}
+.studio-case-entry {display:inline-flex;align-items:center;gap:30px;min-height:48px;padding:11px 18px;background:#24463b;color:#fff;border-radius:3px;margin-top:24px;font-size:14px;text-decoration:none}
+.studio-case-entry:hover {background:#355d4d;color:#fff}
+.archive-search {display:flex;align-items:center;gap:20px;border-block:1px solid #bbc5b2;padding:24px 0;margin-top:34px}
+.archive-search label {font-size:13px;white-space:nowrap}
+.archive-search input {width:100%;min-width:0;min-height:52px;padding:12px 18px;background:#fffefa;border:1px solid #b7c3ad;border-radius:4px;font:16px var(--font);color:#23392e}
+.archive-search input::placeholder {color:#66705c}
+.archive-search button {min-height:44px;background:transparent;border:0;padding:10px;color:#314a39;font:14px var(--font);cursor:pointer;white-space:nowrap}
+.archive-empty {padding:40px;border:1px solid #c8cbbd;color:#465643}
+.project-archive .archive-list {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.project-archive .archive-item {display:grid;grid-template-columns:32px minmax(0,1fr);align-items:start;gap:16px;padding:30px;background:#f7f7f0;border:1px solid #d1d6c7;border-radius:4px;margin:0;transition:border-color .2s}
+.project-archive .archive-item:hover {border-color:#718267}
+.project-archive .archive-item[hidden] {display:none}
+.project-archive .archive-title {display:block}
+.project-archive .archive-title h2 {font:450 22px/1.4 var(--font);letter-spacing:-.035em;margin-bottom:10px}
+.project-archive .archive-status {display:inline-block;font-size:11px;color:#3d5a45;background:#e4eadb;border:0;max-width:100%;white-space:normal}
+.project-archive .archive-evidence {color:#43533d;font-size:12px}
+.project-archive .archive-item .actions {margin-top:24px}
+.project-archive .archive-main {min-width:0}
+.project-archive .archive-question {font-size:15px;line-height:1.9}
+.project-archive .archive-index {font-size:11px;padding-top:7px;color:#526345}
+.case-study .case-cover img {transform:none;box-shadow:0 20px 40px #26362518}
+.case-study .case-cover:hover img {transform:none}
+.case-study .case-section {scroll-margin-top:24px}
+.garden-home .hero-identity h1 {letter-spacing:-.055em}
+.garden-home .hero-thought>p {line-height:1.7}
+.garden-home .garden-project {border-radius:4px}
+.garden-home .project-entry a {min-height:44px}
+/* Existing spring-free native transitions never intercept wheel or touch input. */
+@media(min-width:901px){.garden-home .garden-works {padding-top:92px}.garden-home .hero-identity h1 {font-size:clamp(76px,7.6vw,122px)}.project-archive .archive-hero {padding-bottom:32px}}
+@media(max-width:760px){
+  .studio-banner {padding:30px 24px;margin-bottom:38px;gap:18px}.studio-banner b{right:22px;bottom:24px;font-size:34px}.studio-banner>span:last-of-type{max-width:86%;font-size:12px}.studio-banner i{margin-inline:4px}
+  .archive-search {gap:8px;flex-wrap:wrap;padding:20px 0}.archive-search label{width:100%}.archive-search input{width:calc(100% - 54px);font-size:16px}.archive-search button{padding:6px}
+  .project-archive .archive-list {grid-template-columns:1fr}.project-archive .archive-item {padding:24px 18px;gap:8px;grid-template-columns:24px minmax(0,1fr)}
+  .project-archive .archive-title h2 {font-size:20px}.case-study .case-section{scroll-margin-top:80px}
+}
+@media(prefers-reduced-motion:reduce){.studio-banner b,.project-archive .archive-item{transition:none}}
+html[data-motion="off"] .studio-banner b,html[data-motion="off"] .archive-item{transition:none}

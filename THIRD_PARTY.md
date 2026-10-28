@@ -21,7 +21,7 @@ MIT 全文：`public/vendor/threeui/LICENSE`、`public/vendor/threejs/r149/LICEN
 
 ## 保留与定制
 
-**保留：** 原版近景根拱、远景根脊、程序苔藓材质与实例化叶片、蕨类、花朵、空间光照、花粉、指针扰动、扫描入场和桌面蝴蝶。默认 near/far 苔藓密度 190000/60000；small 70000/20000。Three.js tone mapping、exposure、色彩编码以及 DPR 2 / 1.6 上限保留。
+**保留：** 原版近景根拱、远景根脊、程序苔藓材质与实例化叶片、蕨类、花朵、空间光照、花粉、指针扰动、扫描入场和桌面蝴蝶。默认 near/far 苔藓密度 190000/60000；small 70000/20000。Three.js tone mapping、exposure、色彩编码保留。2026-10-28 将桌面 DPR 上限从 2 调到 1.5，small 保持 1.6；指针与滚动镜头改为按时间指数插值，植物几何与材质不减。
 
 **定制：** 原生个人 DOM 与全站排版、透明沙箱隔离、第二次真实 render 后的握手、同源 token/source 校验、离屏/后台/动效控制、上下文与编译错误诊断、48 world-unit 的滚动镜头偏移、显式重试。滚动镜头与整站章节是本站实现，不是原组件自带能力。
 
@@ -43,3 +43,12 @@ MIT 全文：`public/vendor/threeui/LICENSE`、`public/vendor/threejs/r149/LICEN
 PR #7 的 Gallery、AnimatedTopDock、r186 模块与旧 hero-scene/dock 实现已由当前方案替换，未使用的运行文件移除。原来的 GSAP/ScrollTrigger 运行库也不再加载；当前滚动使用原生行为、CSS 与场景自己的循环，没有叠加平滑滚动器。历史 GSAP Standard No Charge License 不改变为 MIT；其历史记录可在既有提交查询。
 
 项目截图、GEO 脱敏界面、54 秒原创样片与字幕的原有许可、批准和事实范围继续有效。第三方场景不代表 Ethan 独立原创植物建模，样片也不代表客户投产或真人效果验收。
+
+
+## 2026-10-28 作品工作台新增来源
+
+- [Fuse.js v7.5.0](https://github.com/krisk/Fuse/releases/tag/v7.5.0)：Apache-2.0。仅复制 `dist/fuse.basic.min.mjs` 到 `public/vendor/fuse/fuse.js`（19,308 bytes，Git blob `181c26b35a90598d22a0712000ffe5351fb425a1`），许可证为同目录 `LICENSE`。原版权头完整保留，内容未修改，仅扩展名改成 `.js` 方便静态服务器。用于作品目录的标题/介绍检索，不介入知识回答。
+- [Enterprise RAG Starter 固定提交](https://github.com/zhouey314-cloud/enterprise-rag-starter/tree/5c18455fbc59a2a8ffd46eb0231434f247efce29)：MIT / Copyright (c) 2026 Ethan Zhou。`web/rag.mjs` 原样复制到 `public/workbench/rag.js`，Git blob `c19fc2bc61c50077f82f7809e91584411d108458`。`data/documents.json`、MIT、answerability/excerpts 合成回归一并保留；网页操作层重新设计。该引擎只做英文词法检索与原文摘录，不是生成模型。
+- Relay 检查器解析本站已有 `synthetic-report-20261023.md`；视频章节解析既有 VTT。九张 WebP 是从已授权的原 54 秒视频每章第 2 秒提取，不含新生成或外部素材。
+
+本轮也核查 [Lenis](https://github.com/darkroomengineering/lenis)、[Motion](https://github.com/motiondivision/motion)、[PhotoSwipe](https://github.com/dimsemenov/PhotoSwipe)、[Swup](https://github.com/swup/swup)。这些均未复制或加载。原生滚动、原生 video/dialog 和现有生命周期足以支持当前路径，新增滚动接管、全页路由缓存或第二个动画循环会增加兼容与生命周期成本。
