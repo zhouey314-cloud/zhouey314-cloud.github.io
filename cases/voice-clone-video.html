@@ -38,12 +38,13 @@
     <script src="/script.js" defer></script>
     <title>Voice Clone Video — Ethan 恩宇</title>
   <link rel="stylesheet" href="/garden.css" />
+  <script src="/garden-ui.js" defer></script>
 </head>
-  <body>
+  <body class="case-study">
     <a class="skip-link" href="#main">跳到主要内容</a>
     <header class="site-header wrap">
-      <a class="brand" href="/" aria-label="Ethan. 周恩宇，首页"
-        ><span class="brand-latin">Ethan<span class="brand-stop">.</span></span
+      <a class="brand" href="/" aria-label="Ethan Zhou，周恩宇，首页"
+        ><span class="brand-latin">Ethan Zhou<span class="brand-stop">.</span></span
         ><span class="brand-cn">周恩宇</span></a
       >
       <div class="header-controls">
@@ -65,12 +66,12 @@
         </button>
       </div>
       <nav id="site-nav" class="site-nav" aria-label="主要导航">
-        <a href="/#practice">我的方向</a><a href="/#work">项目</a
-        ><a href="/#about">关于我</a><a href="/#contact">联系 ↗</a>
+        <a href="/#practice">实践</a><a href="/#work">作品</a
+        ><a href="/#about">关于我</a><a href="/resume.html">简历 ↗</a><a href="/#contact">联系 ↗</a>
       </nav>
     </header>
-    <main id="main" class="wrap">
-      <header class="case-hero">
+    <main id="main" class="wrap case-layout">
+      <header class="case-hero"><div class="case-hero-copy">
         <a class="text-link" href="/projects.html">← 项目档案</a>
         <p class="eyebrow">新公开作品 / Voice Clone Video</p>
         <h1>让配音从授权开始，而不是从生成开始。</h1>
@@ -78,12 +79,12 @@
         <p class="case-boundary">
           模拟运行使用静音测试素材；不代表完成真实克隆或音色质量验收。真实模式须获得明确授权。
         </p>
-      </header>
-      <nav class="case-toc" aria-label="案例章节">
+      </div><figure class="case-cover"><a href="#result"><span class="case-cover-label">ARTIFACT / 10</span><img src="/public/projects/recent/voice-flow.svg" alt="已授权的参考录音经音质检查、字幕分段、MiniMax 配音接口、FFmpeg 合成，最终人工确认；这是流程示意。" width="1200" height="900" decoding="async" /><span class="case-cover-open">查看结果与说明 <span aria-hidden="true">↘</span></span></a><figcaption>已有公开材料 · 范围与来源见正文</figcaption></figure></header>
+      <nav class="case-toc" aria-label="案例章节"><p class="case-guide-label" aria-hidden="true">IN THIS CASE</p>
         <a href="#what">这是什么</a><a href="#result">看结果</a
         ><a href="#build">我做了什么</a><a href="#decision">关键选择</a
         ><a href="#limits">成果与限制</a><a href="#deep">深入查看</a>
-      </nav>
+      <div class="case-reading" aria-hidden="true"><span>阅读进度 <b data-case-percent>0%</b></span><i><span data-case-progress></span></i></div></nav>
       <div class="case-body">
         <section class="case-section" id="what">
           <h2><span>01</span>这是什么</h2>
@@ -197,7 +198,7 @@
     </main>
     <footer class="site-footer wrap">
       <a class="brand" href="/"
-        ><span class="brand-latin">Ethan<span class="brand-stop">.</span></span
+        ><span class="brand-latin">Ethan Zhou<span class="brand-stop">.</span></span
         ><span class="brand-cn">周恩宇</span></a
       >
       <p>真实作品，真实边界。</p>

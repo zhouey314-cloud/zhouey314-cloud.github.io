@@ -1631,3 +1631,31 @@ html[data-motion="off"] .garden-home * {
   scroll-behavior:auto!important;
   transition:none!important
 }
+
+/* A small, manual project window: the forest remains the full hero. */
+.hero-project > .hero-project-stage { padding: 0; }
+.hero-project-panel .hero-project-copy { padding: 13px 8px 0; }
+.hero-project-copy > p { font-size: 10px; color: #5d6b51; min-height: 16px; }
+.hero-project-copy > a { display: block; position: relative; min-height: 68px; margin-top: 7px; padding-right: 18px; font-size: 23px; line-height: 1.45; letter-spacing: -.04em; }
+.hero-project-copy > a > span { position: absolute; right: 0; bottom: 3px; font-size: 21px; }
+.hero-project-panel .hero-project-note { min-height: 14px; margin: 12px 8px 0; }
+.hero-project > .hero-project-switches { display: flex; width: 100%; gap: 4px; margin-top: 13px; padding: 8px 0 0; border-top: 1px solid #d9dfcf; }
+.hero-project-switches > button { flex: 1; display: flex; align-items: center; justify-content: center; gap: 5px; min-height: 44px; padding: 5px 3px; border: 1px solid transparent; border-radius: 9px; background: transparent; font: 400 10px/1.4 var(--font); color: #57654b; cursor: pointer; }
+.hero-project-switches > button > span { font-size: 8px; opacity: .75; }
+.hero-project-switches > button[aria-pressed="true"] { color: #f2f5e7; background: #435537; box-shadow: 0 3px 7px #263c1920; }
+.hero-project-switches > button:hover { border-color: #9bab86; }
+.hero-project-switches > button:focus-visible { outline: 2px solid #526d37; outline-offset: 2px; }
+@media (max-width: 1250px) and (min-width: 901px) {
+  .hero-project-copy > a { font-size: 21px; min-height: 62px; }
+}
+@media (max-width: 900px) {
+  .hero-project-copy > a { font-size: 20px; min-height: 58px; }
+}
+@media (max-width: 600px) {
+  .hero-project-panel .hero-project-copy { padding: 10px 5px 0; }
+  .hero-project-copy > p { font-size: 9px; }
+  .hero-project-copy > a { font-size: 19px; min-height: 54px; }
+  .hero-project-panel .hero-project-note { margin: 10px 5px 0; font-size: 8px; }
+  .hero-project > .hero-project-switches { margin-top: 8px; padding-top: 6px; }
+  .hero-project-switches > button { min-height: 44px; }
+}

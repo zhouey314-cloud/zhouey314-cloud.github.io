@@ -49,12 +49,13 @@
     <script src="/script.js" defer></script>
     <title>项目档案 — Ethan 恩宇</title>
   <link rel="stylesheet" href="/garden.css" />
+  <script src="/garden-ui.js" defer></script>
 </head>
   <body class="project-archive">
     <a class="skip-link" href="#main">跳到主要内容</a>
     <header class="site-header wrap">
-      <a class="brand" href="/" aria-label="Ethan. 周恩宇，首页"
-        ><span class="brand-latin">Ethan<span class="brand-stop">.</span></span
+      <a class="brand" href="/" aria-label="Ethan Zhou，周恩宇，首页"
+        ><span class="brand-latin">Ethan Zhou<span class="brand-stop">.</span></span
         ><span class="brand-cn">周恩宇</span></a
       >
       <div class="header-controls">
@@ -76,9 +77,9 @@
         </button>
       </div>
       <nav id="site-nav" class="site-nav" aria-label="主要导航">
-        <a href="/#practice">我的方向</a><a href="/#work">项目</a
+        <a href="/#practice">实践</a><a href="/#work">作品</a
         ><a href="/#about">关于我</a
-        ><a href="/#contact">联系 <span aria-hidden="true">↗</span></a>
+        ><a href="/resume.html">简历 ↗</a><a href="/#contact">联系 <span aria-hidden="true">↗</span></a>
       </nav>
     </header>
     <main id="main" class="wrap">
@@ -88,7 +89,7 @@
         <div class="archive-hero-row">
           <h1>实战，<br />留下作品<span class="accent">。</span></h1>
           <div class="archive-hero-note">
-            <p>我在企业一线参与 FDE 与 GEO 实践，也把遇到的问题做成公开项目。</p>
+            <p>我参与企业 GEO 与 AI 应用实践，也把遇到的问题做成公开项目。</p>
             <p>这里整理参与记录、工程实验和方法模板。从要解决什么，到实际做到了哪一步，都有迹可循。</p>
             <div class="archive-total"><strong>16</strong><span>公开项目<br />持续迭代中</span></div>
           </div>
@@ -99,6 +100,7 @@
           <a href="#building-now"><span>03</span> 正在推进 <span aria-hidden="true">↓</span></a>
         </nav>
       </section>
+      <section class="archive-selected" aria-labelledby="archive-selected-title"><div class="archive-selected-heading"><p class="eyebrow">START HERE / 从作品认识我</p><h2 id="archive-selected-title">先打开这三份实践记录。</h2></div><div class="archive-feature-grid"><a class="archive-feature" href="/cases/rag.html"><div><span>01 / 知识检索与来源引用</span><img src="/public/projects/rag/story-citation-preview.webp" alt="Enterprise RAG 公开演示：合成资料中的问题、回答与来源引用。页面没有接入生成模型。" width="640" height="400" loading="lazy" decoding="async" /></div><h3>Enterprise RAG Starter</h3><p>让回答，回到原始资料。 <span aria-hidden="true">↗</span></p></a><a class="archive-feature" href="/cases/relay-audit.html"><div><span>02 / AI 工具与链路排查</span><img src="/public/projects/relay/fixture-report-preview.webp" alt="RelayAudit 当前公开项目纯合成 fixture 的实际 Markdown 报告截图；synthetic_unverified，不能证明上游模型身份。" width="640" height="400" loading="lazy" decoding="async" /></div><h3>RelayAudit / AgentGuard</h3><p>让异常，留下排查线索。 <span aria-hidden="true">↗</span></p></a><a class="archive-feature" href="/cases/video.html"><div><span>03 / 内容生产工作流</span><img src="/public/projects/video/original-54s-poster-preview.webp" alt="54 秒原创程序动画的真实成片画面；不是真人口播、客户投产或数字人效果证明。" width="640" height="400" loading="lazy" decoding="async" /></div><h3>AI Video Workflow Engine</h3><p>让制作过程，可以复现。 <span aria-hidden="true">↗</span></p></a></div></section>
       <aside class="participated-record" aria-labelledby="geo-title">
         <div class="geo-heading">
           <div>
@@ -745,7 +747,7 @@
     </main>
     <footer class="site-footer wrap">
       <a class="brand" href="/"
-        ><span class="brand-latin">Ethan<span class="brand-stop">.</span></span
+        ><span class="brand-latin">Ethan Zhou<span class="brand-stop">.</span></span
         ><span class="brand-cn">周恩宇</span></a
       >
       <p>从业务现场，到可验证的作品。</p>

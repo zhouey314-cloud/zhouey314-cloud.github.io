@@ -34,6 +34,8 @@ MIT 全文：`public/vendor/threeui/LICENSE`、`public/vendor/threejs/r149/LICEN
 | r149 three.min.js | 608081 | Git blob `4494cf4e8d37049896b6051da6edfe44a83355af`；SHA-256 `8a5f7249903b54d30f79f708699d2fed2d6a1d0741a4cd41377d1f01bb5a2271` |
 | lexend-latin.woff2 | 39692 | Git blob `0968c152f1c0d617a90bd843fa3d510c336af085`；SHA-256 `1ec8f6ee2750554b4bc59ff0b507d316a82a7ba37e0e5bebc41d3bd9b9faad46` |
 
+2026-10-28 的全站前端打磨复用上述场景和已有项目素材；新增原生作品切换与案例阅读控件，没有新增第三方运行库、升级 r149 或修改植物/Shader/光照。静态森林渲染也用于档案的背景、简历页眉和 404。
+
 两个文件逐字节与上述上游 blob 一致。回退图来自同一场景在本机 WebKit 的真实渲染，另见 `ASSET_SOURCES.md`。
 
 ## 未采用的旧方案
