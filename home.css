@@ -1641,7 +1641,7 @@ html[data-motion="off"] .garden-home * {
 .hero-project-panel .hero-project-note { min-height: 14px; margin: 12px 8px 0; }
 .hero-project > .hero-project-switches { display: flex; width: 100%; gap: 4px; margin-top: 13px; padding: 8px 0 0; border-top: 1px solid #d9dfcf; }
 .hero-project-switches > button { flex: 1; display: flex; align-items: center; justify-content: center; gap: 5px; min-height: 44px; padding: 5px 3px; border: 1px solid transparent; border-radius: 9px; background: transparent; font: 400 10px/1.4 var(--font); color: #57654b; cursor: pointer; }
-.hero-project-switches > button > span { font-size: 8px; opacity: .75; }
+.hero-project-switches > button > span { font-size: 9px; opacity: 1; }
 .hero-project-switches > button[aria-pressed="true"] { color: #f2f5e7; background: #435537; box-shadow: 0 3px 7px #263c1920; }
 .hero-project-switches > button:hover { border-color: #9bab86; }
 .hero-project-switches > button:focus-visible { outline: 2px solid #526d37; outline-offset: 2px; }
