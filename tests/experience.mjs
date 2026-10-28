@@ -51,7 +51,9 @@ try{
     const context=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'reduce'}),page=await context.newPage();
     try{
      await page.goto(site.base,{waitUntil:'load'});
-     const relay=page.locator('[data-hero-select="relay"]');await relay.focus();await relay.click();
+     // macOS WebKit intentionally does not focus buttons on pointer click.
+     // Check keyboard focus through keyboard activation; test pointer selection separately.
+     const relay=page.locator('[data-hero-select="relay"]');await relay.focus();await page.keyboard.press('Enter');
      assert(await relay.getAttribute('aria-pressed')==='true'&&await page.locator('[data-hero-select][aria-pressed="true"]').count()===1,'one selected project');
      assert(await page.locator('[data-hero-stage] a').first().getAttribute('href')==='/cases/relay-audit.html','selected preview leads to real Relay case');
      assert(await relay.evaluate(e=>e===document.activeElement),'switch retains button focus');
@@ -59,7 +61,7 @@ try{
      await page.keyboard.press('Home');assert(await page.locator('[data-hero-select="rag"]').getAttribute('aria-pressed')==='true','Home selects first project');
      await page.keyboard.press('ArrowRight');assert(await relay.getAttribute('aria-pressed')==='true','arrow keys move and select');
      assert(await page.locator('[data-hero-stage]').evaluate(e=>e.getAnimations().length===0),'reduced motion has no project-switch animation');
-     await page.keyboard.press('End');await page.locator('[data-hero-stage] .hero-project-image').click();await page.waitForURL('**/cases/video.html');
+     await page.locator('[data-hero-select="video"]').click();assert(await page.locator('[data-hero-select="video"]').getAttribute('aria-pressed')==='true','pointer selects project');await page.locator('[data-hero-stage] .hero-project-image').click();await page.waitForURL('**/cases/video.html');
      const limits=page.locator('.case-toc a[href="#limits"]');await limits.click();
      await page.waitForFunction(()=>document.querySelector('.case-toc a[aria-current]')?.hash==='#limits');
      const toc=await page.locator('.case-toc').boundingBox();assert(toc.y>=80&&toc.y<200,'desktop reading guide remains visible while reading');
