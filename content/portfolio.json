@@ -1,17 +1,98 @@
 {
   "name": "恩宇 Ethan Zhou",
-  "intro": "广播电视编导专业在读，主要做知识检索、AI 接口集成与内容工作流开发。从资料结构、请求链路和任务交接入手，把问题拆成可运行的工具，再用测试、证据和运行说明完成交付。",
+  "intro": "广播电视编导专业在读，自 2026 年 6 月参与企业 GEO 与 AI 应用实践。我主要用 Python 做知识检索、AI 接口集成和内容工作流，把需求拆成可运行的工具，并把失败处理、测试和运行说明一起交付。",
   "email": "zhouey314@gmail.com",
+  "services": [
+    {
+      "number": "01",
+      "field": "知识检索 / RAG",
+      "title": "让团队资料查得到，回答有出处。",
+      "problem": "资料散在文档里，找到一段回答后，还要知道它来自哪里、是否仍然有效。",
+      "deliverable": "资料入库与版本管理、带来源的检索界面、访问范围与拒答检查、运行说明。",
+      "href": "/cases/rag.html",
+      "proof": "看知识库的实现与取舍"
+    },
+    {
+      "number": "02",
+      "field": "GEO / 企业内容流程",
+      "title": "把知识、内容与审核接成流程。",
+      "problem": "企业有资料，也在生产内容，但来源、版本、审核和发布交接容易脱节。",
+      "deliverable": "知识与 FAQ 梳理、Skill / Workflow、内容审核节点、发布与交接说明。",
+      "href": "/projects.html#geo-title",
+      "proof": "看企业参与范围与公开材料"
+    },
+    {
+      "number": "03",
+      "field": "AI API / 接口集成与排障",
+      "title": "让超时、中断和过载有线索可查。",
+      "problem": "已经接入 AI，但调用为什么失败、流在哪里断开，往往只剩一条报错。",
+      "deliverable": "本地接口工具、HTTP / SSE 链路检查、异常报告、容量与恢复回归。",
+      "href": "/cases/relay-audit.html",
+      "proof": "看网关如何处理失败"
+    },
+    {
+      "number": "04",
+      "field": "内容自动化 / 视频工作流",
+      "title": "交付成片，也交付可复跑的过程。",
+      "problem": "一份成品不足以支撑下一次生产，素材、字幕、参数和检查记录需要一起留下。",
+      "deliverable": "素材到成片的脚本流程、字幕与时间轴、媒体检查、可校验的交付包。",
+      "href": "/cases/video.html",
+      "proof": "看样片与完整交付流程"
+    }
+  ],
+  "engineering": [
+    {
+      "area": "资料与数据",
+      "stack": "Python · SQLite · FTS5",
+      "implementation": "文档入库、版本与来源位置；检索前按身份过滤资料；数据库检查、在线备份和恢复。",
+      "href": "https://github.com/zhouey314-cloud/enterprise-rag-starter/blob/7fc40fb309a75926c9828711e4fdfda5de85704b/docs/OPERATIONS.md",
+      "label": "RAG 运行与恢复"
+    },
+    {
+      "area": "API 与请求链路",
+      "stack": "Python · HTTP · JSON / SSE",
+      "implementation": "转发与观察分开处理；超时、取消、流式响应和在途容量有明确的状态与恢复路径。",
+      "href": "https://github.com/zhouey314-cloud/relay-audit/blob/f8d7376d7593925cb420fd670deef3b0d33f5a19/docs/CAPACITY.md",
+      "label": "网关容量与失败处理"
+    },
+    {
+      "area": "内容与媒体",
+      "stack": "Python · FFmpeg / ffprobe",
+      "implementation": "把素材、字幕、时间轴、渲染和媒体检查串联；交付文件记录哈希，失败时不发布半套产物。",
+      "href": "https://github.com/zhouey314-cloud/ai-video-workflow-engine/blob/367badd7c3ed2314ec1014964fb8ed3931dc019e/docs/DELIVERY_BUNDLES.md",
+      "label": "视频交付包与校验"
+    },
+    {
+      "area": "工作流与界面",
+      "stack": "Skill / Workflow · HTML / CSS / JavaScript",
+      "implementation": "围绕知识输入、内容生成、人工审核和交接设计操作界面；将企业参与范围与独立公开实验分开说明。",
+      "href": "/projects.html#geo-title",
+      "label": "GEO 流程与本人参与"
+    },
+    {
+      "area": "评测与交付",
+      "stack": "Python 测试 · GitHub Actions · Git",
+      "implementation": "对已记录响应和工具轨迹执行规则检查，比较版本回归；缺少证据时报告阻塞，并留下运行说明。",
+      "href": "https://github.com/zhouey314-cloud/ai-eval-engineering/blob/88e275946e0c848c76e62e6c3afd3ee2aa90b208/docs/RECORDED_EVAL.md",
+      "label": "评测规则与基线比较"
+    }
+  ],
   "projects": [
     {
       "id": "rag",
       "number": "01",
       "field": "知识检索与来源引用",
       "name": "Enterprise RAG Starter",
-      "headline": "让回答，回到原始资料。",
-      "problem": "企业资料散在不同文档里，回答需要有据可查。",
+      "headline": "资料可查，回答有据。",
+      "problem": "面向团队资料查询：找到答案后，还能回到原文、版本和出处，判断这条信息能否使用。",
       "role": "我实现文档版本、检索前访问过滤、引用定位、证据不足处理与本地备份恢复。",
-      "status": "公开演示",
+      "deliverable": "本地知识检索服务、文件入库与身份管理、来源检查界面，以及备份恢复说明。",
+      "decision": "先过滤可访问资料再检索；只提到“联系电话”却没有号码时，保留线索并拒答。",
+      "stack": ["Python", "SQLite / FTS5", "HTTP API"],
+      "evidenceUrl": "https://github.com/zhouey314-cloud/enterprise-rag-starter/blob/7fc40fb309a75926c9828711e4fdfda5de85704b/tests/test_operations.py",
+      "evidenceLabel": "备份恢复与缺值拒答回归",
+      "demoScope": "在浏览器中检索合成资料、核对原文；身份服务与备份恢复见本地实现。",
+      "status": "本地工程实现 + 在线演示",
       "image": "/public/workbench/rag-workspace.webp",
       "width": 1480,
       "height": 721,
@@ -27,9 +108,15 @@
       "number": "02",
       "field": "AI 工具与链路排查",
       "name": "RelayAudit / AgentGuard",
-      "headline": "让异常，留下排查线索。",
-      "problem": "AI 调用出错时，需要分清连接、响应与中断。",
+      "headline": "接口出错，有线索可查。",
+      "problem": "面向已有 AI 接入：把超时、流式中断和容量过载变成可复现、可继续排查的问题。",
       "role": "我搭建本地网关，处理 HTTP / SSE、超时、取消、容量控制与独立异常报告。",
+      "deliverable": "可安装的本地网关、协议与异常报告、容量配置和故障恢复检查。",
+      "decision": "容量名额覆盖完整流式连接；超限请求在本地拒绝，已有请求继续完成，结束后释放名额。",
+      "stack": ["Python", "HTTP / SSE", "本地网关"],
+      "evidenceUrl": "https://github.com/zhouey314-cloud/relay-audit/blob/f8d7376d7593925cb420fd670deef3b0d33f5a19/tests/test_guard_proxy.py",
+      "evidenceLabel": "协议、过载与恢复回归",
+      "demoScope": "在浏览器中检查合成报告；实际请求转发与观察需要运行本地网关。",
       "status": "开源本地工具",
       "image": "/public/workbench/relay-workspace.webp",
       "width": 1480,
@@ -46,10 +133,16 @@
       "number": "03",
       "field": "内容生产工作流",
       "name": "AI Video Workflow Engine",
-      "headline": "让制作过程，可以复现。",
-      "problem": "视频不止是一次导出，还要能复现和检查。",
+      "headline": "从素材，到可检查的交付。",
+      "problem": "面向重复内容生产：把素材、参数、字幕和产物留在同一条流程里，方便下一次复跑与交接。",
       "role": "我用 Python / FFmpeg 串起素材、时间轴、字幕、渲染、质量检查与可校验交付包。",
-      "status": "可播放样片",
+      "deliverable": "成片、字幕、时间轴、预览、媒体检查报告与包含文件哈希的交付清单。",
+      "decision": "校验完成后才发布完整任务包；文件检查通过仍需人工审片，不能替代内容与审美判断。",
+      "stack": ["Python", "FFmpeg", "ffprobe"],
+      "evidenceUrl": "https://github.com/zhouey314-cloud/ai-video-workflow-engine/blob/367badd7c3ed2314ec1014964fb8ed3931dc019e/tests/test_bundles.py",
+      "evidenceLabel": "交付完整性与失败清理回归",
+      "demoScope": "在浏览器中播放样片、定位字幕与时间轴；本地引擎负责渲染和交付包生成。",
+      "status": "本地工作流 + 可播放样片",
       "image": "/public/workbench/video-workspace.webp",
       "width": 1480,
       "height": 682,

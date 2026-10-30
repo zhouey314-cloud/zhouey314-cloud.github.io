@@ -6,14 +6,14 @@
     <meta name="theme-color" content="#eeeee7" />
     <meta
       name="description"
-      content="恩宇 Ethan 的 FDE 与 GEO 实践档案：企业一线参与记录、16 个公开项目与工程实验，以及正在推进的工作。"
+      content="恩宇 Ethan 的项目与实践：按知识检索、GEO 内容流程、AI 接口排查、内容生产及评测交付，找到公开实现、验证材料与本人参与范围。"
     />
     <meta name="author" content="恩宇 Ethan" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="项目档案 — Ethan 恩宇" />
+    <meta property="og:title" content="项目档案 · 从问题找到证据 — Ethan 恩宇" />
     <meta
       property="og:description"
-      content="恩宇 Ethan 的 FDE 与 GEO 实践档案：企业一线参与记录、16 个公开项目与工程实验，以及正在推进的工作。"
+      content="恩宇 Ethan 的项目与实践：按知识检索、GEO 内容流程、AI 接口排查、内容生产及评测交付，找到公开实现、验证材料与本人参与范围。"
     />
     <meta
       property="og:url"
@@ -27,10 +27,10 @@
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@UPing123zzz" />
-    <meta name="twitter:title" content="项目档案 — Ethan 恩宇" />
+    <meta name="twitter:title" content="项目档案 · 从问题找到证据 — Ethan 恩宇" />
     <meta
       name="twitter:description"
-      content="恩宇 Ethan 的 FDE 与 GEO 实践档案：企业一线参与记录、16 个公开项目与工程实验，以及正在推进的工作。"
+      content="恩宇 Ethan 的项目与实践：按知识检索、GEO 内容流程、AI 接口排查、内容生产及评测交付，找到公开实现、验证材料与本人参与范围。"
     />
     <meta
       name="twitter:image"
@@ -47,11 +47,12 @@
     <link rel="stylesheet" href="/style.css" />
     <link rel="stylesheet" href="/projects.css" />
     <script src="/script.js" defer></script>
-    <title>项目档案 — Ethan 恩宇</title>
+    <title>项目档案 · 从问题找到证据 — Ethan 恩宇</title>
   <link rel="stylesheet" href="/garden.css" />
   <script src="/garden-ui.js" defer></script>
 <script type="module" src="/archive-search.js"></script>
   <link rel="stylesheet" href="/studio.css" />
+  <link rel="stylesheet" href="/capabilities.css" />
 </head>
   <body class="project-archive">
     <a class="skip-link" href="#main">跳到主要内容</a>
@@ -89,27 +90,30 @@
         <a class="text-link" href="/#work">← 返回精选作品</a>
         <p class="eyebrow">PROJECT INDEX <span>/ 作品与实践</span></p>
         <div class="archive-hero-row">
-          <h1>实战，<br />留下作品<span class="accent">。</span></h1>
+          <h1>按问题，<br />找到证据<span class="accent">。</span></h1>
           <div class="archive-hero-note">
-            <p>我参与企业 GEO 与 AI 应用实践，也把遇到的问题做成公开项目。</p>
-            <p>这里整理参与记录、工程实验和方法模板。从要解决什么，到实际做到了哪一步，都有迹可循。</p>
-            <div class="archive-total"><strong>16</strong><span>公开项目<br />持续迭代中</span></div>
+            <p>我参与企业 GEO 与 AI 应用实践，做知识检索、接口工具与内容工作流。</p>
+            <p>从你卡住的一步出发，查看我做了什么、留下哪些可用材料，以及目前验证到了哪里。</p>
+            <div class="archive-total"><strong>16</strong><span>公开项目与实验<br />持续迭代中</span></div>
+            <div class="actions"><a class="text-link" href="#projects">查看完整档案 ↓</a><a class="text-link" href="#building-now">3 项正在推进的工作 ↓</a></div>
           </div>
         </div>
-        <nav class="archive-jumps" aria-label="作品档案导览">
-          <a href="#geo-title"><span>01</span> GEO 一线实践 <span aria-hidden="true">↗</span></a>
-          <a href="#projects"><span>02</span> 公开项目 <span aria-hidden="true">↓</span></a>
-          <a href="#building-now"><span>03</span> 正在推进 <span aria-hidden="true">↓</span></a>
+        <nav class="archive-jumps archive-problem-nav" aria-label="按要解决的问题找项目证据">
+          <a href="/projects.html#project-rag"><span>01</span> 知识检索 <span aria-hidden="true">↓</span></a>
+          <a href="/projects.html#geo-title"><span>02</span> GEO 内容流程 <span aria-hidden="true">↓</span></a>
+          <a href="/projects.html#project-relay"><span>03</span> AI 接口排查 <span aria-hidden="true">↓</span></a>
+          <a href="/projects.html#project-video"><span>04</span> 内容生产 <span aria-hidden="true">↓</span></a>
+          <a href="/projects.html#project-eval"><span>05</span> 评测与交付 <span aria-hidden="true">↓</span></a>
         </nav>
       </section>
-      <a class="studio-banner archive-studio" href="/workbench.html"><span class="studio-banner-label">BUILT TO EXPLORE</span><strong>从浏览，走进操作。</strong><span>检索资料 · 检查报告 · 查看视频时间轴</span><b aria-hidden="true">↗</b></a><section class="archive-selected" aria-labelledby="archive-selected-title"><div class="archive-selected-heading"><p class="eyebrow">START HERE / 从作品认识我</p><h2 id="archive-selected-title">先打开这三份实践记录。</h2></div><div class="archive-feature-grid"><a class="archive-feature" href="/cases/rag.html"><div><span>01 / 知识检索与来源引用</span><img src="/public/workbench/rag-workspace-preview.webp" alt="Enterprise RAG 公开演示：合成资料中的问题、回答与来源引用。页面没有接入生成模型。" width="640" height="400" loading="lazy" decoding="async" /></div><h3>Enterprise RAG Starter</h3><p>让回答，回到原始资料。 <span aria-hidden="true">↗</span></p></a><a class="archive-feature" href="/cases/relay-audit.html"><div><span>02 / AI 工具与链路排查</span><img src="/public/workbench/relay-workspace-preview.webp" alt="RelayAudit 当前公开项目纯合成 fixture 的实际 Markdown 报告截图；synthetic_unverified，不能证明上游模型身份。" width="640" height="400" loading="lazy" decoding="async" /></div><h3>RelayAudit / AgentGuard</h3><p>让异常，留下排查线索。 <span aria-hidden="true">↗</span></p></a><a class="archive-feature" href="/cases/video.html"><div><span>03 / 内容生产工作流</span><img src="/public/workbench/video-workspace-preview.webp" alt="54 秒原创程序动画的真实成片画面；不是真人口播、客户投产或数字人效果证明。" width="640" height="400" loading="lazy" decoding="async" /></div><h3>AI Video Workflow Engine</h3><p>让制作过程，可以复现。 <span aria-hidden="true">↗</span></p></a></div></section>
+      <a class="studio-banner archive-studio" href="/workbench.html"><span class="studio-banner-label">BUILT TO EXPLORE</span><strong>从浏览，走进操作。</strong><span>检索资料 · 检查报告 · 查看视频时间轴</span><b aria-hidden="true">↗</b></a><section class="archive-selected" aria-labelledby="archive-selected-title"><div class="archive-selected-heading"><p class="eyebrow">START HERE / 三个可检查的实现</p><h2 id="archive-selected-title">从一次检索、一次故障、一次交付开始。</h2></div><div class="archive-feature-grid"><a class="archive-feature" href="/cases/rag.html"><div><span>01 / 知识检索与来源引用</span><img src="/public/workbench/rag-workspace-preview.webp" alt="Enterprise RAG 公开演示：合成资料中的问题、回答与来源引用。页面没有接入生成模型。" width="640" height="400" loading="lazy" decoding="async" /></div><h3>Enterprise RAG Starter</h3><p>查资料，能回到原文。 <span aria-hidden="true">↗</span></p></a><a class="archive-feature" href="/cases/relay-audit.html"><div><span>02 / AI 工具与链路排查</span><img src="/public/workbench/relay-workspace-preview.webp" alt="本站报告检查器的真实界面，读取合成 fixture 报告；不运行实时网关，也不能确认模型身份。" width="640" height="400" loading="lazy" decoding="async" /></div><h3>RelayAudit / AgentGuard</h3><p>出故障，能追查链路。 <span aria-hidden="true">↗</span></p></a><a class="archive-feature" href="/cases/video.html"><div><span>03 / 内容生产工作流</span><img src="/public/workbench/video-workspace-preview.webp" alt="本站视频工作台的真实界面，播放已有 54 秒原创程序动画并读取实际字幕；不代表客户商业成片。" width="640" height="400" loading="lazy" decoding="async" /></div><h3>AI Video Workflow Engine</h3><p>交成片，附检查记录。 <span aria-hidden="true">↗</span></p></a></div></section>
       <aside class="participated-record" aria-labelledby="geo-title">
         <div class="geo-heading">
           <div>
             <p class="eyebrow">IN THE FIELD / GEO 一线参与</p>
-            <h2 id="geo-title">从知识，<br />到内容与分发。</h2>
+            <h2 id="geo-title">知识、内容、审核，<br />接成具体流程。</h2>
           </div>
-          <p>围绕知识整理、内容生成与人工发布交接，我参与部分页面、Skill / Workflow、验证和交付整理。下方是已公开的脱敏材料，展示我参与的部分；不代表独立完成整个系统或生产验收。</p>
+          <p>自 2026 年 6 月起，我参与企业 GEO 与 AI 应用实践，承担部分页面、Skill / Workflow、功能验证与交付整理。下面以三个实际环节说明参与范围；界面已公开脱敏，不代表我独立完成整个平台，也没有据此宣称 AI 引用率或客户转化提升。</p>
         </div>
         <div class="geo-previews">
           <figure>
@@ -124,13 +128,14 @@
             />
             <figcaption>
               <span class="geo-preview-label">01 / 内容生成流程</span>
+              <p class="geo-contribution">参与内容生成相关页面与 Skill / Workflow，把资料输入、生成步骤和待复核结果连接起来。</p>
               <button
                 class="preview-button enhanced-only"
                 type="button"
                 data-preview="/public/projects/geo/geo-generation-flow.webp"
                 data-title="GEO 内容生成流程"
                 data-case="/projects.html#geo-title"
-                data-caption="参与项目的已有公开脱敏截图；不代表生产验收。"
+                data-caption="参与内容生成相关页面与 Skill / Workflow；已有公开脱敏界面，不代表独立完成企业平台或生产验收。"
               >
                 <span aria-hidden="true">⤢</span> 预览大图</button
               ><a
@@ -152,13 +157,14 @@
             />
             <figcaption>
               <span class="geo-preview-label">02 / 知识与作用域</span>
+              <p class="geo-contribution">参与知识与作用域相关页面及功能验证，让使用者看清哪些资料进入当前内容流程。</p>
               <button
                 class="preview-button enhanced-only"
                 type="button"
                 data-preview="/public/projects/geo/geo-knowledge-scope.webp"
                 data-title="GEO 知识与作用域"
                 data-case="/projects.html#geo-title"
-                data-caption="参与项目的已有公开脱敏截图；不代表生产验收。"
+                data-caption="参与知识与作用域相关页面及功能验证；已有公开脱敏界面，不代表生产权限体系已经独立验收。"
               >
                 <span aria-hidden="true">⤢</span> 预览大图</button
               ><a
@@ -180,13 +186,14 @@
             />
             <figcaption>
               <span class="geo-preview-label">03 / 人工发布交接</span>
+              <p class="geo-contribution">参与发布交接环节的页面、验证与说明整理，把人工确认和后续操作交代清楚。</p>
               <button
                 class="preview-button enhanced-only"
                 type="button"
                 data-preview="/public/projects/geo/geo-publish-handoff.webp"
                 data-title="GEO 人工发布交接"
                 data-case="/projects.html#geo-title"
-                data-caption="参与项目的已有公开脱敏截图；不代表生产验收。"
+                data-caption="参与发布交接相关页面、验证与说明整理；已有公开脱敏界面，不代表自动发布或客户业务效果。"
               >
                 <span aria-hidden="true">⤢</span> 预览大图</button
               ><a
@@ -197,14 +204,18 @@
             </figcaption>
           </figure>
         </div>
+        <div class="geo-public-reference">
+          <p>补充公开实现：<a class="text-link" href="https://github.com/zhouey314-cloud/geo-saas-mvp">GEO 内容生产原型 ↗</a>用于本地流程验证，离线运行使用模拟；真实模型效果与批量生产流程仍待验证。它是独立公开原型，上面的企业参与记录仍只说明本人承担的部分。</p>
+          <p>另见档案中的 <a class="text-link" href="/projects.html#project-content-workflow">AI Content Workflow ↗</a>：使用合成来源与确定性草稿的独立方法实验。</p>
+        </div>
       </aside>
       <section id="projects" aria-label="全部项目">
         <div class="archive-section-heading">
           <p class="eyebrow">PUBLIC WORK / 16 个公开项目</p>
-          <h2>打开作品，看具体怎么做。</h2>
-          <p>知识问答、Agent 工程、内容工作流与交付方法。每个项目保留实际状态、案例和公开证据。</p>
+          <h2>看实现，也看如何检查。</h2>
+          <p>每个条目说明问题、实际产物与验证范围。打开演示检查行为，进入案例或源码查看实现；工具、原型与方法模板均标明当前状态。</p>
         </div>
-        <form class="archive-search enhanced-only" role="search"><label for="project-search">搜索作品</label><input id="project-search" type="search" placeholder="试试 RAG、视频、Agent、知识检索…" autocomplete="off" maxlength="100" /><button type="reset">清除</button></form><div class="filter-bar enhanced-only">
+        <form class="archive-search enhanced-only" role="search"><label for="project-search">搜索作品</label><input id="project-search" type="search" placeholder="试试知识检索、GEO、接口、视频、评测…" autocomplete="off" maxlength="100" /><button type="reset">清除</button></form><div class="filter-bar enhanced-only">
           <div class="filter-buttons" aria-label="筛选项目类别">
             <button type="button" data-filter="all" aria-pressed="true">
               全部 <span>16</span></button
@@ -220,6 +231,7 @@
         </div>
         <p class="archive-empty" data-archive-empty hidden>没有匹配的作品。试试更短的关键词，或清除筛选。</p><div class="archive-list">
           <article
+            id="project-multi-tenant"
             class="archive-item"
             data-category="tools"
             data-project-name="Multi-Tenant Workflow"
@@ -228,13 +240,11 @@
             <div class="archive-main">
               <div class="archive-title">
                 <h2>Multi-Tenant Workflow</h2>
-                <span class="archive-status">角色模拟</span>
+                <span class="archive-status">角色与审批演示</span>
               </div>
-              <p class="archive-question">
-                知识共享与审批如何不越过租户、角色和发布边界？
-              </p>
-              <p class="archive-evidence">11 项策略测试；角色／租户字段拒绝路径</p>
-              <p class="boundary">演示角色口令不等于生产认证</p>
+              <p class="archive-question">多租户团队共享知识、提交审批时，怎样明确谁能查看、修改和发布？</p>
+              <p class="archive-evidence">交付角色／租户演示与策略回归，检查越权字段和发布拒绝路径。</p>
+              <p class="boundary">合成租户与角色演示；不等同于生产认证。</p>
               <div class="actions">
                 <a class="text-link" href="/cases/multi-tenant.html"
                   >阅读案例 ↗</a
@@ -247,6 +257,7 @@
             </div>
           </article>
           <article
+            id="project-rag"
             class="archive-item"
             data-category="tools"
             data-project-name="Enterprise RAG Starter"
@@ -256,13 +267,11 @@
             <div class="archive-main">
               <div class="archive-title">
                 <h2>Enterprise RAG Starter</h2>
-                <span class="archive-status">词面演示 / 本地语义</span>
+                <span class="archive-status">浏览器演示 / 本地服务</span>
               </div>
-              <p class="archive-question">
-                如何让知识问答有权限过滤、引用与证据不足时的拒答？
-              </p>
-              <p class="archive-evidence">36 条公开浏览器引擎回归；来源、拒答与范围过滤</p>
-              <p class="boundary">线上词面模式；本地 embedding 模式另行运行</p>
+              <p class="archive-question">资料分散、版本更新后，如何找到可访问的原文，并知道何时不能回答？</p>
+              <p class="archive-evidence">交付检索与来源检查界面、本地文档版本与备份恢复；回归覆盖缺值拒答、访问过滤和恢复路径。</p>
+              <p class="boundary">网页为合成资料上的词法检索，未接生成模型；本地服务独立运行，演示范围选择不是生产鉴权。</p>
               <div class="actions">
                 <a class="text-link" href="/cases/rag.html">阅读案例 ↗</a
                 ><a
@@ -270,10 +279,13 @@
                   href="https://zhouey314-cloud.github.io/enterprise-rag-starter/"
                   >打开演示 ↗</a
                 >
+                <a class="text-link" href="https://github.com/zhouey314-cloud/enterprise-rag-starter">查看源码 ↗</a>
+                <a class="text-link" href="https://github.com/zhouey314-cloud/enterprise-rag-starter/blob/main/docs/OPERATIONS.md">本地运行与恢复 ↗</a>
               </div>
             </div>
           </article>
           <article
+            id="project-eval"
             class="archive-item"
             data-category="methods"
             data-project-name="AI Eval Engineering"
@@ -282,13 +294,11 @@
             <div class="archive-main">
               <div class="archive-title">
                 <h2>AI Eval Engineering</h2>
-                <span class="archive-status">评估工程骨架</span>
+                <span class="archive-status">已记录响应的机械评测</span>
               </div>
-              <p class="archive-question">
-                怎样不把夹具通过误报为模型质量通过？
-              </p>
-              <p class="archive-evidence">4 项校验器回归、5 个合成夹具与发布闸门</p>
-              <p class="boundary">无独立人工真值，不声称模型效果</p>
+              <p class="archive-question">修改提示词或工作流之后，怎样看出哪些已有约定通过、失败或缺少证据？</p>
+              <p class="archive-evidence">交付响应／工具轨迹检查器与版本比较报告；检查字面条件、工具规则、人工复核标志与回归变化。</p>
+              <p class="boundary">公开响应为手写合成样例；不运行模型，不评价语义正确性或业务效果。</p>
               <div class="actions">
                 <a class="text-link" href="/cases/eval.html">阅读案例 ↗</a
                 ><a
@@ -296,10 +306,13 @@
                   href="https://github.com/zhouey314-cloud/ai-eval-engineering"
                   >查看源码 ↗</a
                 >
+                <a class="text-link" href="https://github.com/zhouey314-cloud/ai-eval-engineering/blob/main/docs/RECORDED_EVAL.md">评测输入与验证范围 ↗</a>
+                <a class="text-link" href="/projects.html#project-delivery">交接模板 ↗</a>
               </div>
             </div>
           </article>
           <article
+            id="project-video"
             class="archive-item"
             data-category="creative"
             data-project-name="AI Video Workflow Engine"
@@ -309,15 +322,11 @@
             <div class="archive-main">
               <div class="archive-title">
                 <h2>AI Video Workflow Engine</h2>
-                <span class="archive-status">离线合成样片</span>
+                <span class="archive-status">离线引擎 / 可校验交付包</span>
               </div>
-              <p class="archive-question">
-                素材缺口、渲染失败和人工 QA 如何串成可恢复流程？
-              </p>
-              <p class="archive-evidence">
-                47 项测试、54 秒原创动画与绑定文件哈希的用户批准
-              </p>
-              <p class="boundary">不是客户成片或生成式视频效果</p>
+              <p class="archive-question">素材、字幕与成片交接时，怎样保持对应关系，并发现缺文件或渲染失败？</p>
+              <p class="archive-evidence">交付 54 秒原创程序动画与任务打包工具；成片、字幕、时间轴和 QA 报告带文件哈希，校验覆盖篡改与失败回收。</p>
+              <p class="boundary">校验通过仍需人工审片；历史批准只对应原样片，不证明客户成片或生成式视频效果。</p>
               <div class="actions">
                 <a class="text-link" href="/cases/video.html">阅读案例 ↗</a
                 ><a
@@ -325,6 +334,7 @@
                   href="https://github.com/zhouey314-cloud/ai-video-workflow-engine"
                   >查看源码 ↗</a
                 >
+                <a class="text-link" href="https://github.com/zhouey314-cloud/ai-video-workflow-engine/blob/main/docs/DELIVERY_BUNDLES.md">交付包与校验说明 ↗</a>
               </div>
             </div>
           </article>
@@ -342,10 +352,8 @@
               <p class="archive-question">
                 怎样让商机、管线、预测和建议来自同一份记录？
               </p>
-              <p class="archive-evidence">
-                7 个存档恢复场景；虚构商机与本机状态
-              </p>
-              <p class="boundary">8 条虚构商机；金额不是营收</p>
+              <p class="archive-evidence">本机状态存取、存档恢复与规则计算演示，使用虚构商机检查同一份记录的呈现。</p>
+              <p class="boundary">商机及金额为虚构数据，不代表实际营收。</p>
               <div class="actions">
                 <a class="text-link" href="/cases/crm.html">阅读案例 ↗</a
                 ><a
@@ -370,7 +378,7 @@
               <p class="archive-question">
                 如何把模糊任务拆成可复制、可检查、可交接的单用途工作流？
               </p>
-              <p class="archive-evidence">10 Skills + 3 夹具普通／优化检查；2 项校验器回归</p>
+              <p class="archive-evidence">公开单用途工作流、输入输出合同与离线结构校验；可对照合成夹具复查约定。</p>
               <p class="boundary">
                 离线检查仅验证合同结构；模型质量与真实使用效果未测。
               </p>
@@ -463,7 +471,7 @@
               <p class="archive-question">
                 如何只在选定的 Obsidian vault 中收集与搜索笔记？
               </p>
-              <p class="archive-evidence">70 次执行／39 个唯一案例；含 3 个隐藏文件隐私负例</p>
+              <p class="archive-evidence">限定目录的笔记收集与搜索；回归检查路径范围及隐藏文件排除。</p>
               <p class="boundary">
                 仅访问用户选定目录并排除隐藏 dotfile；不上传私人笔记。
               </p>
@@ -526,7 +534,7 @@
               <p class="archive-question">
                 如何从静音检测生成可检查的保留片段与剪辑交换文件？
               </p>
-              <p class="archive-evidence">6 项测试；FCPXML XML／URI 路径修复</p>
+              <p class="archive-evidence">静音区间到剪辑交换文件的离线路径；检查 FCPXML 结构与 XML／URI 路径。</p>
               <p class="boundary">
                 离线时间线原型；未通过实际编辑器导入、剪辑质量或模型验收。
               </p>
@@ -576,6 +584,7 @@
             </div>
           </article>
           <article
+            id="project-delivery"
             class="archive-item"
             data-category="methods"
             data-project-name="AI Delivery Starter Kit"
@@ -586,10 +595,8 @@
                 <h2>AI Delivery Starter Kit</h2>
                 <span class="archive-status">方法模板</span>
               </div>
-              <p class="archive-question">
-                如何把范围、验收条件、测试、Eval 和交接写成同一份交付约定？
-              </p>
-              <p class="archive-evidence">范围、测试、Eval 与交接模板</p>
+              <p class="archive-question">需要把原型交给下一位使用或开发时，怎样写清范围、验收和运行说明？</p>
+              <p class="archive-evidence">可复用的范围、测试／Eval 与交接模板，附示例供按项目填写。</p>
               <p class="boundary">
                 方法模板；示例不代表客户验收或模型质量通过。
               </p>
@@ -607,6 +614,7 @@
             </div>
           </article>
           <article
+            id="project-content-workflow"
             class="archive-item"
             data-category="creative"
             data-project-name="AI Content Workflow"
@@ -615,16 +623,11 @@
             <div class="archive-main">
               <div class="archive-title">
                 <h2>AI Content Workflow</h2>
-                <span class="archive-status">实验</span>
+                <span class="archive-status">独立内容方法实验</span>
               </div>
-              <p class="archive-question">
-                如何从有来源的素材生成草稿，并在发布前保留 QA 与人工复核？
-              </p>
-              <p class="archive-evidence">合成来源、确定性草稿与来源 ID 检查</p>
-              <p class="boundary">
-                通用 clean-room 实验；无公司
-                Prompt、真实客户内容、模型服务或平台发布集成。
-              </p>
+              <p class="archive-question">面向不同渠道整理草稿时，怎样保留来源标识、长度检查和人工复核？</p>
+              <p class="archive-evidence">合成来源生成确定性草稿；检查来源 ID、渠道长度及审核状态，再导出结构化内容。</p>
+              <p class="boundary">不含公司 Prompt 或客户材料；来源 ID 校验不证明事实，未接模型服务或发布平台。</p>
               <div class="actions">
                 <a
                   class="text-link"
@@ -639,6 +642,7 @@
             </div>
           </article>
           <article
+            id="project-relay"
             class="archive-item"
             data-category="tools"
             data-project-name="RelayAudit / AgentGuard"
@@ -648,18 +652,11 @@
             <div class="archive-main">
               <div class="archive-title">
                 <h2>RelayAudit / AgentGuard</h2>
-                <span class="archive-status">模拟链路已验证</span>
+                <span class="archive-status">本地网关 / 受控链路</span>
               </div>
-              <p class="archive-question">
-                Agent 接入中转 API
-                时，怎样观察协议异常、模型声明变化和服务波动？
-              </p>
-              <p class="archive-evidence">
-                125 项受控测试、流式异常回归、直连与代理开销实测
-              </p>
-              <p class="boundary">
-                模拟端点验证；不能确定真实模型身份，也没有经过校准的识别准确率。
-              </p>
+              <p class="archive-question">Agent 接入 API 后遇到中断、超时或并发过载，怎样定位事件并恢复请求？</p>
+              <p class="archive-evidence">交付 HTTP／SSE 网关与独立报告；回归检查流式保真、取消／超时、满额 503 与释放后的恢复。</p>
+              <p class="boundary">受控模拟链路验证，线上只检查报告；不识别真实模型身份，也不承诺生产容量。</p>
               <div class="actions">
                 <a class="text-link" href="/cases/relay-audit.html"
                   >阅读案例 ↗</a
@@ -671,6 +668,7 @@
                   rel="noopener noreferrer"
                   >查看仓库 ↗</a
                 >
+                <a class="text-link" href="https://github.com/zhouey314-cloud/relay-audit/blob/main/docs/CAPACITY.md">容量与恢复说明 ↗</a>
               </div>
             </div>
           </article>

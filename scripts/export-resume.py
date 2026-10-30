@@ -260,7 +260,7 @@ def page_decoration(canvas, doc):
     canvas.line(40, 29, width - 40, 29)
     canvas.setFont("ResumeCJK", 6.8)
     canvas.setFillColor(MUTED)
-    canvas.drawString(40, 17, "恩宇 Ethan | FDE / AI 应用工程方向")
+    canvas.drawString(40, 17, f"恩宇 Ethan | {doc.resume_role}")
     canvas.drawRightString(width - 40, 17, f"0{doc.page} / 02")
     canvas.setFillColor(ACID)
     canvas.rect(width - 48, height - 37, 8, 3, stroke=0, fill=1)
@@ -316,9 +316,10 @@ def main():
         doc = SimpleDocTemplate(
             str(temporary), pagesize=A4, leftMargin=40, rightMargin=40,
             topMargin=32, bottomMargin=41, title="恩宇 Ethan - 工作与项目简历",
-            author="恩宇 Ethan", subject="FDE / AI 应用工程方向；内容来自 resume.html",
+            author="恩宇 Ethan", subject=f"{text(one(tree, 'resume-role'))}；内容来自 resume.html",
             creator="ReportLab document export from resume.html", pageCompression=1,
         )
+        doc.resume_role = text(one(tree, "resume-role"))
         story = first_page(tree, s, width) + [PageBreak()] + second_page(tree, s, width)
         doc.build(story, onFirstPage=page_decoration, onLaterPages=page_decoration)
         report = verify_pdf(temporary)
