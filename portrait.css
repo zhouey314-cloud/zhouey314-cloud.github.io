@@ -17,8 +17,11 @@
 .garden-home .hero-thought {grid-column:1;grid-row:2;position:static;padding:0;margin:0;min-width:0}
 .garden-home .hero-thought>p {font-size:clamp(24px,1.9vw,30px);line-height:1.5;max-width:560px}
 .portrait-hero-actions {display:flex;align-items:center;flex-wrap:wrap;gap:10px 25px;margin-top:24px}
-.garden-home .portrait-hero-actions .metal-button {margin:0;min-height:54px}
-.garden-home .portrait-hero-actions .hero-resume {display:inline-flex;align-items:center;margin:0;min-height:44px;padding:0}
+.garden-home .portrait-hero-actions .metal-button {margin:0;min-width:248px;min-height:72px;padding:18px 28px;font-size:18px;font-weight:600;letter-spacing:.02em;color:#243b26;background:linear-gradient(140deg,#eef5d6,#dbe9b5);border:1px solid #eff6d8;box-shadow:inset 0 1px #fff,0 8px 24px #15211138}
+.garden-home .portrait-hero-actions .metal-button span {font-size:28px}
+.garden-home .portrait-hero-actions .metal-button:hover {color:#1f3522;background:#f0f7d9;box-shadow:inset 0 1px #fff,0 10px 30px #15211150}
+.garden-home .portrait-hero-actions .metal-button:focus-visible {outline:3px solid #fff;outline-offset:5px}
+.garden-home .portrait-hero-actions .hero-resume {display:inline-flex;align-items:center;margin:0;min-height:48px;padding:0;font-size:15px}
 .garden-home .portrait-hero-actions .hero-resume span {margin-left:12px}
 .garden-home .hero-side-note {display:none}
 .garden-home .hero-portrait {
@@ -106,6 +109,7 @@
   .garden-home .hero-thought>p {font-size:24px;max-width:540px;line-height:1.5}
   .garden-home .hero-thought br:first-of-type {display:none}
   .portrait-hero-actions {margin-top:20px;gap:10px 22px}
+  .garden-home .portrait-hero-actions .metal-button {width:100%;max-width:410px;min-height:66px;font-size:18px}
   .garden-home .garden-hero .hero-project {order:3;max-width:none}
   .garden-home .garden-scroll {gap:16px}
   html:not(.nav-ready) .garden-home .garden-hero-content {padding-top:240px}
