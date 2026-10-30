@@ -89,3 +89,7 @@ THREEUI_ENGINE=webkit SYLVA_REQUIRE_WEBGL=1 npm run test:threeui
 - `npm test` 包含 36 条原有合成回归；`npm run test:workbench` 检查输入、导出、上传失败、键盘、媒体、搜索、无 JS、失败回退和各标签无障碍。CI 同步运行。
 
 新工作台不启动网关、不上传文件、不接模型 API。本地文件只留当前页面内存，刷新或重置清除；用户主动导出时生成下载。其他开源项目及服务端未被此次网站改造重写，也未新增生产验收声明。
+
+## 2026-10-30 工程与合作说明
+
+保持现有前端视觉，更新个人简介与联系文案为具体问题、实现范围和交付方式；首页项目贡献与五篇案例增加已实现的运行、备份、容量、事务、交付包和评测入口。服务端能力与静态工作台继续明确区分。对应仓库的 docs/OPERATIONS.md、CAPACITY.md、DELIVERY_BUNDLES.md、HTTP_API.md、RECORDED_EVAL.md 是维护与复现入口。
