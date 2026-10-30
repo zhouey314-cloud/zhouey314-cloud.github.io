@@ -1,0 +1,122 @@
+/* A full-size personal introduction within the existing digital garden. */
+.garden-home .garden-hero {height:auto;min-height:max(940px,100svh);max-height:none}
+.garden-home .garden-hero-content {
+  height:auto;
+  min-height:inherit;
+  grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+  grid-template-rows:auto auto auto;
+  gap:22px clamp(48px,6vw,96px);
+  align-content:center;
+  padding-top:clamp(145px,17vh,185px);
+  padding-bottom:135px;
+}
+.garden-home .hero-identity {grid-column:1;grid-row:1}
+.garden-home .hero-identity h1 {font-size:clamp(72px,6.8vw,106px);line-height:1.06;margin:20px 0 15px}
+.garden-home .hero-identity h1 span {font-size:28px;line-height:1.4;margin-top:12px}
+.garden-home .hero-proof {margin-top:10px}
+.garden-home .hero-thought {grid-column:1;grid-row:2;position:static;padding:0;margin:0;min-width:0}
+.garden-home .hero-thought>p {font-size:clamp(24px,1.9vw,30px);line-height:1.5;max-width:560px}
+.portrait-hero-actions {display:flex;align-items:center;flex-wrap:wrap;gap:10px 25px;margin-top:24px}
+.garden-home .portrait-hero-actions .metal-button {margin:0;min-height:54px}
+.garden-home .portrait-hero-actions .hero-resume {display:inline-flex;align-items:center;margin:0;min-height:44px;padding:0}
+.garden-home .portrait-hero-actions .hero-resume span {margin-left:12px}
+.garden-home .hero-side-note {display:none}
+.garden-home .hero-portrait {
+  display:block;
+  grid-column:2;
+  grid-row:1 / span 3;
+  align-self:center;
+  justify-self:end;
+  width:100%;
+  max-width:600px;
+  padding:10px;
+  border:1px solid #e1e4d3b3;
+  border-radius:30px;
+  background:#f1f1e8;
+  box-shadow:0 24px 64px #17231138;
+  color:#2d402c;
+}
+.hero-portrait img {display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:21px}
+.hero-portrait-caption {display:flex;justify-content:space-between;align-items:center;gap:12px;padding:17px 12px 9px;font-size:12px;line-height:1.6}
+.hero-portrait-caption [lang] {font-size:11px;color:#56644b}
+.hero-portrait-caption>span:last-child {font-size:11px;color:#43573a}
+.garden-home .garden-hero .hero-portrait:hover {color:#2d402c}
+.hero-portrait:focus-visible {outline:3px solid #f1f1df;outline-offset:6px}
+/* Keep the existing three real project links as a quiet index below the introduction. */
+.garden-home .garden-hero .hero-project {grid-column:1;grid-row:3;position:relative;inset:auto;justify-self:start;width:100%;max-width:440px;padding:14px;border-radius:14px;margin:0}
+.garden-home .hero-project>.garden-kicker {display:none}
+.garden-home .hero-project-panel {display:grid;grid-template-columns:88px minmax(0,1fr);column-gap:14px;align-items:center}
+.garden-home .hero-project-image {grid-column:1;grid-row:1 / span 2;height:84px;border-radius:7px}
+.garden-home .hero-project-image>span {width:25px;height:25px;right:6px;bottom:6px;font-size:15px}
+.garden-home .hero-project-panel .hero-project-copy {grid-column:2;padding:0}
+.garden-home .hero-project-copy>a {font-size:18px;min-height:0;margin-top:4px;line-height:1.35}
+.garden-home .hero-project-copy>a>span {font-size:18px}
+.garden-home .hero-project-panel .hero-project-note {grid-column:2;margin:6px 0 0;font-size:9px;min-height:0}
+.garden-home .hero-project>.hero-project-switches {margin-top:10px;padding-top:8px}
+.about-portrait {
+  margin:0;
+  align-self:start;
+  padding:12px;
+  border:1px solid #bcc5ae;
+  background:#f7f7ef;
+  box-shadow:0 18px 48px #33422a0d;
+}
+.about-portrait>img {
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:1;
+  border-radius:2px;
+}
+.about-portrait figcaption {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 18px;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 4px 6px;
+  color:#40513a;
+  font-size:12px;
+  line-height:1.8;
+}
+.about-portrait figcaption [lang] {font-size:11px;color:#5a6750}
+.about-portrait figcaption>span:last-child {font-size:10px;color:#5a6750}
+@media(max-width:1100px) and (min-width:761px) {
+  .garden-home .garden-hero-content {gap:24px 36px;padding-top:150px}
+  .garden-home .hero-identity h1 {font-size:76px}
+  .garden-home .hero-identity h1 span {font-size:25px}
+  .garden-home .hero-thought>p {font-size:24px}
+  .portrait-hero-actions {gap:8px 16px}
+  .garden-home .portrait-hero-actions .metal-button {padding-inline:17px;gap:20px}
+  .garden-home .hero-project-panel {grid-template-columns:72px minmax(0,1fr);column-gap:10px}
+  .garden-home .hero-project-copy>a {font-size:16px}
+}
+@media(max-width:760px) {
+  .garden-home .garden-hero {min-height:0}
+  .garden-home .garden-hero-content {display:flex;flex-direction:column;gap:26px;min-height:0;padding-top:124px;padding-bottom:120px}
+  .garden-home .hero-identity {order:0}
+  .garden-home .hero-identity h1 {font-size:72px;margin:16px 0 12px}
+  .garden-home .hero-identity h1 span {font-size:25px;margin-top:8px}
+  .garden-home .hero-loc {margin-top:12px;font-size:11px}
+  .garden-home .hero-proof {display:none}
+  .garden-home .hero-portrait {order:1;max-width:560px;align-self:center;border-radius:23px;padding:8px}
+  .hero-portrait img {border-radius:16px}
+  .hero-portrait-caption {padding:15px 9px 8px}
+  .garden-home .hero-thought {order:2;width:auto}
+  .garden-home .hero-thought>p {font-size:24px;max-width:540px;line-height:1.5}
+  .garden-home .hero-thought br:first-of-type {display:none}
+  .portrait-hero-actions {margin-top:20px;gap:10px 22px}
+  .garden-home .garden-hero .hero-project {order:3;max-width:none}
+  .garden-home .garden-scroll {gap:16px}
+  html:not(.nav-ready) .garden-home .garden-hero-content {padding-top:240px}
+}
+@media(max-width:600px) {
+  .about-portrait {max-width:460px;margin:0 0 34px;padding:10px}
+  .about-portrait figcaption {padding:15px 3px 5px}
+}
+@media(max-width:360px) {
+  .garden-home .hero-identity h1 {font-size:64px}
+  .garden-home .hero-thought>p {font-size:22px}
+  .portrait-hero-actions {gap:8px 18px}
+  .garden-home .portrait-hero-actions .metal-button {padding-inline:15px;gap:18px}
+}

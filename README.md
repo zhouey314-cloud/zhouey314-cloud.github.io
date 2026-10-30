@@ -38,7 +38,9 @@ python3 -m http.server 8810 --bind 127.0.0.1
 | 网页简历及 PDF | `resume.html`；修改内容后 `python3 scripts/export-resume.py`，逐页复核导出 |
 | 分享图 | 先更新实际场景静态渲染，再 `node scripts/export-social.mjs` |
 
-`writing` 当前为空，页面只展示真实 X 主页与 Thought-to-X 入口。新增文章需要核实 `{title,takeaway,date,url}`；不要用占位标题填满版面。没有授权头像时继续使用文字身份。
+`writing` 当前为空，页面只展示真实 X 主页与 Thought-to-X 入口。新增文章需要核实 `{title,takeaway,date,url}`；不要用占位标题填满版面。
+
+2026-10-30 加入用户本人提供并授权用于网站的照片：`public/portrait/enyu-speaking-{384,960,1254}.webp`。首页以大幅半身照作为人物主视觉，桌面约 600px 宽、手机接近整屏宽，点击可前往个人介绍；三个作品保留为较小的交互索引。“关于我”使用响应式大图。浏览器按显示尺寸与 DPR 选择一个版本；只调整尺寸与格式，不生成或修饰人物。替换照片时同步首页模板的图片描述、Person `image`、`ASSET_SOURCES.md`，再运行构建；排版在 `portrait.css`。
 
 ## 场景和回退
 

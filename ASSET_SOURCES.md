@@ -1,5 +1,14 @@
 # 公开资产与许可
 
+## 2026-10-30 · 本人照片
+
+用户在本次请求中直接提供本人照片，并要求将它放到个人网站。仅用于恩宇 / Ethan Zhou 的首页身份与“关于我”介绍，不将肖像作为第三方可随意复用的开源素材。没有添加拍摄地点、活动名称或履历等未经确认的信息。
+
+- `public/portrait/enyu-speaking-384.webp`：原照片完整画面等比例缩放至 384×384，WebP quality85，9658 bytes；响应式小尺寸版本。
+- `public/portrait/enyu-speaking-960.webp`：原照片完整画面等比例缩放至 960×960，WebP quality85，30376 bytes；首屏与个人介绍的响应式版本，个人介绍按需加载。
+- `public/portrait/enyu-speaking-1254.webp`：原照片完整画面保留 1254×1254，WebP quality88，56562 bytes；大幅首屏在高 DPR 屏幕上的版本。浏览器按 `srcset` 选择一个版本，不同时下载三个版本。
+- 原附件为 1254×1254 JPEG；用本地 `cwebp` 做尺寸与格式优化，不生成、不换脸、不修饰人物。网页文件不包含原附件路径或拍摄元数据。
+
 ## 2026-10-27 · 完整 Sylva 森林与分享图
 
 本轮不新增人物照片、客户素材或生成媒体。ThreeUI Community 1.2.0，固定 commit `68802d5428071ada5c20db8094b1649e6bb770ed`，MIT。采用完整 public Hero 的程序几何、Shader、材质、光照与原版质量分档；不是三张截图或官网远程预览。源文件、runtime/font 固定 blob、许可及改动范围见 [THIRD_PARTY.md](THIRD_PARTY.md)。

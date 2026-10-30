@@ -18,10 +18,11 @@
   <script src="/navigation.js"></script>
   <link rel="stylesheet" href="/tokens.css" /><link rel="stylesheet" href="/style.css" /><link rel="stylesheet" href="/garden.css" /><link rel="stylesheet" href="/home.css" />
   <script src="/script.js" defer></script><script src="/home.js" defer></script><script src="/forest.js" defer></script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"恩宇","alternateName":"Ethan Zhou","url":"https://zhouey314-cloud.github.io/","description":"中原工学院广播电视编导专业本科在读，自2026年6月参与企业GEO与AI应用实践，向FDE方向发展。","homeLocation":{"@type":"Place","name":"郑州"},"sameAs":["https://github.com/zhouey314-cloud","https://x.com/UPing123zzz","https://t.me/ethanyu520"]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"恩宇","alternateName":"Ethan Zhou","url":"https://zhouey314-cloud.github.io/","image":"https://zhouey314-cloud.github.io/public/portrait/enyu-speaking-960.webp","description":"中原工学院广播电视编导专业本科在读，自2026年6月参与企业GEO与AI应用实践，向FDE方向发展。","homeLocation":{"@type":"Place","name":"郑州"},"sameAs":["https://github.com/zhouey314-cloud","https://x.com/UPing123zzz","https://t.me/ethanyu520"]}</script>
   <script src="/garden-ui.js" defer></script>
   <link rel="stylesheet" href="/studio.css" />
   <link rel="stylesheet" href="/capabilities.css" />
+  <link rel="stylesheet" href="/portrait.css" />
 </head>
 <body class="portfolio-home garden-home">
   <a class="skip-link" href="#main">跳到主要内容</a><div class="reading-progress" aria-hidden="true"><i data-reading-progress></i></div>
@@ -36,7 +37,8 @@
       <div class="hero-guides" aria-hidden="true"><i></i><i></i><i></i></div>
       <div class="garden-hero-content g-wrap">
         <div class="hero-identity"><p class="garden-kicker"><span class="live-dot" aria-hidden="true"></span>AI 应用开发 · GEO 实践</p><h1 id="hero-title">恩宇<span>Ethan Zhou</span></h1><p class="hero-loc">郑州 · 向 FDE 方向发展</p><p class="hero-proof">公开代码 / 可操作作品 / 验证与交接</p></div>
-        <div class="hero-thought"><p>把业务需求，<br />做成能运行、<br /><strong>能交付的 AI 工具。</strong></p><a class="metal-button" href="#work">我能做什么 <span aria-hidden="true">↘</span></a><a class="hero-resume" href="/workbench.html">亲自试用作品 <span aria-hidden="true">↗</span></a></div>
+        <a class="hero-portrait" href="#about" aria-label="恩宇 / Ethan Zhou 认识我，查看个人介绍"><img src="/public/portrait/enyu-speaking-960.webp" srcset="/public/portrait/enyu-speaking-384.webp 384w, /public/portrait/enyu-speaking-960.webp 960w, /public/portrait/enyu-speaking-1254.webp 1254w" sizes="(max-width:760px) calc(100vw - 60px), (max-width:1250px) 46vw, 580px" width="1254" height="1254" alt="恩宇本人，身穿黑色西装、手持麦克风" fetchpriority="high" decoding="async" /><span class="hero-portrait-caption"><span>恩宇 <span lang="en">/ Ethan Zhou</span></span><span>认识我 <span aria-hidden="true">↗</span></span></span></a>
+        <div class="hero-thought"><p>把业务需求，<br />做成能运行、<br /><strong>能交付的 AI 工具。</strong></p><div class="portrait-hero-actions"><a class="metal-button" href="#work">我能做什么 <span aria-hidden="true">↘</span></a><a class="hero-resume" href="/workbench.html">亲自试用作品 <span aria-hidden="true">↗</span></a></div></div>
         {{heroProjects}}
         <div class="hero-side-note"><span>BUILD / VERIFY / DELIVER</span><p>知识检索<br />接口集成<br />GEO 工作流</p><a href="#engineering">技术与实现证据 ↘</a></div>
       </div>
@@ -69,7 +71,7 @@
       <aside class="evaluation-note"><div><p class="garden-kicker">质量判断 / AI EVAL ENGINEERING</p><h3>改动后，哪些变好了，哪些退步了？</h3><p>我的离线评测工具读取已记录响应与工具轨迹，执行规则检查并比较版本。缺少证据时标记阻塞；机械检查通过后，模型语义质量与业务验收仍需单独评估。</p></div><a class="line-link" href="/cases/eval.html">查看评测方法与实现 ↗</a></aside>
     </section>
     <section class="garden-about g-wrap" id="about" aria-labelledby="about-title" data-chapter="about">
-      <div class="about-letter" aria-hidden="true"><span>e</span><i>正在生长<br />STILL GROWING</i><svg viewBox="0 0 160 200" fill="none"><path d="M80 190C55 150 110 100 78 25M78 88C38 85 30 45 34 37C64 39 78 65 78 88ZM82 125C125 121 139 80 136 72C101 73 84 99 82 125Z" stroke="currentColor" stroke-width="1" /></svg></div>
+      <figure class="about-portrait"><img src="/public/portrait/enyu-speaking-960.webp" srcset="/public/portrait/enyu-speaking-384.webp 384w, /public/portrait/enyu-speaking-960.webp 960w" sizes="(max-width:600px) calc(100vw - 64px), (max-width:900px) 30vw, 38vw" width="960" height="960" alt="恩宇 Ethan Zhou 的个人照片，身穿黑色西装，手持麦克风" loading="lazy" decoding="async" /><figcaption><span>恩宇 <span lang="en">/ Ethan Zhou</span></span><span>扎进真实世界，保持生长。</span></figcaption></figure>
       <div class="about-narrative"><p class="garden-kicker">04 / ABOUT ETHAN</p><h2 id="about-title">理解使用者，<br />也把实现做具体。</h2><p class="section-lede">我是恩宇，朋友们也叫我 Ethan。<br />一个从编导走向 AI 应用开发的实践者。</p><p>{{intro}}</p><p>编导训练让我习惯先观察人和情境。进入工程实践后，我把这种关注用于需求沟通与流程设计：明确谁使用、输入从哪里来、失败怎么办、怎样算交付完成。</p><dl class="about-facts"><div><dt>教育背景</dt><dd>中原工学院 · 广播电视编导<br />本科在读</dd></div><div><dt>实践方向</dt><dd>AI 应用开发 / GEO<br />知识检索 / 内容工作流</dd></div><div><dt>职业方向</dt><dd>向 FDE 方向发展<br />在客户现场理解需求并参与实现</dd></div></dl><div class="about-actions"><a class="metal-button light-metal" href="/resume.html">完整经历与简历 ↗</a><a class="line-link" href="/public/ethan-zhou-resume.pdf" download>下载 PDF ↓</a></div></div>
       <aside class="garden-writing" id="writing"><p class="garden-kicker">NOTES IN PUBLIC / 边做边写</p><div><h3 id="writing-title">把过程，也留下来。</h3>{{writing}}</div><div class="writing-actions"><a class="line-link" href="https://x.com/UPing123zzz" target="_blank" rel="noopener noreferrer">在 X 继续认识我 ↗</a><a class="line-link" href="/cases/thought-to-x.html">Thought-to-X：从想法到人工复核的草稿 ↗</a><p>保留自己的最终表达，不自动发帖。</p></div></aside>
     </section>
