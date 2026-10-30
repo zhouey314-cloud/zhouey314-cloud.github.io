@@ -105,11 +105,13 @@
           <h2><span>01</span>这是什么</h2>
           <div class="case-prose">
             <p class="large-copy">
-              知识问答不仅要找到答案，还要过滤权限、给出来源，并在证据不足时拒答。
+              <strong>适用问题：</strong>业务资料分散、版本会变，查询者需要知道答案依据哪份资料、自己是否有权读取。
             </p>
             <p>
-              以合成文档和明确的权限规则构建 RAG 工程样例，区分线上词面 Demo
-              与独立的本地文件服务。可选 embedding 模式需另行配置，未包含在这组线上截图中。
+              <strong>能交付的内容：</strong>多格式资料入库、身份与版本管理、带出处的原文摘录，以及本地运行、备份和恢复说明。
+            </p>
+            <p>
+              <strong>如何核验：</strong><a class="text-link" href="#result">先试公开检索演示</a>，再按<a class="text-link" href="#deep">本地运行说明与测试</a>检查身份、更新和恢复；线上页面与本地服务分开验证。
             </p>
           </div>
         </section>
@@ -156,13 +158,16 @@
           <h2><span>03</span>我做了什么</h2>
           <div class="case-prose">
             <p>
-              建立文档索引、权限过滤、证据引用与低证据拒答，附本地合成检索评估。
+              我实现 MD / PDF / DOCX 入库、文档指纹与递增版本、检索前访问过滤、引用和缺值拒答，并把健康检查、备份与恢复接入本地 CLI。
             </p>
             <details>
               <summary>展开技术结构</summary>
               <p>
-                检索前的访问过滤、引用生成和拒答逻辑独立测试；Python
-                端提供可运行的本地路径。
+                身份由本机操作员签发，查询客户端只提交问题。排序只使用可访问的当前资料；引用再次核对权限和版本，避免旧资料继续被引用。
+              </p>
+              <p>
+                <a class="text-link" href="https://github.com/zhouey314-cloud/enterprise-rag-starter/blob/7fc40fb309a75926c9828711e4fdfda5de85704b/localrag.py#L139-L197">检索与引用实现 ↗</a> ·
+                <a class="text-link" href="https://github.com/zhouey314-cloud/enterprise-rag-starter/blob/7fc40fb309a75926c9828711e4fdfda5de85704b/tests/test_local_service.py">真实 HTTP / CLI 边界测试 ↗</a>
               </p>
             </details>
           </div>
@@ -195,7 +200,7 @@
           </div>
         </section>
         <section class="case-section" id="deep">
-          <p class="case-regression-note">2026-10-28：本站工作台复用公开引擎，36 条既有 Node 回归通过。合成语料检验不代表真实企业回答质量。可直接导入本地文本、查看原文并导出结果。</p>
+          <p class="case-regression-note">2026-10-28 的本站工作台记录：复用公开引擎，检查既有 Node 回归；支持导入本地文本、查看原文并导出结果。合成语料检验不代表真实企业回答质量。</p>
           <span class="legacy-anchor" id="s6"></span
           ><span class="legacy-anchor" id="s7"></span
           ><span class="legacy-anchor" id="s13"></span>
@@ -208,21 +213,22 @@
               结构：可信身份 → 可访问的当前文档 → SQLite FTS5 与词项排名融合 → 正文可答性检查 → 带版本/页段/哈希的原文摘录。PDF 使用实际页码；DOCX 只标段落，不编造 Word 分页。
             </p>
             <p>
-              2026-10-21 工程复核：23 项 Python 与 10 项 Node 测试；4 个词面检索案例和 9 个答案可答性案例分开记录。
-              <a class="text-link" href="https://github.com/zhouey314-cloud/enterprise-rag-starter/pull/1">查看修复与 CI 记录 ↗</a>
+              2026-10-30 已合并的运行能力包含 SQLite 在线备份、独立恢复和健康检查；恢复保留身份撤销状态，目标文件不得覆盖。
+              <a class="text-link" href="https://github.com/zhouey314-cloud/enterprise-rag-starter/blob/7fc40fb309a75926c9828711e4fdfda5de85704b/local_ops.py">备份实现 ↗</a> ·
+              <a class="text-link" href="https://github.com/zhouey314-cloud/enterprise-rag-starter/blob/7fc40fb309a75926c9828711e4fdfda5de85704b/tests/test_operations.py">WAL、撤销与缺值回归 ↗</a>
             </p>
             <p>
-              2026-10-21 本地路径记录共48项 Python 测试，原10项 Node 与4/9用例保留。62个合成候选、56种问法：全部候选满足预期60/62，Recall@1/@3为38/40，原文摘录一致38/40，引用源完整性38/38，拒答 precision 22/24、recall 22/22。用户已确认审阅62条；2个语义改写漏检继续计入结果，没有把候选集当作真实企业准确率。
+              本地评测仍保留语义改写漏检；用户已确认审阅合成候选，但未把候选集当作真实企业准确率。测试状态可核对<a class="text-link" href="https://github.com/zhouey314-cloud/enterprise-rag-starter/actions/runs/40997716764">2026-10-30 对应提交的 CI ↗</a>。
             </p>
             <p>
               <a class="text-link" href="https://github.com/zhouey314-cloud/enterprise-rag-starter/pull/4">本地入库、评测与 CI ↗</a> ·
-              <a class="text-link" href="https://github.com/zhouey314-cloud/enterprise-rag-starter/blob/main/docs/local-quickstart.md">独立环境的完整运行命令 ↗</a>
+              <a class="text-link" href="https://github.com/zhouey314-cloud/enterprise-rag-starter/blob/7fc40fb309a75926c9828711e4fdfda5de85704b/docs/local-quickstart.md">独立环境的完整运行命令 ↗</a>
             </p>
             <pre><code>python -m unittest discover -s tests
 python evals/local.py --output .rag-data/eval/local-latest.json</code></pre>
             <p class="case-limit">仍是本机、有限规模的词面摘录参考实现，未调用生成式模型或嵌入；语义理解、自然企业样本、SSO 与托管生产验收尚未通过。线上 Demo 保留原静态词面界面，与可信身份的本地服务分开。</p>
             <p>
-              上述历史数字来自对应项目的公开记录，不是本次网站改造重跑的评测。2026-10-23 实际复核了上方三个线上查询状态；LLMProvider 仍为 NOT_CONFIGURED，生成式回答质量未运行。
+              以上源码与 CI 固定于 2026-10-30 的已合并版本。上方查询截图来自 2026-10-23 的公开演示复核；LLMProvider 仍为 NOT_CONFIGURED，生成式回答质量未运行。
             </p>
             <details>
               <summary>检查范围与下一步</summary>
@@ -244,7 +250,7 @@ python evals/local.py --output .rag-data/eval/local-latest.json</code></pre>
               >
             </div>
           </div>
-        <div class="evidence-callout"><h3>本地服务：备份、恢复与缺值拒答</h3><p>文档版本、身份过滤与引用之外，补全 SQLite 在线备份、独立恢复、健康检查，并修复仅提及电话或邮箱却没有实际值时的误答。</p><a class="line-link" href="https://github.com/zhouey314-cloud/enterprise-rag-starter/blob/main/docs/OPERATIONS.md" target="_blank" rel="noopener noreferrer">查看实现、命令与回归范围 ↗</a></div></section>
+        <div class="evidence-callout"><h3>本地服务：备份、恢复与缺值拒答</h3><p>文档版本、身份过滤与引用之外，补全 SQLite 在线备份、独立恢复、健康检查，并修复仅提及电话或邮箱却没有实际值时的误答。</p><a class="line-link" href="https://github.com/zhouey314-cloud/enterprise-rag-starter/blob/7fc40fb309a75926c9828711e4fdfda5de85704b/docs/OPERATIONS.md" target="_blank" rel="noopener noreferrer">查看实现、命令与回归范围 ↗</a></div></section>
       </div>
       <div class="case-end"><a class="next-case" href="/cases/relay-audit.html"><span>继续翻阅 / NEXT CASE</span><strong>RelayAudit / AgentGuard</strong><i aria-hidden="true">↗</i></a>
         <a class="text-link" href="/projects.html">← 回到项目档案</a

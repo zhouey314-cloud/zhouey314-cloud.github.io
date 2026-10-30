@@ -6,14 +6,14 @@
     <meta name="theme-color" content="#eeeee7" />
     <meta
       name="description"
-      content="AI Eval Engineering 项目案例：当前只有合成夹具与结构检查；没有独立人工真值或模型质量成绩，MODEL_QUALITY=NOT_RUN。"
+      content="AI Eval Engineering 项目案例：案例契约校验、已记录响应检查与版本回归比较；示例为合成数据，没有独立人工真值或模型语义质量成绩。"
     />
     <meta name="author" content="Ethan 恩宇" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="AI Eval Engineering — Ethan 恩宇" />
     <meta
       property="og:description"
-      content="AI Eval Engineering 项目案例：当前只有合成夹具与结构检查；没有独立人工真值或模型质量成绩，MODEL_QUALITY=NOT_RUN。"
+      content="AI Eval Engineering 项目案例：案例契约校验、已记录响应检查与版本回归比较；示例为合成数据，没有独立人工真值或模型语义质量成绩。"
     />
     <meta
       property="og:url"
@@ -30,7 +30,7 @@
     <meta name="twitter:title" content="AI Eval Engineering — Ethan 恩宇" />
     <meta
       name="twitter:description"
-      content="AI Eval Engineering 项目案例：当前只有合成夹具与结构检查；没有独立人工真值或模型质量成绩，MODEL_QUALITY=NOT_RUN。"
+      content="AI Eval Engineering 项目案例：案例契约校验、已记录响应检查与版本回归比较；示例为合成数据，没有独立人工真值或模型语义质量成绩。"
     />
     <meta
       name="twitter:image"
@@ -88,9 +88,9 @@
         <a class="text-link" href="/projects.html">← 项目档案</a>
         <p class="eyebrow">作品 / AI Eval Engineering</p>
         <h1>能运行之外，<br />还需要知道做得怎样。</h1>
-        <p class="case-status">本地评估工程骨架</p>
+        <p class="case-status">离线契约检查 / 已记录响应与版本比较</p>
         <p class="case-boundary">
-          当前只有合成夹具与结构检查；没有独立人工真值或模型质量成绩，MODEL_QUALITY=NOT_RUN。
+          已实现结构校验、记录响应的机械规则检查与回归比较；示例仍为合成数据，没有独立人工真值或模型语义质量成绩。
         </p>
       </div><figure class="case-cover"><a href="#result"><span class="case-cover-label">ARTIFACT / 07</span><img src="/public/projects/eval/release-gate.png" alt="AI Eval Engineering 公开项目证据" width="1200" height="900" decoding="async" /><span class="case-cover-open">查看结果与说明 <span aria-hidden="true">↘</span></span></a><figcaption>已有公开材料 · 范围与来源见正文</figcaption></figure></header>
       <nav class="case-toc" aria-label="案例章节"><p class="case-guide-label" aria-hidden="true">IN THIS CASE</p>
@@ -105,9 +105,10 @@
           <h2><span>01</span>这是什么</h2>
           <div class="case-prose">
             <p class="large-copy">
-              AI 项目常把夹具、接口和 JSON 格式通过误报为模型质量通过。
+              <strong>适用问题：</strong>改了 Prompt、工具或流程之后，需要知道哪些用例改善、哪些发生回归，以及什么还缺少证据。
             </p>
-            <p>构建可复用的评估工程骨架，明确数据来源、失败分类与发布闸门。</p>
+            <p><strong>能交付的内容：</strong>案例契约、记录响应评测器、逐例失败原因与版本差异报告，可接入项目 CI。</p>
+            <p><strong>如何核验：</strong><a class="text-link" href="#result">查看公开报告示例</a>，再用<a class="text-link" href="#deep">固定版本的输入、测试与运行说明</a>复现机械检查；模型语义质量另行评审。</p>
           </div>
         </section>
         <section class="case-section" id="result">
@@ -116,7 +117,7 @@
           <h2><span>02</span>看结果</h2>
           <div class="case-prose">
             <p>
-              把案例结构检查和模型质量分开呈现，避免一种通过掩盖另一种未测。
+              下图是既有合成发布门槛示例，展示结构检查与模型质量的区别。新增的记录响应检查与版本比较可在下方源码中核验。
             </p>
             <figure class="case-visual">
               <img
@@ -136,7 +137,7 @@
                   data-preview="/public/projects/eval/release-gate.png"
                   data-title="AI Eval Engineering"
                   data-case="/cases/eval.html"
-                  data-caption="当前只有合成夹具与结构检查；没有独立人工真值或模型质量成绩，MODEL_QUALITY=NOT_RUN。"
+                  data-caption="既有合成夹具与结构检查示例；图片不代表新增记录响应评测的实测结果，也不代表模型质量成绩。"
                 >
                   <span aria-hidden="true">⤢</span> 预览大图</button
                 ><a
@@ -158,12 +159,15 @@
           ><span class="legacy-anchor" id="s5"></span>
           <h2><span>03</span>我做了什么</h2>
           <div class="case-prose">
-            <p>提供案例 schema 校验、基线/回归说明与 release gate 文档。</p>
+            <p>我实现案例 schema 校验，并将已记录响应与工具轨迹按字面要求、工具清单、人工审核和升级处理规则逐条检查，输出失败原因与 baseline 差异。</p>
             <details>
               <summary>展开技术结构</summary>
               <p>
-                JSONL
-                案例、校验器与报告流程分层；用确定性测试保证评估管道自身正常工作。
+                JSONL 案例与响应通过 case_id 对齐；缺失响应或轨迹、未支持的规则会阻塞，重复 ID 和删除基线用例会报错。报告保留输入文件哈希，便于回看当时检查了什么。
+              </p>
+              <p>
+                <a class="text-link" href="https://github.com/zhouey314-cloud/ai-eval-engineering/blob/88e275946e0c848c76e62e6c3afd3ee2aa90b208/runners/evaluate.py">评测器与版本比较实现 ↗</a> ·
+                <a class="text-link" href="https://github.com/zhouey314-cloud/ai-eval-engineering/blob/88e275946e0c848c76e62e6c3afd3ee2aa90b208/tests/test_evaluate.py">缺轨迹、禁用工具与回归测试 ↗</a>
               </p>
             </details>
           </div>
@@ -174,8 +178,7 @@
           <h2><span>04</span>一项关键选择</h2>
           <div class="case-prose">
             <blockquote>
-              把 FIXTURE_SCHEMA_PASS 和 MODEL_QUALITY=NOT_RUN
-              分开输出；高风险失败不能被综合分数遮盖。
+              结构校验、机械契约与模型语义质量分别记录。缺少证据不算通过，单个失败不能被综合分数遮盖。
             </blockquote>
           </div>
         </section>
@@ -186,10 +189,10 @@
           <h2><span>05</span>成果与限制</h2>
           <div class="case-prose">
             <p>
-              把案例结构检查和模型质量分开呈现，避免一种通过掩盖另一种未测。
+              已记录响应可以逐例检查和比较，规则失败、证据缺失与回归会分别留在报告中。
             </p>
             <p class="case-limit">
-              当前只有合成夹具与结构检查；没有独立人工真值或模型质量成绩，MODEL_QUALITY=NOT_RUN。
+              机械规则只检查字面内容和记录轨迹，不能独立判断语义真伪或证明真实审批发生。示例为合成数据，没有独立人工真值或模型质量成绩。
             </p>
             <p>没有可报告的模型正确率、延迟、成本或真实业务结果。</p>
           </div>
@@ -201,18 +204,16 @@
           <h2><span>06</span>深入查看</h2>
           <div class="case-prose">
             <p>
-              2026-10-21 工程复核：4 项校验器回归与 5 个合成夹具检查分开记录；模型质量仍为 NOT_RUN。
+              2026-10-21 的工程记录检查校验器与合成夹具；模型质量仍为 NOT_RUN。
               <a class="text-link" href="https://github.com/zhouey314-cloud/ai-eval-engineering/pull/2">查看修复与 CI 记录 ↗</a>
             </p>
             <p>
-              校验案例字段、来源标签、重复 ID
-              与发布闸门。真实模型正确率、延迟和成本均未测。
+              2026-10-30 已合并记录响应评测与 baseline 比较。可核对<a class="text-link" href="https://github.com/zhouey314-cloud/ai-eval-engineering/actions/runs/40997743053">对应提交的 CI ↗</a>；该记录运行离线合成案例，未评价真实模型语义质量。
             </p>
             <details>
               <summary>检查范围与下一步</summary>
               <p>
-                当前运行只验证夹具与来源标注。未接真实模型、独立真值或人工评审，模型质量门槛仍为
-                NOT_RUN。
+                结构校验器仍输出 MODEL_QUALITY=NOT_RUN；记录响应评测器将 model_quality 与 semantic_correctness 标为 NOT_EVALUATED，production_acceptance 保持 BLOCKED。
               </p>
               <p>由领域人员审核样本，接入实际模型输出并持续记录回归。</p>
             </details>
@@ -223,12 +224,12 @@
                 >阅读项目仓库 ↗</a
               ><a
                 class="text-link"
-                href="https://github.com/zhouey314-cloud/ai-eval-engineering"
-                >查看公开材料 ↗</a
+                href="https://github.com/zhouey314-cloud/ai-eval-engineering/blob/88e275946e0c848c76e62e6c3afd3ee2aa90b208/examples/recorded-responses.jsonl"
+                >记录响应示例 ↗</a
               >
             </div>
           </div>
-        <div class="evidence-callout"><h3>已记录响应与工具轨迹评测</h3><p>在格式校验之外执行字面规则、工具允许/禁止清单和人工门禁检查，输出逐案例失败与 baseline 差异。缺少轨迹或遇到未支持的规则会阻塞；机械规则不代替语义评测。</p><a class="line-link" href="https://github.com/zhouey314-cloud/ai-eval-engineering/blob/main/docs/RECORDED_EVAL.md" target="_blank" rel="noopener noreferrer">查看实现、命令与回归范围 ↗</a></div></section>
+        <div class="evidence-callout"><h3>已记录响应与工具轨迹评测</h3><p>在格式校验之外执行字面规则、工具允许/禁止清单和人工门禁检查，输出逐案例失败与 baseline 差异。缺少轨迹或遇到未支持的规则会阻塞；机械规则不代替语义评测。</p><a class="line-link" href="https://github.com/zhouey314-cloud/ai-eval-engineering/blob/88e275946e0c848c76e62e6c3afd3ee2aa90b208/docs/RECORDED_EVAL.md" target="_blank" rel="noopener noreferrer">查看实现、命令与回归范围 ↗</a></div></section>
       </div>
       <div class="case-end"><a class="next-case" href="/cases/skills.html"><span>继续翻阅 / NEXT CASE</span><strong>Portable Agent Skills</strong><i aria-hidden="true">↗</i></a>
         <a class="text-link" href="/projects.html">← 回到项目档案</a

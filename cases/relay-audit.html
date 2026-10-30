@@ -76,7 +76,7 @@
         <a class="text-link" href="/projects.html">← 项目档案</a>
         <p class="eyebrow">作品 / RelayAudit / AgentGuard</p>
         <h1>让 Agent 中转链路里的异常，有迹可循。</h1>
-        <a class="studio-case-entry" href="/workbench.html#relay">打开交互工作台 <span aria-hidden="true">↗</span></a><p class="case-status">开源 0.2.0 / 本地模拟链路与协议检查</p>
+        <a class="studio-case-entry" href="/workbench.html#relay">打开交互工作台 <span aria-hidden="true">↗</span></a><p class="case-status">开源本地网关 / HTTP 与 SSE 协议检查</p>
         <p class="case-boundary">
           目前不具备经过校准的真实模型身份识别能力；所有模型身份状态保持未验证。
         </p>
@@ -90,10 +90,12 @@
         <section class="case-section" id="what">
           <h2><span>01</span>这是什么</h2>
           <div class="case-prose">
-            <p class="large-copy">Agent 仍然正常使用，网关只观察可见信息。</p>
+            <p class="large-copy"><strong>适用问题：</strong>AI 调用超时、限流或流式中断时，需要分清发生在哪一段，并留下排查依据。</p>
             <p>
-              项目让 Agent 请求经本地网关转发到用户配置的 API，默认 passive
-              模式不会额外发送模型请求。它观察声明标签、协议错误和服务变化，独立输出告警和报告。
+              <strong>能交付的内容：</strong>固定路由网关、协议事件记录、独立告警与本地报告，以及接入、容量控制和退出恢复说明。默认被动模式不额外发送模型请求。
+            </p>
+            <p>
+              <strong>如何核验：</strong><a class="text-link" href="#result">查看实际合成报告</a>，按<a class="text-link" href="#deep">命令和回归测试</a>复现流式转发、过载与恢复。本站检查器展示报告，不充当实时网关。
             </p>
           </div>
         </section>
@@ -116,9 +118,13 @@
         <section class="case-section" id="build">
           <h2><span>03</span>我做了什么</h2>
           <div class="case-prose">
-            <p class="large-copy">拆出协议观察、证据、告警与恢复流程。</p>
+            <p class="large-copy">转发与观察分开，告警不混入模型响应。</p>
             <p>
-              公开仓库提供协议检查、流式数据保真、本机通知、状态管理、报告和受限配置方式。演示环境及测试记录可从仓库复核；本站不重跑模型服务。
+              我实现 Responses、Chat Completions 与 Anthropic Messages 的 JSON / SSE 转发，分离本地与上游凭据，并处理超时、取消、观察队列降级和请求容量释放。
+            </p>
+            <p>
+              <a class="text-link" href="https://github.com/zhouey314-cloud/relay-audit/blob/f8d7376d7593925cb420fd670deef3b0d33f5a19/relay_audit/guard/proxy.py#L360-L465">转发与容量实现 ↗</a> ·
+              <a class="text-link" href="https://github.com/zhouey314-cloud/relay-audit/blob/f8d7376d7593925cb420fd670deef3b0d33f5a19/tests/test_guard_proxy.py#L234-L342">实体保真与凭据隔离测试 ↗</a>
             </p>
           </div>
         </section>
@@ -129,6 +135,7 @@
             <p>
               模型声明变化只是标签不符合预期；协议错误可能来自网关、模型或参数；性能变化是描述性现象。即使可见标签不变，也不能据此证明真实模型身份。
             </p>
+            <p>先转发响应字节，再交给独立观察队列。观察丢失明确显示降级；业务请求过载则返回 503，已有流继续处理，结束后释放名额。</p>
           </div>
         </section>
         <section class="case-section" id="limits">
@@ -144,26 +151,24 @@
           <h2><span>06</span>深入查看</h2>
           <div class="case-prose">
             <p>
-              2026-10-21 工程复核：115 项受控测试与本地接入验收，修复请求和响应两向的连接级头部过滤；不据此判定模型身份。
+              2026-10-21 的受控测试与本地接入记录包含请求、响应两向的连接级头部过滤修复；不据此判定模型身份。
               <a class="text-link" href="https://github.com/zhouey314-cloud/relay-audit/pull/1">查看修复与 CI 记录 ↗</a>
             </p>
             <p>
-              2026-10-21 记录的125项测试保留上述修复，并覆盖取消、超时、背压、非法 Content-Length 与并发。观察队列丢失时仍保留已知的真实传输终止原因，不把超时或取消改写成“不可观察”。
+              后续回归覆盖取消、超时、背压、非法 Content-Length 与并发。观察队列丢失时仍保留已知的真实传输终止原因，不把超时或取消改写成“不可观察”。
             </p>
             <p>
-              同批合成 JSON/SSE 请求比较直连、关闭观察与完整 passive。C1每模式100次、C8每模式200次：实体哈希一致，额外请求、HTTP/实体错误与队列丢失均为0。开销没有被隐藏：本机 C8 SSE 的 p95 从直连9.126ms变为完整观察21.178ms；这是固定顺序的 loopback 小样本，不是生产容量或低开销保证。
+              2026-10-21 的合成 JSON/SSE 负载比较直连、关闭观察与完整 passive。C1每模式100次、C8每模式200次：实体哈希一致，额外请求、HTTP/实体错误与队列丢失均为0。开销没有被隐藏：本机 C8 SSE 的 p95 从直连9.126ms变为完整观察21.178ms；这是固定顺序的 loopback 小样本，不是生产容量或低开销保证。
             </p>
             <pre><code>python evals/run_acceptance.py --out acceptance-new --requests 100 --concurrency 1
 python evals/run_acceptance.py --out acceptance-c8 --requests 200 --concurrency 8</code></pre>
             <p>
               <a class="text-link" href="https://github.com/zhouey314-cloud/relay-audit/pull/2">流式修复、原始指标与 CI ↗</a> ·
-              <a class="text-link" href="https://github.com/zhouey314-cloud/relay-audit/blob/main/examples/guard-synthetic/README.md">五分钟合成演示与下载步骤 ↗</a>
+              <a class="text-link" href="https://github.com/zhouey314-cloud/relay-audit/blob/f8d7376d7593925cb420fd670deef3b0d33f5a19/examples/guard-synthetic/README.md">五分钟合成演示与下载步骤 ↗</a>
             </p>
             <p>上述负载指标属于 2026-10-21 的历史记录，本次网站改造没有重跑完整压力比较。2026-10-23 只复跑了三请求的合成告警演示，不能据此新增性能或模型识别准确率声明。</p>
-            <p class="large-copy">代码、证据与限制都公开可查。</p>
             <p>
-              从 README、验证记录和隐私说明了解当前公开状态。请只在有权使用的
-              API 与本机环境中测试。
+              2026-10-30 已合并的容量控制由<a class="text-link" href="https://github.com/zhouey314-cloud/relay-audit/blob/f8d7376d7593925cb420fd670deef3b0d33f5a19/tests/test_guard_proxy.py#L560-L588">挂起 SSE、拒绝新增请求与恢复测试 ↗</a>覆盖；可核对<a class="text-link" href="https://github.com/zhouey314-cloud/relay-audit/actions/runs/40997729333">对应提交的 CI ↗</a>。请仅在有权使用的 API 与本机环境中复现。
             </p>
             <div class="actions">
               <a
@@ -174,20 +179,20 @@ python evals/run_acceptance.py --out acceptance-c8 --requests 200 --concurrency 
                 >项目源码 ↗</a
               ><a
                 class="text-link"
-                href="https://github.com/zhouey314-cloud/relay-audit/blob/main/docs/VALIDATION.md"
+                href="https://github.com/zhouey314-cloud/relay-audit/blob/f8d7376d7593925cb420fd670deef3b0d33f5a19/docs/VALIDATION.md"
                 target="_blank"
                 rel="noopener noreferrer"
                 >验证记录 ↗</a
               ><a
                 class="text-link"
-                href="https://github.com/zhouey314-cloud/relay-audit/blob/main/docs/PRIVACY_AND_LIMITS.md"
+                href="https://github.com/zhouey314-cloud/relay-audit/blob/f8d7376d7593925cb420fd670deef3b0d33f5a19/docs/PRIVACY_AND_LIMITS.md"
                 target="_blank"
                 rel="noopener noreferrer"
                 >隐私与边界 ↗</a
               >
             </div>
           </div>
-        <div class="evidence-callout"><h3>网关运行：容量、503 与恢复</h3><p>对请求读取与完整 SSE 连接设置在途容量，超限明确返回 503；用挂起流、上游请求计数与恢复回归检查已有连接和故障隔离。</p><a class="line-link" href="https://github.com/zhouey314-cloud/relay-audit/blob/main/docs/CAPACITY.md" target="_blank" rel="noopener noreferrer">查看实现、命令与回归范围 ↗</a></div></section>
+        <div class="evidence-callout"><h3>网关运行：容量、503 与恢复</h3><p>对请求读取与完整 SSE 连接设置在途容量，超限明确返回 503；用挂起流、上游请求计数与恢复回归检查已有连接和故障隔离。</p><a class="line-link" href="https://github.com/zhouey314-cloud/relay-audit/blob/f8d7376d7593925cb420fd670deef3b0d33f5a19/docs/CAPACITY.md" target="_blank" rel="noopener noreferrer">查看实现、命令与回归范围 ↗</a></div></section>
       </div>
     </main>
     <footer class="site-footer wrap">

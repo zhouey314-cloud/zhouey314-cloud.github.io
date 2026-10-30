@@ -20,9 +20,13 @@ python3 -m http.server 8810 --bind 127.0.0.1
 
 ## 内容维护
 
+2026-10-30 更新能力与价值表达：保留现有 Sylva 场景、首屏作品切换与工作台，以「能解决的问题 → 交付内容 → 项目证据 → 技术与验证 → 联系」组织首页。项目档案支持按问题进入，五篇核心案例、网页简历与 PDF 同步更新。维护与证据边界见 [内容说明](docs/CAPABILITY_CONTENT.md)。
+
 | 修改内容 | 入口 |
 | --- | --- |
 | 简介、邮箱、三个作品的数据/状态/证据链接、精选文章 | `content/portfolio.json`；修改后 `npm run build` |
+| 四类可参与问题、具体交付、技术与证据矩阵 | `content/portfolio.json` 的 `services` / `engineering`；项目取舍和演示范围也在该文件 |
+| 能力、工程证据、GEO 贡献与联系说明的样式 | `capabilities.css`；首页与项目档案引用，沿用现有花园视觉 |
 | 姓名、栏目、经历、社交/微信入口与页面结构 | `content/home.template.html`；同步对应 metadata、简历后构建 |
 | 首页排版与手机样式 | `home.css` |
 | 全站字体、配色、导航、案例与简历的统一样式 | `tokens.css`、`garden.css` |

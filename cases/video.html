@@ -6,14 +6,14 @@
     <meta name="theme-color" content="#eeeee7" />
     <meta
       name="description"
-      content="AI Video Workflow Engine 项目案例：54秒原创动画已获用户审片批准；47项工程测试。批准仅绑定此文件，不代表真人、客户商业片或模型质量。"
+      content="AI Video Workflow Engine 项目案例：从素材清单、字幕和 FFmpeg 渲染到可校验交付包。54秒原创动画已获用户审片批准；批准仅绑定此文件，不代表客户商业片或模型质量。"
     />
     <meta name="author" content="Ethan 恩宇" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="AI Video Workflow Engine — Ethan 恩宇" />
     <meta
       property="og:description"
-      content="AI Video Workflow Engine 项目案例：54秒原创动画已获用户审片批准；47项工程测试。批准仅绑定此文件，不代表真人、客户商业片或模型质量。"
+      content="AI Video Workflow Engine 项目案例：从素材清单、字幕和 FFmpeg 渲染到可校验交付包。54秒原创动画已获用户审片批准；批准仅绑定此文件，不代表客户商业片或模型质量。"
     />
     <meta
       property="og:url"
@@ -33,7 +33,7 @@
     />
     <meta
       name="twitter:description"
-      content="AI Video Workflow Engine 项目案例：54秒原创动画已获用户审片批准；47项工程测试。批准仅绑定此文件，不代表真人、客户商业片或模型质量。"
+      content="AI Video Workflow Engine 项目案例：从素材清单、字幕和 FFmpeg 渲染到可校验交付包。54秒原创动画已获用户审片批准；批准仅绑定此文件，不代表客户商业片或模型质量。"
     />
     <meta
       name="twitter:image"
@@ -108,10 +108,13 @@
           <h2><span>01</span>这是什么</h2>
           <div class="case-prose">
             <p class="large-copy">
-              视频生产中的素材缺口、渲染和人工 QA 若无状态管理，很难复现与交接。
+              <strong>适用问题：</strong>视频反复导出或多人交接时，成片、素材、字幕与审片状态容易失去对应关系。
             </p>
             <p>
-              以最小可运行引擎演示素材核对、工作流状态、FFmpeg 输出和复核闸门。
+              <strong>能交付的内容：</strong>可复现的渲染流程，以及成片、字幕、时间轴、预览、QA 报告与哈希清单组成的任务交付包。
+            </p>
+            <p>
+              <strong>如何核验：</strong><a class="text-link" href="#result">观看已有 54 秒样片</a>，再按<a class="text-link" href="#deep">运行说明和交付包测试</a>检查输出；文件完整性与人工审片分别确认。
             </p>
           </div>
         </section>
@@ -139,7 +142,7 @@
             </figure>
             <a
               class="text-link strong-link"
-              href="https://github.com/zhouey314-cloud/ai-video-workflow-engine/tree/main/examples/original_54s"
+              href="https://github.com/zhouey314-cloud/ai-video-workflow-engine/tree/367badd7c3ed2314ec1014964fb8ed3931dc019e/examples/original_54s"
               >查看公开材料 ↗</a
             >
           </div>
@@ -149,12 +152,15 @@
           ><span class="legacy-anchor" id="s5"></span>
           <h2><span>03</span>我做了什么</h2>
           <div class="case-prose">
-            <p>覆盖缺失素材、失败恢复和实际媒体渲染，并保留人审状态。</p>
+            <p>我用 Python 编排素材检查、时间轴、FFmpeg 渲染和 QA 状态，再把输出封装为独立任务目录；调用方可读取退出码、失败原因与校验清单完成交接。</p>
             <details>
               <summary>展开技术结构</summary>
               <p>
-                Python 状态机控制输入、渲染和 QA 状态；FFmpeg 适配器输出可播放
-                MP4。
+                交付包保留 MP4、SRT / ASS、时间轴、真实预览、QA 报告和 manifest。校验器检查缺失、哈希不符、重复路径、越界路径、符号链接与未列入清单的文件。
+              </p>
+              <p>
+                <a class="text-link" href="https://github.com/zhouey314-cloud/ai-video-workflow-engine/blob/367badd7c3ed2314ec1014964fb8ed3931dc019e/video_workflow/delivery.py">交付与校验实现 ↗</a> ·
+                <a class="text-link" href="https://github.com/zhouey314-cloud/ai-video-workflow-engine/blob/367badd7c3ed2314ec1014964fb8ed3931dc019e/tests/test_bundles.py">真实编码、篡改与失败回收测试 ↗</a>
               </p>
             </details>
           </div>
@@ -168,6 +174,7 @@
               外部 provider 未配置时明确失败；只选择 SELF/CC0 合成素材。机械 QA
               检查媒体流、时长与字幕，人审另设闸门。
             </blockquote>
+            <p>任务先在临时目录完成渲染和检查，再形成完整交付目录；失败清理本次临时产物。校验通过只证明文件完整性，不能自动授予人工批准。</p>
           </div>
         </section>
         <section class="case-section" id="limits">
@@ -194,7 +201,7 @@
           <h2><span>06</span>深入查看</h2>
           <div class="case-prose">
             <p>
-              2026-10-21 的项目记录保留36项测试与退出码修复，并加入特殊路径、中文字体、失败恢复、黑帧/音频和字幕几何检查，以及54秒九镜头样例。
+              2026-10-21 的项目记录包含退出码修复、特殊路径、中文字体、失败恢复、黑帧/音频和字幕几何检查，以及 54 秒九镜头样例。
               <a class="text-link" href="https://github.com/zhouey314-cloud/ai-video-workflow-engine/pull/2">查看修复与 CI 记录 ↗</a>
             </p>
             <p>
@@ -202,11 +209,14 @@
               不等于审美验收。
             </p>
             <p>
-              2026-10-21 记录共47项测试；保留旧退出码与36项基线，新增真实媒体 QA、样片复现和批准哈希漂移守卫。完整54秒已实际渲染与解码，用户批准的是上方同一文件；CI还单独执行缩短的九镜头机械夹具。
+              该样片历史记录保留完整 54 秒的渲染、解码和用户批准，以及批准哈希漂移守卫。CI 单独执行缩短的九镜头机械夹具，不重新渲染或批准完整样片。
               <a class="text-link" href="https://github.com/zhouey314-cloud/ai-video-workflow-engine/pull/4">样片、来源清单、用户批准与 CI ↗</a>
             </p>
-            <pre><code>python -m unittest discover -s tests
-python examples/original_54s/generate.py --output output/original54 --font /path/to/licensed-CJK-font</code></pre>
+            <p>2026-10-30 的已合并源码加入独立交付包。可核对<a class="text-link" href="https://github.com/zhouey314-cloud/ai-video-workflow-engine/actions/runs/40997957439">对应提交的 CI ↗</a>，按说明在全新任务目录生成并校验：</p>
+            <pre><code>mkdir -p output
+python -m video_workflow.cli --provider ffmpeg --bundle-dir output/job-001 --output output/job-001.receipt.json
+python -m video_workflow.cli --verify-bundle output/job-001</code></pre>
+            <p><a class="text-link" href="https://github.com/zhouey314-cloud/ai-video-workflow-engine/blob/367badd7c3ed2314ec1014964fb8ed3931dc019e/examples/original_54s/README.md">样片复现、依赖与许可说明 ↗</a>。复现需准备 FFmpeg 与有许可的中文字体；新任务不会继承历史批准。</p>
             <details>
               <summary>检查范围与下一步</summary>
               <p>
@@ -221,12 +231,12 @@ python examples/original_54s/generate.py --output output/original54 --font /path
                 >阅读项目仓库 ↗</a
               ><a
                 class="text-link"
-                href="https://github.com/zhouey314-cloud/ai-video-workflow-engine/tree/main/examples/original_54s"
+                href="https://github.com/zhouey314-cloud/ai-video-workflow-engine/tree/367badd7c3ed2314ec1014964fb8ed3931dc019e/examples/original_54s"
                 >查看公开材料 ↗</a
               >
             </div>
           </div>
-        <div class="evidence-callout"><h3>从渲染到可校验交付包</h3><p>每个任务保留成片、字幕、时间轴、QA 报告及输入/输出哈希。失败不发布半套交付；校验发现缺失、篡改与不安全路径后返回失败，最后仍保留人工审片。</p><a class="line-link" href="https://github.com/zhouey314-cloud/ai-video-workflow-engine/blob/main/docs/DELIVERY_BUNDLES.md" target="_blank" rel="noopener noreferrer">查看实现、命令与回归范围 ↗</a></div></section>
+        <div class="evidence-callout"><h3>从渲染到可校验交付包</h3><p>每个任务保留成片、字幕、时间轴、QA 报告及输入/输出哈希。失败不发布半套交付；校验发现缺失、篡改与不安全路径后返回失败，最后仍保留人工审片。</p><a class="line-link" href="https://github.com/zhouey314-cloud/ai-video-workflow-engine/blob/367badd7c3ed2314ec1014964fb8ed3931dc019e/docs/DELIVERY_BUNDLES.md" target="_blank" rel="noopener noreferrer">查看实现、命令与回归范围 ↗</a></div></section>
       </div>
       <div class="case-end"><a class="next-case" href="/cases/thought-to-x.html"><span>继续翻阅 / NEXT CASE</span><strong>Thought-to-X</strong><i aria-hidden="true">↗</i></a>
         <a class="text-link" href="/projects.html">← 回到项目档案</a
