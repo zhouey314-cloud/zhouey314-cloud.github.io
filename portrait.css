@@ -1,0 +1,70 @@
+/* User-supplied portrait, within the existing digital garden. */
+.hero-person {
+  display:flex;
+  align-items:center;
+  gap:clamp(14px,1.6vw,24px);
+  max-width:440px;
+  margin:19px 0 16px;
+}
+.garden-home .hero-person h1 {margin:0}
+.hero-portrait {
+  display:block;
+  flex:0 0 clamp(100px,9vw,144px);
+  width:clamp(100px,9vw,144px);
+  aspect-ratio:5/6;
+  overflow:hidden;
+  border:1px solid #f1f1df80;
+  border-radius:80px 80px 12px 12px;
+  background:#42483e;
+  box-shadow:0 10px 32px #1d251a40,inset 0 0 0 4px #fff1;
+}
+.hero-portrait img {
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transform:scale(1.55);
+  transform-origin:50% 0;
+}
+.hero-portrait:focus-visible {outline:3px solid #f1f1df;outline-offset:6px}
+.about-portrait {
+  margin:0;
+  align-self:start;
+  padding:12px;
+  border:1px solid #bcc5ae;
+  background:#f7f7ef;
+  box-shadow:0 18px 48px #33422a0d;
+}
+.about-portrait>img {
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:1;
+  border-radius:2px;
+}
+.about-portrait figcaption {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 18px;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 4px 6px;
+  color:#40513a;
+  font-size:12px;
+  line-height:1.8;
+}
+.about-portrait figcaption [lang] {font-size:11px;color:#5a6750}
+.about-portrait figcaption>span:last-child {font-size:10px;color:#5a6750}
+@media(max-width:900px) {
+  .hero-person {max-width:340px;gap:22px}
+  .hero-portrait {flex-basis:114px;width:114px}
+}
+@media(max-width:600px) {
+  .hero-person {justify-content:space-between;max-width:340px;margin:15px 0 16px}
+  .hero-portrait {flex-basis:112px;width:112px}
+  .about-portrait {max-width:460px;margin:0 0 34px;padding:10px}
+  .about-portrait figcaption {padding:15px 3px 5px}
+}
+@media(max-width:360px) {
+  .hero-portrait {flex-basis:98px;width:98px}
+}
