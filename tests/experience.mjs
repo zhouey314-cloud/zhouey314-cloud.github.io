@@ -7,6 +7,21 @@ const site=await serve(),out=resolve(process.env.EXPERIENCE_REPORT_DIR||'test-re
 const report={at:new Date().toISOString(),base_url:site.base,source:source(),scope:'Actual Chromium/WebKit. Simulated viewports and touch, not physical iPhone/Safari acceptance. Zoom is an equivalent 720×450 CSS reflow at DPR2, not browser-toolbar zoom. No field INP claim.',layouts:[],interactions:[],failures:[]};
 async function save(){await writeFile(resolve(out,'experience-report.json'),JSON.stringify(report,null,2))}
 async function run(name,fn){console.log(name);try{await fn()}catch(e){report.failures.push({name,error:e.stack});await save()}}
+async function portraitPixels(page,selector,inspector){
+ const png=await page.locator(selector).screenshot();
+ // Read the captured pixels, rather than treating img.complete as a painted image.
+ // Only the screenshot is decoded here; the page's image/loading state is untouched.
+ const deviation=await inspector.evaluate(async encoded=>{
+  const bytes=Uint8Array.from(atob(encoded),c=>c.charCodeAt(0));
+  const bitmap=await createImageBitmap(new Blob([bytes],{type:'image/png'}));
+  const canvas=document.createElement('canvas');canvas.width=canvas.height=64;
+  const ctx=canvas.getContext('2d');ctx.drawImage(bitmap,0,0,64,64);bitmap.close();
+  const pixels=ctx.getImageData(0,0,64,64).data;let sum=0,square=0;
+  for(let i=0;i<pixels.length;i+=4){const y=(pixels[i]+pixels[i+1]+pixels[i+2])/3;sum+=y;square+=y*y}
+  const n=pixels.length/4;return Math.sqrt(Math.max(0,square/n-(sum/n)**2));
+ },png.toString('base64'));
+ assert(deviation>20,'actual portrait screenshot contains the photo, not a blank frame');return deviation;
+}
 try{
  for(const [engineName,engine] of Object.entries({chromium,webkit})){
   const browser=await engine.launch();
@@ -49,16 +64,21 @@ try{
    });
    await run(`${engineName}: cold image anchors and primary action`,async()=>{
     const checks=[];
+    const inspector=await browser.newPage();
+    try{
     for(const [label,width,javaScriptEnabled] of [['desktop',1600,true],['mobile',390,true],['nojs',390,false]]){
      for(const fragment of ['about','contact']){
       const context=await browser.newContext({viewport:{width,height:1000},javaScriptEnabled,reducedMotion:'reduce'}),page=await context.newPage();
+      page.setDefaultTimeout(15000);page.setDefaultNavigationTimeout(20000);
       try{
        await page.goto(site.base+'/#'+fragment,{waitUntil:'load'});
+       let portraitPaint=null;
        // Do not call decode(), mutate loading, or scroll through other sections:
        // this protects the direct-link visit that the old full-page checks missed.
        if(fragment==='about'){
         await page.waitForFunction(()=>{const i=document.querySelector('.about-portrait img');return i.complete&&i.naturalWidth>0},{},{timeout:10000});
         assert(await page.locator('.about-portrait img').isVisible(),'direct about visit paints the portrait');
+        portraitPaint={about:await portraitPixels(page,'.about-portrait img',inspector)};
        }else{
         const qr=page.locator('.garden-qr svg');assert(await qr.isVisible(),'contact code is present without an external image request');
         const box=await qr.boundingBox();assert(box.width>=140&&Math.abs(box.width-box.height)<1,'contact code has a readable square scan area');
@@ -67,16 +87,22 @@ try{
        }
        await page.screenshot({path:resolve(out,`${engineName}-${label}-direct-${fragment}.png`)});
        if(fragment==='about'){
-        await page.goto(site.base,{waitUntil:'load'});const action=page.locator('.portrait-hero-actions .metal-button');
+        await page.goto(site.base,{waitUntil:'load'});
+        await page.waitForFunction(()=>{const i=document.querySelector('.hero-portrait img');return i.complete&&i.naturalWidth>0},{},{timeout:10000});
+        if(javaScriptEnabled)await frames(page);
+        await page.screenshot({path:resolve(out,`${engineName}-${label}-direct-home.png`)});
+        portraitPaint.home=await portraitPixels(page,'.hero-portrait img',inspector);
+        const action=page.locator('.portrait-hero-actions .metal-button');
         const size=await action.evaluate(el=>({width:el.getBoundingClientRect().width,height:el.getBoundingClientRect().height,font:parseFloat(getComputedStyle(el).fontSize)}));
         assert(size.width>=220&&size.height>=64&&size.font>=17,'primary capability action remains prominent');
-        await action.focus();await page.keyboard.press('Enter');await page.waitForFunction(()=>location.hash==='#work');
+        await action.focus();await page.keyboard.press('Enter');await page.waitForURL('**/#work',{timeout:10000});
        }
-       checks.push({label,fragment,javaScriptEnabled});
+       checks.push({label,fragment,javaScriptEnabled,portraitPaint});
       }finally{await context.close()}
      }
     }
     report.interactions.push({engine:engineName,coldImageAnchors:checks,prominentPrimaryAction:true});
+    }finally{await inspector.close()}
    });
    await run(`${engineName}: project window and continuous case reading`,async()=>{
     const context=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'reduce'}),page=await context.newPage();
