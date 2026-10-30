@@ -47,6 +47,37 @@ try{
      await page.goto(site.base+'/',{waitUntil:'load'});const [download]=await Promise.all([page.waitForEvent('download'),page.locator('a[download][href$=".pdf"]').click()]);await download.saveAs(resolve(out,engineName+'-resume.pdf'));const bytes=await readFile(resolve(out,engineName+'-resume.pdf')),original=await readFile(resolve(root,'public/ethan-zhou-resume.pdf'));assert(bytes.subarray(0,5).toString()==='%PDF-'&&bytes.subarray(-1024).includes(Buffer.from('%%EOF'))&&bytes.equals(original),'downloaded PDF is valid and byte-identical');report.interactions.push({engine:engineName,legacyFragments:true,pdf:{bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex')}});
     }finally{await context.close()}
    });
+   await run(`${engineName}: cold image anchors and primary action`,async()=>{
+    const checks=[];
+    for(const [label,width,javaScriptEnabled] of [['desktop',1600,true],['mobile',390,true],['nojs',390,false]]){
+     for(const fragment of ['about','contact']){
+      const context=await browser.newContext({viewport:{width,height:1000},javaScriptEnabled,reducedMotion:'reduce'}),page=await context.newPage();
+      try{
+       await page.goto(site.base+'/#'+fragment,{waitUntil:'load'});
+       // Do not call decode(), mutate loading, or scroll through other sections:
+       // this protects the direct-link visit that the old full-page checks missed.
+       if(fragment==='about'){
+        await page.waitForFunction(()=>{const i=document.querySelector('.about-portrait img');return i.complete&&i.naturalWidth>0},{},{timeout:10000});
+        assert(await page.locator('.about-portrait img').isVisible(),'direct about visit paints the portrait');
+       }else{
+        const qr=page.locator('.garden-qr svg');assert(await qr.isVisible(),'contact code is present without an external image request');
+        const box=await qr.boundingBox();assert(box.width>=140&&Math.abs(box.width-box.height)<1,'contact code has a readable square scan area');
+        assert(await page.locator('.garden-qr>a').getAttribute('href')==='https://u.wechat.com/MJNJhDRZFiAFKD09uKIRGvM?s=3','contact code still links to the approved WeChat account');
+        await qr.scrollIntoViewIfNeeded();
+       }
+       await page.screenshot({path:resolve(out,`${engineName}-${label}-direct-${fragment}.png`)});
+       if(fragment==='about'){
+        await page.goto(site.base,{waitUntil:'load'});const action=page.locator('.portrait-hero-actions .metal-button');
+        const size=await action.evaluate(el=>({width:el.getBoundingClientRect().width,height:el.getBoundingClientRect().height,font:parseFloat(getComputedStyle(el).fontSize)}));
+        assert(size.width>=220&&size.height>=64&&size.font>=17,'primary capability action remains prominent');
+        await action.focus();await page.keyboard.press('Enter');await page.waitForFunction(()=>location.hash==='#work');
+       }
+       checks.push({label,fragment,javaScriptEnabled});
+      }finally{await context.close()}
+     }
+    }
+    report.interactions.push({engine:engineName,coldImageAnchors:checks,prominentPrimaryAction:true});
+   });
    await run(`${engineName}: project window and continuous case reading`,async()=>{
     const context=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'reduce'}),page=await context.newPage();
     try{

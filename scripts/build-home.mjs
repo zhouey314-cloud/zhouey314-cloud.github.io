@@ -14,7 +14,11 @@ const heroNotes = {rag: '合成资料 · 词法检索演示', relay: '本地工�
 const heroLabels = {rag: '检索', relay: '链路', video: '视频'};
 const heroPanel = p => `<div class="hero-project-panel" data-hero-panel="${p.id}"><a class="hero-project-image" href="${escape(p.case)}"><img src="${escape(p.preview || p.image)}" width="640" height="${Math.round(640*p.height/p.width)}" alt="${escape(p.caption)}" decoding="async" /><span aria-hidden="true">↗</span></a><div class="hero-project-copy"><p>${escape(p.name)}</p><a href="${escape(p.case)}">${escape(p.headline).replace("，", "，<br />")} <span aria-hidden="true">↗</span></a></div><p class="hero-project-note">${heroNotes[p.id]}</p></div>`;
 const heroProjects = `<aside class="hero-project" aria-label="三个代表作品" data-hero-projects><p class="garden-kicker"><span data-hero-number>01</span> / SELECTED WORK</p><div class="hero-project-stage" data-hero-stage>${heroPanel(data.projects[0])}</div><div class="hero-project-switches enhanced-only" role="group" aria-label="选择代表作品">${data.projects.map((p,i)=>`<button type="button" data-hero-select="${p.id}" aria-pressed="${i===0}" aria-label="0${i+1} ${heroLabels[p.id]}：查看 ${escape(p.name)}"><span>0${i+1}</span> ${heroLabels[p.id]}</button>`).join('')}</div><p class="sr-only" role="status" data-hero-status></p>${data.projects.map(p=>`<template data-hero-template="${p.id}">${heroPanel(p)}</template>`).join('')}</aside>`;
-const replacements = { name: escape(data.name), intro: escape(data.intro), email: escape(data.email), services, engineering, projects, writing, heroProjects };
+// Paint the approved contact code directly, without a lazy image request.
+const wechatQr = readFileSync(root + 'public/contact/wechat-qr.svg', 'utf8').trim()
+  .replace('aria-labelledby="title desc"', 'aria-labelledby="wechat-code-title wechat-code-desc"')
+  .replace('id="title"', 'id="wechat-code-title"').replace('id="desc"', 'id="wechat-code-desc"');
+const replacements = { name: escape(data.name), intro: escape(data.intro), email: escape(data.email), services, engineering, projects, writing, heroProjects, wechatQr };
 const template = readFileSync(root + 'content/home.template.html', 'utf8');
 const output = template.replace(/\{\{(\w+)\}\}/g, (_, key) => { if (!(key in replacements)) throw new Error('Unknown content key: ' + key); return replacements[key]; });
 if (process.argv.includes('--check')) {
