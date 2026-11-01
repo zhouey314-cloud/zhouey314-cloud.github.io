@@ -113,3 +113,16 @@
   .delivery-method ol {grid-template-columns:1fr}
   .contact-brief ol {gap:8px 20px;font-size:11px}
 }
+/* Clear starting points connect capability, proof and a real conversation. */
+.capability-offer dl dt:not(:first-child) {margin-top:15px}
+.capability-offer>p:not(.capability-field) {font-size:15px}
+.capability-offer dd {font-size:14px}
+.capability-actions {display:flex;align-items:center;flex-wrap:wrap;gap:3px 24px}
+.capability-actions a {display:inline-flex;align-items:center;min-height:44px}
+.cooperation-route {display:flex;align-items:center;justify-content:space-between;gap:24px;padding:28px 30px;background:#e3e9d8;border-left:3px solid #7f9463;margin-top:20px}
+.cooperation-route p {font-size:13px;line-height:1.9;color:#4b6040}
+.cooperation-route p>span {display:block;font-size:17px;font-weight:500;color:#2b432d;margin-bottom:4px}
+.cooperation-route>a {flex:none;display:inline-flex;align-items:center;min-height:44px}
+.contact-brief .contact-start {font-size:14px;margin-top:22px;min-height:54px;border-color:#c2d6a4;background:#e2edca;color:#263f28;box-shadow:none}
+.contact-brief .contact-start:hover {background:#eef4dc;color:#233c23}
+@media(max-width:760px){.cooperation-route{align-items:start;flex-direction:column;padding:23px;gap:5px}.capability-offer dd{font-size:14px}.capability-actions{gap:0 19px}}

@@ -327,6 +327,16 @@ def main():
         report = verify_pdf(temporary)
         args.output.write_bytes(temporary.read_bytes())
     report.update({"output": str(args.output), "source_sha256": hashlib.sha256(source_bytes).hexdigest(), "renderer": "ReportLab, not browser print", "bytes": args.output.stat().st_size})
+    manifest = {
+        "schema_version": 1,
+        "source": args.source.name,
+        "source_sha256": report["source_sha256"],
+        "pdf_sha256": hashlib.sha256(args.output.read_bytes()).hexdigest(),
+        "pages": report["pages"],
+        "clickable_links": report["clickable_links"],
+        "renderer": report["renderer"],
+    }
+    args.output.with_suffix(".meta.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, ensure_ascii=False, indent=2))
 
 

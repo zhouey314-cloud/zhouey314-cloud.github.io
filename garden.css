@@ -506,3 +506,16 @@ html[data-motion="off"] .archive-feature img, html[data-motion="off"] .case-cove
   .case-cover { max-width: 350px; }
   .case-cover > a { transform: none; box-shadow: none; }
 }
+/* Case outcomes lead; evidence boundaries remain immediately beside them. */
+.case-hero-copy>.case-summary {font-size:16px;line-height:1.9;color:#344c35;margin-top:18px;max-width:650px}
+.case-layout .case-cooperate {grid-column:2;padding:35px;border:1px solid #bfcbb1;border-left:3px solid #83996a;background:#f3f5e9;margin-block:22px 10px;min-width:0}
+.case-cooperate h2 {font:500 clamp(25px,2.5vw,33px)/1.4 var(--editorial);letter-spacing:-.025em;margin:13px 0 16px}
+.case-cooperate>p:not(.eyebrow) {font-size:14px;line-height:1.9;color:#53664a;max-width:720px}
+.case-cooperate .actions {margin-top:22px;gap:12px 20px;flex-wrap:wrap}
+.case-cooperate .actions a {min-height:44px}
+@media(max-width:760px){.case-layout .case-cooperate{padding:26px 21px}.case-hero-copy>.case-summary{font-size:15px}.case-cooperate h2{font-size:27px}}
+/* Outside the landscape the entire header has a reading surface, including its edges. */
+.portfolio-home .site-header.is-outside-garden,html:not(.nav-ready) .portfolio-home .site-header {--header-ink:#293728;--dock-bg:#f5f6ef;padding:6px 16px;min-height:62px;border:1px solid #c6cfb9;border-radius:18px;background:#f5f6eff7;box-shadow:0 8px 28px #24382014;backdrop-filter:blur(16px)}
+.portfolio-home .site-header.is-outside-garden .site-nav,html:not(.nav-ready) .portfolio-home .site-header .site-nav {background:transparent;backdrop-filter:none;border-color:transparent;box-shadow:none}
+.portfolio-home .site-header.is-outside-garden .site-nav a:hover,.portfolio-home .site-header.is-outside-garden .site-nav a[aria-current] {background:#83976a19}
+@media(max-width:760px){.portfolio-home .site-header.is-outside-garden,html:not(.nav-ready) .portfolio-home .site-header{padding:7px 10px;border-radius:15px;min-height:58px}.portfolio-home .site-header.is-outside-garden .site-nav{padding:7px 0 0;margin-top:4px;border-top:1px solid #c6cfb9}}

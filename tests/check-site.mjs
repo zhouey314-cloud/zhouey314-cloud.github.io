@@ -25,10 +25,20 @@ const pages = [
   "resume.html",
   "404.html",
   "workbench.html",
+  "collaborate.html",
   ...caseIds.map((id) => `cases/${id}.html`),
 ];
 const hub = readFileSync(join(root, "projects.html"), "utf8");
 const home = readFileSync(join(root, "index.html"), "utf8");
+const collaboration = readFileSync(join(root, "collaborate.html"), "utf8");
+const content = JSON.parse(readFileSync(join(root, "content/portfolio.json"), "utf8"));
+for (const contact of content.contactLinks) {
+  assert(home.includes(contact.href), `home: canonical ${contact.id} contact missing`);
+  assert(collaboration.includes(contact.href), `collaboration: canonical ${contact.id} contact missing`);
+}
+const resumeManifest = JSON.parse(readFileSync(join(root, "public/ethan-zhou-resume.meta.json"), "utf8"));
+for (const [field, file] of [["source_sha256", "resume.html"], ["pdf_sha256", "public/ethan-zhou-resume.pdf"]])
+  assert(resumeManifest[field] === createHash("sha256").update(readFileSync(join(root, file))).digest("hex"), `resume: ${file} no longer matches its verified PDF export; rerun scripts/export-resume.py`);
 const baselineProjects = [
   "Multi-Tenant Workflow",
   "Enterprise RAG Starter",
@@ -166,6 +176,8 @@ for (const name of ["黑客松项目", "Ethan Creator Studio / EthanCut", "录�
   assert(hub.includes(`<h3>${name}</h3>`), `missing in-progress project ${name}`);
 for (const id of caseIds)
   assert(hub.includes(`/cases/${id}.html`), `archive: missing case ${id}`);
+for (const id of caseIds)
+  assert(/href="\/collaborate\.html\?topic=(retrieval|workflow|api|media|other)#brief"/.test(readFileSync(join(root, `cases/${id}.html`), "utf8")), `case ${id}: missing contextual cooperation path`);
 for (const id of [
   "thought-to-x",
   "rag",

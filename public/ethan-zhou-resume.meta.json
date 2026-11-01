@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "source": "resume.html",
+  "source_sha256": "c55f05c04141ebe2f98a81fe7b89c15fb49eb2ab699656459b5ce51586e14826",
+  "pdf_sha256": "ff568278c9f87006914d953ad236a439abce799903dedbf603294f58d8d6706d",
+  "pages": 2,
+  "clickable_links": 22,
+  "renderer": "ReportLab, not browser print"
+}

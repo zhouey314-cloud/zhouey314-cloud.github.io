@@ -1,6 +1,6 @@
 {
   "name": "恩宇 Ethan Zhou",
-  "intro": "自 2026 年 6 月参与企业 GEO 与 AI 应用实践。我主要用 Python 做知识检索、AI 接口集成和内容工作流，把需求拆成可运行的工具，并把失败处理、测试和运行说明一起交付。",
+  "intro": "自 2026 年 6 月参与企业 GEO 与 AI 应用实践。我主要用 Python 做资料检索、AI 接口集成和内容工作流，让资料能回到出处、故障有线索可查、内容生产有完整记录。",
   "email": "zhouey314@gmail.com",
   "services": [
     {
@@ -10,7 +10,10 @@
       "problem": "资料散在文档里，找到一段回答后，还要知道它来自哪里、是否仍然有效。",
       "deliverable": "资料入库与版本管理、带来源的检索界面、访问范围与拒答检查、运行说明。",
       "href": "/cases/rag.html",
-      "proof": "看知识库的实现与取舍"
+      "proof": "看知识库的实现与取舍",
+      "topic": "retrieval",
+      "startingPoint": "一组获授权的样本文档，以及经常被问到的问题。",
+      "acceptance": "用双方确认的问题核对来源、访问范围和缺资料时的处理。"
     },
     {
       "number": "02",
@@ -19,7 +22,10 @@
       "problem": "企业有资料，也在生产内容，但来源、版本、审核和发布交接容易脱节。",
       "deliverable": "知识与 FAQ 梳理、Skill / Workflow、内容审核节点、发布与交接说明。",
       "href": "/projects.html#geo-title",
-      "proof": "看企业参与范围与公开材料"
+      "proof": "看企业参与范围与公开材料",
+      "topic": "workflow",
+      "startingPoint": "现有资料、实际处理步骤，以及谁负责审核。",
+      "acceptance": "从资料输入到人工审核、交接完整走一遍，记录阻塞点。"
     },
     {
       "number": "03",
@@ -28,7 +34,10 @@
       "problem": "已经接入 AI，但调用为什么失败、流在哪里断开，往往只剩一条报错。",
       "deliverable": "本地接口工具、HTTP / SSE 链路检查、异常报告、容量与恢复回归。",
       "href": "/cases/relay-audit.html",
-      "proof": "看网关如何处理失败"
+      "proof": "看网关如何处理失败",
+      "topic": "api",
+      "startingPoint": "可复现的请求形态、脱敏日志和失败现象。",
+      "acceptance": "复现超时或中断，检查事件记录、恢复路径与已知限制。"
     },
     {
       "number": "04",
@@ -37,7 +46,10 @@
       "problem": "一份成品不足以支撑下一次生产，素材、字幕、参数和检查记录需要一起留下。",
       "deliverable": "素材到成片的脚本流程、字幕与时间轴、媒体检查、可校验的交付包。",
       "href": "/cases/video.html",
-      "proof": "看样片与完整交付流程"
+      "proof": "看样片与完整交付流程",
+      "topic": "media",
+      "startingPoint": "已授权素材、目标格式、字幕要求和参考片。",
+      "acceptance": "核对媒体参数与字幕，再由人看画面、听声音、确认样片。"
     }
   ],
   "engineering": [
@@ -88,7 +100,11 @@
       "role": "我实现文档版本、检索前访问过滤、引用定位、证据不足处理与本地备份恢复。",
       "deliverable": "本地知识检索服务、文件入库与身份管理、来源检查界面，以及备份恢复说明。",
       "decision": "先过滤可访问资料再检索；只提到“联系电话”却没有号码时，保留线索并拒答。",
-      "stack": ["Python", "SQLite / FTS5", "HTTP API"],
+      "stack": [
+        "Python",
+        "SQLite / FTS5",
+        "HTTP API"
+      ],
       "evidenceUrl": "https://github.com/zhouey314-cloud/enterprise-rag-starter/blob/7fc40fb309a75926c9828711e4fdfda5de85704b/tests/test_operations.py",
       "evidenceLabel": "备份恢复与缺值拒答回归",
       "demoScope": "在浏览器中检索合成资料、核对原文；身份服务与备份恢复见本地实现。",
@@ -113,7 +129,11 @@
       "role": "我搭建本地网关，处理 HTTP / SSE、超时、取消、容量控制与独立异常报告。",
       "deliverable": "可安装的本地网关、协议与异常报告、容量配置和故障恢复检查。",
       "decision": "容量名额覆盖完整流式连接；超限请求在本地拒绝，已有请求继续完成，结束后释放名额。",
-      "stack": ["Python", "HTTP / SSE", "本地网关"],
+      "stack": [
+        "Python",
+        "HTTP / SSE",
+        "本地网关"
+      ],
       "evidenceUrl": "https://github.com/zhouey314-cloud/relay-audit/blob/f8d7376d7593925cb420fd670deef3b0d33f5a19/tests/test_guard_proxy.py",
       "evidenceLabel": "协议、过载与恢复回归",
       "demoScope": "在浏览器中检查合成报告；实际请求转发与观察需要运行本地网关。",
@@ -138,7 +158,11 @@
       "role": "我用 Python / FFmpeg 串起素材、时间轴、字幕、渲染、质量检查与可校验交付包。",
       "deliverable": "成片、字幕、时间轴、预览、媒体检查报告与包含文件哈希的交付清单。",
       "decision": "校验完成后才发布完整任务包；文件检查通过仍需人工审片，不能替代内容与审美判断。",
-      "stack": ["Python", "FFmpeg", "ffprobe"],
+      "stack": [
+        "Python",
+        "FFmpeg",
+        "ffprobe"
+      ],
       "evidenceUrl": "https://github.com/zhouey314-cloud/ai-video-workflow-engine/blob/367badd7c3ed2314ec1014964fb8ed3931dc019e/tests/test_bundles.py",
       "evidenceLabel": "交付完整性与失败清理回归",
       "demoScope": "在浏览器中播放样片、定位字幕与时间轴；本地引擎负责渲染和交付包生成。",
@@ -154,5 +178,37 @@
       "preview": "/public/workbench/video-workspace-preview.webp"
     }
   ],
-  "writing": []
+  "writing": [],
+  "contactLinks": [
+    {
+      "id": "email",
+      "label": "邮箱",
+      "display": "zhouey314@gmail.com",
+      "href": "mailto:zhouey314@gmail.com"
+    },
+    {
+      "id": "github",
+      "label": "GitHub",
+      "display": "zhouey314-cloud",
+      "href": "https://github.com/zhouey314-cloud"
+    },
+    {
+      "id": "x",
+      "label": "X",
+      "display": "@UPing123zzz",
+      "href": "https://x.com/UPing123zzz"
+    },
+    {
+      "id": "telegram",
+      "label": "Telegram",
+      "display": "ethanyu520",
+      "href": "https://t.me/ethanyu520"
+    },
+    {
+      "id": "wechat",
+      "label": "微信",
+      "display": "扫码联系恩宇",
+      "href": "https://u.wechat.com/MJNJhDRZFiAFKD09uKIRGvM?s=3"
+    }
+  ]
 }

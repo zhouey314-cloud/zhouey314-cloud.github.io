@@ -4,6 +4,7 @@
   const progress = document.querySelector('[data-reading-progress]');
   const sections = [...document.querySelectorAll('section[data-chapter]')];
   const selectedProjects = document.getElementById('selected-projects');
+  const garden = document.getElementById('top');
   let frame = 0;
   function update() {
     frame = 0;
@@ -12,6 +13,7 @@
     const section = sections.find(s => { const r = s.getBoundingClientRect(); return r.top <= 54 && r.bottom > 54; }) || sections[0];
     const onPaper = ['work', 'engineering', 'about'].includes(section?.dataset.chapter);
     header?.classList.toggle('is-on-paper', onPaper);
+    header?.classList.toggle('is-outside-garden', garden.getBoundingClientRect().bottom <= 110);
     if (section) document.documentElement.dataset.chapter = section.dataset.chapter;
     const currentId = section?.id === 'work' && selectedProjects?.getBoundingClientRect().top <= 150 ? 'selected-projects' : section?.id;
     header?.querySelectorAll('.site-nav a[href^="#"]').forEach(a => {
