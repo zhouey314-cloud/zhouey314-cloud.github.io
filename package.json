@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "preview": "node scripts/preview.mjs",
     "test": "node scripts/build-home.mjs --check && node tests/check-site.mjs && node --test tests/rag/regression.test.mjs",
     "test:browser": "node tests/browser.mjs",
     "install:browsers": "playwright install chromium webkit",

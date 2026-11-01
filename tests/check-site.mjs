@@ -39,6 +39,32 @@ for (const contact of content.contactLinks) {
 const resumeManifest = JSON.parse(readFileSync(join(root, "public/ethan-zhou-resume.meta.json"), "utf8"));
 for (const [field, file] of [["source_sha256", "resume.html"], ["pdf_sha256", "public/ethan-zhou-resume.pdf"]])
   assert(resumeManifest[field] === createHash("sha256").update(readFileSync(join(root, file))).digest("hex"), `resume: ${file} no longer matches its verified PDF export; rerun scripts/export-resume.py`);
+// MP4 metadata must precede media data so a cold visitor can initialize the
+// player without fetching the tail first. Browser checks still verify playback.
+try {
+  const video = readFileSync(join(root, "public/projects/video/original-54s.mp4"));
+  const atoms = [];
+  let offset = 0;
+  while (offset < video.length) {
+    if (video.length - offset < 8) throw Error("truncated box header");
+    let size = video.readUInt32BE(offset);
+    let header = 8;
+    if (size === 1) {
+      if (video.length - offset < 16) throw Error("truncated extended box header");
+      size = Number(video.readBigUInt64BE(offset + 8));
+      header = 16;
+    } else if (size === 0) size = video.length - offset;
+    if (!Number.isSafeInteger(size) || size < header || size > video.length - offset)
+      throw Error("invalid box size");
+    atoms.push({ type: video.toString("ascii", offset + 4, offset + 8), offset });
+    offset += size;
+  }
+  const moov = atoms.find(box => box.type === "moov");
+  const mdat = atoms.find(box => box.type === "mdat");
+  assert(moov && mdat && moov.offset < mdat.offset, "video: MP4 must have faststart metadata before media data");
+} catch (error) {
+  assert(false, `video: invalid MP4 container: ${error.message}`);
+}
 const baselineProjects = [
   "Multi-Tenant Workflow",
   "Enterprise RAG Starter",
