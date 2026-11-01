@@ -21,6 +21,7 @@
 - 字体：`public/fonts/lexend-latin.woff2`，39692 bytes；原版文件，SIL OFL 1.1 见同目录 `Lexend-OFL.txt`。
 - 静态回退：`node scripts/capture-forest.mjs` 用本机 WebKit / Apple GPU 实际运行同一场景，减少动效、DPR1、desktop1600×880 / mobile390×935，经第二次成功 WebGL 绘制后截图，再以 WebP quality86 压缩。来源记录在 `public/scenes/sylva/capture.json`。不是生成图，不是远程缩略图；静态回退不作为实时3D成功证明。
 - 分享图：`node scripts/export-social.mjs` 将实际森林与本站身份文字排成1200×630，输出 `public/social-preview.png`、`public/og-image.svg`。
+- 2026-11-01 公开介绍调整：网页、简历 PDF 与分享图不再展示学校和专业。分享图使用“把业务需求，做成可交付的 AI 工具。”，保留既有森林渲染、字体与导出方式；下方旧版本记录仅说明历史资产来源。
 - 原版两张卡片照片只用于工作区的完整参考运行，没有复制进正式个人站。正式作品证据仍为已有 RAG、Relay、GEO 与54秒样片素材。
 - PR7未使用的Gallery/Dock/r186与旧预览图移除；旧批准项目图片、原始视频、字幕、PDF和微信二维码保留，字节清单在本轮迁移证据中。
 
@@ -82,7 +83,7 @@
 
 ## 2026-10-22 可下载简历 PDF
 
-- `public/ethan-zhou-resume.pdf`：由 `scripts/export-resume.py` 使用 ReportLab 导出为 2 页 A4。`resume.html` 是简历正文的唯一来源；导出器从该页读取简介、经历、项目、能力、教育与联系方式，不维护另一份简历文案。网页上的「打印 / 保存 PDF」调用浏览器打印；下载文件采用独立的 ReportLab 排版，不声称与 Chrome 打印结果相同。
+- `public/ethan-zhou-resume.pdf`：由 `scripts/export-resume.py` 使用 ReportLab 导出为 2 页 A4。`resume.html` 是简历正文的唯一来源；导出器从该页读取简介、经历、项目、能力、实践方式与联系方式，不维护另一份简历文案。网页上的「打印 / 保存 PDF」调用浏览器打印；下载文件采用独立的 ReportLab 排版，不声称与 Chrome 打印结果相同。
 - PDF 的中文字体为 **Droid Sans Fallback Regular**，由本地已安装的正式 Python 包 **PyMuPDF 1.26.6** 提供，通过 `fitz.Font("cjk").buffer` 读取其底层 MuPDF 内置的 TTF。本次使用的字体为 3,556,308 字节，Git blob SHA-1 为 `cc7d41d3483cafbbbda246ee4a2bb93f88a51835`，与 [MuPDF 1.26.6 官方字体文件](https://github.com/ArtifexSoftware/mupdf/blob/1.26.6/resources/fonts/droid/DroidSansFallback.ttf) 完全一致。
 - 字体版权归 **Copyright (c) 2005-2008, The Android Open Source Project**，许可为 **Apache License, Version 2.0**。依据同版本 [官方 `resources/fonts/droid/NOTICE`](https://github.com/ArtifexSoftware/mupdf/blob/1.26.6/resources/fonts/droid/NOTICE) 核对，并将该文件的版权声明和完整许可条款保留在 [`public/licenses/DroidSansFallback-NOTICE.txt`](public/licenses/DroidSansFallback-NOTICE.txt)。这项说明针对 PDF 内嵌字体，不为本站其他资产指定许可证。
 - ReportLab 将使用到的字形转换为 PDF 字体子集并嵌入文件，字体子集名称带有 ReportLab 生成的前缀；没有另行绘制或替换字形。网站不单独分发完整 TTF。拉丁文标题使用 PDF 标准字体 Helvetica-Bold。
