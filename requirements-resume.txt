@@ -1,0 +1,9 @@
+# PDF maintenance only; no browser/runtime dependency. Python 3.10+.
+# Versions match the previously used ReportLab environment and licensed CJK font.
+reportlab==4.4.9
+lxml==6.1.1
+pypdf==6.10.0
+PyMuPDF==1.26.6
+# ReportLab's transitive dependencies are pinned for repeatable layout/export.
+Pillow==12.3.0
+charset-normalizer==3.5.2

@@ -4,6 +4,17 @@ on:
     branches: [main, portfolio-v2]
   pull_request:
 jobs:
+  resume:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: requirements-resume.txt
+      - run: python -m pip install -r requirements-resume.txt
+      - run: python -m unittest discover -s tests -p test_resume_export.py -v
   site:
     runs-on: ubuntu-latest
     steps:
@@ -29,6 +40,8 @@ jobs:
           THREEUI_ENGINE: webkit
           THREEUI_REPORT_DIR: test-results/threeui-webkit
       - run: npm run test:collaboration
+      - run: npm run test:loading
+      - run: npm run test:crm
       - run: npm run test:workbench
       - run: npm run test:experience
         env:

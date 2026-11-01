@@ -11,7 +11,9 @@
     "test:experience": "node tests/experience.mjs",
     "test:threeui": "node tests/threeui.mjs",
     "test:workbench": "node tests/workbench.mjs",
-    "test:collaboration": "node tests/collaboration.mjs"
+    "test:collaboration": "node tests/collaboration.mjs",
+    "test:loading": "node tests/loading.mjs",
+    "test:crm": "node tests/crm.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",

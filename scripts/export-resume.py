@@ -7,19 +7,38 @@ PyMuPDF, pypdf. PyMuPDF supplies its bundled Droid Sans Fallback TrueType font;
 ReportLab embeds only the used glyphs. No browser, remote request or private
 font file is required.
 
-Usage: python scripts/export-resume.py
+Install in an isolated environment using requirements-resume.txt (see README).
+Use --output for a preview without replacing the published PDF. Export metadata
+records dependencies and the licensed CJK font hash; repeated exports in the
+same environment use invariant PDF metadata.
+
+Usage: .cache/resume-venv/bin/python scripts/export-resume.py
 """
 from __future__ import annotations
 
 import argparse
 import hashlib
 import io
+from importlib import metadata, util
 import json
 import re
 import tempfile
 from html import escape
 from pathlib import Path
 from urllib.parse import urljoin
+
+missing = [package for module, package in [
+    ("fitz", "PyMuPDF"), ("lxml", "lxml"), ("pypdf", "pypdf"), ("reportlab", "reportlab"),
+    ("PIL", "Pillow"), ("charset_normalizer", "charset-normalizer"),
+] if util.find_spec(module) is None]
+if missing:
+    raise SystemExit(
+        "PDF export dependencies are missing: " + ", ".join(missing) + "\n"
+        "From the repository root, run:\n"
+        "  python3 -m venv .cache/resume-venv\n"
+        "  .cache/resume-venv/bin/python -m pip install -r requirements-resume.txt\n"
+        "  .cache/resume-venv/bin/python scripts/export-resume.py --help"
+    )
 
 import fitz
 from lxml import html
@@ -49,6 +68,8 @@ FOREST = colors.HexColor("#3c531e")
 LINE = colors.HexColor("#d1d5c8")
 PAPER = colors.HexColor("#f3f3ec")
 ACID = colors.HexColor("#d6fa58")
+FONT_SHA256 = "ee38813ea00c3e32add4268fff7fff9e39417b4913cb13be2415164a47807cc2"
+EXPORT_PACKAGES = ("reportlab", "lxml", "pypdf", "PyMuPDF", "Pillow", "charset-normalizer")
 
 
 def classes(node, name):
@@ -79,7 +100,13 @@ def link_target(anchor):
 
 
 def register_fonts():
-    pdfmetrics.registerFont(TTFont("ResumeCJK", io.BytesIO(fitz.Font("cjk").buffer)))
+    font_bytes = fitz.Font("cjk").buffer
+    if hashlib.sha256(font_bytes).hexdigest() != FONT_SHA256:
+        raise ValueError(
+            "The bundled CJK font differs from the licensed, verified Droid Sans Fallback. "
+            "Install requirements-resume.txt; do not silently substitute font bytes."
+        )
+    pdfmetrics.registerFont(TTFont("ResumeCJK", io.BytesIO(font_bytes)))
     pdfmetrics.registerFontFamily(
         "ResumeCJK", normal="ResumeCJK", bold="ResumeCJK", italic="ResumeCJK", boldItalic="ResumeCJK"
     )
@@ -307,6 +334,7 @@ def main():
     parser.add_argument("--source", type=Path, default=ROOT / "resume.html")
     parser.add_argument("--output", type=Path, default=ROOT / "public/ethan-zhou-resume.pdf")
     args = parser.parse_args()
+    dependencies = {package: metadata.version(package) for package in EXPORT_PACKAGES}
     source_bytes = args.source.read_bytes()
     tree = html.fromstring(source_bytes.decode("utf-8"))
     register_fonts()
@@ -319,14 +347,14 @@ def main():
             str(temporary), pagesize=A4, leftMargin=40, rightMargin=40,
             topMargin=32, bottomMargin=41, title="恩宇 Ethan - 工作与项目简历",
             author="恩宇 Ethan", subject=f"{text(one(tree, 'resume-role'))}；内容来自 resume.html",
-            creator="ReportLab document export from resume.html", pageCompression=1,
+            creator="ReportLab document export from resume.html", pageCompression=1, invariant=1,
         )
         doc.resume_role = text(one(tree, "resume-role"))
         story = first_page(tree, s, width) + [PageBreak()] + second_page(tree, s, width)
         doc.build(story, onFirstPage=page_decoration, onLaterPages=page_decoration)
         report = verify_pdf(temporary)
         args.output.write_bytes(temporary.read_bytes())
-    report.update({"output": str(args.output), "source_sha256": hashlib.sha256(source_bytes).hexdigest(), "renderer": "ReportLab, not browser print", "bytes": args.output.stat().st_size})
+    report.update({"output": str(args.output), "source_sha256": hashlib.sha256(source_bytes).hexdigest(), "renderer": "ReportLab, not browser print", "bytes": args.output.stat().st_size, "font_sha256": FONT_SHA256, "dependencies": dependencies, "invariant_metadata": True})
     manifest = {
         "schema_version": 1,
         "source": args.source.name,
@@ -335,6 +363,9 @@ def main():
         "pages": report["pages"],
         "clickable_links": report["clickable_links"],
         "renderer": report["renderer"],
+        "font_sha256": FONT_SHA256,
+        "dependencies": dependencies,
+        "invariant_metadata": True,
     }
     args.output.with_suffix(".meta.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, ensure_ascii=False, indent=2))
