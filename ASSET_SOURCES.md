@@ -154,3 +154,7 @@
 新增 `public/workbench/rag.js`、documents.json 与 RAG-LICENSE，来源与固定版本见 THIRD_PARTY.md。报告检查器读取既有真实报告文件，不将展示界面描述成实时监控或身份识别结果。
 
 `public/workbench/{rag,relay,video}-workspace.webp` 及 `-preview.webp`：使用 `scripts/capture-workbench.mjs` 在本站运行中的工作台实际截取，原画宽 1480px，预览宽 640px，等比例 WebP 转码。来源与说明见同目录 captures.json；仅显示公开合成资料、原报告与原创视频，不是概念图或第三方产品截图。首页、项目档案与三个案例使用这一组当前界面图，旧证据素材继续保留。
+
+## 2026-11-01 合作路径与公开资料同步
+
+新增合作页复用用户已授权的同一张人物照片、原微信 SVG 模块与既有 Lexend 字体。二维码只通过 CSS 使用深绿色，原 SVG 字节未更改。没有生成新人像、客户标识、证言或商业成绩。简历仍由 resume.html 导出，两页 A4，本轮包含在线简历对应的微信与合作入口。四类合作交付是基于公开实现提出的工作范围，具体项目需另行确认条件与检查方式。

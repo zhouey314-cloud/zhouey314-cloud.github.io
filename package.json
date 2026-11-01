@@ -10,7 +10,8 @@
     "build": "node scripts/build-home.mjs",
     "test:experience": "node tests/experience.mjs",
     "test:threeui": "node tests/threeui.mjs",
-    "test:workbench": "node tests/workbench.mjs"
+    "test:workbench": "node tests/workbench.mjs",
+    "test:collaboration": "node tests/collaboration.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",

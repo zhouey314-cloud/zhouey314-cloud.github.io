@@ -48,7 +48,7 @@
     <link rel="stylesheet" href="/case-study.css" />
     <script src="/script.js" defer></script>
     <title>AI Eval Engineering — Ethan 恩宇</title>
-  <link rel="stylesheet" href="/garden.css" />
+  <link rel="stylesheet" href="/garden.css?v=complete-20261101" />
   <script src="/garden-ui.js" defer></script>
   <link rel="stylesheet" href="/studio.css" />
 </head>
@@ -88,9 +88,10 @@
         <a class="text-link" href="/projects.html">← 项目档案</a>
         <p class="eyebrow">作品 / AI Eval Engineering</p>
         <h1>能运行之外，<br />还需要知道做得怎样。</h1>
-        <p class="case-status">离线契约检查 / 已记录响应与版本比较</p>
+        <p class="case-status">离线规则检查 / 已记录响应与版本比较</p>
+        <p class="case-summary">把已有响应和工具轨迹按规则逐例检查，生成失败原因与版本差异报告。改动提示词或流程后，可以据此追查回归与缺失的证据。</p>
         <p class="case-boundary">
-          已实现结构校验、记录响应的机械规则检查与回归比较；示例仍为合成数据，没有独立人工真值或模型语义质量成绩。
+          工具不运行模型，机械规则不能判断语义正确性。公开示例为合成数据，没有独立人工真值或模型语义质量成绩。
         </p>
       </div><figure class="case-cover"><a href="#result"><span class="case-cover-label">ARTIFACT / 07</span><img src="/public/projects/eval/release-gate.png" alt="AI Eval Engineering 公开项目证据" width="1200" height="900" decoding="async" /><span class="case-cover-open">查看结果与说明 <span aria-hidden="true">↘</span></span></a><figcaption>已有公开材料 · 范围与来源见正文</figcaption></figure></header>
       <nav class="case-toc" aria-label="案例章节"><p class="case-guide-label" aria-hidden="true">IN THIS CASE</p>
@@ -231,6 +232,12 @@
           </div>
         <div class="evidence-callout"><h3>已记录响应与工具轨迹评测</h3><p>在格式校验之外执行字面规则、工具允许/禁止清单和人工门禁检查，输出逐案例失败与 baseline 差异。缺少轨迹或遇到未支持的规则会阻塞；机械规则不代替语义评测。</p><a class="line-link" href="https://github.com/zhouey314-cloud/ai-eval-engineering/blob/88e275946e0c848c76e62e6c3afd3ee2aa90b208/docs/RECORDED_EVAL.md" target="_blank" rel="noopener noreferrer">查看实现、命令与回归范围 ↗</a></div></section>
       </div>
+      <section class="case-cooperate" aria-labelledby="case-cooperate-title">
+        <p class="eyebrow">WORK TOGETHER / 合作入口</p>
+        <h2 id="case-cooperate-title">把改动的判断依据留下来。</h2>
+        <p>带上当前流程、已记录输出与关心的失败情况。先区分软件规则和内容质量，再确定样本、检查项与人工复核方式。</p>
+        <div class="actions"><a class="button primary" href="/collaborate.html?topic=other#brief">整理合作需求 <span aria-hidden="true">↗</span></a><a class="text-link" href="/#contact">直接联系我 <span aria-hidden="true">↗</span></a></div>
+      </section>
       <div class="case-end"><a class="next-case" href="/cases/skills.html"><span>继续翻阅 / NEXT CASE</span><strong>Portable Agent Skills</strong><i aria-hidden="true">↗</i></a>
         <a class="text-link" href="/projects.html">← 回到项目档案</a
         ><a class="text-link" href="/#contact">与我交流 ↗</a>

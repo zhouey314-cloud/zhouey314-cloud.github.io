@@ -104,6 +104,38 @@ try{
     report.interactions.push({engine:engineName,coldImageAnchors:checks,prominentPrimaryAction:true});
     }finally{await inspector.close()}
    });
+   await run(`${engineName}: readable header surfaces and first-screen mobile action`,async()=>{
+    const checks=[];report.interactions.push({engine:engineName,readableHeaderSurfaces:checks});
+    for(const [label,viewport,javaScriptEnabled] of [['desktop',{width:1600,height:1000},true],['mobile',{width:390,height:844},true],['nojs',{width:390,height:844},false]]){
+     const context=await browser.newContext({viewport,javaScriptEnabled,reducedMotion:'reduce'}),page=await context.newPage();
+     page.setDefaultTimeout(15000);page.setDefaultNavigationTimeout(20000);
+     try{
+      for(const fragment of ['engineering','contact']){
+       await page.goto(site.base+'/#'+fragment,{waitUntil:'load'});await page.evaluate(()=>document.fonts.ready);
+       if(javaScriptEnabled)await frames(page);
+       const geometry=await page.evaluate(fragment=>{
+        const header=document.querySelector('.site-header'),brand=header.querySelector('.brand'),controls=header.querySelector('.header-controls');
+        const rect=el=>{const {x,y,width,height,top,right,bottom,left}=el.getBoundingClientRect();return {x,y,width,height,top,right,bottom,left}};
+        const plate=rect(header),contains=el=>{const box=rect(el);return header.contains(el)&&box.left>=plate.left-1&&box.right<=plate.right+1&&box.top>=plate.top-1&&box.bottom<=plate.bottom+1};
+        const background=getComputedStyle(header).backgroundColor,canvas=document.createElement('canvas');canvas.width=canvas.height=1;
+        const ctx=canvas.getContext('2d');ctx.fillStyle=background;ctx.fillRect(0,0,1,1);
+        return {fragment,header:plate,background,backgroundAlpha:ctx.getImageData(0,0,1,1).data[3]/255,brandInPlate:contains(brand),controlsInPlate:contains(controls),heading:rect(document.querySelector('#'+fragment+' h2'))};
+       },fragment);
+       checks.push({label,javaScriptEnabled,...geometry});
+       await page.screenshot({path:resolve(out,`${engineName}-${label}-header-${fragment}.png`)});
+       assert(geometry.backgroundAlpha>=0.9,'the entire fixed header must obscure underlying text, including behind brand and controls');
+       assert(geometry.brandInPlate&&geometry.controlsInPlate,'brand and controls share the same continuous header surface');
+       assert(geometry.heading.top>=geometry.header.bottom+12,`direct section heading is clear of navigation: ${JSON.stringify({engine:engineName,label,fragment,header:geometry.header,heading:geometry.heading})}`);
+      }
+      if(label!=='desktop'){
+       await page.goto(site.base,{waitUntil:'load'});await page.evaluate(()=>document.fonts.ready);if(javaScriptEnabled)await frames(page);
+       const action=await page.locator('.portrait-hero-actions .metal-button').evaluate(el=>{const b=el.getBoundingClientRect(),h=document.querySelector('.site-header').getBoundingClientRect();return {top:b.top,bottom:b.bottom,headerBottom:h.bottom,viewportHeight:innerHeight}});
+       assert(action.top>=action.headerBottom&&action.bottom<=action.viewportHeight,'mobile visitors can see the primary capability action before scrolling');
+       await page.screenshot({path:resolve(out,`${engineName}-${label}-first-action.png`)});checks.push({label,javaScriptEnabled,initialAction:action});
+      }
+     }finally{await context.close()}
+    }
+   });
    await run(`${engineName}: project window and continuous case reading`,async()=>{
     const context=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'reduce'}),page=await context.newPage();
     try{

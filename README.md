@@ -4,6 +4,8 @@
 
 2026-10-27 基于最新 `main@e1929e1` 重做。原生静态 HTML/CSS/JS 整合 ThreeUI Community 的完整 Sylva Living Green 植物场景，沿用原仓库、域名和 GitHub Pages 根目录。保留 16 个公开项目、3 项在推进工作、10 个案例、原有 URL/深链和联系方式。
 
+2026-11-01 完整合作路径：四类能力补充输入、交付与检查方式；新增[合作页](https://zhouey314-cloud.github.io/collaborate.html)，在本地整理项目/岗位沟通提纲，支持复制、邮件草稿和文本下载。首页、十篇案例、档案与简历互相连接，微信与其他联系入口统一核对。手机先展示定位和主按钮，后续章节导航使用完整底板。
+
 2026-10-28 补全前端体验：首屏可手动切换三个代表作品，档案有精选入口，十篇案例有材料封面、固定章节目录、阅读进度和下一案例；简历与 404 也沿用花园视觉。ThreeUI 场景、r149 和原版植物密度保持不变。
 
 首页阅读路径：完整数字花园与人物身份 → 三个真实作品 → GEO 企业参与 → 个人实践与交付方式 → 简历、写作入口与联系。没有虚构照片、文章、客户、生产验收或商业成绩。
@@ -24,6 +26,8 @@ python3 -m http.server 8810 --bind 127.0.0.1
 
 | 修改内容 | 入口 |
 | --- | --- |
+| 四类合作范围、输入与检查方式、统一联系方式 | `content/portfolio.json` 的 `services` / `contactLinks`；修改后 `npm run build`，同时生成首页与合作页 |
+| 合作页结构与本地提纲工具 | `content/collaborate.template.html`、`collaborate.js`、`collaborate.css`；只整理文本，不存储、不上传、不自动发邮件 |
 | 简介、邮箱、三个作品的数据/状态/证据链接、精选文章 | `content/portfolio.json`；修改后 `npm run build` |
 | 四类可参与问题、具体交付、技术与证据矩阵 | `content/portfolio.json` 的 `services` / `engineering`；项目取舍和演示范围也在该文件 |
 | 能力、工程证据、GEO 贡献与联系说明的样式 | `capabilities.css`；首页与项目档案引用，沿用现有花园视觉 |
@@ -35,7 +39,7 @@ python3 -m http.server 8810 --bind 127.0.0.1
 | 苔藓、根拱、蕨类、花朵、花粉、蝴蝶与光照 | `public/scenes/sylva/scene.js`；来源和改动见 `THIRD_PARTY.md` |
 | 场景隔离文档与匹配运行库 | `public/scenes/sylva/index.html`、`public/vendor/threejs/r149/` |
 | 项目素材 | `public/projects/`；来源、许可与事实边界同步 `ASSET_SOURCES.md` |
-| 网页简历及 PDF | `resume.html`；修改内容后 `python3 scripts/export-resume.py`，逐页复核导出 |
+| 网页简历及 PDF | `resume.html`；修改内容后 `python3 scripts/export-resume.py`，逐页复核导出；同时生成的 `.meta.json` 让检查识别网页/PDF 未同步 |
 | 分享图 | 先更新实际场景静态渲染，再 `node scripts/export-social.mjs` |
 
 `writing` 当前为空，页面只展示真实 X 主页与 Thought-to-X 入口。新增文章需要核实 `{title,takeaway,date,url}`；不要用占位标题填满版面。
@@ -95,6 +99,7 @@ THREEUI_ENGINE=webkit SYLVA_REQUIRE_WEBGL=1 npm run test:threeui
 - `archive-search.js`、`public/vendor/fuse/`：项目标题与公开介绍的本地容错检索，跟 RAG 引擎分开。
 - `studio.css`：整站最后一层排版；`scripts/prepare-sylva.py` 已同步 DPR 与按时间插值，重新生成场景可逐字节复现。
 - `npm test` 包含 36 条原有合成回归；`npm run test:workbench` 检查输入、导出、上传失败、键盘、媒体、搜索、无 JS、失败回退和各标签无障碍。CI 同步运行。
+- `npm run test:collaboration` 检查合作提纲的实际用户路径、原生验证、编码、复制、下载、长邮件处理、无 JS 与零上传/零持久化。
 
 新工作台不启动网关、不上传文件、不接模型 API。本地文件只留当前页面内存，刷新或重置清除；用户主动导出时生成下载。其他开源项目及服务端未被此次网站改造重写，也未新增生产验收声明。
 

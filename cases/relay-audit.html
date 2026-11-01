@@ -37,7 +37,7 @@
     <link rel="stylesheet" href="/case-study.css" />
     <script src="/script.js" defer></script>
     <title>RelayAudit / AgentGuard — Ethan 恩宇</title>
-  <link rel="stylesheet" href="/garden.css" />
+  <link rel="stylesheet" href="/garden.css?v=complete-20261101" />
   <script src="/garden-ui.js" defer></script>
   <link rel="stylesheet" href="/studio.css" />
 </head>
@@ -77,8 +77,9 @@
         <p class="eyebrow">作品 / RelayAudit / AgentGuard</p>
         <h1>让 Agent 中转链路里的异常，有迹可循。</h1>
         <a class="studio-case-entry" href="/workbench.html#relay">打开交互工作台 <span aria-hidden="true">↗</span></a><p class="case-status">开源本地网关 / HTTP 与 SSE 协议检查</p>
+        <p class="case-summary">一个用于观察 AI API 请求的本地网关。分开处理请求转发、协议记录和异常报告，让超时、中断与过载有线索可查，也能检查连接恢复。</p>
         <p class="case-boundary">
-          目前不具备经过校准的真实模型身份识别能力；所有模型身份状态保持未验证。
+          本站展示合成报告，实际转发需要运行本地工具。目前不具备经过校准的真实模型身份识别能力；所有模型身份状态保持未验证。
         </p>
       </div><figure class="case-cover"><a href="#result"><span class="case-cover-label">ARTIFACT / 02</span><img src="/public/workbench/relay-workspace.webp" alt="本站报告检查器的真实浏览器截图，字段来自 2026-10-23 合成 fixture 报告；不是实时网关监控，也不能确认模型身份。" width="1480" height="620" decoding="async" /><span class="case-cover-open">查看结果与说明 <span aria-hidden="true">↘</span></span></a><figcaption>已有公开材料 · 范围与来源见正文</figcaption></figure></header>
       <nav class="case-toc" aria-label="案例章节"><p class="case-guide-label" aria-hidden="true">IN THIS CASE</p>
@@ -194,6 +195,12 @@ python evals/run_acceptance.py --out acceptance-c8 --requests 200 --concurrency 
           </div>
         <div class="evidence-callout"><h3>网关运行：容量、503 与恢复</h3><p>对请求读取与完整 SSE 连接设置在途容量，超限明确返回 503；用挂起流、上游请求计数与恢复回归检查已有连接和故障隔离。</p><a class="line-link" href="https://github.com/zhouey314-cloud/relay-audit/blob/f8d7376d7593925cb420fd670deef3b0d33f5a19/docs/CAPACITY.md" target="_blank" rel="noopener noreferrer">查看实现、命令与回归范围 ↗</a></div></section>
       </div>
+      <section class="case-cooperate" aria-labelledby="case-cooperate-title">
+        <p class="eyebrow">WORK TOGETHER / 合作入口</p>
+        <h2 id="case-cooperate-title">把接口故障变成可排查的问题。</h2>
+        <p>说明接口类型、失败现象与可复现步骤，准备脱敏请求样例或日志。先明确观察范围，再讨论接入与恢复方式。</p>
+        <div class="actions"><a class="button primary" href="/collaborate.html?topic=api#brief">整理合作需求 <span aria-hidden="true">↗</span></a><a class="text-link" href="/#contact">直接联系我 <span aria-hidden="true">↗</span></a></div>
+      </section>
     </main>
     <footer class="site-footer wrap">
       <a class="brand" href="/"
