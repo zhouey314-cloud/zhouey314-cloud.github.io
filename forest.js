@@ -27,18 +27,23 @@
     send('control', { motion: false, visible: false });
     caption.textContent = '静态花园 · 作品和联系入口仍可浏览。';
     status.textContent = '已显示静态花园。可以重新载入三维场景。';
-    retry.hidden = false; pulse.disabled = true;
+    retry.hidden = false; retry.disabled = !motion(); pulse.disabled = true;
     iframe?.remove(); iframe = null; rendered = false; host.removeAttribute('data-rendered');
   }
   function deadline() {
     clearTimeout(timer);
-    if (iframe && !rendered && visible() && motion()) timer = setTimeout(() => {
+    const frame = iframe;
+    if (frame && !rendered && visible() && motion()) timer = setTimeout(() => {
+      if (iframe !== frame) return;
       fail('ready-timeout', 'No successful WebGL handshake within 45 seconds');
       iframe?.remove(); iframe = null;
     }, 45000);
   }
   function control() {
-    if (['error', 'context-lost'].includes(diagnostics.state)) return;
+    if (['error', 'context-lost'].includes(diagnostics.state)) {
+      retry.disabled = !motion();
+      return;
+    }
     if (!iframe) {
       if (motion() && visible() && !navigator.connection?.saveData) start();
       else { state(reduced.matches ? 'reduced-motion' : 'static'); pulse.disabled = true; caption.textContent = '静静看，也是一座花园。'; }
@@ -52,14 +57,22 @@
     deadline();
   }
   async function start(force = false) {
-    if (iframe || pending || (!force && (!motion() || !visible()))) return;
+    if (iframe || pending || !motion() || !visible() || (!force && navigator.connection?.saveData)) return;
     pending = true; const request = ++generation; state('loading');
-    // Let real text, fonts and the small forest poster paint before shader compilation.
-    await Promise.allSettled([document.fonts.ready, host.querySelector('img').decode()]);
+    diagnostics.requestedAt = performance.now();
+    // Give the DOM/poster a brief paint opportunity. A stalled font/image is not
+    // a prerequisite for WebGL and must never bypass the scene's failure timer.
+    let paintTimer;
+    await Promise.race([
+      Promise.allSettled([document.fonts.ready, host.querySelector('img').decode()]),
+      new Promise(done => { paintTimer = setTimeout(done, 500); }),
+    ]);
+    clearTimeout(paintTimer);
     await new Promise(done => requestAnimationFrame(() => requestAnimationFrame(() => setTimeout(done, 120))));
     if (request !== generation) return;
     pending = false;
-    if (!force && (!motion() || !visible())) { control(); return; }
+    if (!motion() || !visible()) { control(); return; }
+    diagnostics.paintWaitMs = performance.now() - diagnostics.requestedAt;
     token = crypto.randomUUID?.() || String(Math.random()).slice(2) + Date.now();
     iframe = document.createElement('iframe');
     iframe.title = 'Ethan 的数字花园：苔藓根拱、蕨类、花朵与花粉';
@@ -67,9 +80,11 @@
     iframe.setAttribute('tabindex', '-1');
     iframe.setAttribute('aria-hidden', 'true');
     iframe.src = '/public/scenes/sylva/index.html#' + token;
-    iframe.addEventListener('load', () => send('control', { motion: motion(), visible: visible() }));
-    iframe.addEventListener('error', () => fail('iframe-load', 'Scene document failed to load'));
+    const frame = iframe;
+    frame.addEventListener('load', () => { if (iframe === frame) send('control', { motion: motion(), visible: visible() }); });
+    frame.addEventListener('error', () => { if (iframe === frame) fail('iframe-load', 'Scene document failed to load'); });
     rendered = false; retry.hidden = true; diagnostics.mounts++;
+    retry.disabled = false;
     host.removeAttribute('data-rendered'); state('loading'); mount.replaceChildren(iframe); deadline();
   }
   window.addEventListener('message', event => {
@@ -101,6 +116,7 @@
   reduced.addEventListener('change', control);
   narrow.addEventListener('change', () => {
     // Rebuild only when crossing the source's quality boundary. Removed documents own no surviving rAF.
+    clearTimeout(timer);
     generation++; pending = false; iframe?.remove(); iframe = null; rendered = false;
     host.removeAttribute('data-rendered'); control();
   });

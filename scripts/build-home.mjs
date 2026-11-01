@@ -1,8 +1,31 @@
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const data = JSON.parse(readFileSync(root + 'content/portfolio.json', 'utf8'));
 const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const checking = process.argv.includes('--check');
+function outputFile(path, content) {
+  if (checking) {
+    if (readFileSync(root + path, 'utf8') !== content) throw new Error(path + ' is stale. Run npm run build');
+  } else writeFileSync(root + path, content);
+}
+// Preserve authored CSS order and independent, native JS closures. Fewer initial
+// requests remove the parser-blocking navigation round trip without a framework.
+const styles = ['tokens.css', 'style.css', 'garden.css', 'home.css', 'studio.css', 'capabilities.css', 'portrait.css'];
+const interactions = ['script.js', 'home.js', 'garden-ui.js'];
+const homeCss = styles.map(path => {
+  const css = readFileSync(root + path, 'utf8');
+  if (/@import\b|url\(\s*['"]?(?!\/|data:|https?:|#)[^'"\s)]/i.test(css)) throw new Error(path + ': bundled CSS requires root-relative URLs and no @import');
+  return `/* Source: /${path} */\n${css}\n`;
+}).join('\n');
+const homeJs = interactions.map(path => `/* Source: /${path} */\n${readFileSync(root + path, 'utf8')}\n;\n`).join('\n');
+mkdirSync(root + 'public/site', {recursive: true});
+outputFile('public/site/home.css', homeCss);
+outputFile('public/site/home.js', homeJs);
+const version = content => createHash('sha256').update(content).digest('hex').slice(0, 12);
+const navigation = readFileSync(root + 'navigation.js', 'utf8').replace(/<\/script/gi, '<\\/script');
+const homeAssets = `<script data-navigation>\n${navigation}</script>\n  <link rel="stylesheet" href="/public/site/home.css?v=${version(homeCss)}" />\n  <script src="/public/site/home.js?v=${version(homeJs)}" defer></script>\n  <script src="/forest.js?v=${version(readFileSync(root + 'forest.js', 'utf8'))}" defer></script>`;
 const preview = p => `<a class="project-art" href="${escape(p.image)}" data-preview="${escape(p.image)}" data-title="${escape(p.name)}" data-caption="${escape(p.caption)}" data-case="${escape(p.case)}" aria-label="放大项目证据：${escape(p.name)}"><img src="${escape(p.preview || p.image)}" srcset="${escape(p.preview || p.image)} 640w, ${escape(p.image)} ${p.width}w" sizes="(max-width: 600px) calc(100vw - 74px), (max-width: 900px) calc(100vw - 100px), 680px" alt="${escape(p.caption)}" width="${p.width}" height="${p.height}" loading="lazy" decoding="async" /><span class="art-action">放大项目证据 ⤢</span></a>`;
 const video = `<div class="project-art"><video class="garden-video" controls playsinline preload="none" poster="/public/projects/video/original-54s-poster.jpg" width="1280" height="720" aria-label="54秒原创程序动画，带中文字幕"><source src="/public/projects/video/original-54s.mp4" type="video/mp4" /><track kind="captions" src="/public/projects/video/original-54s.vtt" srclang="zh" label="可选中文字幕（原片已烧录）" /><a href="/public/projects/video/original-54s.mp4">下载54秒原创程序动画</a></video></div>`;
 const boundaries = { rag: '合成资料上的词法检索与抽取式回答，未接入生成模型；范围选择不是生产身份鉴权。本地实现另见案例。', relay: '公开 fixture 是合成演示，不能证明上游真实模型身份。', video: '54 秒样片是原创程序动画，不是真人口播、数字人效果或客户商业成片。' };
@@ -27,11 +50,9 @@ const socialLinks = data.contactLinks.filter(c => !['email','wechat'].includes(c
 const contactLinks = data.contactLinks.filter(c => c.id !== 'email').map(external).join('');
 const cooperationScopes = data.services.map(s => `<article class="scope-item" id="scope-${s.topic}"><p class="garden-kicker">${escape(s.number)} / ${escape(s.field)}</p><h3>${escape(s.title)}</h3><dl><dt>从这里开始</dt><dd>${escape(s.startingPoint)}</dd><dt>首轮产物</dt><dd>${escape(s.deliverable)}</dd><dt>怎样检查</dt><dd>${escape(s.acceptance)}</dd></dl><a href="${escape(s.href)}">查看对应作品与证据 ↗</a><a href="/collaborate.html?topic=${s.topic}#brief">按这个方向聊 ↘</a></article>`).join('\n');
 const cooperationOptions = data.services.map(s => `<option value="${s.topic}">${escape(s.field)}</option>`).join('');
-const replacements = { name: escape(data.name), intro: escape(data.intro), email: escape(data.email), services, engineering, projects, writing, heroProjects, wechatQr, socialLinks, contactLinks, cooperationScopes, cooperationOptions, wechatHref: escape(contactById.wechat.href) };
+const replacements = { name: escape(data.name), intro: escape(data.intro), email: escape(data.email), services, engineering, projects, writing, heroProjects, wechatQr, socialLinks, contactLinks, cooperationScopes, cooperationOptions, homeAssets, wechatHref: escape(contactById.wechat.href) };
 for (const [source, target] of [['content/home.template.html', 'index.html'], ['content/collaborate.template.html', 'collaborate.html']]) {
   const template = readFileSync(root + source, 'utf8');
   const output = template.replace(/\{\{(\w+)\}\}/g, (_, key) => { if (!(key in replacements)) throw new Error('Unknown content key: ' + key); return replacements[key]; });
-  if (process.argv.includes('--check')) {
-    if (readFileSync(root + target, 'utf8') !== output) throw new Error(target + ' is stale. Run npm run build');
-  } else writeFileSync(root + target, output);
+  outputFile(target, output);
 }

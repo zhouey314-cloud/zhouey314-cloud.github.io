@@ -15,14 +15,45 @@
   <meta name="twitter:image" content="https://zhouey314-cloud.github.io/public/social-preview.png" />
   <link rel="canonical" href="https://zhouey314-cloud.github.io/" /><link rel="icon" href="/public/favicon.svg" type="image/svg+xml" /><link rel="manifest" href="/site.webmanifest" />
   <link rel="preload" href="/public/fonts/lexend-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <script src="/navigation.js"></script>
-  <link rel="stylesheet" href="/tokens.css" /><link rel="stylesheet" href="/style.css" /><link rel="stylesheet" href="/garden.css?v=complete-20261101" /><link rel="stylesheet" href="/home.css?v=contact-20261030" />
-  <script src="/script.js" defer></script><script src="/home.js?v=complete-20261101" defer></script><script src="/forest.js" defer></script>
+  <script data-navigation>
+// Runs before first paint so the mobile header never changes height on hydration.
+// The menu works independently even when the enhancement script is unavailable.
+(() => {
+  const close = (focus = false) => {
+    const header = document.querySelector(".site-header");
+    const button = document.querySelector(".menu-toggle");
+    header?.classList.remove("menu-open");
+    button?.setAttribute("aria-expanded", "false");
+    if (button) button.lastElementChild.textContent = "＋";
+    if (focus) button?.focus();
+  };
+  document.addEventListener("click", (event) => {
+    const button = event.target.closest(".menu-toggle");
+    if (button) {
+      const open = button.getAttribute("aria-expanded") !== "true";
+      document
+        .querySelector(".site-header")
+        ?.classList.toggle("menu-open", open);
+      button.setAttribute("aria-expanded", String(open));
+      button.lastElementChild.textContent = open ? "−" : "＋";
+    } else if (event.target.closest(".site-nav a")) close();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (
+      event.key === "Escape" &&
+      document.querySelector(".site-header.menu-open")
+    )
+      close(true);
+  });
+  matchMedia("(min-width: 761px)").addEventListener("change", () => close());
+  window.addEventListener("pageshow", () => close());
+  document.documentElement.classList.add("nav-ready");
+})();
+</script>
+  <link rel="stylesheet" href="/public/site/home.css?v=377ba781475c" />
+  <script src="/public/site/home.js?v=b731ee50516c" defer></script>
+  <script src="/forest.js?v=ad0059a7343f" defer></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"恩宇","alternateName":"Ethan Zhou","url":"https://zhouey314-cloud.github.io/","image":"https://zhouey314-cloud.github.io/public/portrait/enyu-speaking-960.webp","description":"AI应用与GEO实践者，自2026年6月参与企业实践，专注知识检索、AI接口集成与内容工作流，向FDE方向发展。","homeLocation":{"@type":"Place","name":"郑州"},"sameAs":["https://github.com/zhouey314-cloud","https://x.com/UPing123zzz","https://t.me/ethanyu520"]}</script>
-  <script src="/garden-ui.js" defer></script>
-  <link rel="stylesheet" href="/studio.css" />
-  <link rel="stylesheet" href="/capabilities.css?v=complete-20261101" />
-  <link rel="stylesheet" href="/portrait.css?v=complete-20261101" />
 </head>
 <body class="portfolio-home garden-home">
   <a class="skip-link" href="#main">跳到主要内容</a><div class="reading-progress" aria-hidden="true"><i data-reading-progress></i></div>

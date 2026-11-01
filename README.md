@@ -18,7 +18,9 @@ npm run build
 python3 -m http.server 8810 --bind 127.0.0.1
 ```
 
-打开 http://127.0.0.1:8810/ 。无需模型、服务端或账号。`npm run build` 由本地 JSON 与模板生成可直接静态托管的 `index.html`。没有 Vite 的 `publicDir` 重映射，现有 `/public/...` 资源路径继续有效。
+打开 http://127.0.0.1:8810/ 。无需模型、服务端或账号。`npm run build` 由本地 JSON 与模板生成可直接静态托管的首页与合作页。没有 Vite 的 `publicDir` 重映射，现有 `/public/...` 资源路径继续有效。
+
+首页的原生 CSS 按原级联顺序合并为 `public/site/home.css`，界面脚本合并为 `public/site/home.js`；小型导航脚本内联，森林仍独立加载。生成的资源引用带内容哈希版本参数，减少首屏请求和更新时的缓存混用；没有新增前端依赖。维护时修改原来的样式/脚本文件并重新构建，不直接编辑这两个生成物；`npm test` 会识别未同步的 bundle。
 
 ## 内容维护
 
@@ -39,10 +41,26 @@ python3 -m http.server 8810 --bind 127.0.0.1
 | 苔藓、根拱、蕨类、花朵、花粉、蝴蝶与光照 | `public/scenes/sylva/scene.js`；来源和改动见 `THIRD_PARTY.md` |
 | 场景隔离文档与匹配运行库 | `public/scenes/sylva/index.html`、`public/vendor/threejs/r149/` |
 | 项目素材 | `public/projects/`；来源、许可与事实边界同步 `ASSET_SOURCES.md` |
-| 网页简历及 PDF | `resume.html`；修改内容后 `python3 scripts/export-resume.py`，逐页复核导出；同时生成的 `.meta.json` 让检查识别网页/PDF 未同步 |
+| 网页简历及 PDF | `resume.html`；按下方隔离环境步骤导出并逐页复核；同时生成的 `.meta.json` 让检查识别网页/PDF 未同步 |
 | 分享图 | 先更新实际场景静态渲染，再 `node scripts/export-social.mjs` |
 
 `writing` 当前为空，页面只展示真实 X 主页与 Thought-to-X 入口。新增文章需要核实 `{title,takeaway,date,url}`；不要用占位标题填满版面。
+
+### 简历 PDF 的隔离导出
+
+使用 Python 3.10+，在仓库根目录安装固定的维护依赖。`.cache/` 已被 Git 忽略，不修改系统 Python：
+
+```sh
+python3 -m venv .cache/resume-venv
+.cache/resume-venv/bin/python -m pip install -r requirements-resume.txt
+# 先导出预览，保留网站已发布的 PDF 与 manifest。
+.cache/resume-venv/bin/python scripts/export-resume.py --output .cache/resume-preview/resume.pdf
+.cache/resume-venv/bin/python -m unittest discover -s tests -p test_resume_export.py -v
+```
+
+逐页检查预览的两页排版、中文和链接。确认内容后，去掉 `--output` 运行同一导出器，更新 `public/ethan-zhou-resume.pdf` 及相邻 `.meta.json`，再运行 `npm test`。自定义 HTML 可用 `--source /path/to/resume.html`，但必须保留导出器读取的简历结构。
+
+导出器沿用 ReportLab 排版与已声明 Apache 2.0 的 Droid Sans Fallback，固定字体字节并拒绝静默替换；manifest 记录内容/PDF/字体哈希及依赖版本。同环境重复导出使用固定元数据；跨环境仍应核对文本、链接和实际页面，不能只看哈希。这里是维护依赖，没有向正式网页增加 Python 服务或第三方运行库。
 
 2026-10-30 加入用户本人提供并授权用于网站的照片：`public/portrait/enyu-speaking-{384,960,1254}.webp`。首页以大幅半身照作为人物主视觉，桌面约 600px 宽、手机接近整屏宽，点击可前往个人介绍；三个作品保留为较小的交互索引。“关于我”使用响应式大图。浏览器按显示尺寸与 DPR 选择一个版本；只调整尺寸与格式，不生成或修饰人物。替换照片时同步首页模板的图片描述、Person `image`、`ASSET_SOURCES.md`，再运行构建；排版在 `portrait.css`。
 
@@ -52,7 +70,7 @@ python3 -m http.server 8810 --bind 127.0.0.1
 
 ThreeUI Community **1.2.0 / `68802d5428071ada5c20db8094b1649e6bb770ed`**；Three.js **r149**。几何、Shader、材质、光照、植物密度和质量分档来自完整 Sylva Hero；没有沿用 PR #7 的三张曲面截图。新增的滚动镜头偏移和生命周期属于本站定制，不是公开 React 组件的 props。
 
-1600×880 的宽场景保留桌面蝴蝶。原版宽度 ≤900px 或面积 <620000px² 的 small 档保留植物并省略蝴蝶。原版 DPR 上限为桌面 2、small 1.6；本站 2026-10-28 将桌面上限调为 1.5，small 仍为 1.6，几何密度不变。字体与静态森林先绘制，随后再启动 Shader 编译。
+1600×880 的宽场景保留桌面蝴蝶。原版宽度 ≤900px 或面积 <620000px² 的 small 档保留植物并省略蝴蝶。原版 DPR 上限为桌面 2、small 1.6；本站 2026-10-28 将桌面上限调为 1.5，small 仍为 1.6，几何密度不变。先给文字与静态图留绘制机会，资源等待最长500ms；挂起的字体不会无限阻止场景初始化。
 
 场景位于 `sandbox="allow-scripts"` 的 opaque iframe。父页校验对应 `contentWindow`、`origin` 与本次 token；只有第二次成功实际绘制、非丢失上下文及有效 draw call 才能发出 ready。编译、资源、上下文与脚本错误单独报告，不根据 `iframe.onload` 宣称 WebGL 成功。
 
@@ -73,14 +91,18 @@ npm test
 npm run install:browsers
 npm run test:browser
 npm run test:experience
+npm run test:loading
+npm run test:crm
 npm run test:threeui
 THREEUI_ENGINE=webkit SYLVA_REQUIRE_WEBGL=1 npm run test:threeui
 ```
 
-- 静态：构建一致性、14 页、10 案例、16 项公开档案、3 项在推进工作、原有 94 个案例片段、metadata、媒体与本地链接。
-- 浏览器：Chromium/WebKit × 14 页 × 桌面/手机 = 56 组合；axe、资源、键盘、菜单与真实视频播放/定位/字幕。
-- 体验：14 布局/降级配置与 14 组交互，含 1600/768/390/320px、200% 等效 CSS 重排、无 JS、脚本失败、对话框、复制失败、hash/历史、深链、实际 PDF 下载，以及作品窗口键盘/鼠标切换、案例章节跟随与继续阅读。
+- 静态：构建一致性、16 页、10 案例、16 项公开档案、3 项在推进工作、原有 94 个案例片段、metadata、媒体与本地链接。
+- 浏览器：Chromium/WebKit × 16 页 × 桌面/手机 = 64 页面组合；axe、资源、键盘、菜单与真实视频播放/定位/字幕。
+- 体验：14 布局/降级配置与 18 组交互，含 1600/768/390/320px、200% 等效 CSS 重排、无 JS、脚本失败、对话框、复制失败、hash/历史、深链、实际 PDF 下载，以及作品窗口键盘/鼠标切换、案例章节跟随与继续阅读。
 - 场景：独立观察 GL draw calls、r149、完整几何、指针、滚动镜头、单一 rAF、暂停/恢复、真实 context loss、Shader 编译失败、404、异常、沙箱消息校验与手机质量档。Chromium 明确使用软件 WebGL；其他没有 GL 的环境只报告 fallback 验收。`SYLVA_REQUIRE_WEBGL=1` 禁止把 fallback 当实际渲染通过。
+- 加载：两浏览器六组实际资源故障路径，挂起字体/海报仍能初始化与诊断、动效关闭时重试不创建renderer、界面脚本失效仍保留原生菜单和联系。
+- CRM：两浏览器十组真实输入、阶段/图表联动、校验、备注、筛选导出、键盘与无脚本回退。六条虚构商机仅在本次访问内存中修改，没有模型、后端或客户数据；兼容URL为 `/demos/ai-crm/`。
 
 `BASE_URL=https://zhouey314-cloud.github.io` 可以直接验收实际网站。各脚本支持 `BROWSER_REPORT_DIR` / `EXPERIENCE_REPORT_DIR` / `THREEUI_REPORT_DIR`。结果默认在忽略的 `test-results/`；独立的视觉、录屏和发布材料保存于交付工作区，实际 CI 与部署结论以对应提交为准。
 

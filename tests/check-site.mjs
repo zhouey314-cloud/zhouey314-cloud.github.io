@@ -83,7 +83,8 @@ for (const page of pages) {
   assert(new Set(ids).size === ids.length, `${page}: duplicate ids`);
   assert((html.match(/<h1\b/g) || []).length === 1, `${page}: expected one h1`);
   assert(
-    html.includes('href="/tokens.css"') && html.includes('href="/style.css"'),
+    (html.includes('href="/tokens.css"') && html.includes('href="/style.css"')) ||
+      (page === 'index.html' && html.includes('href="/public/site/home.css?v=')),
     `${page}: missing shared styles`,
   );
   assert(
