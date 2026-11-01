@@ -56,6 +56,10 @@ function targetFor(href, page) {
 }
 for (const page of pages) {
   const html = readFileSync(join(root, page), "utf8");
+  assert(
+    !/中原工学院|广播电视编导|编导背景|教育背景|本科在读/.test(html),
+    `${page}: public presentation must focus on practice, without school or major`,
+  );
   assert(html.includes('lang="zh-CN"'), `${page}: missing page language`);
   assert(
     html.includes("<title>") && html.includes('name="description"'),
@@ -143,8 +147,16 @@ assert(
   "home: three real projects plus forest fallback must exist before JavaScript",
 );
 assert(
-  home.includes("广播电视编导专业在读") && home.includes("恩宇") && home.includes("向 FDE 方向发展"),
+  home.includes("自 2026 年 6 月参与企业 GEO 与 AI 应用实践") && home.includes("恩宇") && home.includes("向 FDE 方向发展"),
   "home: preserve verified identity and directional FDE positioning",
+);
+assert(
+  home.includes("需求拆解 / 实现与验证") && home.includes("代码、测试与运行说明"),
+  "home: describe concrete delivery practices in place of academic background",
+);
+assert(
+  !/中原工学院|广播电视编导|编导生|从编导/.test(readFileSync(join(root, "public/og-image.svg"), "utf8")),
+  "sharing image: omit school and major from visible text and accessible description",
 );
 assert(
   (hub.match(/class="active-build"/g) || []).length === 3,

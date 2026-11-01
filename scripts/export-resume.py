@@ -226,16 +226,16 @@ def second_page(tree, s, width):
     technology = [section_heading("04", "项目中使用", s["section"]), Spacer(1, 10)]
     for item in one(details, "resume-tech-list").xpath("./div"):
         technology.extend([p(text(item.xpath("./dt")[0]), s["project"]), p(text(item.xpath("./dd")[0]), s["detail"]), Spacer(1, 9)])
-    education = one(details, "resume-education")
-    education_content = [
-        section_heading("05", "教育与视角", s["section"]), Spacer(1, 10),
-        p(text(education.xpath("./h3")[0]), s["project"]),
+    approach = one(details, "resume-approach")
+    approach_content = [
+        section_heading("05", "实践方式", s["section"]), Spacer(1, 10),
+        p(text(approach.xpath("./h3")[0]), s["project"]),
     ]
-    for item in education.xpath("./p"):
-        education_content.extend([p(text(item), s["detail"]), Spacer(1, 8)])
-    education_content.append(linked(education.xpath("./a")[0], s["detail-link"]))
+    for item in approach.xpath("./p"):
+        approach_content.extend([p(text(item), s["detail"]), Spacer(1, 8)])
+    approach_content.append(linked(approach.xpath("./a")[0], s["detail-link"]))
     result.extend([
-        table([[technology, "", education_content]], [(width - 28) / 2, 28, (width - 28) / 2]),
+        table([[technology, "", approach_content]], [(width - 28) / 2, 28, (width - 28) / 2]),
         Spacer(1, 9), HRFlowable(width="100%", thickness=.6, color=LINE), Spacer(1, 14),
     ])
 
@@ -272,9 +272,11 @@ def verify_pdf(path):
     if len(reader.pages) != 2:
         raise ValueError(f"Expected exactly two A4 pages; got {len(reader.pages)}")
     full_text = "\n".join(page.extract_text() or "" for page in reader.pages)
-    for phrase in ["恩宇", "企业实践", "个人开源项目", "广播电视编导", "Enterprise RAG", "RelayAudit", "AI Video Workflow Engine", "zhouey314@gmail.com"]:
+    for phrase in ["恩宇", "企业实践", "个人开源项目", "实践方式", "Enterprise RAG", "RelayAudit", "AI Video Workflow Engine", "zhouey314@gmail.com"]:
         if phrase not in full_text:
             raise ValueError(f"Missing extractable PDF content: {phrase}")
+    if re.search(r"中原工学院|广播电视编导|编导背景|本科在读", full_text):
+        raise ValueError("Public resume must not contain school or major information")
     links = []
     embedded_fonts = set()
     for page in reader.pages:
