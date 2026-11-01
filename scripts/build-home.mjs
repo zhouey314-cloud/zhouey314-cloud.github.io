@@ -56,3 +56,13 @@ for (const [source, target] of [['content/home.template.html', 'index.html'], ['
   const output = template.replace(/\{\{(\w+)\}\}/g, (_, key) => { if (!(key in replacements)) throw new Error('Unknown content key: ' + key); return replacements[key]; });
   outputFile(target, output);
 }
+// Existing visitors may still cache the old CRM runtime. New markup must never
+// execute that old DOM contract; preserve the legacy URLs with versioned refs.
+const crmPath = 'demos/ai-crm/index.html';
+let crm = readFileSync(root + crmPath, 'utf8');
+for (const path of ['demos/ai-crm/style.css', 'demos/ai-crm/app.js']) {
+  const reference = new RegExp(`((?:href|src)="/${path.replaceAll('.', '\\.').replaceAll('/', '\\/')})(?:\\?v=[^"\\s]*)?"`, 'g');
+  if (!reference.test(crm)) throw new Error(crmPath + ': missing asset reference ' + path);
+  crm = crm.replace(reference, `$1?v=${version(readFileSync(root + path, 'utf8'))}"`);
+}
+outputFile(crmPath, crm);
