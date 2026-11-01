@@ -519,3 +519,5 @@ html[data-motion="off"] .archive-feature img, html[data-motion="off"] .case-cove
 .portfolio-home .site-header.is-outside-garden .site-nav,html:not(.nav-ready) .portfolio-home .site-header .site-nav {background:transparent;backdrop-filter:none;border-color:transparent;box-shadow:none}
 .portfolio-home .site-header.is-outside-garden .site-nav a:hover,.portfolio-home .site-header.is-outside-garden .site-nav a[aria-current] {background:#83976a19}
 @media(max-width:760px){.portfolio-home .site-header.is-outside-garden,html:not(.nav-ready) .portfolio-home .site-header{padding:7px 10px;border-radius:15px;min-height:58px}.portfolio-home .site-header.is-outside-garden .site-nav{padding:7px 0 0;margin-top:4px;border-top:1px solid #c6cfb9}}
+/* Without JavaScript the expanded menu has variable height; it scrolls with the page. */
+html:not(.nav-ready) .portfolio-home .site-header {position:absolute}
