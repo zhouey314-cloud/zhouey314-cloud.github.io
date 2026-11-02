@@ -69,6 +69,13 @@
 - 可复现生成器、源资产清单、机器QA与独立批准记录：
   [原动画源码与许可](https://github.com/zhouey314-cloud/ai-video-workflow-engine/tree/main/examples/original_54s)。
 
+### 2026-11-02 网页渐进播放封装
+
+- 保留以上原始批准文件及其 SHA256 作为来源记录。网站同一 URL 的 MP4 仅重新封装为 faststart，`moov` 元数据移到 `mdat` 之前；没有重编码、重渲染、换音轨或生成新内容。
+- 命令：`ffmpeg -i original-control.mp4 -map 0 -c copy -movflags +faststart faststart-control.mp4`。
+- 当前网页封装 SHA256：`cdef61aa338dc0177c2cedacdc101d35da1062702278bb7d533faaa7304c52ed`，4,224,799 bytes。新封装不是原先绑定批准记录的精确文件；其 3,829 个音视频 packet 的数据哈希、PTS/DTS、时长及大小与原文件逐项相同，仍为同一 54 秒 H.264/AAC 样片。
+- 本地控制实验确认可更早获得 metadata；`currentTime` 已更新不代表已完成解码或播放，不将结果当作正式网络或手机性能承诺。静态回归检查封装顺序，浏览器回归另验真实播放和跳转。
+
 未新增或改写既有GEO参与材料；不把参与工作归为个人独立完成的系统。
 
 

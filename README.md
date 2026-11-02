@@ -15,10 +15,10 @@
 ```sh
 npm ci
 npm run build
-python3 -m http.server 8810 --bind 127.0.0.1
+npm run preview
 ```
 
-打开 http://127.0.0.1:8810/ 。无需模型、服务端或账号。`npm run build` 由本地 JSON 与模板生成可直接静态托管的首页与合作页。没有 Vite 的 `publicDir` 重映射，现有 `/public/...` 资源路径继续有效。
+打开终端输出的本地地址，按 Ctrl+C 停止。预览仅监听 `127.0.0.1`，复用浏览器回归测试的 HTTP Range 与媒体类型处理，支持视频分段播放和定位。无需模型、业务服务端或账号。`npm run build` 由本地 JSON 与模板生成可直接静态托管的首页与合作页。没有 Vite 的 `publicDir` 重映射，现有 `/public/...` 资源路径继续有效。
 
 首页的原生 CSS 按原级联顺序合并为 `public/site/home.css`，界面脚本合并为 `public/site/home.js`；小型导航脚本内联，森林仍独立加载。首页资源和CRM脚本/样式引用均带自动生成的内容哈希版本参数，减少首屏请求和新HTML配旧脚本的缓存混用；没有新增前端依赖。维护时修改原来的样式/脚本文件并重新构建，不直接编辑这两个生成物；`npm test` 会识别未同步的 bundle 或CRM版本引用。
 
