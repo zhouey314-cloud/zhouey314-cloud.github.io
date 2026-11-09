@@ -45,9 +45,9 @@ try{
       assert(await dialog.locator('[data-viewer-original]').getAttribute('href')!==await dialog.locator('[data-viewer-case]').getAttribute('href'),'original image and case are distinct');
       await page.keyboard.press('Escape');await dialog.waitFor({state:'hidden'});assert(await preview.evaluate(el=>el===document.activeElement),'Esc restores opener focus');
       await page.evaluate(()=>Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:()=>Promise.reject(Error('test denial'))}}));await page.locator('[data-copy-email]').click();await page.waitForFunction(()=>document.querySelector('[data-copy-feedback]').textContent.trim());assert((await page.locator('[data-copy-feedback]').textContent()).trim(),'clipboard failure feedback');assert(await page.locator('#contact a[href^="mailto:"]').first().getAttribute('href')==='mailto:zhouey314@gmail.com','mailto survives clipboard failure');
-      await page.goto(site.base,{waitUntil:'load'});await page.locator('.hero-thought a[href="#work"]').click();await frames(page);assert(new URL(page.url()).hash==='#work','native work anchor');const anchorTop=await page.locator('#work').evaluate(e=>e.getBoundingClientRect().top);assert(anchorTop>=70,'sticky navigation does not cover work heading');
+      await page.goto(site.base,{waitUntil:'load'});await page.locator('.hero-thought a[href="#selected-projects"]').click();await frames(page);assert(new URL(page.url()).hash==='#selected-projects','native selected-work anchor');const anchorTop=await page.locator('#selected-projects').evaluate(e=>e.getBoundingClientRect().top);assert(anchorTop>=70,'sticky navigation does not cover work heading');
       if(viewport.width<=760){const menu=page.locator('.menu-toggle');await menu.focus();await page.keyboard.press('Enter');assert(await menu.getAttribute('aria-expanded')==='true','keyboard opens menu');await page.keyboard.press('Escape');assert(await menu.getAttribute('aria-expanded')==='false'&&await menu.evaluate(e=>e===document.activeElement),'Esc closes menu and returns focus');if(['mobile','narrow'].includes(label))await menu.tap();else await menu.click()}
-      await page.locator('.site-nav a[href="#contact"]').click();await frames(page);assert(new URL(page.url()).hash==='#contact','contact navigation');assert(await page.locator('.menu-toggle').getAttribute('aria-expanded')==='false','mobile link closes menu');await page.goBack();assert(new URL(page.url()).hash==='#work','browser Back preserves work fragment');await page.goForward();assert(new URL(page.url()).hash==='#contact','browser Forward preserves contact fragment');
+      await page.locator('.site-nav a[href="#contact"]').click();await frames(page);assert(new URL(page.url()).hash==='#contact','contact navigation');assert(await page.locator('.menu-toggle').getAttribute('aria-expanded')==='false','mobile link closes menu');await page.goBack();assert(new URL(page.url()).hash==='#selected-projects','browser Back preserves work fragment');await page.goForward();assert(new URL(page.url()).hash==='#contact','browser Forward preserves contact fragment');
       const activeSections=[];
       for(const [id,chapter] of [['selected-projects','work'],['practice','practice'],['engineering','engineering'],['contact','contact']]){
        if(viewport.width<=760)await page.locator('.menu-toggle').click();
@@ -102,7 +102,7 @@ try{
         const action=page.locator('.portrait-hero-actions .metal-button');
         const size=await action.evaluate(el=>({width:el.getBoundingClientRect().width,height:el.getBoundingClientRect().height,font:parseFloat(getComputedStyle(el).fontSize)}));
         assert(size.width>=220&&size.height>=64&&size.font>=17,'primary capability action remains prominent');
-        await action.focus();await page.keyboard.press('Enter');await page.waitForURL('**/#work',{timeout:10000});
+        await action.focus();await page.keyboard.press('Enter');await page.waitForURL('**/#selected-projects',{timeout:10000});
        }
        checks.push({label,fragment,javaScriptEnabled,portraitPaint});
       }finally{await context.close()}

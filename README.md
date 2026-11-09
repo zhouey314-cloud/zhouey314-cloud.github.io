@@ -1,5 +1,7 @@
 # 恩宇 Ethan Zhou · 数字花园
 
+2026-11-09：在 `main@7f0022c` 上增量接入 Meta Astryx 0.7.11，升级正式页面的作品筛选、三项工作台、合作表单、图片查看及阅读排版。保留森林实时场景、大幅真实照片、项目与全部联系方式。采用预渲染 React 交互区域和原生静态正文，统一输出 `dist/`；**本轮仅本地提交，没有推送或部署**。组件映射、准确编辑入口、验证与回滚见 [Astryx 维护说明](docs/ASTRYX.md)。
+
 [实际网站](https://zhouey314-cloud.github.io/) · [检查记录](https://github.com/zhouey314-cloud/zhouey314-cloud.github.io/actions/workflows/portfolio-check.yml) · [Pages 发布](https://github.com/zhouey314-cloud/zhouey314-cloud.github.io/actions/workflows/pages/pages-build-deployment)
 
 2026-10-27 基于最新 `main@e1929e1` 重做。原生静态 HTML/CSS/JS 整合 ThreeUI Community 的完整 Sylva Living Green 植物场景，沿用原仓库、域名和 GitHub Pages 根目录。保留 16 个公开项目、3 项在推进工作、10 个案例、原有 URL/深链和联系方式。
@@ -18,9 +20,9 @@ npm run build
 npm run preview
 ```
 
-打开终端输出的本地地址，按 Ctrl+C 停止。预览仅监听 `127.0.0.1`，复用浏览器回归测试的 HTTP Range 与媒体类型处理，支持视频分段播放和定位。无需模型、业务服务端或账号。`npm run build` 由本地 JSON 与模板生成可直接静态托管的首页与合作页。没有 Vite 的 `publicDir` 重映射，现有 `/public/...` 资源路径继续有效。
+打开终端输出的本地地址，按 Ctrl+C 停止。需要 Node >=22.13。预览只服务正式 `dist/` 并监听 `127.0.0.1`，复用浏览器回归测试的 HTTP Range 与媒体类型处理，支持视频分段播放和定位。无需模型、业务服务端或账号。`npm run build` 由本地 JSON、模板与组件统一生成静态页面及产物清单。没有 Vite 的 `publicDir` 重映射，现有 `/public/...` 资源路径继续有效。
 
-首页的原生 CSS 按原级联顺序合并为 `public/site/home.css`，界面脚本合并为 `public/site/home.js`；小型导航脚本内联，森林仍独立加载。首页资源和CRM脚本/样式引用均带自动生成的内容哈希版本参数，减少首屏请求和新HTML配旧脚本的缓存混用；没有新增前端依赖。维护时修改原来的样式/脚本文件并重新构建，不直接编辑这两个生成物；`npm test` 会识别未同步的 bundle 或CRM版本引用。
+首页的原生 CSS 按原级联顺序合并为 `public/site/home.css`，界面脚本合并为 `public/site/home.js`；小型导航脚本内联，森林仍独立加载。其他页面的原生样式同样合并，Astryx 的样式经独立打包与作用域隔离，不塞进旧 CSS 拼接链。首页资源和 CRM 引用带自动生成的内容哈希版本，React 模块分包写入 `public/ui/`。维护时修改源码再构建；`npm test` 会识别未同步的页面、主题和生成资源。
 
 ## 内容维护
 
@@ -29,7 +31,7 @@ npm run preview
 | 修改内容 | 入口 |
 | --- | --- |
 | 四类合作范围、输入与检查方式、统一联系方式 | `content/portfolio.json` 的 `services` / `contactLinks`；修改后 `npm run build`，同时生成首页与合作页 |
-| 合作页结构与本地提纲工具 | `content/collaborate.template.html`、`collaborate.js`、`collaborate.css`；只整理文本，不存储、不上传、不自动发邮件 |
+| 合作页结构与本地提纲工具 | `content/collaborate.template.html`、`src/ui/cooperate.jsx`、`collaborate.css`；只整理文本，不存储、不上传、不自动发邮件 |
 | 简介、邮箱、三个作品的数据/状态/证据链接、精选文章 | `content/portfolio.json`；修改后 `npm run build` |
 | 四类可参与问题、具体交付、技术与证据矩阵 | `content/portfolio.json` 的 `services` / `engineering`；项目取舍和演示范围也在该文件 |
 | 能力、工程证据、GEO 贡献与联系说明的样式 | `capabilities.css`；首页与项目档案引用，沿用现有花园视觉 |

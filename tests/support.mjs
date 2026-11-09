@@ -3,10 +3,11 @@ import {readFile, mkdir, writeFile} from 'node:fs/promises';
 import {resolve, extname, sep} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
-export const root = resolve(fileURLToPath(new URL('../', import.meta.url)));
+const projectRoot = resolve(fileURLToPath(new URL('../', import.meta.url)));
+export const root = resolve(process.env.SITE_DIR || projectRoot);
 export {mkdir, writeFile, resolve};
 export function source() {
-  return {revision:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),dirty:!!execFileSync('git',['status','--porcelain'],{cwd:root,encoding:'utf8'}).trim()};
+  return {revision:execFileSync('git',['rev-parse','HEAD'],{cwd:projectRoot,encoding:'utf8'}).trim(),dirty:!!execFileSync('git',['status','--porcelain'],{cwd:projectRoot,encoding:'utf8'}).trim(),staticDirectory:root};
 }
 export async function serve() {
   const mime={'.html':'text/html; charset=utf-8','.css':'text/css','.js':'text/javascript','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.webp':'image/webp','.jpg':'image/jpeg','.woff2':'font/woff2','.pdf':'application/pdf','.mp4':'video/mp4','.vtt':'text/vtt'};

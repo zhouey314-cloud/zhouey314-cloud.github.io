@@ -1,3 +1,4 @@
+import {choiceValue} from './controls.mjs';
 // Visitor-facing brief composition, privacy boundaries and graceful enhancement.
 import {chromium, webkit} from 'playwright';
 import {readFile} from 'node:fs/promises';
@@ -104,18 +105,18 @@ try {
           for (const topic of topics) {
             await page.goto(`${site.base}/collaborate.html?topic=${topic}#brief`, {waitUntil: 'load'});
             await page.locator('[data-inquiry-form]').waitFor({state: 'visible'});
-            assert(await page.locator('#inquiry-topic').inputValue() === topic, `${topic} URL preselection`);
+            assert(await choiceValue(page,'#inquiry-topic','topic') === topic, `${topic} URL preselection`);
             assert(await page.locator(`[href="/collaborate.html?topic=${topic}#brief"]`).count() > 0, `${topic} has a real scope entry`);
             results.push(topic);
           }
           const unknown = '"><img src=x onerror=alert(1)>';
           await page.goto(`${site.base}/collaborate.html?topic=${encodeURIComponent(unknown)}#brief`, {waitUntil: 'load'});
           await page.locator('[data-inquiry-form]').waitFor({state: 'visible'});
-          assert(await page.locator('#inquiry-topic').inputValue() === 'other', 'unknown topic defaults to other');
+          assert(await choiceValue(page,'#inquiry-topic','topic') === 'other', 'unknown topic defaults to other');
           assert(await page.locator('img[src="x"]').count() === 0, 'unknown query is not interpreted as HTML');
           await page.goto(`${site.base}/collaborate.html`, {waitUntil: 'load'});
           await page.locator('[data-inquiry-form]').waitFor({state: 'visible'});
-          assert(await page.locator('#inquiry-topic').inputValue() === 'other', 'missing topic defaults to other');
+          assert(await choiceValue(page,'#inquiry-topic','topic') === 'other', 'missing topic defaults to other');
           entry.browser = browser.version(); entry.preselected = results; entry.safeDefault = true;
           entry.privacy = await privacy(page, observed);
           assert(observed.errors.length === 0 && observed.resources.length === 0, 'topic routes have no unexpected script/resource errors');
@@ -236,7 +237,7 @@ try {
 
       for (const mode of ['nojs', 'scriptFailure']) await run(`${name}: ${mode} retains real cooperation, contact and resume paths`, async entry => {
         const context = await contextFor(browser, 390, mode === 'nojs' ? {javaScriptEnabled: false} : {});
-        if (mode === 'scriptFailure') await context.route('**/collaborate.js*', route => route.abort('failed'));
+        if (mode === 'scriptFailure') await context.route('**/public/ui/bootstrap-*.js', route => route.abort('failed'));
         const page = await context.newPage(); const observed = observe(page);
         try {
           await page.goto(`${site.base}/collaborate.html#brief`, {waitUntil: 'load'});

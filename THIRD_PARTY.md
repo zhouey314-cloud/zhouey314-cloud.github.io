@@ -1,5 +1,13 @@
 # 本轮实际使用的第三方资源
 
+## 2026-11-09 Astryx 交互升级
+
+采用 [Meta Astryx](https://github.com/meta/astryx) 的实际 npm 发布包，未将主分支版本当成发布版本：`@astryxdesign/core`、`theme-neutral`、开发用 `cli` 均固定 **0.7.11**；React / React DOM **19.3.1**；StyleX **0.19.1**。精确版本、传递依赖及 npm integrity 在 `package-lock.json`。使用官方发布的预编译 CSS/JS，未克隆、构建或发布整套单体仓库，也没有在线 CDN。
+
+MIT 许可证全文在 `public/licenses/astryx-MIT.txt`（Meta；与已安装官方主题/CLI 一致）、`react-MIT.txt`（React 与 React DOM / Scheduler）及 `stylex-MIT.txt`（[StyleX 官方 MIT](https://github.com/facebook/stylex/blob/main/LICENSE)）。主题的 Lucide 图标许可证完整保存在 `lucide-LICENSE.txt`，包括 ISC 与 Feather 衍生声明。FormatJS 解析、骨架和 memoize 的 MIT 及 intl-messageformat 的 BSD-3-Clause 分别保存在同目录 `formatjs-*-MIT.txt`、`intl-messageformat-BSD.txt`。打包器还保留并链接运行模块自己的 `*.LEGAL.txt`；未修改供应包代码。CLI、esbuild、测试与 PDF 维护依赖不进入浏览器运行时。
+
+实际组件：Button、TextInput、TextArea、Selector、FileInput、Banner、Dialog、Theme、InternationalizationProvider。中立主题作为基底，本地 `src/ui/garden-theme.mjs` 通过官方 `defineTheme` 与 CLI `theme build` 生成自然绿主题；中文控件字符串来自官方 `zh-CN` 词表。组件用于正式首页行动入口、项目筛选、三项工作台、合作提纲与图片查看。完整映射及构建方式见 [维护说明](docs/ASTRYX.md)。ThreeUI 的场景、运行库、字体、密度与既有资源没有改动，以下来源继续有效。
+
 核对日期：2026-10-27。只发布所需 Community 场景、匹配运行库和字体；不复制 ThreeUI 整个组件库、后台或 Pro/Beta 媒体。
 
 | 资源 | 固定来源 | 许可 | 实际位置 |

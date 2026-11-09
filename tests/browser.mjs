@@ -6,7 +6,8 @@ import { execFileSync } from 'node:child_process';
 import { chromium, webkit } from 'playwright';
 import AxeBuilder from '@axe-core/playwright';
 
-const root = fileURLToPath(new URL('../', import.meta.url));
+const projectRoot = fileURLToPath(new URL('../', import.meta.url));
+const root = process.env.SITE_DIR ? resolve(process.env.SITE_DIR) : projectRoot;
 const output = resolve(process.env.BROWSER_REPORT_DIR || 'test-results');
 await mkdir(output, { recursive: true });
 const allPages = ['/', '/projects.html', '/resume.html', '/404.html', '/workbench.html', '/collaborate.html', ...[
@@ -49,8 +50,8 @@ await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
 const base = process.env.BASE_URL?.replace(/\/$/, '') || `http://127.0.0.1:${server.address().port}`;
 const report = { at: new Date().toISOString(), base_url: base, scope: 'Actual Chromium/WebKit, desktop and mobile viewport; selected WCAG A/AA automated rules, not certification or physical-device/human acceptance.', pages: [], interactions: [], failures: [] };
 try {
-  report.source_revision = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
-  report.worktree_dirty = Boolean(execFileSync('git', ['status', '--porcelain'], { cwd: root, encoding: 'utf8' }).trim());
+  report.source_revision = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: projectRoot, encoding: 'utf8' }).trim();
+  report.worktree_dirty = Boolean(execFileSync('git', ['status', '--porcelain'], { cwd: projectRoot, encoding: 'utf8' }).trim());
 } catch { report.source_revision = null; report.worktree_dirty = null; }
 const fail = message => report.failures.push(message);
 const progress = async phase => {

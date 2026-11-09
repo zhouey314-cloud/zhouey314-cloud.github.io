@@ -1,0 +1,517 @@
+{
+  "baseline": "7f0022cb5f2a911043291097383c192431eab6ef",
+  "routes": [
+    "/404.html",
+    "/cases/crm.html",
+    "/cases/eval.html",
+    "/cases/multi-tenant.html",
+    "/cases/rag.html",
+    "/cases/recruitment.html",
+    "/cases/relay-audit.html",
+    "/cases/skills.html",
+    "/cases/thought-to-x.html",
+    "/cases/video.html",
+    "/cases/voice-clone-video.html",
+    "/collaborate.html",
+    "/demos/ai-crm/index.html",
+    "/",
+    "/projects.html",
+    "/public/scenes/sylva/index.html",
+    "/resume.html",
+    "/workbench.html"
+  ],
+  "unchanged_assets": [
+    {
+      "path": "public/contact/wechat-qr.jpg",
+      "bytes": 126027,
+      "sha256": "d9d9514ed477419115a1d83add8a6398400a58512de87bd65ed53c90105dca0f"
+    },
+    {
+      "path": "public/contact/wechat-qr.svg",
+      "bytes": 6729,
+      "sha256": "ed25fbd4b457f5ac921e052508712b23e43bc03e700140d54dce62e300e517e0"
+    },
+    {
+      "path": "public/favicon.svg",
+      "bytes": 243,
+      "sha256": "3a1050a4463abab57752b7a943af4485fefd6fc55dd19b39ce6a7338274cad14"
+    },
+    {
+      "path": "public/field-form.svg",
+      "bytes": 84609,
+      "sha256": "bcd705ddd63eb4e725adfec270447b28c66a084f9c288ae8bc41a4f971beca00"
+    },
+    {
+      "path": "public/fonts/Lexend-OFL.txt",
+      "bytes": 4435,
+      "sha256": "da67588af7e0987521d7dffc60ca92e8abee37f30535d94b503ec7bc52d73023"
+    },
+    {
+      "path": "public/fonts/lexend-latin.woff2",
+      "bytes": 39692,
+      "sha256": "1ec8f6ee2750554b4bc59ff0b507d316a82a7ba37e0e5bebc41d3bd9b9faad46"
+    },
+    {
+      "path": "public/licenses/DroidSansFallback-NOTICE.txt",
+      "bytes": 10694,
+      "sha256": "92d336191c9ec51cc39f0b2fc44e5153f685c661c3d1e44e088fad4e68358ab2"
+    },
+    {
+      "path": "public/licenses/ethan-project-evidence-MIT.txt",
+      "bytes": 1067,
+      "sha256": "bedd9517a2ccbf3b637878c664696e6156815cd951267ba1ddb63fdc33183549"
+    },
+    {
+      "path": "public/licenses/gsap-standard-license.txt",
+      "bytes": 4156,
+      "sha256": "7b7ece78c5a7692fb672e3feec4fb7fe8ff94ae6f6859be90e73bc5efd7ffdfd"
+    },
+    {
+      "path": "public/licenses/thought-to-x-MIT.txt",
+      "bytes": 1082,
+      "sha256": "7d6ef90cc06d3c520e40d0d5522d8bda9cff58a2819fe51fbddae41280ded5ee"
+    },
+    {
+      "path": "public/og-image.svg",
+      "bytes": 203087,
+      "sha256": "e6689f10a0077995c351a25745a4b7d7180b0548baf667f50b1c9b166f5bb33a"
+    },
+    {
+      "path": "public/portrait/enyu-speaking-1254.webp",
+      "bytes": 56562,
+      "sha256": "3ca4f6fb09f2b6ce8f2848418462f028ddde51688d31f1e239178de898bcae0c"
+    },
+    {
+      "path": "public/portrait/enyu-speaking-384.webp",
+      "bytes": 9658,
+      "sha256": "6be2a07a57fa8172508076587464740d36b6d3eeedcbf7e2c3636019cfe68356"
+    },
+    {
+      "path": "public/portrait/enyu-speaking-960.webp",
+      "bytes": 30376,
+      "sha256": "a103a4d6297d087e18e28894fa3105b12c5be71522ba67a8a1a96cb6326e8260"
+    },
+    {
+      "path": "public/projects/crm/crm-ai-assistant.webp",
+      "bytes": 47566,
+      "sha256": "57c7897b0e96dd84d1457ae9eccfc6303cbed31398ca74e321a2bd0123cf3b36"
+    },
+    {
+      "path": "public/projects/crm/crm-dashboard.webp",
+      "bytes": 52042,
+      "sha256": "62d0b986e6fd56ec589a1f6b8afe19a305b8ab8c9e2165e393e74f9dccb082ca"
+    },
+    {
+      "path": "public/projects/crm/crm-mobile.webp",
+      "bytes": 23194,
+      "sha256": "169b6eedfd3ab2eb4ab3e9173a0443541d0dfd50af3593815fa400a53aaeb5bf"
+    },
+    {
+      "path": "public/projects/crm/crm-opportunity.webp",
+      "bytes": 41362,
+      "sha256": "5744e3ad0833fecf957fe98eb601580b6939642af64be187d2c8a31714f0e17e"
+    },
+    {
+      "path": "public/projects/crm/crm-pipeline.webp",
+      "bytes": 37230,
+      "sha256": "aaa678037c681eb91ddebeb05da2a9a274275a36410c976fe469d4329147c8b9"
+    },
+    {
+      "path": "public/projects/eval/release-gate.png",
+      "bytes": 61187,
+      "sha256": "74ff405ad747c890bb812a0cc7d59a2195c45a498707ae51c2c3a8df7f7fbb80"
+    },
+    {
+      "path": "public/projects/geo/geo-generation-flow.webp",
+      "bytes": 43630,
+      "sha256": "cdaa1d5c41270a3ff959b365e719f76f418d2d49a53d9ecf5272f09af1c3e4f7"
+    },
+    {
+      "path": "public/projects/geo/geo-knowledge-scope.webp",
+      "bytes": 49194,
+      "sha256": "02edfff8a0c006238fe8b46105ffd6dec266343d0b31023aab26e9de9a813882"
+    },
+    {
+      "path": "public/projects/geo/geo-publish-handoff.webp",
+      "bytes": 67218,
+      "sha256": "962a177c8d7b387acb03ca6427c6a1e5559b7e1f67e135b01b62d1501a0f4fad"
+    },
+    {
+      "path": "public/projects/novamach/novamach-admin.webp",
+      "bytes": 27026,
+      "sha256": "e0b716eacabe6ef27c4149f40ec46908f91b7142b71695aa7928cff9eeb7f163"
+    },
+    {
+      "path": "public/projects/novamach/novamach-home.webp",
+      "bytes": 79742,
+      "sha256": "ae2a44a3f7c842d96f36988b55a9b4d542d5afebcb30996e3c155bb5caadeb75"
+    },
+    {
+      "path": "public/projects/novamach/novamach-product.webp",
+      "bytes": 49246,
+      "sha256": "1f9cc3cf20f3e14343533245726b23f2065c20f1fd5f1d15a19ab65b07700b9f"
+    },
+    {
+      "path": "public/projects/rag/architecture.svg",
+      "bytes": 583,
+      "sha256": "32c4825515fa21f6f40d7145a5ce6069953a21f8b1d2b0009764a77b500b25a4"
+    },
+    {
+      "path": "public/projects/rag/capture-20261023.json",
+      "bytes": 1652,
+      "sha256": "31266fa35f13d608ee2d81648684ddbc3826c3a4429a215d6505dcd2b7a91f21"
+    },
+    {
+      "path": "public/projects/rag/demo-query.png",
+      "bytes": 76186,
+      "sha256": "6dd276fb24018ccf85555e2fdedf3318668aa0825613c191f0f0ca3f2fd80e2c"
+    },
+    {
+      "path": "public/projects/rag/story-citation-preview.webp",
+      "bytes": 29108,
+      "sha256": "117c1a86c506a8574df4e4a271da7b720bee53cc9394017c06e9922061c95378"
+    },
+    {
+      "path": "public/projects/rag/story-citation.webp",
+      "bytes": 86612,
+      "sha256": "eaced6830b66ae370453a6fe750668fa157f82c1958d1b889052372a332bf09b"
+    },
+    {
+      "path": "public/projects/rag/story-material.webp",
+      "bytes": 84518,
+      "sha256": "a07e9cddac5ea664b72a3637e857e2e3c997aa0ff0a36cddbc4dc746ad03e23a"
+    },
+    {
+      "path": "public/projects/rag/story-refusal.webp",
+      "bytes": 84952,
+      "sha256": "7d299d2310cca423e4711dbfd187cc90b3fbc24ea4bba85968c49932adb59b8d"
+    },
+    {
+      "path": "public/projects/recent/relay-flow.svg",
+      "bytes": 2197,
+      "sha256": "0632e3d755e75b0eaf7fed0f68b4bc2d591bb321764487a734776aac95b7cca4"
+    },
+    {
+      "path": "public/projects/recent/voice-flow.svg",
+      "bytes": 2161,
+      "sha256": "00b4d8386755f074bfcd7101e2e52924a9f6caa3a2f6586567d5f14a595df98f"
+    },
+    {
+      "path": "public/projects/recruitment/review-screen.png",
+      "bytes": 58727,
+      "sha256": "d30b5d55c242d619a3772f750bfd1a4fe69bafe58e635f2f3897da75183dcc44"
+    },
+    {
+      "path": "public/projects/relay/capture-20261023.json",
+      "bytes": 1255,
+      "sha256": "f5321ca550b3cae29b5627933dbcf0e834068b847e5d041055332e85e2922fbf"
+    },
+    {
+      "path": "public/projects/relay/fixture-report-preview.webp",
+      "bytes": 40904,
+      "sha256": "1344de230ea3aa66c52f871bd872df57349b5d6d7eb98292a330e9b8f5e8a40f"
+    },
+    {
+      "path": "public/projects/relay/fixture-report.webp",
+      "bytes": 107174,
+      "sha256": "e3eba779d7b343ee6fbbe3b3572ca637446947c7344e7b5fef0dc499741512d0"
+    },
+    {
+      "path": "public/projects/relay/synthetic-report-20261023.md",
+      "bytes": 1365,
+      "sha256": "b70d6626ecf3e818ea25dcbf870f89e1519eccd2a3ac5e1a186b804d1b28c704"
+    },
+    {
+      "path": "public/projects/skills/architecture.svg",
+      "bytes": 364,
+      "sha256": "3f532e3c9593e7ab1d602314daf5d7eaeb5178965ff97c9df78b3cc01e61d274"
+    },
+    {
+      "path": "public/projects/thought/example.svg",
+      "bytes": 1650,
+      "sha256": "3ee9de4f32d9bd699b00b18d4e084f71e9327d9cd8a3988b73950abf3c8b7920"
+    },
+    {
+      "path": "public/projects/video/demo-frame.png",
+      "bytes": 50731,
+      "sha256": "b7fe5e60e62686d2047dc49ca5e524ba533b72b3d2390182251e21380b280203"
+    },
+    {
+      "path": "public/projects/video/original-54s-poster-preview.webp",
+      "bytes": 14670,
+      "sha256": "3b1819845cbaa7c07105610d2e43908ae6610161009ab5e38cdeca998947fa99"
+    },
+    {
+      "path": "public/projects/video/original-54s-poster.jpg",
+      "bytes": 42369,
+      "sha256": "1b32ddd9abecc50ec72d5dd9967c1671e574a3baebe5e354ba4967efdb3eb3b4"
+    },
+    {
+      "path": "public/projects/video/original-54s.mp4",
+      "bytes": 4224799,
+      "sha256": "cdef61aa338dc0177c2cedacdc101d35da1062702278bb7d533faaa7304c52ed"
+    },
+    {
+      "path": "public/projects/video/original-54s.vtt",
+      "bytes": 943,
+      "sha256": "db07fa377bd88cd2c17149d3e5e47f404f4e62318188d1659a38e58dd0e8108b"
+    },
+    {
+      "path": "public/projects/workflow/hero.png",
+      "bytes": 57184,
+      "sha256": "9328f33b7af934e28664a940951d6fa5bf3b0244e59475141f7f90ac85a9a046"
+    },
+    {
+      "path": "public/scenes/sylva/capture.json",
+      "bytes": 1087,
+      "sha256": "73642a320126f89f7f9d52f9758c3b75b0ddf682ff407a5b9a5f6f241494505a"
+    },
+    {
+      "path": "public/scenes/sylva/forest-desktop.webp",
+      "bytes": 111614,
+      "sha256": "2f0958df0729e2425b47cadcf3ca01534926dcaad0ece5b09bcb6bf1176857a8"
+    },
+    {
+      "path": "public/scenes/sylva/forest-mobile.webp",
+      "bytes": 16146,
+      "sha256": "ca5f9ee7e2b14a7c24919e43933fe134594b17f80b1d2bd36682e7e53a2cbed8"
+    },
+    {
+      "path": "public/scenes/sylva/index.html",
+      "bytes": 2420,
+      "sha256": "aab5a53e5628b6d75ec63977d5bf943b7714615949dd53dc7c67b1bba217bba2"
+    },
+    {
+      "path": "public/scenes/sylva/scene.js",
+      "bytes": 123669,
+      "sha256": "88b0184a95bc84805746a3449e10b5f5cb5238998be3e49d66fde7ca5b480889"
+    },
+    {
+      "path": "public/social-preview.png",
+      "bytes": 585462,
+      "sha256": "32c92f52907cfd986e569435ca42ecc341bd7982aabd260146221c35e463cc4d"
+    },
+    {
+      "path": "public/vendor/fuse/LICENSE",
+      "bytes": 11343,
+      "sha256": "cc807e3caa26cdee316bab2ff6fdb508a2f619b74959fe59e513ef6e61635ebe"
+    },
+    {
+      "path": "public/vendor/fuse/fuse.js",
+      "bytes": 19308,
+      "sha256": "8d0ff71fbe94cadc319be0c559c64fe7ce2754afe47c9f0a67579d4112c6b62b"
+    },
+    {
+      "path": "public/vendor/threejs/LICENSE",
+      "bytes": 1081,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+    },
+    {
+      "path": "public/vendor/threejs/SOURCE.md",
+      "bytes": 593,
+      "sha256": "b254724ec856d43a348dff00aac34e099da04855b4439f98f0c0e44137a06911"
+    },
+    {
+      "path": "public/vendor/threejs/r149/LICENSE",
+      "bytes": 1081,
+      "sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d"
+    },
+    {
+      "path": "public/vendor/threejs/r149/three.min.js",
+      "bytes": 608081,
+      "sha256": "8a5f7249903b54d30f79f708699d2fed2d6a1d0741a4cd41377d1f01bb5a2271"
+    },
+    {
+      "path": "public/vendor/threeui/LICENSE",
+      "bytes": 1064,
+      "sha256": "b2a071ba22fefd803f4e9d1f5c777dd79c62d191695586a1a73fd4d0ebd051c6"
+    },
+    {
+      "path": "public/vendor/threeui/SOURCE.md",
+      "bytes": 725,
+      "sha256": "b1dd5d6eab0e5a2dbdeee5e6f91d86b2a320190f5427b806108a0b2b3cf019a8"
+    },
+    {
+      "path": "public/workbench/RAG-LICENSE",
+      "bytes": 1067,
+      "sha256": "bedd9517a2ccbf3b637878c664696e6156815cd951267ba1ddb63fdc33183549"
+    },
+    {
+      "path": "public/workbench/captures.json",
+      "bytes": 1346,
+      "sha256": "804c4fc3a8ca63a776d68bc7f7083f5617c5161d3f6ce417aaa127176226d601"
+    },
+    {
+      "path": "public/workbench/documents.json",
+      "bytes": 896,
+      "sha256": "0f1d7eeb0ef8568e55287e48205975c8dfb9a6059f6a7c8f050b3653f84ab204"
+    },
+    {
+      "path": "public/workbench/rag-workspace-preview.webp",
+      "bytes": 8654,
+      "sha256": "e42257ff3db2e3e0ead09f4dae68ac2f48721b4cdedaa4eaeb218f0a1d37f810"
+    },
+    {
+      "path": "public/workbench/rag-workspace.webp",
+      "bytes": 38506,
+      "sha256": "853428f6b6efccb4973054726f69022dedbddf73449957efdb1894da539d0ae7"
+    },
+    {
+      "path": "public/workbench/rag.js",
+      "bytes": 3040,
+      "sha256": "1ba20ecf72a2c939c76cc806186e1ca6ae9d5d221429e42e50fa788c91f31910"
+    },
+    {
+      "path": "public/workbench/relay-workspace-preview.webp",
+      "bytes": 8486,
+      "sha256": "1776fa8d19162b5bf09557d09a97b193da50950306bf23e47eb6d6569f1886e1"
+    },
+    {
+      "path": "public/workbench/relay-workspace.webp",
+      "bytes": 36502,
+      "sha256": "22398d7d305600e57d47dc70b75654368dea6473acd65dc958bbbe3c842c79cd"
+    },
+    {
+      "path": "public/workbench/video-1.webp",
+      "bytes": 3430,
+      "sha256": "cc3631deb90a6a50c451e962072b22f689333e5115fb964be0ae028f77e1ccf9"
+    },
+    {
+      "path": "public/workbench/video-2.webp",
+      "bytes": 4036,
+      "sha256": "cc1728ee61a272d25c60a2496e07b65d56741a07c584e5ff67fef7195abe6945"
+    },
+    {
+      "path": "public/workbench/video-3.webp",
+      "bytes": 3062,
+      "sha256": "660672128c25ca3ed7726ef24f1f83ba5543852e7e45fee2822e84389463ad9a"
+    },
+    {
+      "path": "public/workbench/video-4.webp",
+      "bytes": 2992,
+      "sha256": "6a5c6d036ac620388514b7b1a46fff8f24d1fbd519c35df5157ba533a49fac73"
+    },
+    {
+      "path": "public/workbench/video-5.webp",
+      "bytes": 3330,
+      "sha256": "aa1a5116c3b88c714aac02517405d8b2d28d148ed926482a5256110a52c62adf"
+    },
+    {
+      "path": "public/workbench/video-6.webp",
+      "bytes": 3632,
+      "sha256": "b15692b1fbdbfe204f029796ef31fada6591b2d74f6b24ef76eaae5293e28524"
+    },
+    {
+      "path": "public/workbench/video-7.webp",
+      "bytes": 3550,
+      "sha256": "d6e17b7a6115f8ef2408ec0b96c350d4ae9bef3cf11f7b5f6a55c5c389bbfc07"
+    },
+    {
+      "path": "public/workbench/video-8.webp",
+      "bytes": 3094,
+      "sha256": "50a283101081dde16c5b90c104ce2ce8179143481240cf1b814ce54197166cf7"
+    },
+    {
+      "path": "public/workbench/video-9.webp",
+      "bytes": 4012,
+      "sha256": "8ead9a970b989f28d465c802fd6464b668c4c54889cf79adc3e31062094c128a"
+    },
+    {
+      "path": "public/workbench/video-workspace-preview.webp",
+      "bytes": 10704,
+      "sha256": "e148ce23d322d005a6757f095eb6015227e70bc511480a55cb9f9102094c8da7"
+    },
+    {
+      "path": "public/workbench/video-workspace.webp",
+      "bytes": 42184,
+      "sha256": "6cf84195e3a7a314b68590042f93b14b9875ec99a987e50f22aecf9963a25ad2"
+    }
+  ],
+  "asset_urls": [
+    "/public/contact/wechat-qr.jpg",
+    "/public/contact/wechat-qr.svg",
+    "/public/ethan-zhou-resume.meta.json",
+    "/public/ethan-zhou-resume.pdf",
+    "/public/favicon.svg",
+    "/public/field-form.svg",
+    "/public/fonts/Lexend-OFL.txt",
+    "/public/fonts/lexend-latin.woff2",
+    "/public/licenses/DroidSansFallback-NOTICE.txt",
+    "/public/licenses/ethan-project-evidence-MIT.txt",
+    "/public/licenses/gsap-standard-license.txt",
+    "/public/licenses/thought-to-x-MIT.txt",
+    "/public/og-image.svg",
+    "/public/portrait/enyu-speaking-1254.webp",
+    "/public/portrait/enyu-speaking-384.webp",
+    "/public/portrait/enyu-speaking-960.webp",
+    "/public/projects/crm/crm-ai-assistant.webp",
+    "/public/projects/crm/crm-dashboard.webp",
+    "/public/projects/crm/crm-mobile.webp",
+    "/public/projects/crm/crm-opportunity.webp",
+    "/public/projects/crm/crm-pipeline.webp",
+    "/public/projects/eval/release-gate.png",
+    "/public/projects/geo/geo-generation-flow.webp",
+    "/public/projects/geo/geo-knowledge-scope.webp",
+    "/public/projects/geo/geo-publish-handoff.webp",
+    "/public/projects/novamach/novamach-admin.webp",
+    "/public/projects/novamach/novamach-home.webp",
+    "/public/projects/novamach/novamach-product.webp",
+    "/public/projects/rag/architecture.svg",
+    "/public/projects/rag/capture-20261023.json",
+    "/public/projects/rag/demo-query.png",
+    "/public/projects/rag/story-citation-preview.webp",
+    "/public/projects/rag/story-citation.webp",
+    "/public/projects/rag/story-material.webp",
+    "/public/projects/rag/story-refusal.webp",
+    "/public/projects/recent/relay-flow.svg",
+    "/public/projects/recent/voice-flow.svg",
+    "/public/projects/recruitment/review-screen.png",
+    "/public/projects/relay/capture-20261023.json",
+    "/public/projects/relay/fixture-report-preview.webp",
+    "/public/projects/relay/fixture-report.webp",
+    "/public/projects/relay/synthetic-report-20261023.md",
+    "/public/projects/skills/architecture.svg",
+    "/public/projects/thought/example.svg",
+    "/public/projects/video/demo-frame.png",
+    "/public/projects/video/original-54s-poster-preview.webp",
+    "/public/projects/video/original-54s-poster.jpg",
+    "/public/projects/video/original-54s.mp4",
+    "/public/projects/video/original-54s.vtt",
+    "/public/projects/workflow/hero.png",
+    "/public/scenes/sylva/capture.json",
+    "/public/scenes/sylva/forest-desktop.webp",
+    "/public/scenes/sylva/forest-mobile.webp",
+    "/public/scenes/sylva/index.html",
+    "/public/scenes/sylva/scene.js",
+    "/public/site/home.css",
+    "/public/site/home.js",
+    "/public/social-preview.png",
+    "/public/vendor/fuse/LICENSE",
+    "/public/vendor/fuse/fuse.js",
+    "/public/vendor/threejs/LICENSE",
+    "/public/vendor/threejs/SOURCE.md",
+    "/public/vendor/threejs/r149/LICENSE",
+    "/public/vendor/threejs/r149/three.min.js",
+    "/public/vendor/threeui/LICENSE",
+    "/public/vendor/threeui/SOURCE.md",
+    "/public/workbench/RAG-LICENSE",
+    "/public/workbench/captures.json",
+    "/public/workbench/documents.json",
+    "/public/workbench/rag-workspace-preview.webp",
+    "/public/workbench/rag-workspace.webp",
+    "/public/workbench/rag.js",
+    "/public/workbench/relay-workspace-preview.webp",
+    "/public/workbench/relay-workspace.webp",
+    "/public/workbench/video-1.webp",
+    "/public/workbench/video-2.webp",
+    "/public/workbench/video-3.webp",
+    "/public/workbench/video-4.webp",
+    "/public/workbench/video-5.webp",
+    "/public/workbench/video-6.webp",
+    "/public/workbench/video-7.webp",
+    "/public/workbench/video-8.webp",
+    "/public/workbench/video-9.webp",
+    "/public/workbench/video-workspace-preview.webp",
+    "/public/workbench/video-workspace.webp"
+  ]
+}
