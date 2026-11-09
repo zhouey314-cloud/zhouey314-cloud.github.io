@@ -84,6 +84,19 @@ try{for(const[name,engine]of Object.entries({chromium,webkit})){
    assert((await p.locator('[data-report-source]').innerText()).includes('local-choice.json')&&(await p.locator('[data-relay-summary]').innerText()).includes('visitor-local-choice'),'late default response cannot replace the visitor’s newer report');
   }finally{release();await c.close();}
  });
+ await run(`${name}: pending corpus keeps disabled controls accessible`,async()=>{
+  const c=await browser.newContext({reducedMotion:'reduce'}),p=await c.newPage();let release;const gate=new Promise(resolve=>release=resolve);
+  await c.route('**/public/workbench/documents.json',async route=>{await gate;await route.continue();});
+  try{
+   await p.goto(site.base+'/workbench.html#rag');
+   await p.waitForFunction(()=>document.querySelector('[data-rag-status]').textContent.includes('正在读取'));
+   assert(await p.locator('#query').getAttribute('aria-disabled')==='true','query waits for the real corpus');
+   const pending=await new AxeBuilder({page:p}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();
+   assert(pending.violations.length===0,'pending corpus accessibility: '+JSON.stringify(pending.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)}))));
+   release();await p.waitForFunction(()=>document.querySelector('[data-answer]').dataset.state==='EXTRACTIVE');
+   assert(await p.locator('.astryx-text-area-counter').innerText()==='26/500','active query retains its visible character limit');
+  }finally{release();await c.close();}
+ });
  await run(`${name} no JS and load failure`,async()=>{
   const c=await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:844}}),p=await c.newPage();await p.goto(site.base+'/workbench.html');assert(await p.locator('.wb-panel:visible').count()===3,'no JS all sections readable');assert(await p.locator('video').isVisible(),'native video remains');await c.close();
   const d=await browser.newContext({reducedMotion:'reduce'}),q=await d.newPage();await d.route('**/public/workbench/documents.json',r=>r.fulfill({status:503,body:'unavailable'}));await q.goto(site.base+'/workbench.html');await q.waitForFunction(()=>document.querySelector('[data-rag-status]').dataset.error==='true');assert(await q.locator('a[href="https://zhouey314-cloud.github.io/enterprise-rag-starter/"]').isVisible(),'failure keeps original route');await d.close();
