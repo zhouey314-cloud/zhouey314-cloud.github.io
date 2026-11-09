@@ -178,6 +178,8 @@
     });
   });
 
+  // Legacy cached pages retain their native viewer. New roots have one React owner.
+  if (!document.querySelector("[data-ui-lightbox]")) {
   // B. A native modal makes the document inert and contains keyboard focus.
   const viewer = document.querySelector("[data-viewer]");
   let opener,
@@ -275,6 +277,8 @@
     opener?.focus({ preventScroll: true });
   });
 
+  }
+
   // C. Public example frames; never a simulated network/model execution.
   const story = document.querySelector("[data-story]");
   const steps = [...document.querySelectorAll("[data-story-step]")];
@@ -337,6 +341,8 @@
     }
   }
 
+  // Do not bind legacy handlers inside React-owned archive controls.
+  if (!document.querySelector("[data-ui=archive]")) {
   // Archive filters enhance a complete server-readable list.
   const filters = [...document.querySelectorAll("[data-filter]")];
   const projects = [...document.querySelectorAll("[data-category]")];
@@ -356,6 +362,8 @@
       if (result) result.textContent = `显示 ${count} 个项目`;
     }),
   );
+
+  }
 
   if ("IntersectionObserver" in window) {
     const sections = [

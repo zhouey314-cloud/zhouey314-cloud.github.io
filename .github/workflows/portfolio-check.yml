@@ -22,9 +22,21 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
       - run: npm test
+      - run: npm run astryx -- doctor --built dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: portfolio-static-build
+          path: dist/
+          include-hidden-files: true
+          if-no-files-found: error
   browsers:
     runs-on: ubuntu-latest
+    env:
+      SITE_DIR: dist
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -33,6 +45,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx playwright install --with-deps chromium webkit
+      - run: npm run build
       - run: npm run test:browser
       - run: npm run test:threeui
       - run: npm run test:threeui
@@ -43,6 +56,7 @@ jobs:
       - run: npm run test:loading
       - run: npm run test:crm
       - run: npm run test:workbench
+      - run: npm run test:astryx
       - run: npm run test:experience
         env:
           SKIP_PERFORMANCE: "1"

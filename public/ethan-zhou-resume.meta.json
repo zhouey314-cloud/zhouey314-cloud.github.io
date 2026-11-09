@@ -1,9 +1,19 @@
 {
   "schema_version": 1,
   "source": "resume.html",
-  "source_sha256": "c55f05c04141ebe2f98a81fe7b89c15fb49eb2ab699656459b5ce51586e14826",
-  "pdf_sha256": "ff568278c9f87006914d953ad236a439abce799903dedbf603294f58d8d6706d",
+  "source_sha256": "65d810ebeaa1c3794674d4bc3af1cb78b2a059dd84f7543e973c7fe7006dbba2",
+  "pdf_sha256": "f71d329033320cd05e924a465836fcddfe5ae0f32c72049d5f42287c9a9e35c1",
   "pages": 2,
   "clickable_links": 22,
-  "renderer": "ReportLab, not browser print"
+  "renderer": "ReportLab, not browser print",
+  "font_sha256": "ee38813ea00c3e32add4268fff7fff9e39417b4913cb13be2415164a47807cc2",
+  "dependencies": {
+    "reportlab": "4.4.9",
+    "lxml": "6.1.1",
+    "pypdf": "6.10.0",
+    "PyMuPDF": "1.26.6",
+    "Pillow": "12.3.0",
+    "charset-normalizer": "3.5.2"
+  },
+  "invariant_metadata": true
 }

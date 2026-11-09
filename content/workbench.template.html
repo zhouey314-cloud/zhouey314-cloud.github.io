@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>作品工作台 — 恩宇 Ethan Zhou</title>
+<meta name="description" content="亲手查看恩宇的作品：检索合成资料并定位引用，检查 RelayAudit 原始报告，播放原创视频并浏览字幕时间轴。" />
+<meta name="author" content="恩宇 Ethan Zhou" /><meta name="theme-color" content="#192923" />
+<meta property="og:type" content="website" /><meta property="og:title" content="作品工作台 — 恩宇" /><meta property="og:description" content="从结果回到证据：知识检索、协议报告和视频制作。" /><meta property="og:url" content="https://zhouey314-cloud.github.io/workbench.html" /><meta property="og:image" content="https://zhouey314-cloud.github.io/public/social-preview.png" /><meta name="twitter:card" content="summary_large_image" />
+<link rel="canonical" href="https://zhouey314-cloud.github.io/workbench.html" /><link rel="icon" href="/public/favicon.svg" type="image/svg+xml" /><link rel="manifest" href="/site.webmanifest" />
+<script src="/navigation.js"></script><link rel="stylesheet" href="/tokens.css" /><link rel="stylesheet" href="/style.css" /><link rel="stylesheet" href="/garden.css" /><link rel="stylesheet" href="/studio.css" /><link rel="stylesheet" href="/workbench.css" />
+<script src="/script.js" defer></script><script type="module" src="/workbench.js"></script>
+</head>
+<body class="workbench-page">
+<a class="skip-link" href="#main">跳到主要内容</a>
+<header class="site-header wrap"><a class="brand" href="/" aria-label="Ethan Zhou，恩宇，首页"><span class="brand-latin">Ethan Zhou<span class="brand-stop">.</span></span><span class="brand-cn">恩宇</span></a><nav id="site-nav" class="site-nav" aria-label="主要导航"><a href="/projects.html">全部作品</a><a href="/#practice">实践</a><a href="/resume.html">简历 ↗</a><a href="/#contact">联系 ↗</a></nav><div class="header-controls"><button class="motion-toggle enhanced-only" type="button" data-motion-toggle aria-pressed="false" aria-label="关闭装饰动效">动效 <span data-motion-label>开</span></button><button class="menu-toggle enhanced-only" type="button" aria-controls="site-nav" aria-expanded="false">菜单 <span aria-hidden="true">＋</span></button></div></header>
+<main id="main" class="wb-wrap">
+<header class="wb-heading"><div><p class="wb-kicker">ENYU / SELECTED SYSTEMS</p><h1>从结果，<br /><em>回到证据。</em></h1></div><div class="wb-intro"><p>三个作品，三条可以亲手走完的路径。</p><p>输入问题、追查报告、查看时间轴。实现、来源和限制，都在同一处。</p><a href="/projects.html">完整项目档案 <span aria-hidden="true">↗</span></a></div></header>
+<nav class="wb-tabs" aria-label="选择作品工作台"><a href="#rag" data-workspace="rag"><span>01</span><strong>知识检索</strong><small>QUERY → SOURCE</small></a><a href="#relay" data-workspace="relay"><span>02</span><strong>协议观察</strong><small>EVENT → EVIDENCE</small></a><a href="#video" data-workspace="video"><span>03</span><strong>视频制作</strong><small>TIMELINE → FILM</small></a></nav>
+<noscript><p class="wb-notice">交互工作台需要 JavaScript。你仍可阅读下面的案例、原始报告和字幕，或直接播放视频。</p></noscript>
+<section class="wb-panel" id="rag" aria-labelledby="rag-heading">
+<div class="wb-panel-head"><div><p class="wb-kicker">ENTERPRISE RAG STARTER</p><h2 id="rag-heading">每一句回答，都能回到原文。</h2></div><a href="/cases/rag.html">完整案例 ↗</a></div>
+<p class="wb-boundary">本地浏览器中的词法检索与原文摘录。内置资料是合成英文文本；未接入生成模型，范围选择不是身份鉴权。请用英文关键词或下面的示例提问。</p>
+{{ragWorkbench}}<div class="wb-footnote"><span>本地实现另有文件摄取与可选语义模式，见案例说明。</span><a href="https://zhouey314-cloud.github.io/enterprise-rag-starter/">原项目页面 ↗</a></div>
+</section>
+<section class="wb-panel" id="relay" aria-labelledby="relay-heading">
+<div class="wb-panel-head"><div><p class="wb-kicker">RELAYAUDIT / AGENTGUARD</p><h2 id="relay-heading">从一条告警，追到具体证据。</h2></div><a href="/cases/relay-audit.html">完整案例 ↗</a></div>
+<p class="wb-boundary">读取已公开的真实报告文件；该次运行使用合成 fixture（synthetic_unverified）。检查器不会调用模型或网关，标签变化不能证明真实模型身份。</p>
+{{relayWorkbench}}<div class="wb-footnote"><a href="https://github.com/zhouey314-cloud/relay-audit">源码与本地运行步骤 ↗</a><a href="/public/projects/relay/capture-20261023.json">这份报告的运行记录 ↗</a></div>
+</section>
+<section class="wb-panel" id="video" aria-labelledby="video-heading">
+<div class="wb-panel-head"><div><p class="wb-kicker">AI VIDEO WORKFLOW ENGINE</p><h2 id="video-heading">看成片，也看每一段如何连接。</h2></div><a href="/cases/video.html">完整案例 ↗</a></div>
+<p class="wb-boundary">54 秒原创程序动画，画面与配乐为程序生成；不是真人口播、数字人或客户商业成片。时间轴读取这条片子的实际 VTT 字幕，点击章节可定位播放。</p>
+{{videoWorkbench}}<div class="wb-footnote"><span>素材 → 时间轴 → 字幕 → 渲染 → 媒体检查</span><a href="https://github.com/zhouey314-cloud/ai-video-workflow-engine">源码与复现步骤 ↗</a></div>
+</section>
+<footer class="wb-footer"><span>恩宇 / ETHAN ZHOU</span><p>把过程留下，让作品经得起追问。</p><a href="mailto:zhouey314@gmail.com">聊聊你的问题 ↗</a></footer>
+</main></body></html>

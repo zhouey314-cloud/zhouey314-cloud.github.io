@@ -1,0 +1,125 @@
+{
+  "index.html": [
+    "public/site/home.css",
+    "portfolio.css"
+  ],
+  "projects.html": [
+    "tokens.css",
+    "style.css",
+    "projects.css",
+    "garden.css",
+    "studio.css",
+    "capabilities.css",
+    "portfolio.css"
+  ],
+  "resume.html": [
+    "tokens.css",
+    "style.css",
+    "resume.css",
+    "garden.css",
+    "studio.css",
+    "portfolio.css"
+  ],
+  "404.html": [
+    "tokens.css",
+    "style.css",
+    "garden.css",
+    "studio.css",
+    "portfolio.css"
+  ],
+  "workbench.html": [
+    "tokens.css",
+    "style.css",
+    "garden.css",
+    "studio.css",
+    "workbench.css",
+    "portfolio.css"
+  ],
+  "collaborate.html": [
+    "tokens.css",
+    "style.css",
+    "garden.css",
+    "collaborate.css",
+    "portfolio.css"
+  ],
+  "cases/crm.html": [
+    "tokens.css",
+    "style.css",
+    "case-study.css",
+    "garden.css",
+    "studio.css",
+    "portfolio.css"
+  ],
+  "cases/eval.html": [
+    "tokens.css",
+    "style.css",
+    "case-study.css",
+    "garden.css",
+    "studio.css",
+    "portfolio.css"
+  ],
+  "cases/multi-tenant.html": [
+    "tokens.css",
+    "style.css",
+    "case-study.css",
+    "garden.css",
+    "studio.css",
+    "portfolio.css"
+  ],
+  "cases/rag.html": [
+    "tokens.css",
+    "style.css",
+    "case-study.css",
+    "garden.css",
+    "studio.css",
+    "portfolio.css"
+  ],
+  "cases/recruitment.html": [
+    "tokens.css",
+    "style.css",
+    "case-study.css",
+    "garden.css",
+    "studio.css",
+    "portfolio.css"
+  ],
+  "cases/relay-audit.html": [
+    "tokens.css",
+    "style.css",
+    "case-study.css",
+    "garden.css",
+    "studio.css",
+    "portfolio.css"
+  ],
+  "cases/skills.html": [
+    "tokens.css",
+    "style.css",
+    "case-study.css",
+    "garden.css",
+    "studio.css",
+    "portfolio.css"
+  ],
+  "cases/thought-to-x.html": [
+    "tokens.css",
+    "style.css",
+    "case-study.css",
+    "garden.css",
+    "studio.css",
+    "portfolio.css"
+  ],
+  "cases/video.html": [
+    "tokens.css",
+    "style.css",
+    "case-study.css",
+    "garden.css",
+    "studio.css",
+    "portfolio.css"
+  ],
+  "cases/voice-clone-video.html": [
+    "tokens.css",
+    "style.css",
+    "case-study.css",
+    "garden.css",
+    "studio.css",
+    "portfolio.css"
+  ]
+}

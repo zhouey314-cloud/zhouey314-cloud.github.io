@@ -1,10 +1,13 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
+import {buildUI} from './build-ui.mjs';
+import {finalizePage} from './page-output.mjs';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const data = JSON.parse(readFileSync(root + 'content/portfolio.json', 'utf8'));
 const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const checking = process.argv.includes('--check');
+export const ui = await buildUI({checking});
 function outputFile(path, content) {
   if (checking) {
     if (readFileSync(root + path, 'utf8') !== content) throw new Error(path + ' is stale. Run npm run build');
@@ -12,7 +15,7 @@ function outputFile(path, content) {
 }
 // Preserve authored CSS order and independent, native JS closures. Fewer initial
 // requests remove the parser-blocking navigation round trip without a framework.
-const styles = ['tokens.css', 'style.css', 'garden.css', 'home.css', 'studio.css', 'capabilities.css', 'portrait.css'];
+const styles = ['tokens.css', 'style.css', 'garden.css', 'home.css', 'studio.css', 'capabilities.css', 'portrait.css', 'portfolio.css'];
 const interactions = ['script.js', 'home.js', 'garden-ui.js'];
 const homeCss = styles.map(path => {
   const css = readFileSync(root + path, 'utf8');
@@ -50,11 +53,11 @@ const socialLinks = data.contactLinks.filter(c => !['email','wechat'].includes(c
 const contactLinks = data.contactLinks.filter(c => c.id !== 'email').map(external).join('');
 const cooperationScopes = data.services.map(s => `<article class="scope-item" id="scope-${s.topic}"><p class="garden-kicker">${escape(s.number)} / ${escape(s.field)}</p><h3>${escape(s.title)}</h3><dl><dt>从这里开始</dt><dd>${escape(s.startingPoint)}</dd><dt>首轮产物</dt><dd>${escape(s.deliverable)}</dd><dt>怎样检查</dt><dd>${escape(s.acceptance)}</dd></dl><a href="${escape(s.href)}">查看对应作品与证据 ↗</a><a href="/collaborate.html?topic=${s.topic}#brief">按这个方向聊 ↘</a></article>`).join('\n');
 const cooperationOptions = data.services.map(s => `<option value="${s.topic}">${escape(s.field)}</option>`).join('');
-const replacements = { name: escape(data.name), intro: escape(data.intro), email: escape(data.email), services, engineering, projects, writing, heroProjects, wechatQr, socialLinks, contactLinks, cooperationScopes, cooperationOptions, homeAssets, wechatHref: escape(contactById.wechat.href) };
-for (const [source, target] of [['content/home.template.html', 'index.html'], ['content/collaborate.template.html', 'collaborate.html']]) {
+const replacements = { name: escape(data.name), intro: escape(data.intro), email: escape(data.email), services, engineering, projects, writing, heroProjects, wechatQr, socialLinks, contactLinks, cooperationScopes, cooperationOptions, homeAssets, wechatHref: escape(contactById.wechat.href), heroActions:ui.heroActions(), cooperationComposer:ui.island('cooperate',{services:data.services,email:data.email}), ragWorkbench:ui.island('rag'), relayWorkbench:ui.island('relay'), videoWorkbench:ui.island('video'), uiAssets:ui.assets };
+for (const [source, target] of [['content/home.template.html', 'index.html'], ['content/collaborate.template.html', 'collaborate.html'], ['content/workbench.template.html','workbench.html']]) {
   const template = readFileSync(root + source, 'utf8');
   const output = template.replace(/\{\{(\w+)\}\}/g, (_, key) => { if (!(key in replacements)) throw new Error('Unknown content key: ' + key); return replacements[key]; });
-  outputFile(target, output);
+  outputFile(target, finalizePage(target,output,ui,checking));
 }
 // Existing visitors may still cache the old CRM runtime. New markup must never
 // execute that old DOM contract; preserve the legacy URLs with versioned refs.

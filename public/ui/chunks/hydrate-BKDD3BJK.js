@@ -1,0 +1,1 @@
+import{a as n}from"./chunk-NS7U4VS4.js";import"./chunk-2XQLQB2I.js";import{b as o,c as f}from"./chunk-62Q5Y7YS.js";var e=o(f(),1),t=o(n(),1);function c(r,i,d){(0,t.hydrateRoot)(r,e.default.createElement(i,{...d}),{identifierPrefix:r.dataset.uiId+"-",onRecoverableError:a=>console.error("Portfolio hydration recovered:",a)})}export{c as hydrate};

@@ -108,11 +108,10 @@ for (const page of pages) {
   const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map((x) => x[1]);
   assert(new Set(ids).size === ids.length, `${page}: duplicate ids`);
   assert((html.match(/<h1\b/g) || []).length === 1, `${page}: expected one h1`);
-  assert(
-    (html.includes('href="/tokens.css"') && html.includes('href="/style.css"')) ||
-      (page === 'index.html' && html.includes('href="/public/site/home.css?v=')),
-    `${page}: missing shared styles`,
-  );
+  const profile=html.match(/href="\/(public\/site\/page-[a-f0-9]{12}\.css)"/);
+  const shared=profile&&existsSync(join(root,profile[1]))?readFileSync(join(root,profile[1]),'utf8'):'';
+  assert((shared.includes('/* tokens.css */')&&shared.includes('/* style.css */'))||
+    (page==='index.html'&&html.includes('href="/public/site/home.css?v=')),`${page}: missing verified shared style profile`);
   assert(
     !/enhancements\.css|portfolio-v2\.css/.test(html),
     `${page}: legacy style cascade retained`,
