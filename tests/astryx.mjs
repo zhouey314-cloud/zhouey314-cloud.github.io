@@ -170,6 +170,7 @@ try {
           await page.locator('video').evaluate(v=>{v.muted=true;});
           await page.locator('[data-start-video]').focus();await page.keyboard.press('Enter');
           await page.waitForFunction(()=>document.querySelector('video').currentTime>.2);
+          assert(await page.locator('video').evaluate(v=>v===document.activeElement),'Playback intent transfers keyboard focus to the native player');
           await page.locator('[data-workspace=rag]').click();
           assert(await page.locator('video').evaluate(v=>v.paused),'Native tab controller pauses video even without React');
           entry.expectedFailure='Controlled module abort; static fallback checked separately from normal zero-error checks';

@@ -24,5 +24,6 @@ document.addEventListener('click',event=>{
  const button=event.target.closest('[data-start-video]');if(!button)return;
  const video=button.closest('.film-player').querySelector('video'),source=video.querySelector('source');
  if(!source.hasAttribute('src')){source.src=source.dataset.src;video.preload='metadata';video.load();}
+ video.focus();
  video.play().catch(error=>{console.error('Workbench playback failed:',error);const status=button.closest('.film-stage').querySelector('[data-video-status]');status.textContent='视频播放失败，可使用下载原片或刷新页面重试。';status.dataset.error='true';});
 });
