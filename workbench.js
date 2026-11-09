@@ -17,3 +17,12 @@ links.forEach((link,index)=>{
 addEventListener('hashchange',()=>selectWorkspace(location.hash.slice(1)));
 addEventListener('popstate',()=>selectWorkspace(location.hash.slice(1)));
 selectWorkspace(location.hash.slice(1));
+
+// Keep the movie URL inert until explicit playback intent, independently of
+// React. preload=none is only a hint and Linux WebKit can otherwise fetch it.
+document.addEventListener('click',event=>{
+ const button=event.target.closest('[data-start-video]');if(!button)return;
+ const video=button.closest('.film-player').querySelector('video'),source=video.querySelector('source');
+ if(!source.hasAttribute('src')){source.src=source.dataset.src;video.preload='metadata';video.load();}
+ video.play().catch(error=>{console.error('Workbench playback failed:',error);const status=button.closest('.film-stage').querySelector('[data-video-status]');status.textContent='视频播放失败，可使用下载原片或刷新页面重试。';status.dataset.error='true';});
+});

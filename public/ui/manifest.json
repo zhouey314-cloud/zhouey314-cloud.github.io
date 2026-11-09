@@ -4,14 +4,14 @@
   "cli": "0.7.11",
   "react": "19.3.1",
   "stylex": "0.19.1",
-  "bootstrap": "/public/ui/bootstrap-DURRUYKN.js",
-  "css": "/public/ui/astryx-67LH3LME.css",
+  "bootstrap": "/public/ui/bootstrap-7F7QBWPD.js",
+  "css": "/public/ui/astryx-RH5U364W.css",
   "generated": [
     "public/ui/chunks/hydrate-BKDD3BJK.js",
     "public/ui/chunks/viewer-HJ52DR3Y.js",
     "public/ui/chunks/chunk-NS7U4VS4.js.LEGAL.txt",
     "public/ui/chunks/chunk-NS7U4VS4.js",
-    "public/ui/bootstrap-DURRUYKN.js",
+    "public/ui/bootstrap-7F7QBWPD.js",
     "public/ui/chunks/Tooltip-7S2VYCCC.js",
     "public/ui/chunks/ItemSwipeLayer-YQ6IOZJK.js",
     "public/ui/chunks/BottomSheet-Q7YGLPCZ.js",
@@ -19,7 +19,7 @@
     "public/ui/chunks/chunk-XINREGFK.js",
     "public/ui/chunks/archive-EXGILF25.js",
     "public/ui/chunks/cooperate-BUW2TNH3.js",
-    "public/ui/chunks/workbench-DHMXODD6.js",
+    "public/ui/chunks/workbench-YVEMB22E.js",
     "public/ui/chunks/chunk-4XR6UF7B.js",
     "public/ui/chunks/chunk-NCUJVW5G.js",
     "public/ui/chunks/chunk-E53TVCU6.js.LEGAL.txt",
@@ -35,6 +35,6 @@
     "public/ui/chunks/chunk-U22V2MNK.js",
     "public/ui/chunks/chunk-62Q5Y7YS.js.LEGAL.txt",
     "public/ui/chunks/chunk-62Q5Y7YS.js",
-    "public/ui/astryx-67LH3LME.css"
+    "public/ui/astryx-RH5U364W.css"
   ]
 }

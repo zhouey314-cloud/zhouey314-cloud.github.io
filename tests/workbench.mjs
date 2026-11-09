@@ -98,7 +98,7 @@ try{for(const[name,engine]of Object.entries({chromium,webkit})){
   }finally{release();await c.close();}
  });
  await run(`${name} no JS and load failure`,async()=>{
-  const c=await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:844}}),p=await c.newPage();await p.goto(site.base+'/workbench.html');assert(await p.locator('.wb-panel:visible').count()===3,'no JS all sections readable');assert(await p.locator('video').isVisible(),'native video remains');await c.close();
+  const c=await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:844}}),p=await c.newPage();await p.goto(site.base+'/workbench.html');assert(await p.locator('.wb-panel:visible').count()===3,'no JS all sections readable');assert(await p.locator('video:visible').count()===1,'native video remains');await c.close();
   const d=await browser.newContext({reducedMotion:'reduce'}),q=await d.newPage();await d.route('**/public/workbench/documents.json',r=>r.fulfill({status:503,body:'unavailable'}));await q.goto(site.base+'/workbench.html');await q.waitForFunction(()=>document.querySelector('[data-rag-status]').dataset.error==='true');assert(await q.locator('a[href="https://zhouey314-cloud.github.io/enterprise-rag-starter/"]').isVisible(),'failure keeps original route');await d.close();
  });
  }finally{await browser.close();}

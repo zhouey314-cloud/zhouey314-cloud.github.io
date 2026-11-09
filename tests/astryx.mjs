@@ -167,7 +167,8 @@ try {
           assert(await page.locator('video[controls]').isVisible(),'Native media remains operable');
           assert(await page.locator('a[download][href$=".vtt"]').isVisible(),'Original captions remain downloadable');
           await page.locator('video').scrollIntoViewIfNeeded();
-          await page.locator('video').evaluate(v=>{v.muted=true;return v.play();});
+          await page.locator('video').evaluate(v=>{v.muted=true;});
+          await page.locator('[data-start-video]').focus();await page.keyboard.press('Enter');
           await page.waitForFunction(()=>document.querySelector('video').currentTime>.2);
           await page.locator('[data-workspace=rag]').click();
           assert(await page.locator('video').evaluate(v=>v.paused),'Native tab controller pauses video even without React');
