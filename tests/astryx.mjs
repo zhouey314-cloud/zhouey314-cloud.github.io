@@ -29,7 +29,7 @@ function observe(page) {
   page.on('pageerror',e=>issues.errors.push(e.message));
   page.on('console',m=>{if(m.type()==='error')issues.errors.push(m.text());});
   page.on('response',r=>{if(r.status()>=400)issues.http.push({url:r.url(),status:r.status()});});
-  page.on('request',r=>issues.requests.push({url:r.url(),method:r.method(),type:r.resourceType()}));
+  page.on('request',r=>issues.requests.push({url:r.url(),method:r.method(),type:r.resourceType(),range:r.headers().range||null,document:r.frame().url()}));
   return issues;
 }
 async function geometry(page) {
@@ -112,8 +112,8 @@ try {
       });
 
       await run(`${name}: on-demand modules, media, and input-to-paint sample`,async entry=>{
-        const context=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'reduce'});
-        const page=await context.newPage(),issues=observe(page);
+        let context=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'reduce'});
+        let page=await context.newPage(),issues=observe(page);
         try {
           await page.goto(site.base+'/');await page.waitForLoadState('networkidle');
           assert(!issues.requests.some(r=>/\/chunks\//.test(r.url)),'Home reading path does not download React/Astryx interaction chunks');
@@ -122,9 +122,17 @@ try {
           const readingRequests=issues.requests.slice(readingStart);
           assert(!readingRequests.some(r=>/\/chunks\/|\/public\/ui\/astryx-.*\.css/.test(r.url)),'Case reading defers React and component CSS until image-preview intent');
           assert(!readingRequests.some(r=>['fetch','xhr'].includes(r.type)),'No runtime server for case reading');
+          entry.readingMediaRequests=issues.requests.filter(r=>/\.mp4(?:\?|$)/.test(r.url));
+          await clean(issues);
+          // A cold workspace visit must not inherit another document's native
+          // media requests or cache. Keep its no-preload gate independent.
+          await context.close();
+          context=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'reduce'});
+          page=await context.newPage();issues=observe(page);
           await page.goto(site.base+'/workbench.html#rag');
           await page.waitForFunction(()=>document.querySelector('[data-answer]').dataset.state==='EXTRACTIVE');
-          assert(!issues.requests.some(r=>/\.mp4(?:\?|$)/.test(r.url)),'RAG does not preload the movie');
+          entry.workspaceMediaRequests=issues.requests.filter(r=>/\.mp4(?:\?|$)/.test(r.url));
+          assert(entry.workspaceMediaRequests.length===0,'RAG does not preload the movie: '+JSON.stringify(entry.workspaceMediaRequests));
           await page.locator('[data-workspace=video]').click();
           await page.waitForFunction(()=>document.querySelectorAll('.cue-button').length===9);
           assert(!issues.requests.some(r=>/\.mp4(?:\?|$)/.test(r.url)),'Opening video workspace does not fetch movie bytes');
