@@ -1,0 +1,70 @@
+{
+  "verified_at": "2026-11-10T04:24:31.263486+00:00",
+  "method": "在本地执行现有机械回归；测试源码树与所列远程main完全一致。不是远程CI执行记录、模型效果分数或客户生产验收。",
+  "input_scope": "合成资料和本地loopback；视频包括真实FFmpeg短片编码；不请求真实模型。",
+  "python": "3.13.3",
+  "source_unchanged": true,
+  "projects": [
+    {
+      "repo": "enterprise-rag-starter",
+      "remote_main": "60ee0b39a4ef4bc7e6d5afad122471c6f89c90f5",
+      "tested_local_commit": "2608733ab9c4012986d98023ea08d9cd8bc51636",
+      "source_tree": "eda2e3379afec9874bdf332060eff6e113788870",
+      "matches_remote_tree": true,
+      "tests": [
+        {
+          "suite": "rag-node",
+          "command": "node --test tests/web.test.mjs",
+          "passed": 36,
+          "skipped": 0,
+          "exit_code": 0
+        },
+        {
+          "suite": "rag-python",
+          "command": "python -B -m unittest discover -s tests -v",
+          "passed": 55,
+          "skipped": 0,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "repo": "relay-audit",
+      "remote_main": "e222f684be89697c9d44d0c11626780a43fcd53b",
+      "tested_local_commit": "bb0e01df693bd251fe3dffd4f462fb10358b4fbc",
+      "source_tree": "6cbb63883897fb40efd811d1fa98e8b0f9e5748e",
+      "matches_remote_tree": true,
+      "tests": [
+        {
+          "suite": "relay-python",
+          "command": "python -B -m unittest discover -s tests -v",
+          "passed": 128,
+          "skipped": 0,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "repo": "ai-video-workflow-engine",
+      "remote_main": "04b749a6743ad126dfad10b87d3b0e46090ac31f",
+      "tested_local_commit": "536d8f624f12fea0d3dbe9b15483ef40e3cd9b89",
+      "source_tree": "52f42a746e6a2cabfe3e741861554bd571bf5e0c",
+      "matches_remote_tree": true,
+      "tests": [
+        {
+          "suite": "video-python",
+          "command": "python -B -m unittest discover -s tests -v",
+          "passed": 56,
+          "skipped": 0,
+          "exit_code": 0
+        }
+      ]
+    }
+  ],
+  "environment_notes": [
+    "RAG existing resume-venv pypdf6.10.0 differs from repository requirements-local6.20.0; no installation performed.",
+    "Video existing resume-venv Pillow12.3.0 differs from sample requirement12.2.0; no installation performed.",
+    "Relay uses existing base interpreter with preinstalled aiohttp3.13.5; clean allowlisted child environment, no global package write.",
+    "All tests are deterministic/synthetic/loopback mechanics; not real-model or customer/production acceptance."
+  ]
+}

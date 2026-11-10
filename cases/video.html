@@ -49,7 +49,7 @@
     <script src="/script.js" defer></script>
     <title>AI Video Workflow Engine — Ethan 恩宇</title>
   <script src="/garden-ui.js" defer></script>
-  <!-- portfolio:styles --><link rel="stylesheet" href="/public/site/page-67487d823871.css" /><!-- /portfolio:styles -->
+  <!-- portfolio:styles --><link rel="stylesheet" href="/public/site/page-2361bacd7d67.css" /><!-- /portfolio:styles -->
 <!-- astryx:assets -->
 <script type="module" src="/public/ui/bootstrap-7F7QBWPD.js" data-astryx-css="/public/ui/astryx-RH5U364W.css"></script>
 <!-- /astryx:assets -->
@@ -91,15 +91,15 @@
         <p class="eyebrow">作品 / AI Video Workflow Engine</p>
         <h1>从素材到样片，<br />让每一步留有记录。</h1>
         <a class="studio-case-entry" href="/workbench.html#video">打开交互工作台 <span aria-hidden="true">↗</span></a><p class="case-status">离线工程样例 / 54 秒原创动画 / 用户已审片</p>
-        <p class="case-summary">一条可复跑的视频制作流程：从素材、字幕和时间轴，到渲染、媒体检查与完整交付包。已有可播放的 54 秒原创程序动画。</p>
+        <p class="case-summary">我把一次视频任务组织为可交接的工程产物：素材与分镜、字幕与时间轴、实际渲染、媒体检查和完整任务包相互对应。已有可播放的 54 秒原创程序动画、源码与绑定文件的审片记录。</p>
         <p class="case-boundary">
           这条原创动画已有绑定文件的审片记录；不代表真人口播、数字人或客户商业成片，也不能证明生成式模型质量。
         </p>
       </div><figure class="case-cover"><a href="#result"><span class="case-cover-label">ARTIFACT / 03</span><img src="/public/workbench/video-workspace.webp" alt="本站视频工作台的真实截图，播放已有 54 秒原创程序动画并读取实际字幕；不是真人口播或客户商业成片。" width="1480" height="682" decoding="async" /><span class="case-cover-open">查看结果与说明 <span aria-hidden="true">↘</span></span></a><figcaption>已有公开材料 · 范围与来源见正文</figcaption></figure></header>
       <nav class="case-toc" aria-label="案例章节"><p class="case-guide-label" aria-hidden="true">IN THIS CASE</p>
         <a href="#what">这是什么</a><a href="#result">看结果</a
-        ><a href="#build">我做了什么</a><a href="#decision">关键选择</a
-        ><a href="#limits">成果与限制</a><a href="#deep">深入查看</a>
+        ><a href="#build">我做了什么</a><a href="#decision">工程判断</a
+        ><a href="#limits">验收与交接</a><a href="#deep">深入查看</a>
       <div class="case-reading" aria-hidden="true"><span>阅读进度 <b data-case-percent>0%</b></span><i><span data-case-progress></span></i></div></nav>
       <div class="case-body">
         <section class="case-section" id="what">
@@ -107,15 +107,9 @@
           ><span class="legacy-anchor" id="s1"></span>
           <h2><span>01</span>这是什么</h2>
           <div class="case-prose">
-            <p class="large-copy">
-              <strong>适用问题：</strong>视频反复导出或多人交接时，成片、素材、字幕与审片状态容易失去对应关系。
-            </p>
-            <p>
-              <strong>能交付的内容：</strong>可复现的渲染流程，以及成片、字幕、时间轴、预览、QA 报告与哈希清单组成的任务交付包。
-            </p>
-            <p>
-              <strong>如何核验：</strong><a class="text-link" href="#result">观看已有 54 秒样片</a>，再按<a class="text-link" href="#deep">运行说明和交付包测试</a>检查输出；文件完整性与人工审片分别确认。
-            </p>
+            <p class="large-copy">视频交付除了成片，还需要让下一位接手的人知道：用了哪些素材、参数如何复跑、文件是否完整、谁确认过最终版本。</p>
+            <p><strong>我把流程拆成可检查的状态：</strong>输入素材与分镜先检查许可标签和缺口，再执行时间轴与字幕渲染；机械 QA 通过后形成完整任务包，等待人工审片。调用者可读取退出码与失败原因接入自己的流程。</p>
+            <p><strong>交付与验收：</strong>成片、SRT / ASS、时间轴、预览、QA 报告和输入/输出哈希清单，以及独立校验命令。先<a class="text-link" href="#result">观看已有 54 秒样片</a>，再<a class="text-link" href="#deep">生成一份新任务包</a>核对文件与失败行为；新输出单独审片。</p>
           </div>
         </section>
         <section class="case-section" id="result">
@@ -152,46 +146,40 @@
           ><span class="legacy-anchor" id="s5"></span>
           <h2><span>03</span>我做了什么</h2>
           <div class="case-prose">
-            <p>我用 Python 编排素材检查、时间轴、FFmpeg 渲染和 QA 状态，再把输出封装为独立任务目录；调用方可读取退出码、失败原因与校验清单完成交接。</p>
+            <p class="large-copy">我的责任覆盖内容结构、渲染集成、失败回收和交付验证。</p>
+            <p><strong>内容与媒体实现：</strong>我制作九镜头原创程序动画和数学合成配乐，并用 Python / FFmpeg 把分镜、素材、时间轴、中文字幕与音轨串联为实际可播放的样片。</p>
+            <p><strong>工程与接口：</strong>我实现任务状态、素材许可标签检查、真实渲染适配器、完整解码与媒体 QA，把素材缺口、失败、待审片和批准保留为不同状态；调用方可读取 JSON 报告与退出码。</p>
+            <p><strong>交付与恢复：</strong>我把每次任务的成片、字幕、时间轴、预览和 QA 封装到独立目录，并记录输入、素材、音轨与输出哈希。校验器拒绝缺失、篡改、重复/越界路径、符号链接和未列入清单的文件。</p>
             <details>
-              <summary>展开技术结构</summary>
-              <p>
-                交付包保留 MP4、SRT / ASS、时间轴、真实预览、QA 报告和 manifest。校验器检查缺失、哈希不符、重复路径、越界路径、符号链接与未列入清单的文件。
-              </p>
-              <p>
-                <a class="text-link" href="https://github.com/zhouey314-cloud/ai-video-workflow-engine/blob/367badd7c3ed2314ec1014964fb8ed3931dc019e/video_workflow/delivery.py">交付与校验实现 ↗</a> ·
-                <a class="text-link" href="https://github.com/zhouey314-cloud/ai-video-workflow-engine/blob/367badd7c3ed2314ec1014964fb8ed3931dc019e/tests/test_bundles.py">真实编码、篡改与失败回收测试 ↗</a>
-              </p>
+              <summary>查看交付实现与回归</summary>
+              <p><a class="text-link" href="https://github.com/zhouey314-cloud/ai-video-workflow-engine/blob/367badd7c3ed2314ec1014964fb8ed3931dc019e/video_workflow/delivery.py">交付与校验实现 ↗</a> · <a class="text-link" href="https://github.com/zhouey314-cloud/ai-video-workflow-engine/blob/367badd7c3ed2314ec1014964fb8ed3931dc019e/tests/test_bundles.py">真实编码、篡改与失败回收测试 ↗</a></p>
             </details>
           </div>
         </section>
         <section class="case-section" id="decision">
           <span class="legacy-anchor" id="s4"></span
           ><span class="legacy-anchor" id="s12"></span>
-          <h2><span>04</span>一项关键选择</h2>
+          <h2><span>04</span>工程判断</h2>
           <div class="case-prose">
-            <blockquote>
-              外部 provider 未配置时明确失败；只选择 SELF/CC0 合成素材。机械 QA
-              检查媒体流、时长与字幕，人审另设闸门。
-            </blockquote>
-            <p>任务先在临时目录完成渲染和检查，再形成完整交付目录；失败清理本次临时产物。校验通过只证明文件完整性，不能自动授予人工批准。</p>
+            <h3>01 / 完整任务包一次形成，失败不交出半套结果</h3>
+            <p>任务先在私有临时目录渲染和检查，再提升为全新的交付目录；目标已存在时拒绝覆盖，失败时清理本次临时产物并保留已有文件。每个并发任务使用独立目标，当前实现尚无跨进程任务队列。</p>
+            <h3>02 / 渲染完成与交付完整性分开验证</h3>
+            <p>FFmpeg 返回成功并不证明交接文件齐全，因此另设本地校验命令，逐项核对文件大小、哈希、路径和清单。校验不重渲染、不调用付费模型，也不把校验和称为来源签名或素材权利证明。</p>
+            <h3>03 / 机械检查与人工批准保留不同责任</h3>
+            <p>机械 QA 检查解码、媒体流、时长、黑场、音频峰值与字幕层边界；画面、节奏、声音与内容仍由人确认。HUMAN_REVIEW 表示等待审片，历史样片的批准仅绑定其确切文件，新任务不会自动继承。</p>
+            <p><a class="text-link" href="https://github.com/zhouey314-cloud/ai-video-workflow-engine/blob/367badd7c3ed2314ec1014964fb8ed3931dc019e/docs/DELIVERY_BUNDLES.md">交付协议、失败行为与复跑命令 ↗</a></p>
           </div>
         </section>
         <section class="case-section" id="limits">
           <span class="legacy-anchor" id="s2"></span
           ><span class="legacy-anchor" id="s9"></span
           ><span class="legacy-anchor" id="s11"></span>
-          <h2><span>05</span>成果与限制</h2>
+          <h2><span>05</span>验收与交接</h2>
           <div class="case-prose">
-            <p>
-              这条54秒动画留下完整解码、字幕层像素边界、音频峰值与来源清单，以及独立的用户批准记录。
-            </p>
-            <p class="case-limit">
-              人审批准仅绑定这条原创动画。字幕层边界每秒采样2帧；黑场门槛为0.30秒；音频为sample peak而非true peak。这些检查不代表真人口播或客户生产验收。
-            </p>
-            <p>
-              仍未接入在线 TTS、概率视频模型或客户发布系统；未使用第三方声音或公司源码。
-            </p>
+            <p class="large-copy">可验收的单位是一份任务包，以及与它对应的审片结论。</p>
+            <p><strong>可以从一次受控导出开始：</strong>确认自有或获授权素材、字幕、格式与审片责任，生成新的任务目录；核对媒体参数、完整解码和清单，再有意删除或改动一份文件，确认校验明确失败。完成文件检查后，由人观看全片并确认画面与声音。</p>
+            <p><strong>已有证据：</strong>54 秒样片保留源码、素材来源、字幕、完整解码与用户审片记录；短集成夹具和交付回归另行检查真实编码、篡改、路径与失败清理。它们验证的责任不同，不合并成一个“质量分”。</p>
+            <p class="case-limit">人审批准仅绑定这条原创程序动画，不代表真人口播、数字人或客户商业成片。字幕层边界每秒采样 2 帧，黑场门槛为 0.30 秒，音频为 sample peak 而非 true peak；尚未验收真实客户素材、生成式视频模型或客户发布系统。</p>
           </div>
         </section>
         <section class="case-section" id="deep">

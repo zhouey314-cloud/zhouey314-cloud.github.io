@@ -24,7 +24,7 @@
   <script src="/resume.js" defer></script>
   <title>恩宇 Ethan｜工作与项目简历</title>
 <script src="/garden-ui.js" defer></script>
-  <!-- portfolio:styles --><link rel="stylesheet" href="/public/site/page-83af5d66cac0.css" /><!-- /portfolio:styles -->
+  <!-- portfolio:styles --><link rel="stylesheet" href="/public/site/page-5cb185534ca3.css" /><!-- /portfolio:styles -->
 
 </head>
 <body class="resume-page">
@@ -45,13 +45,13 @@
         <div><h1 id="resume-title">恩宇<span>Ethan Zhou</span></h1><p class="resume-role">AI 应用开发 / GEO 实践 / FDE 方向</p></div>
         <span class="resume-identity">AI 应用开发<br />GEO 与内容工作流</span>
       </div>
-      <p class="resume-summary">AI 应用与 GEO 实践者，向 FDE 方向发展。自 2026 年 6 月参与企业知识与内容流程实践；个人开源项目覆盖资料检索、AI API 排障和视频自动化。从明确的问题出发，完成实现、异常处理、回归检查与运行说明，以公开代码和产物说明具体贡献。</p>
+      <p class="resume-summary">我做资料检索、AI 接口与内容流程工具，自 2026 年 6 月参与企业 GEO 与 AI 应用实践。围绕使用者和系统约束定义输入、输出与验收条件，承担个人项目的数据处理、接口、失败路径与运行交接。公开作品可检查资料版本与访问边界、流式请求的过载恢复、视频任务包的完整性；欢迎交流 AI 应用开发与 FDE 方向的合作。</p>
       <div class="resume-top-links" aria-label="简历联系与作品入口">
         <a href="mailto:zhouey314@gmail.com">zhouey314@gmail.com</a>
         <a href="https://github.com/zhouey314-cloud" target="_blank" rel="noopener noreferrer">github.com/zhouey314-cloud <span aria-hidden="true">↗</span></a>
         <a href="/" data-print-url="https://zhouey314-cloud.github.io/">个人网站 <span aria-hidden="true">↗</span></a>
       </div>
-      <div class="resume-toolbar"><span>具体做过什么，以及可以打开的证据。</span><a class="resume-print-button" href="/public/ethan-zhou-resume.pdf" download="Ethan-Zhou-Resume.pdf">下载简历 PDF <span aria-hidden="true">↓</span></a><button type="button" class="resume-print-button" data-print-resume hidden>打印 / 保存 PDF <span aria-hidden="true">↗</span></button></div>
+      <div class="resume-toolbar"><span>范围、关键实现与可核对的工程证据。</span><a class="resume-print-button" href="/public/ethan-zhou-resume.pdf" download="Ethan-Zhou-Resume.pdf">下载简历 PDF <span aria-hidden="true">↓</span></a><button type="button" class="resume-print-button" data-print-resume hidden>打印 / 保存 PDF <span aria-hidden="true">↗</span></button></div>
       <noscript><p class="resume-noscript">可使用浏览器菜单中的“打印”，将本页保存为 PDF。</p></noscript>
     </section>
 
@@ -75,11 +75,11 @@
           <div class="resume-section-heading"><span aria-hidden="true">02</span><h2 id="projects-title">个人开源项目</h2><p>SELECTED PROJECTS</p></div>
           <article class="resume-project">
             <div class="resume-project-heading"><h3>Enterprise RAG Starter</h3><span>知识检索</span></div>
-            <p class="resume-project-purpose">把分散资料变成带来源、可核查的检索结果。</p>
+            <p class="resume-project-purpose">带文档版本、访问过滤和引用定位的本地资料检索服务。</p>
             <p class="resume-item-meta">Python · SQLite / FTS5 · JavaScript</p>
             <ul class="resume-bullets">
               <li>实现 MD / PDF / DOCX 入库，记录文件哈希、版本与生效日期，支持更新、删除及 SQLite 备份恢复。</li>
-              <li>检索前按保存的租户与角色过滤资料，返回带版本、页码或段落的摘录；证据不足、缺值与冲突时明确拒答。</li>
+              <li>以授权快照进行 FTS5 排名，限制其他租户资料对检索的影响；引用绑定版本与位置，缺值、冲突或已撤回资料时拒答。</li>
               <li>用合成回归检查检索、引用与拒答，保留失败样本、健康检查和独立恢复命令，让结果可追查、服务可维护。</li>
             </ul>
             <p class="resume-project-scope">公开页使用合成资料做词法检索与原文摘录；未配置 LLM，范围选择不是生产鉴权。本地文件与身份库独立运行。</p>
@@ -88,11 +88,11 @@
 
           <article class="resume-project">
             <div class="resume-project-heading"><h3>RelayAudit / AgentGuard</h3><span>接口排障</span></div>
-            <p class="resume-project-purpose">把连接、响应与中断分开记录，让接口异常有据可查。</p>
+            <p class="resume-project-purpose">分离业务转发与独立观察的 HTTP / SSE 本地网关。</p>
             <p class="resume-item-meta">Python · HTTP / JSON / SSE · 回归检查</p>
             <ul class="resume-bullets">
               <li>实现连接固定上游的本地网关，分离请求转发、协议观察、告警与报告；默认被动模式不额外发起模型请求。</li>
-              <li>处理 HTTP / SSE、超时、取消与背压；为在途请求和流式连接设置容量上限，超限明确返回 503。</li>
+              <li>容量名额覆盖完整 HTTP / SSE 生命周期；超限在本地返回 503，在途流继续完成，结束或异常后释放名额。</li>
               <li>用合成对照与回归核查实体一致性、终止原因和超限恢复，保留监测降级状态与性能开销，便于定位和复现问题。</li>
             </ul>
             <p class="resume-project-scope">已验证本地与模拟链路；报告记录可观察的协议事实，模型身份保持未验证。</p>
@@ -101,7 +101,7 @@
 
           <article class="resume-project">
             <div class="resume-project-heading"><h3>AI Video Workflow Engine</h3><span>内容工程</span></div>
-            <p class="resume-project-purpose">把视频制作变成可以复现、检查和交接的流程。</p>
+            <p class="resume-project-purpose">把渲染结果组织成可校验、可交接的完整任务包。</p>
             <p class="resume-item-meta">Python · FFmpeg · 工作流状态机 · 媒体 QA</p>
             <ul class="resume-bullets">
               <li>用 Python 状态机连接素材、时间轴、字幕、FFmpeg 渲染和机械 QA，处理素材缺失、失败恢复与人工审片闸门。</li>
@@ -119,9 +119,9 @@
         <section class="resume-section resume-capabilities" aria-labelledby="capabilities-title">
           <div class="resume-section-heading"><span aria-hidden="true">03</span><h2 id="capabilities-title">能带来的价值</h2></div>
           <ol class="resume-capability-list">
-            <li><span aria-hidden="true">↗</span><div><h3>把需求拆成可检查流程</h3><p>从使用者和资料归属出发，组织输入、处理、人工复核与交接状态。</p><a href="/projects.html#geo-title">GEO 企业参与记录 ↗</a></div></li>
+            <li><span aria-hidden="true">↗</span><div><h3>把需求拆成可检查流程</h3><p>先写清使用者、资料条件、输出与完成标准，再决定实现范围和人工复核位置。</p><a href="/projects.html#geo-title">GEO 企业参与记录 ↗</a></div></li>
             <li><span aria-hidden="true">↗</span><div><h3>让资料与答案可核查</h3><p>用版本、访问过滤、来源摘录与拒答边界说明答案依据，用备份恢复支持维护。</p><a href="/cases/rag.html#deep">RAG 工程与评测 ↗</a></div></li>
-            <li><span aria-hidden="true">↗</span><div><h3>让接口故障可定位</h3><p>保留 HTTP / SSE 的终止原因、容量与告警记录，区分已观察事实和待验证原因。</p><a href="/cases/relay-audit.html#deep">Agent 链路验证 ↗</a></div></li>
+            <li><span aria-hidden="true">↗</span><div><h3>把故障处理写进实现</h3><p>以完整请求生命周期控制容量，用超载、取消、队列故障与恢复场景验证处理规则。</p><a href="/cases/relay-audit.html#deep">Agent 链路验证 ↗</a></div></li>
             <li><span aria-hidden="true">↗</span><div><h3>让内容流程可复现</h3><p>把输入、处理步骤、人工复核与交接说明放进内容流程，方便下一位理解并继续使用。</p><a href="/cases/thought-to-x.html">Thought-to-X 写作工作流 ↗</a></div></li>
           </ol>
         </section>

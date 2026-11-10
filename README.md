@@ -130,3 +130,10 @@ THREEUI_ENGINE=webkit SYLVA_REQUIRE_WEBGL=1 npm run test:threeui
 ## 2026-10-30 工程与合作说明
 
 保持现有前端视觉，更新个人简介与联系文案为具体问题、实现范围和交付方式；首页项目贡献与五篇案例增加已实现的运行、备份、容量、事务、交付包和评测入口。服务端能力与静态工作台继续明确区分。对应仓库的 docs/OPERATIONS.md、CAPACITY.md、DELIVERY_BUNDLES.md、HTTP_API.md、RECORDED_EVAL.md 是维护与复现入口。
+
+## 2026-11-10 作品集内容维护
+
+- 首页代表作的 `route`、`decision`、`acceptance`、`proofLinks` 位于 `content/portfolio.json`，由 `scripts/build-home.mjs` 展开呈现，不再把关键取舍藏在折叠项里。
+- 档案的责任说明位于 `projects.html#engineering-readout`；三个深度案例保留旧章节ID，正文说明输入、本人实现、取舍与交接。
+- 评审下载包为 `public/projects/engineering-review.md`，当次复验摘要为 `engineering-verification-20261110.json`。摘要只包含已执行测试、对应源码树和环境；不要将其数字更新成未经执行的新结果。
+- 简历正文改动后，使用隔离的导出器同步PDF与meta，并逐页看排版；原照片、二维码、媒体、16个公开档案与3个推进项继续保留。
