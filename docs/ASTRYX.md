@@ -57,6 +57,8 @@ npm run preview
 
 无 JS / 模块失败时，档案仍列全 16 项，合作页保留直接邮箱与真实二维码，工作台保留边界、原始证据、字幕与原生视频。检索引擎 `public/workbench/rag.js` 未改，仍是合成英文资料上的词法检索和抽取；没有引入模型、生产鉴权或新 AI 判断。导入只存在当前页面内存，刷新清空；不上传、不持久化。邮件链接只打开客户端草稿，不代表服务端收到。
 
+入口模块加载失败，或 React 的异步渲染（包括懒加载组件）发生未捕获错误时，该交互区域进入 `data-ui-state="error"`，恢复首次 SSR 内容并显示错误提示。合作页恢复四项沟通提示与邮件链接，不展示无法操作的表单。异步错误通过 React 19 的 `onUncaughtError` 处理，等当前提交完成再卸载失败的根；没有安装全局错误拦截器。原始错误继续写入控制台，`data-ui-error-phase` 与 `portfolio:ui-error` 事件保留失败阶段、原始堆栈和组件堆栈。已经局部处理的错误不再次抛成全局未捕获异常。回退不恢复尚未保存的交互输入，需要刷新后重试；React 之外的独立 Promise 不由这个回调接管。
+
 ## 验证命令
 
 ```sh
@@ -65,6 +67,7 @@ SITE_DIR=dist npm run test:browser
 SITE_DIR=dist npm run test:experience
 SITE_DIR=dist npm run test:workbench
 SITE_DIR=dist npm run test:collaboration
+SITE_DIR=dist npm run test:fallback
 SITE_DIR=dist npm run test:loading
 SITE_DIR=dist npm run test:crm
 SITE_DIR=dist npm run test:astryx
@@ -75,6 +78,8 @@ npm run astryx -- doctor --built dist
 ```
 
 浏览器证据默认在被 Git 忽略的 `test-results/`；本轮完整改前/改后证据独立存于工作空间 `astryx-20261109/`。自动化检查不是审美或无障碍认证；手机为视口与触摸模拟，未代替 iPhone 真机。Chromium 软件 WebGL 与 WebKit / Apple GPU 的实际绘制证据分开记录。本地资源/双 rAF 交互样本不是用户现场 LCP/INP。
+
+`test:fallback` 在 Chromium / WebKit 的 320、390、1440px 下分别检查正常交互、BottomSheet 分块中断与 404、入口组件中断、慢加载期间刷新及无 JS。桌面原生锚定弹层不会请求移动端分块；受控错误仍必须出现在分阶段诊断中。报告、故障截图和 trace 保存在 `test-results/island-fallback/`，可用 `FALLBACK_REPORT_DIR` 指定独立证据目录。
 
 CI 增加 `npm ci`、正式构建、产物目录测试和静态产物 artifact，不新增部署任务。本轮 CI 配置仅本地验证，远程 Actions 未运行。
 
