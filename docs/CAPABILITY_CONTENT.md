@@ -10,7 +10,7 @@
 - `content/home.template.html`：首页结构、身份、GEO 参与、工作方式及合作入口。
 - `scripts/build-home.mjs`：将数据构建为可直接阅读的静态 HTML；修改后运行 `npm run build`。没有新增客户端数据依赖。
 - `capabilities.css`：新增内容的排版，复用现有色彩与字体，不改森林生命周期或运动逻辑。
-- `projects.html`：问题入口指向本页实际条目；保留原有 16 个项目、2 项个人实践、过滤器和搜索。
+- `projects.html`：问题入口指向本页实际条目；保留原有 16 个项目、3 项项目与实践记录、过滤器和搜索。
 - `cases/{rag,relay-audit,video,eval,thought-to-x}.html`：使用场景、交付摘要、已实现能力与固定来源。
 - `resume.html` 与 `scripts/export-resume.py`：网页为 PDF 内容源，导出后需逐页检查。
 

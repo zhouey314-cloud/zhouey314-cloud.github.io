@@ -150,9 +150,9 @@ try {
               })),
             }));
             const localLinks = localCasePaths.every(path => archive.inProgress.some(card => card.links.includes(path) && /本地|本机/.test(card.text) && !card.publicEntry));
-            const unownedHackathonAbsent = archive.inProgress.every(card => !/黑客松/.test(card.text));
-            entry.archiveCases = { publicCount: archive.publicCount, inProgressCount: archive.inProgress.length, localLinks, unownedHackathonAbsent };
-            if (archive.publicCount !== 16 || archive.inProgress.length !== 2 || !localLinks || !unownedHackathonAbsent) fail(`${name}/${viewportName}: preserve 16 public repositories and 2 verified personal in-progress entries with both local case links`);
+            const hackathonPresent = archive.inProgress.some(card => /黑客松项目/.test(card.text) && /已有项目/.test(card.text));
+            entry.archiveCases = { publicCount: archive.publicCount, inProgressCount: archive.inProgress.length, localLinks, hackathonPresent };
+            if (archive.publicCount !== 16 || archive.inProgress.length !== 3 || !localLinks || !hackathonPresent) fail(`${name}/${viewportName}: preserve 16 public repositories, the existing hackathon record and both local case links`);
           }
           if (path === '/cases/video.html') {
             // Exercise the player where a viewer actually uses it. WebKit may

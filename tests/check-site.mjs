@@ -206,13 +206,15 @@ assert(
   "sharing image: omit school and major from visible text and accessible description",
 );
 assert(
-  (hub.match(/class="active-build"/g) || []).length === 2,
-  "archive: list the two verified personal work-in-progress projects",
+  (hub.match(/class="active-build"/g) || []).length === 3,
+  "archive: preserve three project and practice records",
 );
-for (const name of ["Ethan Creator Studio / EthanCut", "录音转写与摘要工作台"])
+for (const name of ["黑客松项目", "Ethan Creator Studio / EthanCut", "录音转写与摘要工作台"])
   assert(hub.includes(`<h3>${name}</h3>`), `missing in-progress project ${name}`);
 const activeBuilds = [...hub.matchAll(/<article\b[^>]*class="active-build"[^>]*>([\s\S]*?)<\/article>/g)].map(match => match[0]);
-assert(activeBuilds.every(card => !/黑客松/.test(card)), "archive: exclude hackathon entries without personal contribution from personal projects");
+const hackathonRecord = activeBuilds.find(card => card.includes('data-project-record="hackathon"'));
+assert(hackathonRecord?.includes('<h3>黑客松项目</h3>') && hackathonRecord.includes('已有项目'), "archive: retain hackathon in existing project records");
+assert(!/\bdata-category=/.test(hackathonRecord || ""), "archive: do not count an undocumented hackathon record as a public repository");
 for (const id of localCaseIds) {
   const card = activeBuilds.find(html => html.includes(`href="/cases/${id}.html"`));
   assert(card && /本地|本机/.test(card), `archive: local case ${id} needs a real link within a local work-in-progress entry`);
