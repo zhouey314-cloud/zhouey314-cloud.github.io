@@ -82,7 +82,7 @@ npm run astryx -- doctor --built dist
 
 `test:fallback` 在 Chromium / WebKit 的 320、390、1440px 下分别检查正常交互、BottomSheet 分块中断与 404、入口组件中断、慢加载期间刷新及无 JS。另从两篇独立实践案例进入合作页，保持移动端分块待决，再用浏览器返回一个延迟加载的案例文档，检查真实导航取消不会变成全局未捕获错误。桌面原生锚定弹层不会请求移动端分块；受控错误仍必须出现在分阶段诊断中，导航例外只关联那条已取消请求的 ID、文档与时间边界。报告、故障截图和 trace 保存在 `test-results/island-fallback/`，可用 `FALLBACK_REPORT_DIR` 指定独立证据目录。
 
-`test:fallback:guard` 注入额外的 `UNRELATED_REVIEW_PROBE`，确认受控资源失败恢复后，额外的未捕获错误仍会使该用例失败。子用例失败报告与错误原文保留在独立目录，不把任意超时或浏览器启动失败当成负向自检通过。
+`test:fallback:guard` 分别注入额外的 `UNRELATED_REVIEW_PROBE` 未捕获异常和包含通用导入错误文字的无关 console.error，确认受控资源失败恢复后，两者仍会使对应的故障或返回用例失败。导航只接受正式 bootstrap 来源、精确岛与阶段前缀、数量与结构事件一一对应的诊断。子用例失败报告与错误原文保留在独立目录，不把任意超时或浏览器启动失败当成负向自检通过。
 
 CI 增加 `npm ci`、正式构建、产物目录测试和静态产物 artifact，不新增部署任务。本轮 CI 配置仅本地验证，远程 Actions 未运行。
 

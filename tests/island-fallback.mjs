@@ -129,6 +129,9 @@ async function run(browser, name, width, mode) {
     for (const name of ['beforeunload', 'pagehide']) addEventListener(name, () => console.info('__test_lifecycle__' + JSON.stringify({name, url: location.href, browserMs: Date.now()})));
   });
   if (process.env.FALLBACK_UNRELATED_PROBE === '1') await context.addInitScript(() => {throw new Error('UNRELATED_REVIEW_PROBE');});
+  if (process.env.FALLBACK_UNRELATED_PROBE === 'console') await context.addInitScript(() => {
+    addEventListener('portfolio:ui-error', event => console.error('UNRELATED_REVIEW_PROBE: ' + event.detail.message));
+  });
   const page = await context.newPage(), observed = observe(page); entry.observed = observed;
   page.setDefaultTimeout(10000); page.setDefaultNavigationTimeout(20000);
   const deadline = setTimeout(() => {entry.deadlineExceeded = true; context.close().catch(() => {});}, 55000);
@@ -174,9 +177,10 @@ async function run(browser, name, width, mode) {
       const cancellations = observed.failedRequests.filter(request => controlled && request.requestId === controlled.requestId && request.requestDocumentId === oldDocument && request.phase === 'return-to-case' && /cancelled|ERR_ABORTED|NS_BINDING_ABORTED/i.test(request.error || ''));
       assert(navigation && cancellations.length <= 1 && cancellations.length === observed.failedRequests.length && !observed.httpErrors.length, 'Only the controlled departing-document sheet may be cancelled');
       const handled = observed.uiErrors.filter(error => error.documentId === oldDocument && error.phase === 'return-to-case' && error.errorPhase === 'react-uncaught' && error.rootState === 'error' && error.fallbackVisible && cancellations.some(request => request.ms <= error.ms) && error.ms < navigation.ms);
-      const console = observed.consoleErrors.filter(error => error.documentId === oldDocument && error.phase === 'return-to-case' && error.ms < navigation.ms && handled.some(event => error.message.includes(event.message)));
-      assert(!observed.errors.length && handled.length === observed.uiErrors.length && console.length === observed.consoleErrors.length, 'Rapid Back creates no uncaught error; handled departure errors retain exact request/document correlation');
+      const console = observed.consoleErrors.filter(error => error.documentId === oldDocument && error.phase === 'return-to-case' && error.location.url === site.base + manifest.bootstrap && error.message.startsWith('Portfolio interaction failed: cooperate react-uncaught') && cancellations.some(request => request.ms <= error.ms) && error.ms < navigation.ms && handled.some(event => error.message.includes(event.message)));
       entry.departure = {controlledRequest: controlled, cancellations, navigation, handled, consoleErrors: console, lifecycle: observed.events.filter(event => event.type === 'lifecycle' && event.documentId === oldDocument)};
+      assert(!observed.errors.length, 'Rapid Back must not produce an uncaught browser error');
+      assert(handled.length <= 1 && handled.length === observed.uiErrors.length && console.length === handled.length && console.length === observed.consoleErrors.length, 'Rapid Back rejects unrelated console or island diagnostics');
       entry.expected = 'real case → cooperation → Back with a cancelled sheet and slow destination document';
     } else if (mode === 'normal' || mode.startsWith('sheet-') && width === 1440) {
       observed.mark('normal-form'); await normalForm(page, width);
@@ -217,12 +221,12 @@ async function run(browser, name, width, mode) {
       // this exact controlled request, never another module or document.
       assert(cancellations.length <= 1 && observed.failedRequests.length === cancellations.length && navigation, 'Only the controlled old-document request may fail during navigation');
       const belongsToCancelledDocument = event => cancellations.length === 1 && event.documentId === controlled.requestDocumentId && event.phase === 'refresh-during-module-load' && event.ms >= cancellations[0].ms && event.ms < navigation.ms;
-      const abandonedErrors = observed.errors.filter(error => belongsToCancelledDocument(error) && /Importing a module script failed|dynamically imported module/i.test(error.message));
-      const abandonedConsole = observed.consoleErrors.filter(error => belongsToCancelledDocument(error) && error.message.includes('Portfolio interaction failed: cooperate module-import'));
-      assert(!observed.httpErrors.length && abandonedErrors.length === observed.errors.length && abandonedConsole.length === observed.consoleErrors.length, 'No new-document or unrelated error is accepted as a navigation cancellation');
+      const abandonedUI = observed.uiErrors.filter(error => belongsToCancelledDocument(error) && error.island === 'cooperate' && error.errorPhase === 'module-import' && error.rootState === 'error' && error.fallbackVisible);
+      const abandonedConsole = observed.consoleErrors.filter(error => belongsToCancelledDocument(error) && error.location.url === site.base + manifest.bootstrap && error.message.startsWith('Portfolio interaction failed: cooperate module-import') && abandonedUI.some(event => error.message.includes(event.message)));
+      assert(!observed.errors.length && !observed.httpErrors.length && abandonedUI.length <= 1 && abandonedUI.length === observed.uiErrors.length && abandonedConsole.length === abandonedUI.length && abandonedConsole.length === observed.consoleErrors.length, 'No new-document or unrelated error is accepted as a navigation cancellation');
       const fresh = await snapshot(page);
       assert(fresh.state === 'ready' && !fresh.reportedErrors.length && !fresh.errorNotice.length, 'Refreshed document is usable and has no island error');
-      entry.abandonedDocument = {controlledRequest: controlled, cancellations, cancellationSignal: cancellations.length ? 'requestfailed with recorded reason' : 'browser emitted no requestfailed; no error exception allowed', nextNavigation: navigation, errors: abandonedErrors, consoleErrors: abandonedConsole};
+      entry.abandonedDocument = {controlledRequest: controlled, cancellations, cancellationSignal: cancellations.length ? 'requestfailed with recorded reason' : 'browser emitted no requestfailed; no error exception allowed', nextNavigation: navigation, errors: observed.errors, handled: abandonedUI, consoleErrors: abandonedConsole};
       entry.expected = 'fresh page recovers after an interrupted slow module request';
     } else {
       entry.expected = 'server-rendered no-JavaScript contact fallback';
