@@ -10,10 +10,11 @@ const projectRoot = fileURLToPath(new URL('../', import.meta.url));
 const root = process.env.SITE_DIR ? resolve(process.env.SITE_DIR) : projectRoot;
 const output = resolve(process.env.BROWSER_REPORT_DIR || 'test-results');
 await mkdir(output, { recursive: true });
+const localCasePaths = ['/cases/creator-studio.html', '/cases/local-tingwu.html'];
 const allPages = ['/', '/projects.html', '/resume.html', '/404.html', '/workbench.html', '/collaborate.html', ...[
   'multi-tenant', 'rag', 'eval', 'video', 'crm', 'skills', 'recruitment',
   'thought-to-x', 'relay-audit', 'voice-clone-video',
-].map(id => `/cases/${id}.html`)];
+].map(id => `/cases/${id}.html`), ...localCasePaths];
 const pages = process.env.BROWSER_PAGES ? process.env.BROWSER_PAGES.split(',') : allPages;
 const mime = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript',
   '.svg': 'image/svg+xml', '.png': 'image/png', '.webp': 'image/webp', '.mp4': 'video/mp4', '.vtt': 'text/vtt', '.json': 'application/json' };
@@ -48,7 +49,7 @@ const server = http.createServer(async (req, res) => {
 });
 await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
 const base = process.env.BASE_URL?.replace(/\/$/, '') || `http://127.0.0.1:${server.address().port}`;
-const report = { at: new Date().toISOString(), base_url: base, scope: 'Actual Chromium/WebKit, desktop and mobile viewport; selected WCAG A/AA automated rules, not certification or physical-device/human acceptance.', pages: [], interactions: [], failures: [] };
+const report = { at: new Date().toISOString(), base_url: base, page_paths: pages, scope: 'Actual Chromium/WebKit, desktop and mobile viewport; selected WCAG A/AA automated rules, not certification or physical-device/human acceptance.', pages: [], interactions: [], failures: [] };
 try {
   report.source_revision = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: projectRoot, encoding: 'utf8' }).trim();
   report.worktree_dirty = Boolean(execFileSync('git', ['status', '--porcelain'], { cwd: projectRoot, encoding: 'utf8' }).trim());
@@ -113,6 +114,46 @@ try {
             status: response.status(), ...dom, pageErrors: errors, consoleErrors, resourceErrors, axeViolations: violations,
             axeIncompleteRules: axe.incomplete.map(x => x.id) };
           report.pages.push(entry);
+          if (localCasePaths.includes(path)) {
+            const localCase = await page.evaluate(() => {
+              const ids = ['what', 'result', 'build', 'decision', 'limits', 'deep'];
+              return {
+                canonical: document.querySelector('link[rel=canonical]')?.href,
+                socialUrl: document.querySelector('meta[property="og:url"]')?.content,
+                sections: ids.filter(id => document.querySelector(`section.case-section#${id}`)?.innerText.trim()),
+                chapters: [...document.querySelectorAll('.case-toc a[href]')].map(a => a.getAttribute('href')),
+                scope: ['what', 'result'].map(id => document.getElementById(id)?.innerText || '').join(' '),
+                limits: document.getElementById('limits')?.innerText || '',
+                cooperation: [...document.querySelectorAll('.case-cooperate a[href]')].map(a => a.getAttribute('href')),
+                returnsToArchive: Boolean(document.querySelector('main a[href="/projects.html"], main a[href="/projects.html#building-now"]')),
+              };
+            });
+            const checks = {
+              canonical: localCase.canonical === `https://zhouey314-cloud.github.io${path}` && localCase.socialUrl === localCase.canonical,
+              chapters: localCase.sections.length === 6 && localCase.sections.every(id => localCase.chapters.includes('#' + id)),
+              localScope: /本地|本机/.test(localCase.scope) && /原型|工具|工作台/.test(localCase.scope),
+              pendingAcceptance: /尚未|还未|未完成|未通过|未验收|待|仍需|需要/.test(localCase.limits) && /验收|复核|核对|验证/.test(localCase.limits),
+              cooperation: localCase.cooperation.some(href => /^\/collaborate\.html\?topic=(retrieval|workflow|api|media|other)#brief$/.test(href)),
+              archive: localCase.returnsToArchive,
+            };
+            entry.localCase = checks;
+            const missing = Object.entries(checks).filter(([, ok]) => !ok).map(([check]) => check);
+            if (missing.length) fail(`${name}/${viewportName}${path}: local case contract missing ${missing.join(', ')}`);
+          }
+          if (path === '/projects.html') {
+            const archive = await page.evaluate(() => ({
+              publicCount: document.querySelectorAll('[data-category]').length,
+              inProgress: [...document.querySelectorAll('.active-build')].map(card => ({
+                text: card.innerText,
+                publicEntry: card.hasAttribute('data-category'),
+                links: [...card.querySelectorAll('a[href]')].map(a => a.getAttribute('href')),
+              })),
+            }));
+            const localLinks = localCasePaths.every(path => archive.inProgress.some(card => card.links.includes(path) && /本地|本机/.test(card.text) && !card.publicEntry));
+            const unownedHackathonAbsent = archive.inProgress.every(card => !/黑客松/.test(card.text));
+            entry.archiveCases = { publicCount: archive.publicCount, inProgressCount: archive.inProgress.length, localLinks, unownedHackathonAbsent };
+            if (archive.publicCount !== 16 || archive.inProgress.length !== 2 || !localLinks || !unownedHackathonAbsent) fail(`${name}/${viewportName}: preserve 16 public repositories and 2 verified personal in-progress entries with both local case links`);
+          }
           if (path === '/cases/video.html') {
             // Exercise the player where a viewer actually uses it. WebKit may
             // suspend offscreen muted video to conserve rendering resources.

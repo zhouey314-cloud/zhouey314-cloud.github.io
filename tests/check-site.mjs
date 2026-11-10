@@ -7,6 +7,7 @@ const failures = [];
 const assert = (condition, message) => {
   if (!condition) failures.push(message);
 };
+const localCaseIds = ["creator-studio", "local-tingwu"];
 const caseIds = [
   "multi-tenant",
   "rag",
@@ -18,7 +19,15 @@ const caseIds = [
   "thought-to-x",
   "relay-audit",
   "voice-clone-video",
+  ...localCaseIds,
 ];
+// These seven pre-existing cases own the old deep links; new case studies do
+// not need invented s0..s13 anchors to satisfy the compatibility contract.
+const legacyFragmentCounts = new Map([
+  ["multi-tenant", 14], ["rag", 14], ["eval", 14], ["video", 14],
+  ["crm", 14], ["skills", 14], ["recruitment", 10],
+]);
+const legacyFragmentCount = [...legacyFragmentCounts.values()].reduce((sum, count) => sum + count, 0);
 const pages = [
   "index.html",
   "projects.html",
@@ -84,6 +93,8 @@ const baselineProjects = [
   "Voice Clone Video",
 ];
 const sections = ["what", "result", "build", "decision", "limits", "deep"];
+const sectionText = (html, id) => (html.match(new RegExp(`<section\\b[^>]*\\bid="${id}"[^>]*>([\\s\\S]*?)<\\/section>`))?.[1] || "")
+  .replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
 function targetFor(href, page) {
   const url = new URL(href, `https://portfolio.local/${page}`);
   let pathname = decodeURIComponent(url.pathname);
@@ -195,11 +206,18 @@ assert(
   "sharing image: omit school and major from visible text and accessible description",
 );
 assert(
-  (hub.match(/class="active-build"/g) || []).length === 3,
-  "archive: preserve three separately listed work-in-progress projects",
+  (hub.match(/class="active-build"/g) || []).length === 2,
+  "archive: list the two verified personal work-in-progress projects",
 );
-for (const name of ["黑客松项目", "Ethan Creator Studio / EthanCut", "录音转写与摘要工作台"])
+for (const name of ["Ethan Creator Studio / EthanCut", "录音转写与摘要工作台"])
   assert(hub.includes(`<h3>${name}</h3>`), `missing in-progress project ${name}`);
+const activeBuilds = [...hub.matchAll(/<article\b[^>]*class="active-build"[^>]*>([\s\S]*?)<\/article>/g)].map(match => match[0]);
+assert(activeBuilds.every(card => !/黑客松/.test(card)), "archive: exclude hackathon entries without personal contribution from personal projects");
+for (const id of localCaseIds) {
+  const card = activeBuilds.find(html => html.includes(`href="/cases/${id}.html"`));
+  assert(card && /本地|本机/.test(card), `archive: local case ${id} needs a real link within a local work-in-progress entry`);
+  assert(!/\bdata-category=/.test(card || ""), `archive: local case ${id} must not be counted as a public repository`);
+}
 for (const id of caseIds)
   assert(hub.includes(`/cases/${id}.html`), `archive: missing case ${id}`);
 for (const id of caseIds)
@@ -238,12 +256,21 @@ for (const id of caseIds) {
       html.includes(`class="case-section" id="${section}"`),
       `case ${id}: missing narrative section ${section}`,
     );
-  if (!["thought-to-x", "relay-audit", "voice-clone-video"].includes(id))
-    for (let n = 0; n < (id === "recruitment" ? 10 : 14); n++)
-      assert(
-        html.includes(`id="s${n}"`),
-        `case ${id}: missing preserved fragment s${n}`,
-      );
+  for (let n = 0; n < (legacyFragmentCounts.get(id) || 0); n++)
+    assert(
+      html.includes(`id="s${n}"`),
+      `case ${id}: missing preserved fragment s${n}`,
+    );
+  if (localCaseIds.includes(id)) {
+    const url = `https://zhouey314-cloud.github.io/cases/${id}.html`;
+    assert(new RegExp(`<link\\b[^>]*rel="canonical"[^>]*href="${url.replaceAll(".", "\\.")}"`).test(html), `case ${id}: canonical must identify this case`);
+    assert(new RegExp(`<meta\\b[^>]*property="og:url"[^>]*content="${url.replaceAll(".", "\\.")}"`).test(html), `case ${id}: social URL must identify this case`);
+    const scope = sectionText(html, "what") + " " + sectionText(html, "result");
+    assert(/本地|本机/.test(scope) && /原型|工具|工作台/.test(scope), `case ${id}: explain the local prototype/tool scope in the narrative`);
+    const limits = sectionText(html, "limits");
+    assert(/尚未|还未|未完成|未通过|未验收|待|仍需|需要/.test(limits) && /验收|复核|核对|验证/.test(limits), `case ${id}: preserve pending acceptance or human-review boundaries`);
+    assert(html.includes('href="/projects.html"'), `case ${id}: missing return path to the archive`);
+  }
 }
 const sitemap = readFileSync(join(root, "sitemap.xml"), "utf8");
 for (const page of pages.filter((p) => p !== "404.html"))
@@ -276,5 +303,5 @@ if (failures.length) {
   process.exitCode = 1;
 } else
   console.log(
-    `SITE_CHECK_PASS pages=${pages.length} cases=${caseIds.length} archived_projects=16 primary_flagships=3 legacy_fragments=94 contacts=6`,
+    `SITE_CHECK_PASS pages=${pages.length} cases=${caseIds.length} archived_projects=16 primary_flagships=3 legacy_fragments=${legacyFragmentCount} contacts=6`,
   );

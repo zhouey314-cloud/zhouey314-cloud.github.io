@@ -99,8 +99,8 @@ npm run test:threeui
 THREEUI_ENGINE=webkit SYLVA_REQUIRE_WEBGL=1 npm run test:threeui
 ```
 
-- 静态：构建一致性、16 页、10 案例、16 项公开档案、3 项在推进工作、原有 94 个案例片段、metadata、媒体与本地链接。
-- 浏览器：Chromium/WebKit × 16 页 × 桌面/手机 = 64 页面组合；axe、资源、键盘、菜单与真实视频播放/定位/字幕。
+- 静态：构建一致性、18 页、12 案例、16 项公开档案、2 项个人实践、原有 94 个案例片段、metadata、媒体与本地链接。
+- 浏览器：Chromium/WebKit × 18 页 × 桌面/手机 = 72 页面组合；axe、资源、键盘、菜单与真实视频播放/定位/字幕。
 - 体验：14 布局/降级配置与 18 组交互，含 1600/768/390/320px、200% 等效 CSS 重排、无 JS、脚本失败、对话框、复制失败、hash/历史、深链、实际 PDF 下载，以及作品窗口键盘/鼠标切换、案例章节跟随与继续阅读。
 - 场景：独立观察 GL draw calls、r149、完整几何、指针、滚动镜头、单一 rAF、暂停/恢复、真实 context loss、Shader 编译失败、404、异常、沙箱消息校验与手机质量档。Chromium 明确使用软件 WebGL；其他没有 GL 的环境只报告 fallback 验收。`SYLVA_REQUIRE_WEBGL=1` 禁止把 fallback 当实际渲染通过。
 - 加载：两浏览器六组实际资源故障路径，挂起字体/海报仍能初始化与诊断、动效关闭时重试不创建renderer、界面脚本失效仍保留原生菜单和联系。
@@ -136,4 +136,12 @@ THREEUI_ENGINE=webkit SYLVA_REQUIRE_WEBGL=1 npm run test:threeui
 - 首页代表作的 `route`、`decision`、`acceptance`、`proofLinks` 位于 `content/portfolio.json`，由 `scripts/build-home.mjs` 展开呈现，不再把关键取舍藏在折叠项里。
 - 档案的责任说明位于 `projects.html#engineering-readout`；三个深度案例保留旧章节ID，正文说明输入、本人实现、取舍与交接。
 - 评审下载包为 `public/projects/engineering-review.md`，当次复验摘要为 `engineering-verification-20261110.json`。摘要只包含已执行测试、对应源码树和环境；不要将其数字更新成未经执行的新结果。
-- 简历正文改动后，使用隔离的导出器同步PDF与meta，并逐页看排版；原照片、二维码、媒体、16个公开档案与3个推进项继续保留。
+- 简历正文改动后，使用隔离的导出器同步PDF与meta，并逐页看排版；原照片、二维码、媒体与16个公开档案继续保留；推进项目按本人贡献核对。
+
+## 2026-11-10 创作与语音实践档案
+
+- `projects.html#building-now` 单独呈现两项个人工程；按本人确认，移除非本人负责的黑客松条目，不计入16个公开仓库。
+- `cases/creator-studio.html`：手机PWA与Mac/EthanCut的实现、原片保护、恢复、清单交换与审片；真实公开入口截图位于 `public/projects/creator-studio/`。独立原生iOS分支、云功能和真人闭环均不冒充已验收。
+- `cases/local-tingwu.html`：分块/指纹、回听与字段保护、引用覆盖和导出；只展示脱敏工程说明，不连接本机服务或公开私人录音。
+- 两篇正文可直接编辑；6章节ID用于目录与深链。维护图、版本和验证日期时，同步相应 `public/projects/*/engineering-notes.md`、`ASSET_SOURCES.md`。历史测试记录须带原日期，不能当本轮重跑。
+- `practice.css` 只进入档案页与两篇新案例；通过 `content/page-styles.json` 纳入构建。添加新case时同步该配置、sitemap和浏览器/静态回归的页面列表。原有构建和Pages工作流继续使用。
