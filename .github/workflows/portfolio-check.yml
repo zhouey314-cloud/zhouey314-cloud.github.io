@@ -71,6 +71,7 @@ jobs:
           THREEUI_REPORT_DIR: test-results/threeui-webkit
       - run: npm run test:collaboration
       - run: npm run test:fallback
+      - run: npm run test:fallback:guard
       - run: npm run test:loading
       - run: npm run test:crm
       - run: npm run test:workbench

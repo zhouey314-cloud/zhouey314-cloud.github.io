@@ -17,7 +17,8 @@
     "test:crm": "node tests/crm.mjs",
     "astryx": "node node_modules/@astryxdesign/cli/clients/cli/bin/astryx.mjs",
     "test:astryx": "node tests/astryx.mjs",
-    "test:fallback": "node tests/island-fallback.mjs"
+    "test:fallback": "node tests/island-fallback.mjs",
+    "test:fallback:guard": "node tests/island-fallback-selfcheck.mjs"
   },
   "devDependencies": {
     "@astryxdesign/cli": "0.7.11",
