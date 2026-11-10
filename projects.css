@@ -510,3 +510,9 @@
     flex-direction: column;
   }
 }
+
+/* Existing project record, separate from the two detailed toolchain cases. */
+.active-build[data-project-record="hackathon"] { grid-column: 1 / -1; display: grid; grid-template-columns: .8fr 1.2fr; gap: 24px 44px; align-items: center; }
+.active-build[data-project-record="hackathon"] .archive-status { margin-bottom: 14px; }
+.active-build[data-project-record="hackathon"] .practice-history-copy p:first-child { margin-top: 0; }
+@media (max-width: 760px) { .active-build[data-project-record="hackathon"] { grid-template-columns: 1fr; gap: 20px; } }

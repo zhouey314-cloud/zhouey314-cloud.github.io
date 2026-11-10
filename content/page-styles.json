@@ -10,7 +10,8 @@
     "garden.css",
     "studio.css",
     "capabilities.css",
-    "portfolio.css"
+    "portfolio.css",
+    "practice.css"
   ],
   "resume.html": [
     "tokens.css",
@@ -121,5 +122,23 @@
     "garden.css",
     "studio.css",
     "portfolio.css"
+  ],
+  "cases/creator-studio.html": [
+    "tokens.css",
+    "style.css",
+    "case-study.css",
+    "garden.css",
+    "studio.css",
+    "portfolio.css",
+    "practice.css"
+  ],
+  "cases/local-tingwu.html": [
+    "tokens.css",
+    "style.css",
+    "case-study.css",
+    "garden.css",
+    "studio.css",
+    "portfolio.css",
+    "practice.css"
   ]
 }

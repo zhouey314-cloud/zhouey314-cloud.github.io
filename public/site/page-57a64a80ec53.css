@@ -2522,6 +2522,12 @@ html[data-motion="off"]::view-transition-new(*) {
   }
 }
 
+/* Existing project record, separate from the two detailed toolchain cases. */
+.active-build[data-project-record="hackathon"] { grid-column: 1 / -1; display: grid; grid-template-columns: .8fr 1.2fr; gap: 24px 44px; align-items: center; }
+.active-build[data-project-record="hackathon"] .archive-status { margin-bottom: 14px; }
+.active-build[data-project-record="hackathon"] .practice-history-copy p:first-child { margin-top: 0; }
+@media (max-width: 760px) { .active-build[data-project-record="hackathon"] { grid-template-columns: 1fr; gap: 20px; } }
+
 /* garden.css */
 @font-face {
   font-family:Lexend;
@@ -3278,3 +3284,53 @@ button:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible,t
 .readout-grid a,.readout-download a,.engagement-download a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:.25em}
 .readout-download{display:flex;flex-wrap:wrap;gap:10px 26px}.engagement-download{font-size:14px;line-height:1.9;margin-block:30px}
 @media(max-width:760px){.project-contract{font-size:16px}.readout-grid{grid-template-columns:1fr;gap:20px}.project-contract dl{grid-template-columns:1fr;gap:5px}.project-contract dd{margin-bottom:12px}.project-readout{padding-block:28px}.readout-download{display:block}}
+
+/* practice.css */
+/* Local projects use the same editorial frame as the public engineering cases. */
+.active-builds-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.active-build { display: flex; flex-direction: column; padding: clamp(24px, 3vw, 40px); }
+.active-build .practice-index { color: var(--muted); font: 500 12px/1.6 var(--display); letter-spacing: .08em; margin: 0 0 20px; }
+.active-build .archive-status { align-self: flex-start; margin-bottom: 18px; }
+.active-build h3 { font-size: clamp(24px, 2.5vw, 32px); }
+.active-build .practice-lead { font-size: 18px; color: var(--text); line-height: 1.75; }
+.practice-flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; list-style: none; padding: 20px 0; margin: 24px 0 0; border-block: 1px solid var(--line); }
+.practice-flow li { font-size: 14px; line-height: 1.7; }
+.practice-flow li small { display: block; font: 500 11px/1.8 var(--display); color: var(--muted); margin-bottom: 5px; }
+.practice-facts { margin: 24px 0; display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 12px 16px; font-size: 14px; line-height: 1.85; }
+.practice-facts dt { font-weight: 600; }
+.practice-facts dd { margin: 0; color: var(--muted); }
+.practice-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 24px; margin-top: auto; padding-top: 12px; }
+.practice-actions a { min-height: 44px; display: inline-flex; align-items: center; }
+.practice-case .case-hero h1 { max-width: none; }
+.practice-map { padding: clamp(24px, 3vw, 40px); border: 1px solid var(--line); background: var(--paper); border-radius: 16px; margin: 8px 0 0; }
+.practice-map > p { font: 500 11px/1.7 var(--display); letter-spacing: .09em; color: var(--muted); margin-bottom: 22px; }
+.practice-map ol { padding: 0; margin: 0; list-style: none; counter-reset: route; }
+.practice-map li { counter-increment: route; display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 12px; padding: 18px 0; border-top: 1px solid var(--line); }
+.practice-map li::before { content: counter(route, decimal-leading-zero); font: 500 12px/1.8 var(--display); color: var(--muted); }
+.practice-map strong { display: block; font-size: 18px; line-height: 1.6; font-weight: 600; }
+.practice-map small { display: block; color: var(--muted); font-size: 13px; line-height: 1.85; margin-top: 4px; overflow-wrap: anywhere; }
+.practice-map figcaption { border-top: 1px solid var(--line); padding-top: 18px; color: var(--muted); font-size: 12px; line-height: 1.8; }
+.practice-case .case-prose > p { margin-bottom: 20px; }
+.practice-records { display: grid; grid-template-columns: minmax(100px, .35fr) 1fr; margin-block: 28px; }
+.practice-records dt,.practice-records dd { padding: 18px 0; border-top: 1px solid var(--line); margin: 0; font-size: 15px; line-height: 1.9; }
+.practice-records dt { font-weight: 600; padding-right: 20px; }
+.practice-case .practice-steps { list-style: none; padding: 0; margin: 24px 0; counter-reset: step; }
+.practice-steps > li { counter-increment: step; padding: 24px 0 24px 48px; position: relative; border-top: 1px solid var(--line); }
+.practice-steps > li::before { content: counter(step, decimal-leading-zero); position: absolute; left: 0; top: 26px; font: 500 13px var(--display); color: var(--muted); }
+.practice-steps h3 { font-size: 20px; line-height: 1.5; margin: 0 0 10px; }
+.practice-steps p { line-height: 1.9; color: var(--muted); margin: 0; }
+.practice-case code { font-size: .84em; overflow-wrap: anywhere; }
+.practice-evidence { border-left: 3px solid var(--line); padding-left: 22px; margin-block: 28px; }
+.practice-evidence p { font-size: 14px; line-height: 1.9; color: var(--muted); }
+.practice-case .practice-screenshot { display: block; max-height: 640px; width: 100%; object-fit: contain; object-position: top; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+.practice-caption { color: var(--muted); font-size: 13px; line-height: 1.9; margin-top: 12px; }
+@media(max-width:760px) {
+  .active-builds-grid { grid-template-columns: 1fr; }
+  .practice-facts { grid-template-columns: 1fr; gap: 4px; font-size: 16px; }
+  .practice-facts dd { margin-bottom: 12px; }
+  .practice-map { margin-top: 18px; }
+  .practice-records { grid-template-columns: 1fr; }
+  .practice-records dd { border-top: 0; padding-top: 0; }
+  .practice-actions { gap: 12px 20px; }
+  .practice-steps > li { padding-left: 38px; }
+}

@@ -37,7 +37,7 @@ npm run preview
 | 能力、输入、产物、检查方式及联系渠道 | 同文件 `services` / `engineering` / `contactLinks` |
 | 文章 | 同文件 `writing`；目前为空，新增真实文章后才显示 |
 | 首页身份、结构、照片与分享信息 | `content/home.template.html`；照片复用 `public/portrait/`，来源记录 `ASSET_SOURCES.md` |
-| 完整 16 项档案与 3 项在推进内容 | `projects.html`；只编辑正文，保留 `astryx:archive` / `portfolio:styles` 生成标记 |
+| 完整 16 项档案与 3 项项目与实践记录 | `projects.html`；只编辑正文，保留 `astryx:archive` / `portfolio:styles` 生成标记 |
 | 工作台静态介绍、边界与项目原链 | `content/workbench.template.html` |
 | 十篇案例 | `cases/*.html`；正文直接维护，图片原链与锚点保留 |
 | 合作页排版与固定内容 | `content/collaborate.template.html`、`collaborate.css` |

@@ -165,3 +165,9 @@
 ## 2026-11-01 合作路径与公开资料同步
 
 新增合作页复用用户已授权的同一张人物照片、原微信 SVG 模块与既有 Lexend 字体。二维码只通过 CSS 使用深绿色，原 SVG 字节未更改。没有生成新人像、客户标识、证言或商业成绩。简历仍由 resume.html 导出，两页 A4，本轮包含在线简历对应的微信与合作入口。四类合作交付是基于公开实现提出的工作范围，具体项目需另行确认条件与检查方式。
+
+## 2026-11-10 个人实践档案
+
+- `public/projects/creator-studio/creator-live.webp`（1440×1000）及 `creator-live-mobile.webp`（390×844）：2026-11-10 用新的匿名 Chrome 153 桌面会话从本人公开产品 https://ethan-creator-personal.pages.dev/ 实际截取；原始PNG保存在本地交付目录，网站仅转为WebP压缩。无私人项目、文稿或媒体。手机图为桌面视口模拟，不作为手机实拍/端到端验收证据。用于 `/cases/creator-studio.html`。
+- 两篇新案例的工程链路为基于本人现有代码与记录整理的DOM架构说明，明确标注非产品运行截图；没有复制第三方编辑器、模型或私人录音素材。
+- 两份 `public/projects/{creator-studio,local-tingwu}/engineering-notes.md` 为本轮原创脱敏项目说明。只列模块职责、版本、历史检查和待验收边界；不含原音、逐字稿、私人安装包或秘密。项目代码尚未公开，不伪造源码入口。
