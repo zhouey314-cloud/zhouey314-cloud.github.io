@@ -32,3 +32,19 @@ button:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible,t
  .wb-tabs strong { font-size:16px; }
  .archive-item { padding-block:26px; }
 }
+
+/* Project accountability stays visible alongside the approved reading layout. */
+.project-contract{margin:22px 0;padding:20px 0;border-block:1px solid var(--line);font-size:15px;line-height:1.9}
+.project-contract .project-route{font-size:12px;color:var(--muted);margin:0 0 16px;overflow-wrap:anywhere}
+.project-contract dl{display:grid;grid-template-columns:70px minmax(0,1fr);gap:12px 16px;margin:0}
+.project-contract dt{font-weight:600}.project-contract dd{margin:0}
+.project-proof-links{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px}
+.project-proof-links a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:.25em}
+.project-readout{border-block:1px solid var(--line);padding:40px 0;margin:48px 0 64px}
+.project-readout>h2{font:500 clamp(26px,3.4vw,42px)/1.4 var(--font)}
+.project-readout>p{max-width:76ch;line-height:1.9}
+.readout-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;margin:30px 0}
+.readout-grid h3{font-size:20px}.readout-grid p{font-size:15px;line-height:1.9}
+.readout-grid a,.readout-download a,.engagement-download a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:.25em}
+.readout-download{display:flex;flex-wrap:wrap;gap:10px 26px}.engagement-download{font-size:14px;line-height:1.9;margin-block:30px}
+@media(max-width:760px){.project-contract{font-size:16px}.readout-grid{grid-template-columns:1fr;gap:20px}.project-contract dl{grid-template-columns:1fr;gap:5px}.project-contract dd{margin-bottom:12px}.project-readout{padding-block:28px}.readout-download{display:block}}

@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "source": "resume.html",
-  "source_sha256": "65d810ebeaa1c3794674d4bc3af1cb78b2a059dd84f7543e973c7fe7006dbba2",
-  "pdf_sha256": "f71d329033320cd05e924a465836fcddfe5ae0f32c72049d5f42287c9a9e35c1",
+  "source_sha256": "e89a1b3ad2180098715d5eb1133dc60c2c7f79d1e8e26c68c8f301504e3bdba8",
+  "pdf_sha256": "607aa19fc9055e8d51888e7e003a7ea7638b84f4d0a9b8a7a24c27ef44e396a6",
   "pages": 2,
   "clickable_links": 22,
   "renderer": "ReportLab, not browser print",

@@ -1,6 +1,6 @@
 {
   "name": "恩宇 Ethan Zhou",
-  "intro": "自 2026 年 6 月参与企业 GEO 与 AI 应用实践。我主要用 Python 做资料检索、AI 接口集成和内容工作流，让资料能回到出处、故障有线索可查、内容生产有完整记录。",
+  "intro": "我做 AI 应用与工具开发，自 2026 年 6 月参与企业 GEO 与 AI 应用实践。工作从使用者、资料和约束出发：先定义输入、输出与完成标准，再实现数据处理、接口和操作流程，最后补齐异常验证、运行说明与交接材料。",
   "email": "zhouey314@gmail.com",
   "services": [
     {
@@ -95,11 +95,11 @@
       "number": "01",
       "field": "知识检索与来源引用",
       "name": "Enterprise RAG Starter",
-      "headline": "资料可查，回答有据。",
-      "problem": "面向团队资料查询：找到答案后，还能回到原文、版本和出处，判断这条信息能否使用。",
+      "headline": "检索之前，先把资料边界做对。",
+      "problem": "团队查询资料时，需要同时确认：当前身份能看哪些内容、回答对应哪个版本、资料不足时如何处理。",
       "role": "我实现文档版本、检索前访问过滤、引用定位、证据不足处理与本地备份恢复。",
       "deliverable": "本地知识检索服务、文件入库与身份管理、来源检查界面，以及备份恢复说明。",
-      "decision": "先过滤可访问资料再检索；只提到“联系电话”却没有号码时，保留线索并拒答。",
+      "decision": "按授权范围建立独立的 FTS 检索快照，避免先查全库再删结果；更新资料时保留可追查的版本与来源。",
       "stack": [
         "Python",
         "SQLite / FTS5",
@@ -117,18 +117,34 @@
       "demo": "/workbench.html#rag",
       "demoLabel": "打开检索工作台",
       "code": "https://github.com/zhouey314-cloud/enterprise-rag-starter",
-      "preview": "/public/workbench/rag-workspace-preview.webp"
+      "preview": "/public/workbench/rag-workspace-preview.webp",
+      "acceptance": "同一问题核对引用、版本与权限范围；资料只提到“联系电话”却没有号码时，返回证据不足，而不是补出一个号码。",
+      "route": "授权与资料版本 → 范围内检索 → 引用或拒答 → 备份与恢复",
+      "proofLinks": [
+        {
+          "label": "架构与数据流",
+          "href": "https://github.com/zhouey314-cloud/enterprise-rag-starter/blob/7fc40fb309a75926c9828711e4fdfda5de85704b/docs/architecture.md"
+        },
+        {
+          "label": "运行与恢复",
+          "href": "https://github.com/zhouey314-cloud/enterprise-rag-starter/blob/7fc40fb309a75926c9828711e4fdfda5de85704b/docs/OPERATIONS.md"
+        },
+        {
+          "label": "异常与恢复测试",
+          "href": "https://github.com/zhouey314-cloud/enterprise-rag-starter/blob/7fc40fb309a75926c9828711e4fdfda5de85704b/tests/test_operations.py"
+        }
+      ]
     },
     {
       "id": "relay",
       "number": "02",
       "field": "AI 工具与链路排查",
       "name": "RelayAudit / AgentGuard",
-      "headline": "接口出错，有线索可查。",
-      "problem": "面向已有 AI 接入：把超时、流式中断和容量过载变成可复现、可继续排查的问题。",
+      "headline": "把流式连接，当作完整生命周期处理。",
+      "problem": "AI 调用的失败可能出现在连接、流式传输或取消阶段。开发者需要区分业务转发、容量不足与监测降级，才能继续排查。",
       "role": "我搭建本地网关，处理 HTTP / SSE、超时、取消、容量控制与独立异常报告。",
       "deliverable": "可安装的本地网关、协议与异常报告、容量配置和故障恢复检查。",
-      "decision": "容量名额覆盖完整流式连接；超限请求在本地拒绝，已有请求继续完成，结束后释放名额。",
+      "decision": "一个容量名额覆盖完整 HTTP / SSE 生命周期；超限在本地返回 503，已有流继续完成，结束或异常后释放名额。",
       "stack": [
         "Python",
         "HTTP / SSE",
@@ -146,18 +162,34 @@
       "demo": "/workbench.html#relay",
       "demoLabel": "打开报告检查器",
       "code": "https://github.com/zhouey314-cloud/relay-audit",
-      "preview": "/public/workbench/relay-workspace-preview.webp"
+      "preview": "/public/workbench/relay-workspace-preview.webp",
+      "acceptance": "挂起一条 SSE 占满容量，验证第二请求在本地被拒且未触达上游；释放后再次请求成功。观察队列故障不得中断正常转发。",
+      "route": "本地凭据 → 容量准入 → 业务转发 → 独立观察与报告",
+      "proofLinks": [
+        {
+          "label": "协议与生命周期",
+          "href": "https://github.com/zhouey314-cloud/relay-audit/blob/f8d7376d7593925cb420fd670deef3b0d33f5a19/docs/PROTOCOLS.md"
+        },
+        {
+          "label": "容量与运行边界",
+          "href": "https://github.com/zhouey314-cloud/relay-audit/blob/f8d7376d7593925cb420fd670deef3b0d33f5a19/docs/CAPACITY.md"
+        },
+        {
+          "label": "网关与失败测试",
+          "href": "https://github.com/zhouey314-cloud/relay-audit/blob/f8d7376d7593925cb420fd670deef3b0d33f5a19/tests/test_guard_proxy.py"
+        }
+      ]
     },
     {
       "id": "video",
       "number": "03",
       "field": "内容生产工作流",
       "name": "AI Video Workflow Engine",
-      "headline": "从素材，到可检查的交付。",
-      "problem": "面向重复内容生产：把素材、参数、字幕和产物留在同一条流程里，方便下一次复跑与交接。",
+      "headline": "交付一个完整任务包，而不止一个 MP4。",
+      "problem": "下一位接手者需要知道素材、字幕、参数与成片如何对应；任务失败时，也需要辨认哪些文件完整、哪些仍不能交付。",
       "role": "我用 Python / FFmpeg 串起素材、时间轴、字幕、渲染、质量检查与可校验交付包。",
       "deliverable": "成片、字幕、时间轴、预览、媒体检查报告与包含文件哈希的交付清单。",
-      "decision": "校验完成后才发布完整任务包；文件检查通过仍需人工审片，不能替代内容与审美判断。",
+      "decision": "在临时目录完成渲染与校验，再发布完整任务包；清单记录文件哈希，失败时清理本次不完整产物。人工审片保持独立。",
       "stack": [
         "Python",
         "FFmpeg",
@@ -175,7 +207,23 @@
       "demo": "/workbench.html#video",
       "demoLabel": "打开视频工作台",
       "code": "https://github.com/zhouey314-cloud/ai-video-workflow-engine",
-      "preview": "/public/workbench/video-workspace-preview.webp"
+      "preview": "/public/workbench/video-workspace-preview.webp",
+      "acceptance": "交付包应能独立校验成片、字幕、时间轴与 QA；删除或篡改文件必须被检出。新生成的包仍需逐次人工审片。",
+      "route": "授权素材 → 时间轴与字幕 → 渲染与机械 QA → 完整包 → 人工审片",
+      "proofLinks": [
+        {
+          "label": "完整包实现",
+          "href": "https://github.com/zhouey314-cloud/ai-video-workflow-engine/blob/367badd7c3ed2314ec1014964fb8ed3931dc019e/video_workflow/delivery.py"
+        },
+        {
+          "label": "交付与校验方式",
+          "href": "https://github.com/zhouey314-cloud/ai-video-workflow-engine/blob/367badd7c3ed2314ec1014964fb8ed3931dc019e/docs/DELIVERY_BUNDLES.md"
+        },
+        {
+          "label": "失败清理与完整性测试",
+          "href": "https://github.com/zhouey314-cloud/ai-video-workflow-engine/blob/367badd7c3ed2314ec1014964fb8ed3931dc019e/tests/test_bundles.py"
+        }
+      ]
     }
   ],
   "writing": [],
