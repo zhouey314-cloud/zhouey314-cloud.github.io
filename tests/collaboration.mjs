@@ -251,7 +251,7 @@ try {
           assert(await page.locator('[data-inquiry-fallback] a[href="mailto:' + email + '"]').isVisible(), 'fallback provides an actual email link');
           const qr = page.locator('.collaborate-qr svg'); assert(await qr.isVisible(), 'inline WeChat QR remains visible');
           const box = await qr.boundingBox(); assert(box.width >= 140 && Math.abs(box.width - box.height) < 1, 'fallback QR keeps a readable square scan area');
-          assert(await page.locator('.collaborate-qr>a').getAttribute('href') === wechat, 'QR links to the approved WeChat account');
+          assert(await page.locator('.collaborate-qr>a').getAttribute('href') === '/public/contact/wechat-qr.png' && await page.locator('.collaborate-qr>a').getAttribute('data-wechat-profile') === wechat, 'QR opens the saveable PNG of the same approved account');
           assert(await page.locator('.collaborate-recruiter a[href="/resume.html"]').isVisible() && await page.locator('.collaborate-recruiter a[download][href="/public/ethan-zhou-resume.pdf"]').isVisible(), 'online and downloadable resume remain available');
           for (const target of ['https://github.com/zhouey314-cloud', 'https://x.com/UPing123zzz', 'https://t.me/ethanyu520']) assert(await page.locator(`.collaborate-contact a[href="${target}"]`).isVisible(), 'existing social contact remains usable: ' + target);
           entry.geometry = await noOverflow(page, mode);

@@ -74,6 +74,7 @@
 .collaborate-qr svg {display:block;width:196px;height:196px;max-width:100%;background:#fff}
 .collaborate-qr svg path {fill:#22452d}
 .collaborate-qr figcaption {font-size:12px;line-height:1.8;margin-top:13px;color:#5a694f}
+.collaborate-qr figcaption p {margin:10px 0;font-size:13px;line-height:1.9;max-width:28em}
 .collaborate-qr figcaption a {display:inline-flex;align-items:center;min-height:44px;font-size:11px;text-decoration:underline;text-underline-offset:5px}
 .collaborate-contact nav {display:flex;gap:7px 21px;flex-wrap:wrap;padding-block:5px 18px}
 .collaborate-contact nav a {display:inline-flex;align-items:center;min-height:44px;font-size:12px}

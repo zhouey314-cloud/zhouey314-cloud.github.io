@@ -48,12 +48,15 @@ const topics = ['retrieval', 'workflow', 'api', 'media'];
 if (data.services.length !== topics.length || data.services.some(s => !topics.includes(s.topic) || !s.startingPoint || !s.acceptance) || new Set(data.services.map(s => s.topic)).size !== topics.length) throw new Error('Cooperation scopes must match the four evidence-backed service areas');
 const contactById = Object.fromEntries(data.contactLinks.map(c => [c.id, c]));
 if (contactById.email.href !== 'mailto:' + data.email || !['email','wechat','github','x','telegram'].every(id => contactById[id])) throw new Error('Canonical contact channels are incomplete');
-const external = c => `<a href="${escape(c.href)}" target="_blank" rel="noopener noreferrer">${escape(c.label)} ↗</a>`;
+// A u.wechat.com link in an ordinary phone browser can open WeChat's generic
+// website. Use a static, saveable image of the same approved code instead.
+const wechatImage = '/public/contact/wechat-qr.png';
+const external = c => `<a href="${escape(c.id === 'wechat' ? wechatImage : c.href)}"${c.id === 'wechat' ? ` data-wechat-profile="${escape(c.href)}"` : ''} target="_blank" rel="noopener noreferrer">${escape(c.id === 'wechat' ? '微信二维码' : c.label)} ↗</a>`;
 const socialLinks = data.contactLinks.filter(c => !['email','wechat'].includes(c.id)).map(external).join('');
 const contactLinks = data.contactLinks.filter(c => c.id !== 'email').map(external).join('');
 const cooperationScopes = data.services.map(s => `<article class="scope-item" id="scope-${s.topic}"><p class="garden-kicker">${escape(s.number)} / ${escape(s.field)}</p><h3>${escape(s.title)}</h3><dl><dt>从这里开始</dt><dd>${escape(s.startingPoint)}</dd><dt>首轮产物</dt><dd>${escape(s.deliverable)}</dd><dt>怎样检查</dt><dd>${escape(s.acceptance)}</dd></dl><a href="${escape(s.href)}">查看对应作品与证据 ↗</a><a href="/collaborate.html?topic=${s.topic}#brief">按这个方向聊 ↘</a></article>`).join('\n');
 const cooperationOptions = data.services.map(s => `<option value="${s.topic}">${escape(s.field)}</option>`).join('');
-const replacements = { name: escape(data.name), intro: escape(data.intro), email: escape(data.email), services, engineering, projects, writing, heroProjects, wechatQr, socialLinks, contactLinks, cooperationScopes, cooperationOptions, homeAssets, wechatHref: escape(contactById.wechat.href), heroActions:ui.heroActions(), cooperationComposer:ui.island('cooperate',{services:data.services,email:data.email}), ragWorkbench:ui.island('rag'), relayWorkbench:ui.island('relay'), videoWorkbench:ui.island('video'), uiAssets:ui.assets };
+const replacements = { name: escape(data.name), intro: escape(data.intro), email: escape(data.email), services, engineering, projects, writing, heroProjects, wechatQr, wechatImage, socialLinks, contactLinks, cooperationScopes, cooperationOptions, homeAssets, wechatHref: escape(contactById.wechat.href), heroActions:ui.heroActions(), cooperationComposer:ui.island('cooperate',{services:data.services,email:data.email}), ragWorkbench:ui.island('rag'), relayWorkbench:ui.island('relay'), videoWorkbench:ui.island('video'), uiAssets:ui.assets };
 for (const [source, target] of [['content/home.template.html', 'index.html'], ['content/collaborate.template.html', 'collaborate.html'], ['content/workbench.template.html','workbench.html']]) {
   const template = readFileSync(root + source, 'utf8');
   const output = template.replace(/\{\{(\w+)\}\}/g, (_, key) => { if (!(key in replacements)) throw new Error('Unknown content key: ' + key); return replacements[key]; });

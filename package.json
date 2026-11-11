@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "preview": "node scripts/preview.mjs",
-    "test": "node scripts/build-site.mjs --check && node tests/check-site.mjs && node --test tests/rag/regression.test.mjs",
+    "test": "node scripts/build-site.mjs --check && node tests/check-site.mjs && node --test tests/rag/regression.test.mjs tests/wechat-qr.test.mjs",
     "test:browser": "node tests/browser.mjs",
     "install:browsers": "playwright install chromium webkit",
     "build": "node scripts/build-site.mjs",
@@ -13,6 +13,7 @@
     "test:threeui": "node tests/threeui.mjs",
     "test:workbench": "node tests/workbench.mjs",
     "test:collaboration": "node tests/collaboration.mjs",
+    "test:mobile-contact": "node tests/mobile-contact.mjs",
     "test:loading": "node tests/loading.mjs",
     "test:crm": "node tests/crm.mjs",
     "astryx": "node node_modules/@astryxdesign/cli/clients/cli/bin/astryx.mjs",
