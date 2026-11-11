@@ -2,15 +2,29 @@ const loaded=new WeakSet();
 const modules={archive:()=>import('./archive.jsx'),cooperate:()=>import('./cooperate.jsx'),rag:()=>import('./workbench.jsx'),relay:()=>import('./workbench.jsx'),video:()=>import('./workbench.jsx')};
 async function mount(root) {
   if(loaded.has(root))return;loaded.add(root);
+  const initialHTML=root.innerHTML;
+  let phase='props';
+  function fail(error,errorPhase,info) {
+    if(root.dataset.uiState==='error')return;
+    root.dataset.uiState='error';root.dataset.uiErrorPhase=errorPhase;
+    root.innerHTML=initialHTML;
+    const note=document.createElement('p');note.className='ui-fallback-note';note.dataset.uiErrorFor=root.dataset.uiId;
+    note.setAttribute('role','alert');note.textContent='交互暂时不可用。可使用下方静态说明与联系入口，刷新页面后重试。';root.before(note);
+    const detail={island:root.dataset.ui,phase:errorPhase,message:error?.message||String(error),stack:error?.stack||null,componentStack:info?.componentStack||null};
+    console.error('Portfolio interaction failed:',root.dataset.ui,errorPhase,error,info);
+    dispatchEvent(new CustomEvent('portfolio:ui-error',{detail}));
+  }
+  root.dataset.uiState='loading';
   try {
     const name=root.dataset.ui,props=JSON.parse(document.querySelector(`[data-ui-props="${root.dataset.uiId}"]`).textContent);
+    phase='module-import';
     const [runtime,module]=await Promise.all([import('./hydrate.jsx'),modules[name]()]);
     const Component={rag:module.RagWorkbench,relay:module.RelayWorkbench,video:module.VideoWorkbench}[name]||module.default;
-    runtime.hydrate(root,Component,props);
-    root.dataset.uiState='ready';
+    phase='hydrate-start';
+    runtime.hydrate(root,Component,props,(error,info)=>fail(error,'react-uncaught',info));
+    if(root.dataset.uiState!=='error')root.dataset.uiState='ready';
   } catch(error) {
-    root.dataset.uiState='error';console.error('Portfolio interaction failed:',root.dataset.ui,error);
-    const note=document.createElement('p');note.className='ui-fallback-note';note.setAttribute('role','status');note.textContent='交互暂时没有启动。正文、原项目、下载与联系入口仍可使用。';root.after(note);
+    fail(error,phase);
   }
 }
 function workbench(){const requested=document.documentElement.dataset.activeWorkspace||location.hash.slice(1);const id=['rag','relay','video'].includes(requested)?requested:'rag';const root=document.querySelector(`[data-ui="${id}"]`);if(root)mount(root);}
