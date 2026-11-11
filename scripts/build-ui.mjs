@@ -17,13 +17,14 @@ export async function buildUI({checking=false}={}) {
   writeFileSync(resolve(cache,'reset-scoped.css'),'@scope (.garden-ui [data-astryx-theme]) {\n'+reset+'\n}');
   writeFileSync(resolve(cache,'astryx.entry.css'),'@layer reset, astryx-base, astryx-theme;\n@import "./reset-scoped.css";\n@import "@astryxdesign/core/astryx.css";\n@import "../src/ui/generated/garden.css";\n@import "../src/ui/ui.css";\n');
   const out=resolve(root,'public/ui');mkdirSync(out,{recursive:true});
-  const result=await build({absWorkingDir:root,entryPoints:{bootstrap:'src/ui/bootstrap.js',astryx:'.cache/astryx.entry.css'},outdir:out,bundle:true,splitting:true,format:'esm',target:'es2022',minify:true,write:false,metafile:true,entryNames:'[name]-[hash]',chunkNames:'chunks/[name]-[hash]',external:['/public/*'],define:{'process.env.NODE_ENV':'"production"'},legalComments:'linked',logLevel:'warning'});
+  const result=await build({absWorkingDir:root,entryPoints:{bootstrap:'src/ui/bootstrap.js','ready-archive':'src/ui/ready-archive.js','ready-workbench':'src/ui/ready-workbench.js',astryx:'.cache/astryx.entry.css'},outdir:out,bundle:true,splitting:true,format:'esm',target:'es2022',minify:true,write:false,metafile:true,entryNames:'[name]-[hash]',chunkNames:'chunks/[name]-[hash]',external:['/public/*'],define:{'process.env.NODE_ENV':'"production"'},legalComments:'linked',logLevel:'warning'});
   writeFileSync(resolve(cache,'ui-metafile.json'),JSON.stringify(result.metafile));
   const generated=result.outputFiles.map(f=>relative(root,f.path).replaceAll('\\','/'));
   const previous=existsSync(resolve(out,'manifest.json'))?JSON.parse(readFileSync(resolve(out,'manifest.json'),'utf8')):null;
   for(const f of result.outputFiles){if(checking){if(!existsSync(f.path)||!readFileSync(f.path).equals(f.contents))throw Error(relative(root,f.path)+' is stale. Run npm run build');}else{mkdirSync(dirname(f.path),{recursive:true});writeFileSync(f.path,f.contents);}}
   const entries=Object.entries(result.metafile.outputs),bootstrap='/'+entries.find(([,m])=>m.entryPoint==='src/ui/bootstrap.js')[0],css='/'+entries.find(([p,m])=>m.entryPoint==='.cache/astryx.entry.css'&&p.endsWith('.css'))[0];
-  const manifest={core:'0.7.11',theme:'0.7.11',cli:'0.7.11',react:'19.3.1',stylex:'0.19.1',bootstrap,css,generated};
+  const readyEntries=Object.fromEntries(['archive','workbench'].map(name=>[name,'/'+entries.find(([,m])=>m.entryPoint===`src/ui/ready-${name}.js`)[0]]));
+  const manifest={core:'0.7.11',theme:'0.7.11',cli:'0.7.11',react:'19.3.1',stylex:'0.19.1',bootstrap,css,readyEntries,generated};
   const text=JSON.stringify(manifest,null,2)+'\n';
   if(checking){if(readFileSync(resolve(out,'manifest.json'),'utf8')!==text)throw Error('UI manifest is stale');}
   else{writeFileSync(resolve(out,'manifest.json'),text);for(const path of previous?.generated||[]){const file=resolve(root,path);if(file.startsWith(out+'/')&&!generated.includes(path)&&existsSync(file))unlinkSync(file);}}
@@ -31,5 +32,10 @@ export async function buildUI({checking=false}={}) {
   const code=ssr.outputFiles[0].text,hash=createHash('sha256').update(code).digest('hex').slice(0,12),renderPath=resolve(cache,'ui-render-'+hash+'.mjs');writeFileSync(renderPath,code);
   const render=await import(pathToFileURL(renderPath));
   const script=`<script type="module" src="${bootstrap}" data-astryx-css="${css}"></script>`;
-  return {...render,manifest,assets:`<!-- astryx:assets -->\n<link rel="stylesheet" href="${css}" />\n${script}\n<!-- /astryx:assets -->`,lazyAssets:`<!-- astryx:assets -->\n${script}\n<!-- /astryx:assets -->`};
+  const assetsFor=page=>{
+    const name=page==='projects.html'?'archive':page==='workbench.html'?'workbench':null;
+    const ready=name?`<script type="module" src="${readyEntries[name]}"></script>\n`:'';
+    return `<!-- astryx:assets -->\n<link rel="stylesheet" href="${css}" />\n${ready}${script}\n<!-- /astryx:assets -->`;
+  };
+  return {...render,manifest,assetsFor,assets:assetsFor(null),lazyAssets:`<!-- astryx:assets -->\n${script}\n<!-- /astryx:assets -->`};
 }

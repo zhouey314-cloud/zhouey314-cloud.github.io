@@ -1,14 +1,16 @@
 import React,{useEffect,useMemo,useState} from 'react';
 import {TextInput} from '@astryxdesign/core/TextInput';
 import {Garden,Action,useReady} from './shared.jsx';
+import Fuse from '../../public/vendor/fuse/fuse.js';
 
 export default function Archive({filters,count=16}) {
   const ready=useReady();const [query,setQuery]=useState(''),[category,setCategory]=useState('all'),[total,setTotal]=useState(count),[engine,setEngine]=useState(null),[initialized,setInitialized]=useState(false);
   const records=useMemo(()=> typeof document==='undefined'?[]:[...document.querySelectorAll('[data-category]')].map((row,index)=>({row,index,name:row.dataset.projectName,text:row.innerText})),[]);
   useEffect(()=>{
     const p=new URLSearchParams(location.search);setQuery((p.get('q')||'').slice(0,100));setCategory(filters.some(f=>f.value===p.get('category'))?p.get('category'):'all');setInitialized(true);
-    let live=true;import('/public/vendor/fuse/fuse.js').then(({default:Fuse})=>{if(live)setEngine(new Fuse(records,{keys:[{name:'name',weight:.6},{name:'text',weight:.4}],threshold:.3,ignoreLocation:true}));}).catch(e=>console.warn('Portfolio fuzzy search unavailable; using exact matching.',e));
-    return ()=>{live=false};
+    // The fixed public search engine ships with this island. Do not start a
+    // second module graph after links and search have become interactive.
+    setEngine(new Fuse(records,{keys:[{name:'name',weight:.6},{name:'text',weight:.4}],threshold:.3,ignoreLocation:true}));
   },[]);
   useEffect(()=>{
     if(!initialized)return;
