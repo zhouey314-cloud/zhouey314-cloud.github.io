@@ -4,8 +4,11 @@ import {TextInput} from '@astryxdesign/core/TextInput';
 import {FileInput} from '@astryxdesign/core/FileInput';
 import {Banner} from '@astryxdesign/core/Banner';
 import {Garden,Action,Choice,download,useReady} from './shared.jsx';
+import {explain} from '../../public/workbench/rag.js';
 
-async function get(url) {const r=await fetch(url);if(!r.ok)throw Error(`HTTP ${r.status}: ${url}`);return r;}
+// These are small, fixed public fixtures. Let an in-flight GET finish during
+// native navigation; no local import, question or brief is sent by this helper.
+async function get(url) {const r=await fetch(url,{keepalive:true});if(!r.ok)throw Error(`HTTP ${r.status}: ${url}`);return r;}
 function Status({name,message,error=false}) {return <p className="wb-status" {...{['data-'+name+'-status']:''}} data-error={String(error)} role="status">{message}</p>;}
 function Failure({message}) {return message?<Banner status="error" title="这一步没有完成" description={message} container="section"/>:null;}
 const defaultQuery='What is the refund policy?';
@@ -27,7 +30,7 @@ export function RagWorkbench() {
   }
   useEffect(()=>{
     let live=true;status('正在读取内置合成资料；本地导入内容不会上传。');
-    Promise.all([import('/public/workbench/rag.js'),get('/public/workbench/documents.json').then(r=>r.json())]).then(([module,items])=>{if(!live)return;engine.current=module.explain;original.current=items;setDocs(items);run({items,q:defaultQuery,s:'public',k:'3'});}).catch(e=>{if(live){console.error('RAG workbench initialization failed',e);status('检索组件或资料加载失败。请刷新重试，或打开下方原项目页面。',true);}});
+    get('/public/workbench/documents.json').then(r=>r.json()).then(items=>{if(!live)return;engine.current=explain;original.current=items;setDocs(items);run({items,q:defaultQuery,s:'public',k:'3'});}).catch(e=>{if(live){console.error('RAG workbench initialization failed',e);status('检索组件或资料加载失败。请刷新重试，或打开下方原项目页面。',true);}});
     return()=>{live=false};
   },[]);
   async function importFile(value){
