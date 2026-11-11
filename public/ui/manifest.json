@@ -10,6 +10,16 @@
     "archive": "/public/ui/ready-archive-MIUNTSVP.js",
     "workbench": "/public/ui/ready-workbench-ODMPFHZO.js"
   },
+  "sheetDependencies": [
+    "public/ui/chunks/chunk-2MMNU5VH.js",
+    "public/ui/chunks/chunk-2XQLQB2I.js",
+    "public/ui/chunks/chunk-62Q5Y7YS.js",
+    "public/ui/chunks/chunk-6QRP44UB.js",
+    "public/ui/chunks/chunk-AQWXYRMB.js",
+    "public/ui/chunks/chunk-U22V2MNK.js",
+    "public/ui/chunks/chunk-VGCLRMOO.js",
+    "public/ui/chunks/chunk-XINREGFK.js"
+  ],
   "generated": [
     "public/ui/chunks/cooperate-BUW2TNH3.js",
     "public/ui/chunks/workbench-PNIX2NSB.js",

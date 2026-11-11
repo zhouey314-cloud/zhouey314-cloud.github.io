@@ -24,7 +24,22 @@ export async function buildUI({checking=false}={}) {
   for(const f of result.outputFiles){if(checking){if(!existsSync(f.path)||!readFileSync(f.path).equals(f.contents))throw Error(relative(root,f.path)+' is stale. Run npm run build');}else{mkdirSync(dirname(f.path),{recursive:true});writeFileSync(f.path,f.contents);}}
   const entries=Object.entries(result.metafile.outputs),bootstrap='/'+entries.find(([,m])=>m.entryPoint==='src/ui/bootstrap.js')[0],css='/'+entries.find(([p,m])=>m.entryPoint==='.cache/astryx.entry.css'&&p.endsWith('.css'))[0];
   const readyEntries=Object.fromEntries(['archive','workbench'].map(name=>[name,'/'+entries.find(([,m])=>m.entryPoint===`src/ui/ready-${name}.js`)[0]]));
-  const manifest={core:'0.7.11',theme:'0.7.11',cli:'0.7.11',react:'19.3.1',stylex:'0.19.1',bootstrap,css,readyEntries,generated};
+  // Finish the compact selector's static graph during initial document load.
+  // Keep its outer lazy entry separate so desktop behavior and genuine lazy
+  // import failure/recovery remain unchanged. Derive paths from this build.
+  const sheet=entries.filter(([path])=>/\/BottomSheet-[^/]+\.js$/.test(path));
+  if(sheet.length!==1)throw Error('Expected one compact-selector lazy entry');
+  const staticImports=output=>output.imports.filter(item=>item.kind==='import-statement');
+  const sheetDependencies=[...new Set(staticImports(sheet[0][1]).map(item=>{if(item.external)throw Error('Compact-selector has an external static dependency');return item.path;}))].sort();
+  const checkedDependencies=new Set();
+  function checkSheetDependency(path) {
+    if(path===sheet[0][0]||!path.startsWith('public/ui/')||!path.endsWith('.js')||!generated.includes(path)||!result.metafile.outputs[path])throw Error('Compact-selector dependency graph is missing, external or imports its lazy entry');
+    if(checkedDependencies.has(path))return;checkedDependencies.add(path);
+    for(const item of staticImports(result.metafile.outputs[path])){if(item.external)throw Error('Compact-selector has an external static dependency');checkSheetDependency(item.path);}
+  }
+  if(!sheetDependencies.length)throw Error('Compact-selector static dependency graph is empty');
+  sheetDependencies.forEach(checkSheetDependency);
+  const manifest={core:'0.7.11',theme:'0.7.11',cli:'0.7.11',react:'19.3.1',stylex:'0.19.1',bootstrap,css,readyEntries,sheetDependencies,generated};
   const text=JSON.stringify(manifest,null,2)+'\n';
   if(checking){if(readFileSync(resolve(out,'manifest.json'),'utf8')!==text)throw Error('UI manifest is stale');}
   else{writeFileSync(resolve(out,'manifest.json'),text);for(const path of previous?.generated||[]){const file=resolve(root,path);if(file.startsWith(out+'/')&&!generated.includes(path)&&existsSync(file))unlinkSync(file);}}
@@ -35,7 +50,8 @@ export async function buildUI({checking=false}={}) {
   const assetsFor=page=>{
     const name=page==='projects.html'?'archive':page==='workbench.html'?'workbench':null;
     const ready=name?`<script type="module" src="${readyEntries[name]}"></script>\n`:'';
-    return `<!-- astryx:assets -->\n<link rel="stylesheet" href="${css}" />\n${ready}${script}\n<!-- /astryx:assets -->`;
+    const compact=page==='collaborate.html'?sheetDependencies.map(path=>`<script type="module" src="/${path}"></script>\n`).join(''):'';
+    return `<!-- astryx:assets -->\n<link rel="stylesheet" href="${css}" />\n${ready}${compact}${script}\n<!-- /astryx:assets -->`;
   };
   return {...render,manifest,assetsFor,assets:assetsFor(null),lazyAssets:`<!-- astryx:assets -->\n${script}\n<!-- /astryx:assets -->`};
 }
