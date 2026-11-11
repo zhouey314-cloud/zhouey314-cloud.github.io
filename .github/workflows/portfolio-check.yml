@@ -27,6 +27,10 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      - name: Reject generated source drift
+        run: |
+          git diff --exit-code --stat
+          test -z "$(git ls-files --others --exclude-standard)"
       - run: npm test
       - run: npm run astryx -- doctor --built dist
       - name: Verify deployment source
@@ -63,6 +67,10 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium webkit
       - run: npm run build
+      - name: Reject generated source drift
+        run: |
+          git diff --exit-code --stat
+          test -z "$(git ls-files --others --exclude-standard)"
       - run: npm run test:browser
       - run: npm run test:threeui
       - run: npm run test:threeui
