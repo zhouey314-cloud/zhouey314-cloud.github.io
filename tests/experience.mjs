@@ -89,7 +89,7 @@ try{
        }else{
         const qr=page.locator('.garden-qr svg');assert(await qr.isVisible(),'contact code is present without an external image request');
         const box=await qr.boundingBox();assert(box.width>=140&&Math.abs(box.width-box.height)<1,'contact code has a readable square scan area');
-        assert(await page.locator('.garden-qr>a').getAttribute('href')==='https://u.wechat.com/MJNJhDRZFiAFKD09uKIRGvM?s=3','contact code still links to the approved WeChat account');
+        assert(await page.locator('.garden-qr>a').getAttribute('href')==='/public/contact/wechat-qr.png' && await page.locator('.garden-qr>a').getAttribute('data-wechat-profile')==='https://u.wechat.com/MJNJhDRZFiAFKD09uKIRGvM?s=3','contact code opens the saveable PNG of the same approved account');
         await qr.scrollIntoViewIfNeeded();
        }
        await page.screenshot({path:resolve(out,`${engineName}-${label}-direct-${fragment}.png`)});
