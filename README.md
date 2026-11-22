@@ -1,6 +1,20 @@
 # 恩宇 Ethan Zhou · 数字花园
 
-2026-11-09：在 `main@7f0022c` 上增量接入 Meta Astryx 0.7.11，升级正式页面的作品筛选、三项工作台、合作表单、图片查看及阅读排版。保留森林实时场景、大幅真实照片、项目与全部联系方式。采用预渲染 React 交互区域和原生静态正文，统一输出 `dist/`；**本轮仅本地提交，没有推送或部署**。组件映射、准确编辑入口、验证与回滚见 [Astryx 维护说明](docs/ASTRYX.md)。
+个人工程作品集。可以先看 30 秒介绍，再实际检索资料、查看接口报告或检查视频交付。
+
+[30 秒个人介绍](https://zhouey314-cloud.github.io/#showreel) · [操作工作台](https://zhouey314-cloud.github.io/workbench.html) · [项目档案](https://zhouey314-cloud.github.io/projects.html) · [简历](https://zhouey314-cloud.github.io/resume.html)
+
+| 你想核对什么 | 从哪里开始 |
+| --- | --- |
+| 一条回答能否回到原文 | [退款政策示例](https://zhouey314-cloud.github.io/workbench.html#rag)，合成资料和词法检索 |
+| 流式故障留下了什么 | [RelayAudit 报告检查器](https://zhouey314-cloud.github.io/workbench.html#relay)，不接入真实模型 |
+| 媒体输出怎么交接 | [54 秒工程样片与媒体检查](https://zhouey314-cloud.github.io/workbench.html#video)，与 30 秒个人短片分开 |
+
+**维护入口：** [本地运行](#本地运行) · [内容维护](#内容维护) · [检查与发布](#检查与发布) · [素材与许可](ASSET_SOURCES.md)
+
+[个人短片与示例入口的主分支发布记录](https://github.com/zhouey314-cloud/zhouey314-cloud.github.io/actions/runs/45035572726)记录了精确提交的构建、浏览器检查和 Pages 部署。浏览器测试覆盖点击后才加载短片、横竖版播放和重播；不代表实体手机或真实访客网络已独立验收。
+
+**历史说明：** 2026-11-09：在 `main@7f0022c` 上增量接入 Meta Astryx 0.7.11，升级正式页面的作品筛选、三项工作台、合作表单、图片查看及阅读排版。保留森林实时场景、大幅真实照片、项目与全部联系方式。采用预渲染 React 交互区域和原生静态正文，统一输出 `dist/`；那一次本地验证没有推送或部署，不是当前线上状态。组件映射、准确编辑入口、验证与回滚见 [Astryx 维护说明](docs/ASTRYX.md)。
 
 [实际网站](https://zhouey314-cloud.github.io/) · [检查记录](https://github.com/zhouey314-cloud/zhouey314-cloud.github.io/actions/workflows/portfolio-check.yml) · [Pages 发布](https://github.com/zhouey314-cloud/zhouey314-cloud.github.io/actions/workflows/pages/pages-build-deployment)
 
