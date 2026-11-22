@@ -233,6 +233,8 @@ try {
           if (!expanded || !closed || !focusReturned) fail(`${name}/mobile: keyboard menu/Escape/focus`);
         }
         const reel = page.locator('#showreel');
+        const demo = reel.getByRole('link', {name:'查退款政策，看原文出处'});
+        if (await demo.getAttribute('href') !== '/workbench.html#rag') fail(`${name}/${viewportName}: short film to source demo`);
         const eagerReel = await page.evaluate(() => performance.getEntriesByType('resource').some(entry =>
           new URL(entry.name).pathname.startsWith('/public/showreel/') && new URL(entry.name).pathname.endsWith('.mp4')));
         if (eagerReel || await reel.locator('video').count()) fail(`${name}/${viewportName}: showreel loaded before activation`);
@@ -252,7 +254,16 @@ try {
           const v = document.querySelector('#showreel video');
           return v.videoWidth === 1080 && v.videoHeight === 1920 && Math.abs(v.duration - 30) < .05 && v.currentTime > 0.1;
         });
-        report.interactions.push({browser:name, viewport:viewportName, showreel, optionalPortraitPlayed:true});
+        const replay = reel.getByRole('button', {name:'重播短片'});
+        await video.evaluate(v => { v.currentTime = v.duration - .35; });
+        await replay.waitFor({state:'visible'});
+        await replay.click();
+        await page.waitForFunction(() => {
+          const v = document.querySelector('#showreel video');
+          return !v.paused && v.currentTime > 0 && v.currentTime < 5 && v.videoHeight === 1920;
+        });
+        await replay.waitFor({state:'hidden'});
+        report.interactions.push({browser:name, viewport:viewportName, showreel, optionalPortraitPlayed:true, replayedPortrait:true});
         const missing = await page.goto(base + '/__missing_validation_page__');
         const notFound = missing.status() === 404 && await page.locator('h1').count() === 1;
         if (!notFound) fail(`${name}/${viewportName}: actual HTTP 404`);
