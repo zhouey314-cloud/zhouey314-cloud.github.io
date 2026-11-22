@@ -145,3 +145,11 @@ THREEUI_ENGINE=webkit SYLVA_REQUIRE_WEBGL=1 npm run test:threeui
 - `cases/local-tingwu.html`：分块/指纹、回听与字段保护、引用覆盖和导出；只展示脱敏工程说明，不连接本机服务或公开私人录音。
 - 两篇正文可直接编辑；6章节ID用于目录与深链。维护图、版本和验证日期时，同步相应 `public/projects/*/engineering-notes.md`、`ASSET_SOURCES.md`。历史测试记录须带原日期，不能当本轮重跑。
 - `practice.css` 只进入档案页与两篇新案例；通过 `content/page-styles.json` 纳入构建。添加新case时同步该配置、sitemap和浏览器/静态回归的页面列表。原有构建和Pages工作流继续使用。
+
+## 更新首页个人短片
+
+`/#showreel` 的文案在 `content/home.template.html`。影片、横版自适应封面、竖版封面与可选中文字幕的路径在 `content/showreel.json`。当前发布素材位于 `public/showreel/v2/`。所有视口首次只展示横版封面；「竖屏观看」由访客主动选择。原有的 54 秒项目样片另存于 `public/projects/video/`。
+
+替换下一版时，可在 `public/showreel/` 下新建版本目录，放入两条带 faststart 的有声 MP4、横封面 640/960/1440 像素三档、竖封面和准确的 VTT，再改配置路径。时长改变时同步编辑模板中的标题和播放时间。原始 PNG 留在制作交付包。
+
+从仓库根目录运行 `npm ci`、`npm run build`、`npm test` 和 `SITE_DIR=dist npm run test:browser`。提交源文件及构建生成的 `index.html`、`public/site/home.css`、`public/site/home.js`，按既有 PR 流程合并。Pages 工作流将通过检查的 `dist/` 发布到原域名。

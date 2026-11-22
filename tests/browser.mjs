@@ -244,15 +244,15 @@ try {
           v.pause();
           return {width:v.videoWidth, height:v.videoHeight, duration:v.duration, controls:v.controls, inline:v.playsInline};
         });
-        if (Math.abs(showreel.duration - 30) > .05 || (showreel.width < showreel.height) !== (viewport.width <= 600) || !showreel.controls || !showreel.inline) {
-          fail(`${name}/${viewportName}: responsive 30-second showreel playback`);
+        if (Math.abs(showreel.duration - 30) > .05 || showreel.width !== 1920 || showreel.height !== 1080 || !showreel.controls || !showreel.inline) {
+          fail(`${name}/${viewportName}: full-frame 30-second landscape playback`);
         }
-        await reel.locator('[data-showreel-edit="short"]').click();
+        await reel.locator('[data-showreel-edit="portrait"]').click();
         await page.waitForFunction(() => {
           const v = document.querySelector('#showreel video');
-          return Math.abs(v.duration - 15) < .05 && v.currentTime > 0.1;
+          return v.videoWidth === 1080 && v.videoHeight === 1920 && Math.abs(v.duration - 30) < .05 && v.currentTime > 0.1;
         });
-        report.interactions.push({browser:name, viewport:viewportName, showreel, shortEditPlayed:true});
+        report.interactions.push({browser:name, viewport:viewportName, showreel, optionalPortraitPlayed:true});
         const missing = await page.goto(base + '/__missing_validation_page__');
         const notFound = missing.status() === 404 && await page.locator('h1').count() === 1;
         if (!notFound) fail(`${name}/${viewportName}: actual HTTP 404`);

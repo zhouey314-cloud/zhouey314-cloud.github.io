@@ -30,31 +30,34 @@
       <div class="forest" data-forest data-scene-state="static" aria-hidden="true"><picture class="forest-poster"><source media="(max-width:900px)" srcset="/public/scenes/sylva/forest-mobile.webp" /><img src="/public/scenes/sylva/forest-desktop.webp" width="1600" height="880" alt="" aria-hidden="true" fetchpriority="high" /></picture><div class="forest-mount" data-forest-mount></div></div>
       <div class="hero-guides" aria-hidden="true"><i></i><i></i><i></i></div>
       <div class="garden-hero-content g-wrap">
-        <div class="hero-identity"><p class="garden-kicker"><span class="live-dot" aria-hidden="true"></span>AI 应用开发 · GEO 实践 · 工程交付</p><h1 id="hero-title">恩宇<span>Ethan Zhou</span></h1><div class="showreel-byline"><p class="hero-loc">郑州 · AI 应用与工程交付</p><a class="showreel-entry" href="#showreel"><i aria-hidden="true"></i>30秒认识我</a></div><p class="hero-proof">公开代码 / 可操作作品 / 验证与交接</p></div>
+        <div class="hero-identity"><p class="garden-kicker"><span class="live-dot" aria-hidden="true"></span>AI 应用开发 · GEO 实践 · 工程交付</p><h1 id="hero-title">恩宇<span>Ethan Zhou</span></h1><p class="hero-loc">郑州 · AI 应用与工程交付</p><p class="hero-proof">公开代码 / 可操作作品 / 验证与交接</p></div>
         <a class="hero-portrait" href="#about" aria-label="恩宇 / Ethan Zhou 认识我，查看个人介绍"><img src="/public/portrait/enyu-speaking-960.webp" srcset="/public/portrait/enyu-speaking-384.webp 384w, /public/portrait/enyu-speaking-960.webp 960w, /public/portrait/enyu-speaking-1254.webp 1254w" sizes="(max-width:760px) calc(100vw - 60px), (max-width:1250px) 46vw, 580px" width="1254" height="1254" alt="恩宇本人，身穿黑色西装、手持麦克风" fetchpriority="high" loading="eager" decoding="sync" /><span class="hero-portrait-caption"><span>恩宇 <span lang="en">/ Ethan Zhou</span></span><span>认识我 <span aria-hidden="true">↗</span></span></span></a>
-        <div class="hero-thought"><p>把业务需求，<br />做成能运行、<br /><strong>能交付的 AI 工具。</strong></p><div class="portrait-hero-actions">{{heroActions}}</div></div>
+        <div class="hero-thought"><p>把业务需求，<br />做成能运行、<br /><strong>能交付的 AI 工具。</strong></p><div class="portrait-hero-actions">{{heroActions}}</div><a class="showreel-entry" href="#showreel"><i aria-hidden="true"></i>30 秒认识我</a></div>
         {{heroProjects}}
         <div class="hero-side-note"><span>BUILD / VERIFY / DELIVER</span><p>知识检索<br />接口集成<br />GEO 工作流</p><a href="#engineering">技术与实现证据 ↘</a></div>
       </div>
-      <div class="hero-floor g-wrap"><div class="forest-controls enhanced-only"><button type="button" data-forest-pulse disabled>唤醒花园 <span aria-hidden="true">✳</span></button><span data-scene-caption>移动指针，发现一点生机。</span><button type="button" data-forest-retry hidden>重新载入场景 ↻</button></div><a class="garden-scroll" href="#work"><span>从你的问题，找到对应的作品</span><i aria-hidden="true">↓</i></a><span class="hero-index" aria-hidden="true">GARDEN / 01</span></div>
+      <div class="hero-floor g-wrap"><div class="forest-controls enhanced-only"><button type="button" data-forest-pulse disabled>唤醒花园 <span aria-hidden="true">✳</span></button><span data-scene-caption>移动指针，发现一点生机。</span><button type="button" data-forest-retry hidden>重新载入场景 ↻</button></div><a class="garden-scroll" href="#showreel"><span>观看个人短片</span><i aria-hidden="true">↓</i></a><span class="hero-index" aria-hidden="true">GARDEN / 01</span></div>
       <p class="sr-only" role="status" data-scene-status></p>
     </section>
     <section id="showreel" class="showreel-section" data-chapter="showreel" aria-labelledby="showreel-heading">
       <div class="g-wrap showreel-layout">
         <div class="showreel-copy">
           <p class="garden-kicker">恩宇 / 个人作品短片</p>
-          <h2 id="showreel-heading">30秒认识我<span>。</span></h2>
-          <p class="showreel-intro">从编导转向 AI，我做了三个工具。一个找资料出处，一个查接口异常，还有一个把视频制作变成可复跑的流程。</p>
-          <nav class="showreel-edits" aria-label="选择短片版本">{{showreelEdits}}</nav>
+          <h2 id="showreel-heading">30 秒，认识我<span>。</span></h2>
+          <p class="showreel-intro">从编导到 AI 应用，把想法做成能用的东西。</p>
+          <nav class="showreel-continue" aria-label="看完短片后继续浏览"><a href="#selected-projects">查看具体作品 <span aria-hidden="true">↘</span></a><a href="/collaborate.html">聊聊合作 <span aria-hidden="true">↗</span></a></nav>
         </div>
-        <div class="showreel-media">
+        <figure class="showreel-media">
           <div class="showreel-frame" data-showreel-frame>
-            <picture class="showreel-cover"><source media="(max-width: 600px)" srcset="{{showreelPortraitPoster}}" width="720" height="1280" /><img src="{{showreelPoster}}" width="1440" height="810" alt="钴蓝封面，恩宇手持麦克风，标题为编导生转 AI" loading="lazy" decoding="async" /></picture>
-            <a class="showreel-hit showreel-wide" data-showreel-play="landscape" href="{{showreelMain}}" aria-label="播放短片，30秒横版"><span class="showreel-play"><i aria-hidden="true"></i>播放短片</span></a>
-            <a class="showreel-hit showreel-narrow" data-showreel-play="portrait" href="{{showreelPortrait}}" aria-label="播放短片，30秒竖版"><span class="showreel-play"><i aria-hidden="true"></i>播放短片</span></a>
+            <picture class="showreel-cover"><img src="{{showreelPoster}}" srcset="{{showreelPosterSet}}" sizes="(max-width: 600px) calc(100vw - 48px), (max-width: 800px) 88vw, (max-width: 1520px) 60vw, 900px" width="1440" height="810" alt="恩宇手持麦克风，钴蓝色封面写着「编导生转 AI」" loading="lazy" decoding="async" /></picture>
+            <a class="showreel-hit" data-showreel-play="landscape" href="{{showreelMain}}"><span class="showreel-play"><i aria-hidden="true"></i>播放个人短片 · 00:30</span></a>
           </div>
-          <p class="showreel-status" role="status" data-showreel-status></p>
-        </div>
+          <figcaption>
+            <p class="showreel-summary">知识检索、接口排障、视频工作流，以及我参与的 GEO 实践。</p>
+            <nav class="showreel-edits" aria-label="观看方式">{{showreelEdits}}<a class="showreel-direct" data-showreel-direct href="{{showreelMain}}">直接打开视频 <span aria-hidden="true">↗</span></a></nav>
+            <p class="showreel-status" role="status" data-showreel-status></p>
+          </figcaption>
+        </figure>
       </div>
     </section>
     <section class="garden-works g-wrap" id="work" aria-labelledby="work-title" data-chapter="work">
