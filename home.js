@@ -14,7 +14,7 @@
     // the active chapter, rather than the old 54px point above the destination.
     const readingLine = Math.max(header?.getBoundingClientRect().bottom || 0, parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0) + 8;
     const section = sections.find(s => { const r = s.getBoundingClientRect(); return r.top <= readingLine && r.bottom > readingLine; }) || sections[0];
-    const onPaper = ['work', 'engineering', 'about'].includes(section?.dataset.chapter);
+    const onPaper = ['work', 'engineering', 'about', 'showreel'].includes(section?.dataset.chapter);
     header?.classList.toggle('is-on-paper', onPaper);
     header?.classList.toggle('is-outside-garden', garden.getBoundingClientRect().bottom <= readingLine);
     if (section) document.documentElement.dataset.chapter = section.dataset.chapter;

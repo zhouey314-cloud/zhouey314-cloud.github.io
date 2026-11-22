@@ -177,3 +177,7 @@
 - `public/projects/creator-studio/creator-live.webp`（1440×1000）及 `creator-live-mobile.webp`（390×844）：2026-11-10 用新的匿名 Chrome 153 桌面会话从本人公开产品 https://ethan-creator-personal.pages.dev/ 实际截取；原始PNG保存在本地交付目录，网站仅转为WebP压缩。无私人项目、文稿或媒体。手机图为桌面视口模拟，不作为手机实拍/端到端验收证据。用于 `/cases/creator-studio.html`。
 - 两篇新案例的工程链路为基于本人现有代码与记录整理的DOM架构说明，明确标注非产品运行截图；没有复制第三方编辑器、模型或私人录音素材。
 - 两份 `public/projects/{creator-studio,local-tingwu}/engineering-notes.md` 为本轮原创脱敏项目说明。只列模块职责、版本、历史检查和待验收边界；不含原音、逐字稿、私人安装包或秘密。项目代码尚未公开，不伪造源码入口。
+
+## 首页「30 秒，认识我。」
+
+`public/showreel/v2/` 内的横版和竖版是恩宇授权在官网展示的原始 V2 成片。它们与制作交付的 MP4 字节完全一致，分别为 1920×1080、1080×1920，均为 30 秒、60 fps、有声。横竖封面 WebP 从原有 PNG 缩制。可选中文字幕说明画面与配乐，片中没有旁白。片内 RAG 与 RelayAudit 使用合成资料和报告示例，视频工作流含恩宇原创样片的两秒节选。

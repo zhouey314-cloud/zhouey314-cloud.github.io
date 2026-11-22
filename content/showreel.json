@@ -1,0 +1,28 @@
+{
+  "landscape": {
+    "label": "横屏观看",
+    "src": "/public/showreel/v2/main-v2.mp4",
+    "poster": "/public/showreel/v2/cover-horizontal-v2.webp",
+    "captions": "/public/showreel/v2/main-v2.zh.vtt",
+    "posters": [
+      {
+        "width": 640,
+        "src": "/public/showreel/v2/cover-horizontal-v2-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/public/showreel/v2/cover-horizontal-v2-960.webp"
+      },
+      {
+        "width": 1440,
+        "src": "/public/showreel/v2/cover-horizontal-v2.webp"
+      }
+    ]
+  },
+  "portrait": {
+    "label": "竖屏观看",
+    "src": "/public/showreel/v2/vertical-v2.mp4",
+    "poster": "/public/showreel/v2/cover-vertical-v2.webp",
+    "captions": "/public/showreel/v2/main-v2.zh.vtt"
+  }
+}
