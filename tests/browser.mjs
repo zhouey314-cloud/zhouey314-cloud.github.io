@@ -232,6 +232,27 @@ try {
           menu = { expanded, closed, focusReturned };
           if (!expanded || !closed || !focusReturned) fail(`${name}/mobile: keyboard menu/Escape/focus`);
         }
+        const reel = page.locator('#showreel');
+        const eagerReel = await page.evaluate(() => performance.getEntriesByType('resource').some(entry =>
+          new URL(entry.name).pathname.startsWith('/public/showreel/') && new URL(entry.name).pathname.endsWith('.mp4')));
+        if (eagerReel || await reel.locator('video').count()) fail(`${name}/${viewportName}: showreel loaded before activation`);
+        await page.locator('.showreel-entry').click();
+        await reel.locator('[data-showreel-play]:visible').click();
+        await page.waitForFunction(() => document.querySelector('#showreel video')?.currentTime > 0.1);
+        const video = reel.locator('video');
+        const showreel = await video.evaluate(v => {
+          v.pause();
+          return {width:v.videoWidth, height:v.videoHeight, duration:v.duration, controls:v.controls, inline:v.playsInline};
+        });
+        if (Math.abs(showreel.duration - 30) > .05 || (showreel.width < showreel.height) !== (viewport.width <= 600) || !showreel.controls || !showreel.inline) {
+          fail(`${name}/${viewportName}: responsive 30-second showreel playback`);
+        }
+        await reel.locator('[data-showreel-edit="short"]').click();
+        await page.waitForFunction(() => {
+          const v = document.querySelector('#showreel video');
+          return Math.abs(v.duration - 15) < .05 && v.currentTime > 0.1;
+        });
+        report.interactions.push({browser:name, viewport:viewportName, showreel, shortEditPlayed:true});
         const missing = await page.goto(base + '/__missing_validation_page__');
         const notFound = missing.status() === 404 && await page.locator('h1').count() === 1;
         if (!notFound) fail(`${name}/${viewportName}: actual HTTP 404`);

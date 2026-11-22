@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import {buildUI} from './build-ui.mjs';
@@ -15,8 +15,8 @@ function outputFile(path, content) {
 }
 // Preserve authored CSS order and independent, native JS closures. Fewer initial
 // requests remove the parser-blocking navigation round trip without a framework.
-const styles = ['tokens.css', 'style.css', 'garden.css', 'home.css', 'studio.css', 'capabilities.css', 'portrait.css', 'portfolio.css'];
-const interactions = ['script.js', 'home.js', 'garden-ui.js'];
+const styles = ['tokens.css', 'style.css', 'garden.css', 'home.css', 'studio.css', 'capabilities.css', 'portrait.css', 'portfolio.css', 'showreel.css'];
+const interactions = ['script.js', 'home.js', 'garden-ui.js', 'showreel.js'];
 const homeCss = styles.map(path => {
   const css = readFileSync(root + path, 'utf8');
   if (/@import\b|url\(\s*['"]?(?!\/|data:|https?:|#)[^'"\s)]/i.test(css)) throw new Error(path + ': bundled CSS requires root-relative URLs and no @import');
@@ -56,7 +56,15 @@ const socialLinks = data.contactLinks.filter(c => !['email','wechat'].includes(c
 const contactLinks = data.contactLinks.filter(c => c.id !== 'email').map(external).join('');
 const cooperationScopes = data.services.map(s => `<article class="scope-item" id="scope-${s.topic}"><p class="garden-kicker">${escape(s.number)} / ${escape(s.field)}</p><h3>${escape(s.title)}</h3><dl><dt>从这里开始</dt><dd>${escape(s.startingPoint)}</dd><dt>首轮产物</dt><dd>${escape(s.deliverable)}</dd><dt>怎样检查</dt><dd>${escape(s.acceptance)}</dd></dl><a href="${escape(s.href)}">查看对应作品与证据 ↗</a><a href="/collaborate.html?topic=${s.topic}#brief">按这个方向聊 ↘</a></article>`).join('\n');
 const cooperationOptions = data.services.map(s => `<option value="${s.topic}">${escape(s.field)}</option>`).join('');
-const replacements = { name: escape(data.name), intro: escape(data.intro), email: escape(data.email), services, engineering, projects, writing, heroProjects, wechatQr, wechatImage, socialLinks, contactLinks, cooperationScopes, cooperationOptions, homeAssets, wechatHref: escape(contactById.wechat.href), heroActions:ui.heroActions(), cooperationComposer:ui.island('cooperate',{services:data.services,email:data.email}), ragWorkbench:ui.island('rag'), relayWorkbench:ui.island('relay'), videoWorkbench:ui.island('video'), uiAssets:ui.assets };
+const showreel = JSON.parse(readFileSync(root + 'content/showreel.json', 'utf8'));
+const showreelEdits = Object.entries(showreel).map(([edit, film]) => {
+  for (const asset of [film.src, film.poster, film.captions]) {
+    if (!asset.startsWith('/public/showreel/')) throw new Error('Unexpected showreel asset path: ' + asset);
+    if (!existsSync(root + asset.slice(1))) throw new Error('Missing showreel asset: ' + asset);
+  }
+  return `<a href="${escape(film.src)}" data-showreel-edit="${escape(edit)}" data-poster="${escape(film.poster)}" data-captions="${escape(film.captions)}"><span>${escape(film.label)}</span> <small>${film.seconds}s</small></a>`;
+}).join('\n');
+const replacements = { showreelEdits, showreelMain: escape(showreel.landscape.src), showreelPortrait: escape(showreel.portrait.src), showreelPoster: escape(showreel.landscape.poster), showreelPortraitPoster: escape(showreel.portrait.poster), name: escape(data.name), intro: escape(data.intro), email: escape(data.email), services, engineering, projects, writing, heroProjects, wechatQr, wechatImage, socialLinks, contactLinks, cooperationScopes, cooperationOptions, homeAssets, wechatHref: escape(contactById.wechat.href), heroActions:ui.heroActions(), cooperationComposer:ui.island('cooperate',{services:data.services,email:data.email}), ragWorkbench:ui.island('rag'), relayWorkbench:ui.island('relay'), videoWorkbench:ui.island('video'), uiAssets:ui.assets };
 for (const [source, target] of [['content/home.template.html', 'index.html'], ['content/collaborate.template.html', 'collaborate.html'], ['content/workbench.template.html','workbench.html']]) {
   const template = readFileSync(root + source, 'utf8');
   const output = template.replace(/\{\{(\w+)\}\}/g, (_, key) => { if (!(key in replacements)) throw new Error('Unknown content key: ' + key); return replacements[key]; });
