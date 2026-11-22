@@ -4,6 +4,7 @@
 
   const frame = section.querySelector('[data-showreel-frame]');
   const status = section.querySelector('[data-showreel-status]');
+  const replay = section.querySelector('[data-showreel-replay]');
   const direct = section.querySelector('[data-showreel-direct]');
   const coverPlay = frame.querySelector('[data-showreel-play="landscape"]');
   const edits = Array.from(section.querySelectorAll('[data-showreel-edit]'));
@@ -40,6 +41,7 @@
     player.load();
     frame.dataset.layout = 'landscape';
     delete frame.dataset.playing;
+    replay.hidden = true;
     status.textContent = '短片未能在此加载。可重试，或使用“直接打开视频”。';
     if (hadFocus) coverPlay.focus({ preventScroll: true });
   }
@@ -56,12 +58,24 @@
       player.addEventListener('playing', () => {
         if (!player.isConnected) return;
         showControls();
+        replay.hidden = true;
+        status.textContent = '';
+      });
+      player.addEventListener('ended', () => {
+        if (!player.isConnected || !player.ended) return;
+        replay.hidden = false;
+        status.textContent = '看完还可以在工作台试问客服电话。示例资料只给了营业时间，我让工具在这种情况下提示证据不足。';
+      });
+      player.addEventListener('seeked', () => {
+        if (player.ended || replay.hidden) return;
+        replay.hidden = true;
         status.textContent = '';
       });
     }
 
     if (selected !== link || !player.isConnected) {
       player.pause();
+      replay.hidden = true;
       select(link);
       player.setAttribute('aria-label', '个人作品短片，' + link.textContent.trim());
       player.poster = link.dataset.poster;
@@ -91,6 +105,12 @@
       }
     });
   }
+
+  replay.addEventListener('click', () => {
+    player.focus({ preventScroll: true });
+    player.currentTime = 0;
+    play(selected);
+  });
 
   section.addEventListener('click', event => {
     const link = event.target.closest('a[data-showreel-play], a[data-showreel-edit]');
